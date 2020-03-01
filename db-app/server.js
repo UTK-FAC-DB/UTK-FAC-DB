@@ -59,7 +59,7 @@ app.post("/api/donors", (req, res) => {
             if (err) {
                 handleError(res, err.message, "Failed to create a new donor.");
             } else {
-                res.status(201).json(doc);
+                res.status(201).json(doc.ops[0]);
             }
         });
     }
@@ -67,15 +67,37 @@ app.post("/api/donors", (req, res) => {
 
 //Donors GET by id API that finds a donor by id
 app.get("/api/donors/:id", (req, res) => {
-
+    db.collection(DONORS_COLLECTION).findOne({_id: new ObjectID(req.params.id) }, (err, doc) => {
+        if (err) {
+            handleError(res, err.message, "Failed to get donor");
+        } else {
+            res.status(200).json(doc);
+        }
+    })
 });
 
 //Donors PUT by id API that updates a donor by id
 app.put("/api/donors/:id", (req, res) => {
+    var updateDoc = req.body;
+    delete updateDoc._id;
 
+    db.collection(DONORS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, (err, doc) => {
+        if (err) {
+            handleError(res, err.message, "Failed to update donor");
+        } else {
+            updateDoc._id = req.params.id;
+            res.status(200).json(updateDoc);
+        }
+    });
 });
 
 //Donors DELETE by id API that deletes a donor by id
 app.delete("/api/donors/:id", (req, res) => {
-
+    db.collection(DONORS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)} , (err, result) => {
+        if (err) {
+            handleError(res, err.message, "Failed to delete donor");
+        } else {
+            res.status(200).json(req.params.id);
+        }
+    });
 });
