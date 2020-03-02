@@ -75,7 +75,7 @@ app.get("/api/donors/:id", (req, res) => {
         if (err) {
             handleError(res, err.message, "Failed to get donor");
         } else {
-            res.status(200).json(doc);
+            res.status(200).json({doc});
         }
     })
 });
