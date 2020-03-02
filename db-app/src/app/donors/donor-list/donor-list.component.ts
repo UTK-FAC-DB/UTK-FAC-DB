@@ -12,8 +12,8 @@ import { DonorDetailsComponent } from '../donor-details/donor-details.component'
 
 export class DonorListComponent implements OnInit {
 
-  donors: Donor[]
-  selectedDonor: Donor
+  donors: Donor[];
+  selectedDonor: Donor;
 
   constructor(private donorService: DonorService) { }
 
