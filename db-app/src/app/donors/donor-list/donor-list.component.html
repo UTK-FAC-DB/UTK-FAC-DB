@@ -6,7 +6,7 @@
           *ngFor="let donor of donors"
           (click)="selectDonor(donor)"
           [class.active]="donor === selectedDonor">
-          {{donor.name}}
+          {{donor.firstName}}
         </li>
       </ul>
       <button class="btn btn-warning" (click)="createNewDonor()">New</button>
