@@ -20,7 +20,9 @@ export class DonorService {
       .pipe(map((donorData) => {
         return donorData.donors.map(donor => {
           return {
-            firstName: donor.firstName
+            firstName: donor.firstName,
+            lastName: donor.lastName,
+            birthDate: donor.birthDate
           };
         });
       }))
