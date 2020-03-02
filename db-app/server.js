@@ -4,9 +4,13 @@ var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
 var DONORS_COLLECTION = "donors";
+var USERS_COLLECTION = "users";
 
 var app = express();
 app.use(bodyParser.json());
+
+var distDir = _dirname + "/dist/";
+app.use(express.static(distDir));
 
 var db;
 
@@ -101,3 +105,34 @@ app.delete("/api/donors/:id", (req, res) => {
         }
     });
 });
+
+// USERS API ROUTES BELOW
+
+//Users GET API that finds all the users
+app.get("/api/users", (req, res) => {
+    db.collection(USERS_COLLECTION).find({}).toArray((err, docs) => {
+        if (err) {
+            handleError(res, err.message, "Failed to get donors.");
+        } else {
+            res.status(200).json(docs);
+        }
+    });
+})
+
+//Users POST API that creates a new user
+app.post("/api/users", (req, res) => {
+    var newUser = req.body;
+    newUser.createDate = new Date();
+
+    if (!req.body.name) {
+        handleError(res, "Invalid user input", "Must provide a name.", 400);
+    } else {
+        db.collection(USERS_COLLECTION).insertOne(newUser, (err, doc) => {
+            if (err) {
+                handleError(res, err.message, "Failed to create a new user.");
+            } else {
+                res.status(201).json(doc.ops[0]);
+            }
+        });
+    }
+})
