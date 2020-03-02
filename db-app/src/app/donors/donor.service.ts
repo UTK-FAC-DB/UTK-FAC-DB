@@ -45,11 +45,15 @@ export class DonorService {
   // get("/api/donors/:id")
 
   // delete("/api/donors/:id")
-  deleteDonor(delDonorId: String): Promise<void | String> {
-    return this.http.delete(this.donorsUrl + '/' + delDonorId)
-      .toPromise()
-      .then(response => response as String)
-      .catch(this.handleError);
+  deleteDonor(donors: Donor[]) {
+    for (let i = 0; i < donors.length; i++) {
+      this.http.delete(this.donorsUrl + donors[i]._id)
+      .subscribe(() => {
+        const updatedDonors = this.donors.filter(donor => donor._id !== donor[i]._id);
+        this.donors = updatedDonors;
+        this.donorsUpdated.next([...this.donors]);
+      })
+    }
   }
 
   // put("/api/donors/:id")
