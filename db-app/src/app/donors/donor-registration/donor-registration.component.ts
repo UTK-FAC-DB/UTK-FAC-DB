@@ -4,7 +4,7 @@ import { NgForm, FormBuilder, FormGroup, FormControl, Validators} from '@angular
 import { Subscription, BehaviorSubject } from 'rxjs';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { DonorService } from '../donor.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-donor-registration',
@@ -126,7 +126,7 @@ export class DonorRegistrationComponent implements OnInit {
   public get data(): Donor[] { return this._dataStream.value; }
   public set data(v: Donor[]) { this._dataStream.next(v); }
 
-  constructor(public donorService: DonorService, private formBuilder: FormBuilder, public route: ActivatedRoute) {}
+  constructor(public donorService: DonorService, private formBuilder: FormBuilder, public route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -407,6 +407,7 @@ export class DonorRegistrationComponent implements OnInit {
         habits: this.habits.value
       });
     }
+    this.router.navigate(['/donor-table']);
   }
 
   get form() { return this.registerForm; }

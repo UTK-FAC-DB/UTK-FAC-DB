@@ -3,6 +3,7 @@ import { Donor } from './donor';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class DonorService {
   private donorsUpdated = new Subject<Donor[]>();
   private donors: Donor[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   // get("/api/donors")
   getDonors() {
@@ -97,11 +98,15 @@ export class DonorService {
   }
 
   // post("/api/donors")
-  createDonor(newDonor: Donor): Promise<void | Donor> {
-    return this.http.post(this.donorsUrl, newDonor)
-      .toPromise()
-      .then((response) => response as Donor)
-      .catch(this.handleError);
+  createDonor(newDonor: Donor){
+    this.http.post(this.donorsUrl, newDonor)
+    .subscribe(responseData => {
+      const id = responseData.toString();
+      newDonor._id = id;
+      this.donors.push(newDonor);
+      this.donorsUpdated.next([...this.donors]);
+      this.router.navigate(["/donor-table"]);
+    });
   } 
 
   // get("/api/donors/:id")
@@ -117,17 +122,22 @@ export class DonorService {
         const updatedDonors = this.donors.filter(donor => donor._id !== donor[i]._id);
         this.donors = updatedDonors;
         this.donorsUpdated.next([...this.donors]);
-      })
+      });
     }
   }
 
   // put("/api/donors/:id")
-  updateDonor(putDonor: Donor): Promise<void | Donor> {
+  updateDonor(putDonor: Donor) {
     var putUrl = this.donorsUrl + '/' + putDonor._id;
-    return this.http.put(putUrl, putDonor)
-      .toPromise()
-      .then(response => response as Donor)
-      .catch(this.handleError);
+    this.http.put(putUrl, putDonor)
+      .subscribe(response => {
+        const updatedDonors = [...this.donors];
+        const oldDonorIndex = updatedDonors.findIndex(d => d._id === putDonor._id);
+        updatedDonors[oldDonorIndex] = putDonor;
+        this.donors = updatedDonors;
+        this.donorsUpdated.next([...this.donors]);
+        this.router.navigate(["/donor-table"]);
+      })
   }
 
   private handleError (error: any) {
