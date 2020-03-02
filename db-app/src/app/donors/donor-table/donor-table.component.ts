@@ -19,7 +19,7 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
   dataSource: any;
   selection = new SelectionModel<Donor>(true, []);
 
-  displayedColumns = ['firstName'];
+  displayedColumns = ['select', 'firstName', 'lastName', 'dob', 'actions'];
 
   constructor(private donorService: DonorService) {}
 

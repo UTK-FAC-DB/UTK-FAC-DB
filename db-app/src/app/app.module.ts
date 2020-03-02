@@ -1,4 +1,5 @@
 import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
@@ -33,7 +35,9 @@ import { DonorTableComponent } from './donors/donor-table/donor-table.component'
     MatSortModule,
     MatToolbarModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCheckboxModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
