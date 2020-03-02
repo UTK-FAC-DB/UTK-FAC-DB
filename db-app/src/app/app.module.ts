@@ -16,13 +16,15 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { DonorTableComponent } from './donors/donor-table/donor-table.component';
+import { DonorRegistrationComponent } from './donors/donor-registration/donor-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     HeaderComponent,
-    DonorTableComponent
+    DonorTableComponent,
+    DonorRegistrationComponent
   ],
   imports: [
     BrowserModule,
