@@ -20,9 +20,69 @@ export class DonorService {
       .pipe(map((donorData) => {
         return donorData.donors.map(donor => {
           return {
-            firstName: donor.firstName,
             lastName: donor.lastName,
-            birthDate: donor.birthDate
+            firstName: donor.firstName,
+            middleName: donor.middleName,
+            suffixName: donor.suffixName,
+            maidenName: donor.maidenName,
+            selectedOther: donor.selectedOther,
+            selectedSex: donor.selectedSex,
+            selectedRace: donor.selectedRace,
+            birthDate: donor.birthDate,
+            cityBirth: donor.cityBirth,
+            stateBirth: donor.stateBirth,
+            countryBirth: donor.countryBirth,
+            donationDate: donor.donationDate,
+            livingResearch: donor.livingResearch,
+            traumaResearch: donor.traumaResearch,
+            motherLast: donor.motherLast,
+            motherFirst: donor.motherFirst,
+            motherMiddle: donor.motherMiddle,
+            motherSuffix: donor.motherSuffix,
+            motherMaiden: donor.motherMaiden,
+            fatherLast: donor.fatherLast,
+            fatherFirst: donor.fatherFirst,
+            fatherMiddle: donor.fatherMiddle,
+            fatherSuffix: donor.fatherSuffix,
+            email: donor.email,
+            phone: donor.phone,
+            phoneType: donor.phoneType,
+            streetAddress: donor.streetAddress,
+            cityAddress: donor.cityAddress,
+            stateAddress: donor.stateAddress,
+            zipAddress: donor.zipAddress,
+            countryAddress: donor.countryAddress,
+            heightFeet: donor.heightFeet,
+            heightInch: donor.heightInch,
+            estimateHeight: donor.estimateHeight,
+            weight: donor.weight,
+            estimateWeight: donor.estimateWeight,
+            handedness: donor.handedness,
+            shoesize: donor.shoesize,
+            bloodtype: donor.bloodtype,
+            hairColor: donor.hairColor,
+            maritalstatus: donor.maritalstatus,
+            spouseLast: donor.spouseLast,
+            spouseFirst: donor.spouseFirst,
+            spouseMiddle: donor.spouseMiddle,
+            spouseSuffix: donor.spouseSuffix,
+            spouseMaiden: donor.spouseMaiden,
+            livingSpouse: donor.livingSpouse,
+            spouseDonor: donor.spouseDonor,
+            childrenNumber: donor.childrenNumber,
+            education: donor.education,
+            military: donor.military,
+            ecoClass: donor.ecoClass,
+            occupation: donor.occupation,
+            business: donor.business,
+            extDentalWork: donor.extDentalWork,
+            lowerDenture: donor.lowerDenture,
+            upperDenture: donor.upperDenture,
+            partialPlate: donor.partialPlate,
+            braces: donor.braces,
+            mostTeeth: donor.mostTeeth,
+            gumDisease: donor.gumDisease,
+            habits: donor.habits
           };
         });
       }))
@@ -45,6 +105,9 @@ export class DonorService {
   } 
 
   // get("/api/donors/:id")
+  getDonor(_id: string) {
+    return { ...this.donors.find(d => d._id === d._id)};
+  }
 
   // delete("/api/donors/:id")
   deleteDonor(donors: Donor[]) {

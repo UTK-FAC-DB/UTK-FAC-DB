@@ -9,3 +9,11 @@ a {
 .title {
     color: black;
 }
+
+#wrap {
+    width: 100vw;
+}
+#content-wrap {
+    margin: 0 auto;
+    width: 800px;
+}

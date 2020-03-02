@@ -1,1 +1,460 @@
-<p>donor-registration works!</p>
+<div id="wrap">
+<div id="content-wrap">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-accordion multi="true">
+        <mat-expansion-panel id="top-panel">
+            <mat-expansion-panel-header>
+                <mat-panel-title>General Information</mat-panel-title>
+                <mat-panel-description style="text-align:center">
+                    Subject information such as name, date of birth and address
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <b>Name(s):</b>
+            <mat-form-field class="name last inputText">
+                <input matInput type="text" required placeholder="Last Name" formControlName="lastName">
+            </mat-form-field>
+            <mat-form-field class="name first inputText">
+                <input matInput type="text" required placeholder="First Name" formControlName="firstName">
+            </mat-form-field>
+        
+        <mat-form-field class="name middle inputText">
+          <input matInput type="text" placeholder="Middle Name" formControlName="middleName">
+        </mat-form-field>
+        <mat-form-field class="name suffix inputText" style="width:2.5%">
+          <input matInput type="text" placeholder="Suffix" formControlName="suffixName">
+        </mat-form-field>
+        <mat-form-field class="name maiden inputText">
+          <input matInput type="text" placeholder="Maiden Name" formControlName="maidenName">
+        </mat-form-field>
+        <mat-form-field class="inputSelect">
+          <mat-label>Known by Other Name</mat-label><!--- TODO: Generate additional name fields if user enters 'Yes'-->
+          <mat-select required formControlName="selectedOther">
+            <mat-option *ngFor="let x of truefalse" [value]="x.value">
+              {{x.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <b>Background Information:</b>
+        <mat-form-field class ='inputSelect'>
+          <mat-label>Sex</mat-label>
+          <mat-select required formControlName="selectedSex">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class='inputSelect'>
+          <mat-label>Ancestry/Race</mat-label>
+          <mat-select required formControlName="selectedRace">
+            <mat-option *ngFor="let race of races" [value]="race.value"> 
+              {{race.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <b>Birth Information:</b>
+        <mat-form-field class='inputText'>
+          <mat-label>Date of Birth</mat-label>
+          <input matInput type="text" [matDatepicker]="BirthDatepicker" required formControlName="birthDate">
+          <mat-datepicker-toggle matSuffix [for]="BirthDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #BirthDatepicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="City of Birth" formControlName="cityBirth">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="State/Province of Birth" formControlName="stateBirth">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="Country of Birth" formControlName="countryBirth">
+        </mat-form-field>
+        <br>
+        <b>Donation Information:</b>
+        <mat-form-field class='inputText'>
+          <mat-label>Date of Donation</mat-label>
+          <input matInput type="text" class='inputText' [matDatepicker]="DonationDatepicker" required formControlName="donationDate">
+          <mat-datepicker-toggle matSuffix [for]="DonationDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #DonationDatepicker></mat-datepicker>
+        </mat-form-field>
+        <!-- TODO: Figure out why these checkboxes cause expansion panels to hang
+        <mat-form-field>
+          <mat-checkbox>Living Research OK</mat-checkbox>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-checkbox>Trauma Research OK</mat-checkbox>
+        </mat-form-field>
+        -->
+        <mat-form-field class="inputSelect">
+          <mat-label>Living Research OK</mat-label>
+          <mat-select required formControlName="livingResearch">
+            <mat-option *ngFor="let x of truefalse" [value]="x.value">
+              {{x.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="inputSelect">
+          <mat-label>Trauma Research OK</mat-label>
+          <mat-select required formControlName="traumaResearch">
+            <mat-option *ngFor="let x of truefalse" [value]="x.value">
+              {{x.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <b>Mother's Name:</b>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="Last Name" formControlName="motherLast">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="First Name" formControlName="motherFirst">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="Middle Name" formControlName="motherMiddle">
+        </mat-form-field>
+        <mat-form-field class="inputText" style="width:2.5%">
+          <input matInput type="text" placeholder="Suffix" formControlName="motherSuffix">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="Maiden Name" formControlName="motherMaiden">
+        </mat-form-field>
+        <br>
+        <b>Father's Name:</b>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="Last Name" formControlName="fatherLast">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="First Name" formControlName="fatherFirst">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="Middle Name" formControlName="fatherMiddle">
+        </mat-form-field>
+        <mat-form-field class="inputText" style="width:2.5%">
+          <input matInput type="text" placeholder="Suffix" formControlName="fatherSuffix">
+        </mat-form-field>
+        </mat-expansion-panel>
+
+          <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Contact Information</mat-panel-title>
+        <mat-panel-description style="text-align:center">
+            Contact information and most recent address
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field class="inputText" style="width:40.3125%">
+        <input matInput type="text" placeholder="Email Address" required formControlName="email">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="inputText" style="width:26.625%">
+        <input matInput type="text" placeholder="Phone Number" required formControlName="phone">
+      </mat-form-field>
+      <mat-form-field class="inputSelect">
+          <mat-label>Phone Type</mat-label>
+          <mat-select required formControlName="phoneType">
+            <mat-option value="mobile">Mobile</mat-option>
+            <mat-option value="home">Home</mat-option>
+            <mat-option value="work">Work</mat-option>
+          </mat-select>
+        </mat-form-field>
+      <br>
+      <br>
+      <br>
+      <mat-form-field class="inputText" style="width:40.3125%">
+        <input matInput type="text" placeholder="Address Line 1" required formControlName="streetAddress">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="inputText" style="width:40.3125%">
+        <input matInput type="text" placeholder="Address Line 2">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="City" required formControlName="cityAddress">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="State/Province" required formControlName="stateAddress">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="Postal Code" required formControlName="zipAddress">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="inputText" style="width:40.3125%">
+          <input matInput type="text" placeholder="Country" required formControlName="countryAddress">
+        </mat-form-field>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Personal Information</mat-panel-title>
+        <mat-panel-description style="text-align:center">
+            Personal information such as height, weight, etc
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <b>Height:</b>
+      <mat-form-field class='inputSelect'>
+        <mat-label>Feet</mat-label>
+        <mat-select required formControlName="heightFeet">
+          <mat-option *ngFor="let feet of feetRange" [value]="feet.value"> 
+            {{feet.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class='inputSelect'>
+        <mat-label>Inches</mat-label>
+        <mat-select required formControlName="heightInch">
+          <mat-option *ngFor="let inch of inchRange" [value]="inch.value"> 
+            {{inch.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Estimate</mat-label>
+        <mat-select formControlName="estimateHeight">
+          <mat-option *ngFor="let x of truefalse" [value]="x.value">
+            {{x.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weight:</b>
+      <mat-form-field class="inputText">
+        <input matInput type="text" placeholder="Weight (In Pounds)" required formControlName="weight">
+      </mat-form-field>
+      <!-- TODO: Figure out why mat-slide causes panel stuck state
+      <mat-form-field>
+        <mat-label>Esitmate</mat-label>
+        <mat-slide-toggle>Slide me!</mat-slide-toggle>
+      </mat-form-field>
+      -->
+      <mat-form-field>
+        <mat-label>Estimate</mat-label>
+        <mat-select formControlName="estimateWeight">
+          <mat-option *ngFor="let x of truefalse" [value]="x.value">
+            {{x.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="inputSelect">
+        <mat-label>Handedness</mat-label>
+        <mat-select required formControlName="handedness">
+          <mat-option value="right">Right</mat-option>
+          <mat-option value="left">Left</mat-option>
+          <mat-option value="ambidextrous">Ambidextrous</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="inputSelect">
+        <mat-label>Shoe Size</mat-label>
+        <mat-select required formControlName="shoesize">
+          <mat-option *ngFor="let size of shoeSizes" [value]="size.value"> 
+            {{size.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="inputSelect">
+        <mat-label>Blood Type</mat-label>
+        <mat-select required formControlName="bloodtype">
+          <mat-option *ngFor="let type of bloodTypes" [value]="type.value"> 
+            {{type.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="inputSelect">
+        <mat-label>Natural Hair Color</mat-label>
+        <mat-select required formControlName="hairColor">
+          <mat-option *ngFor="let color of hairColors" [value]="color.value"> 
+            {{color.viewValue}}
+          </mat-option><!-- Generate extra 'specify' field if user selects other-->
+        </mat-select>
+      </mat-form-field>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Marriage and Family History</mat-panel-title>
+        <mat-panel-description style="text-align:center">
+            Marriage and Familial Information
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field class="inputSelect">
+        <mat-label>Marital Status</mat-label>
+        <mat-select required formControlName="maritalstatus">
+          <mat-option *ngFor="let status of maritalStatus" [value]="status.value"> 
+            {{status.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- TODO: Make spuse info dynamic based on select value-->
+      <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spouse Name:</b>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="Last Name" formControlName="spouseLast">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="First Name" formControlName="spouseFirst">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="Middle Name" formControlName="spouseMiddle">
+        </mat-form-field>
+        <mat-form-field class="inputText" style="width:2.5%">
+          <input matInput type="text" placeholder="Suffix" name="id" formControlName="spouseSuffix">
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="Maiden Name" formControlName="spouseMaiden">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="inputSelect">
+          <mat-label>Living Spouse?</mat-label>
+          <mat-select formControlName="livingSpouse">
+            <mat-option *ngFor="let x of truefalse" [value]="x.value">
+              {{x.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="inputSelect">
+          <mat-label>Is Spouse a Donor?</mat-label>
+          <mat-select formControlName="spouseDonor">
+            <mat-option *ngFor="let x of truefalse" [value]="x.value">
+              {{x.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="inputText">
+          <input matInput type="text" placeholder="Number of Children" formControlName="childrenNumber">
+        </mat-form-field>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Educational and Occupational History</mat-panel-title>
+        <mat-panel-description style="text-align:center">
+            Educational and Occupational background
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field class='inputSelect'>
+      <mat-label>Highest Education</mat-label>
+        <mat-select required formControlName="education">
+          <mat-option *ngFor="let level of levels" [value]="level.value" name="selectedEducationLevel"> 
+            {{level.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- TODO: Fixe checkbox issue
+      <mat-form-field>
+        <mat-checkbox>Military Service</mat-checkbox>
+      </mat-form-field>
+      -->
+      <mat-form-field class="inputSelect">
+        <mat-label>Military Service Member</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
+        <mat-select required formControlName="military">
+          <mat-option *ngFor="let x of truefalse" [value]="x.value">
+            {{x.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class='inputSelect'>
+        <mat-label>Childhood Economic Class</mat-label>
+        <mat-select required formControlName="ecoClass">
+          <mat-option *ngFor="let class of socialClasses" [value]="class.value"> 
+            {{class.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="inputText" style="width:19.5%">
+        <input matInput type="text" placeholder="Usual Occupation" formControlName="occupation">
+      </mat-form-field>
+      <mat-form-field class="inputText" style="width:19.5%">
+        <input matInput type="text" placeholder="Business/Industry" formControlName="business">
+      </mat-form-field>
+    </mat-expansion-panel>
+    
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Dental History</mat-panel-title>
+        <mat-panel-description style="text-align:center">
+            Brief dental history including notable features
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field class="inputSelect">
+        <mat-label>Extensive Dental Work</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
+        <mat-select formControlName="extDentalWork">
+          <mat-option *ngFor="let x of truefalse" [value]="x.value">
+            {{x.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="inputSelect">
+        <mat-label>Lower Denture</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
+        <mat-select formControlName="lowerDenture">
+          <mat-option *ngFor="let x of truefalse" [value]="x.value">
+            {{x.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="inputSelect">
+        <mat-label>Upper Denture</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
+        <mat-select formControlName="upperDenture">
+          <mat-option *ngFor="let x of truefalse" [value]="x.value">
+            {{x.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="inputSelect">
+        <mat-label>Partial Plate</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
+        <mat-select formControlName="partialPlate">
+          <mat-option *ngFor="let x of truefalse" [value]="x.value">
+            {{x.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="inputSelect">
+        <mat-label>Braces</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
+        <mat-select formControlName="braces">
+          <mat-option *ngFor="let x of truefalse" [value]="x.value">
+          {{x.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="inputSelect">
+        <mat-label>Most Teeth</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
+        <mat-select formControlName="mostTeeth">
+          <mat-option *ngFor="let x of truefalse" [value]="x.value">
+            {{x.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="inputSelect">
+        <mat-label>Gum Disease</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
+        <mat-select formControlName="gumDisease">
+          <mat-option *ngFor="let x of truefalse" [value]="x.value">
+            {{x.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-expansion-panel>
+    
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Medical History</mat-panel-title>
+        <mat-panel-description style="text-align:center">
+            Brief medical history including notable features
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      
+    </mat-expansion-panel>
+    
+        <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Habitual Activities</mat-panel-title>
+        <mat-panel-description style="text-align:center">
+            Habitual activities such as drinking, smoking, exercise, etc
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+            <mat-form-field class="inputText" style="width:80%">
+                <input matInput type="text" placeholder="Enter habitual activities seperated by commas." formControlName="habits">
+            </mat-form-field>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <div class="container">
+        <button class="saveButton" mat-raised-button type="submit">Save</button>
+    </div>
+</form>
+</div>
+</div>
