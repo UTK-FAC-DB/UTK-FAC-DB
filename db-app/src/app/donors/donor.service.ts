@@ -11,9 +11,12 @@ export class DonorService {
   constructor(private http: HttpClient) {}
 
   // get("/api/donors")
-  getDonors() {
-    var obj = this.http.get(this.donorsUrl);
-    console.log(obj);
+  getDonors(): Promise<void | Donor[]> {
+    var obj = this.http.get(this.donorsUrl)
+      .toPromise()
+      .then(response => response as Donor[])
+      .catch(this.handleError);
+      console.log(obj);
     return obj;
   }
 
