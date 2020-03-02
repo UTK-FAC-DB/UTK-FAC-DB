@@ -2,7 +2,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
-import { Observable, of as observableOf, merge } from 'rxjs';
+import { Observable, of as observableOf, merge, Subscription, BehaviorSubject } from 'rxjs';
 import { Donor } from '../donor';
 import { DonorService } from '../donor.service';
 
@@ -12,11 +12,14 @@ import { DonorService } from '../donor.service';
  * (including sorting, pagination, and filtering).
  */
 export class DonorTableDataSource extends DataSource<Donor> {
-  data: Donor[];
   paginator: MatPaginator;
   sort: MatSort;
+  private donorsSub: Subscription;
+  _dataStream = new BehaviorSubject<Donor[]>([]);
+  public set data(v: Donor[]) { this._dataStream.next(v); }
+  public get data(): Donor[] { return this._dataStream.value; }
 
-  constructor(){
+  constructor(private donorService: DonorService){
     super();
   }
 
@@ -28,8 +31,13 @@ export class DonorTableDataSource extends DataSource<Donor> {
   connect(): Observable<Donor[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
+    this.donorService.getDonors();
+    this.donorsSub = this.donorService.getDonorUpdateListener()
+      .subscribe((donors: Donor[]) => {
+        this.data = donors;
+      });
     const dataMutations = [
-      observableOf(this.data),
+      this._dataStream,
       this.paginator.page,
       this.sort.sortChange
     ];
@@ -43,7 +51,9 @@ export class DonorTableDataSource extends DataSource<Donor> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect() {}
+  disconnect() {
+    this.donorsSub.unsubscribe();
+  }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,

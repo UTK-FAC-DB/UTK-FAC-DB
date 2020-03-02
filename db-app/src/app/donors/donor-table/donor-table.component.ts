@@ -22,7 +22,7 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
   constructor(private donorService: DonorService) {}
 
   ngOnInit() {
-    this.dataSource = this.donorService.getDonors();
+    this.dataSource = new DonorTableDataSource(this.donorService);
   }
 
   ngAfterViewInit() {

@@ -1,23 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Donor } from './donor';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DonorService {
   private donorsUrl = '/api/donors';
+  private donorsUpdated = new Subject<Donor[]>();
+  private donors: Donor[] = [];
 
   constructor(private http: HttpClient) {}
 
   // get("/api/donors")
-  getDonors(): Promise<void | Donor[]> {
-    var obj = this.http.get(this.donorsUrl)
-      .toPromise()
-      .then(response => response as Donor[])
-      .catch(this.handleError);
-      console.log(obj);
-    return obj;
+  getDonors() {
+    this.http.get<{donors: any}>(this.donorsUrl)
+      .pipe(map((donorData) => {
+        return donorData.donors.map(donor => {
+          return {
+            firstName: donor.firstName
+          };
+        });
+      }))
+      .subscribe(transformedDonors => {
+        this.donors = transformedDonors;
+        this.donorsUpdated.next([...this.donors]);
+      });
+  }
+
+  getDonorUpdateListener() {
+    return this.donorsUpdated.asObservable();
   }
 
   // post("/api/donors")
