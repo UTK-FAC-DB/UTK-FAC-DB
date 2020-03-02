@@ -5,6 +5,7 @@ import { MatTable } from '@angular/material/table';
 import { DonorTableDataSource } from './donor-table-datasource';
 import { Donor } from '../donor';
 import { DonorService } from '../donor.service';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-donor-table',
@@ -16,8 +17,9 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<Donor>;
   dataSource: any;
+  selection = new SelectionModel<Donor>(true, []);
 
-  displayedColumns = ['firstName'];
+  displayedColumns = ['select', 'firstName', 'lastName', 'dob', 'actions'];
 
   constructor(private donorService: DonorService) {}
 
@@ -29,5 +31,30 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  onDelete(selectedDonors: Donor[]) {
+    this.donorService.deleteDonor(selectedDonors);
+    this.selection.clear();
+  }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected == numRows;
+  }
+
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  checkboxLabel(row?: Donor): string {
+    if (!row) {
+      return '${this.isAllSelected() ? select : deselect} all';
+    } else {
+      return '${this.selection.isSelected(row) ? deselect : select} row ${row.position + 1}';
+    }
   }
 }
