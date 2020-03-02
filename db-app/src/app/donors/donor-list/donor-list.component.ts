@@ -22,12 +22,6 @@ export class DonorListComponent implements OnInit {
       .getDonors()
       .then((donors: Donor[]) => {
         this.donors = donors.map((donor) => {
-          /*if (!donor.phone) {
-            donor.phone = {
-              mobile: '',
-              work: ''
-            }
-          }*/
           return donor;
         });
       });
@@ -40,7 +34,7 @@ export class DonorListComponent implements OnInit {
   }
 
   selectDonor(donor: Donor) {
-    this.selectedDonor = donor
+    this.selectedDonor = donor;
   }
 
   createNewDonor() {
