@@ -9,7 +9,7 @@ var USERS_COLLECTION = "users";
 var app = express();
 app.use(bodyParser.json());
 
-var distDir = _dirname + "/dist/";
+var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
 var db;
