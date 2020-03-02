@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Donor } from './donor';
-import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +8,13 @@ import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
 export class DonorService {
   private donorsUrl = '/api/donors';
 
-  constructor(private http: HttpClient, private response: HttpHeaderResponse) {}
+  constructor(private http: HttpClient) {}
 
   // get("/api/donors")
-  getDonors(): Promise<void | Donor[]> {
-    return this.http.get(this.donorsUrl)
-      .toPromise()
-      .then((response) => response as Donor[])
-      .catch(this.handleError);
+  getDonors() {
+    var obj = this.http.get(this.donorsUrl);
+    console.log(obj);
+    return obj;
   }
 
   // post("/api/donors")

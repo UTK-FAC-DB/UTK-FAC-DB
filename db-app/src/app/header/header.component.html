@@ -1,0 +1,18 @@
+<mat-toolbar color="primary" class="navbar">
+    <div class="title">Forensic Anthropology Center</div>
+    <div>
+        <a mat-raised-button routerLink="/donor-table">Donor Registration</a>
+        <a mat-raised-button>Donor Control</a>
+        <mat-menu #invMenu="matMenu">
+            <button mat-menu-item>Cremation</button>
+            <button mat-menu-item>Sub Adult</button>
+            <button mat-menu-item>Adult</button>
+        </mat-menu>
+        <a mat-raised-button [matMenuTriggerFor]="invMenu">Inventory</a>
+        <mat-menu #dmMenu="matMenu">
+            <button mat-menu-item>PostCran</button>
+            <button mat-menu-item>Fully</button>
+        </mat-menu>
+        <a mat-raised-button [matMenuTriggerFor]="dmMenu">Donor Metrics</a>
+    </div>
+</mat-toolbar>

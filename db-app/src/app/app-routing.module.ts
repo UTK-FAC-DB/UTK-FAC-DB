@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DonorListComponent } from './donors/donor-list/donor-list.component';
-
+import { DonorTableComponent } from './donors/donor-table/donor-table.component';
 
 const routes: Routes = [
-  { path: '', component: DonorListComponent },
-  { path: 'donor-list', component: DonorListComponent }
+  { path: '', component: DonorTableComponent },
+  { path: 'donor-list', component: DonorTableComponent }
 ];
 
 @NgModule({
@@ -13,4 +12,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [DonorListComponent];
+export const routingComponents = [DonorTableComponent];
