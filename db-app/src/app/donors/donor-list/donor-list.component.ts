@@ -45,8 +45,8 @@ export class DonorListComponent implements OnInit {
 
   createNewDonor() {
     var donor: Donor = {
-      first_name: '',
-      last_name: ''
+      firstName: '',
+      lastName: ''
     };
 
     // By default, a newly-created contact will have the selected state.
