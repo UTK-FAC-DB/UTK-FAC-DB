@@ -1,5 +1,5 @@
 export class Donor {
-    _id?: string;
+    id: string;
     firstName: string;
     lastName: string;
     birthDate: Date;

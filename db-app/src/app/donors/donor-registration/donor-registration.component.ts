@@ -276,6 +276,7 @@ export class DonorRegistrationComponent implements OnInit {
     console.log(JSON.stringify(this.form.value));
     if (this.mode === 'create') {
       this.donorService.createDonor({
+        id: null,
         lastName: this.lastName.value,
         firstName: this.firstName.value,
         middleName: this.middleName.value,
@@ -342,6 +343,7 @@ export class DonorRegistrationComponent implements OnInit {
       })
     } else {
       this.donorService.updateDonor({
+        id: null,
         lastName: this.lastName.value,
         firstName: this.firstName.value,
         middleName: this.middleName.value,

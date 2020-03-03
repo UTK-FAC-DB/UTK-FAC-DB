@@ -103,7 +103,7 @@ export class DonorService {
     this.http.post(this.donorsUrl, newDonor)
     .subscribe(responseData => {
       const id = responseData.toString();
-      newDonor._id = id;
+      newDonor.id = id;
       this.donors.push(newDonor);
       this.donorsUpdated.next([...this.donors]);
       this.router.navigate(["/donor-table"]);
@@ -111,16 +111,17 @@ export class DonorService {
   } 
 
   // get("/api/donors/:id")
-  getDonor(_id: string) {
-    return { ...this.donors.find(d => d._id === _id)};
+  getDonor(id: string) {
+    return { ...this.donors.find(d => d.id === id)};
   }
 
   // delete("/api/donors/:id")
   deleteDonor(donors: Donor[]) {
     for (let i = 0; i < donors.length; i++) {
-      this.http.delete(this.donorsUrl + donors[i]._id)
+      console.log(donors[i].id);
+      this.http.delete(this.donorsUrl + '/' + donors[i].id)
       .subscribe(() => {
-        const updatedDonors = this.donors.filter(donor => donor._id !== donor[i]._id);
+        const updatedDonors = this.donors.filter(donor => donor.id !== donor[i].id);
         this.donors = updatedDonors;
         this.donorsUpdated.next([...this.donors]);
       });
@@ -129,12 +130,12 @@ export class DonorService {
 
   // put("/api/donors/:id")
   updateDonor(putDonor: Donor) {
-    var putUrl = this.donorsUrl + '/' + putDonor._id;
-    console.log(putDonor._id);
+    var putUrl = this.donorsUrl + '/' + putDonor.id;
+    console.log(putDonor.id);
     this.http.put(putUrl, putDonor)
       .subscribe(response => {
         const updatedDonors = [...this.donors];
-        const oldDonorIndex = updatedDonors.findIndex(d => d._id === putDonor._id);
+        const oldDonorIndex = updatedDonors.findIndex(d => d.id === putDonor.id);
         updatedDonors[oldDonorIndex] = putDonor;
         this.donors = updatedDonors;
         this.donorsUpdated.next([...this.donors]);
