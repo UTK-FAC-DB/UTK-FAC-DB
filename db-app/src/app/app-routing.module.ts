@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', component: DonorTableComponent },
   { path: 'donor-table', component: DonorTableComponent },
   { path: 'donor-registration', component: DonorRegistrationComponent},
-  { path: 'edit/:id', component: DonorRegistrationComponent}
+  { path: 'edit/:donorId', component: DonorRegistrationComponent}
 ];
 
 @NgModule({

@@ -12,6 +12,7 @@ export class DonorService {
   private donorsUrl = '/api/donors';
   private donorsUpdated = new Subject<Donor[]>();
   private donors: Donor[] = [];
+  private donor: Donor;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -121,7 +122,7 @@ export class DonorService {
       console.log(donors[i].id);
       this.http.delete(this.donorsUrl + '/' + donors[i].id)
       .subscribe(() => {
-        const updatedDonors = this.donors.filter(donor => donor.id !== donor[i].id);
+        const updatedDonors = this.donors.filter(donor => donor.id !== donors[i].id);
         this.donors = updatedDonors;
         this.donorsUpdated.next([...this.donors]);
       });
@@ -129,14 +130,13 @@ export class DonorService {
   }
 
   // put("/api/donors/:id")
-  updateDonor(putDonor: Donor) {
-    var putUrl = this.donorsUrl + '/' + putDonor.id;
-    console.log(putDonor.id);
-    this.http.put(putUrl, putDonor)
+  updateDonor(id: string, donor: Donor) {
+    console.log(id);
+    this.http.put(this.donorsUrl + '/' + id, donor)
       .subscribe(response => {
         const updatedDonors = [...this.donors];
-        const oldDonorIndex = updatedDonors.findIndex(d => d.id === putDonor.id);
-        updatedDonors[oldDonorIndex] = putDonor;
+        const oldDonorIndex = updatedDonors.findIndex(d => d.id === donor.id);
+        updatedDonors[oldDonorIndex] = donor;
         this.donors = updatedDonors;
         this.donorsUpdated.next([...this.donors]);
         this.router.navigate(["/donor-table"]);

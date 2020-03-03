@@ -195,9 +195,9 @@ export class DonorRegistrationComponent implements OnInit {
       habits : new FormControl('')
     })
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('donor_Id')) {
+      if (paramMap.has('donorId')) {
         this.mode = 'edit';
-        this.donorId = paramMap.get('donor_Id');
+        this.donorId = paramMap.get('donorId');
         this.donor = this.donorService.getDonor(this.donorId);
         console.log(JSON.stringify(this.donor));
         this.registerForm.setValue({
@@ -342,7 +342,7 @@ export class DonorRegistrationComponent implements OnInit {
         habits: this.habits.value
       })
     } else {
-      this.donorService.updateDonor({
+      this.donorService.updateDonor(this.donorId, {
         id: null,
         lastName: this.lastName.value,
         firstName: this.firstName.value,
@@ -409,7 +409,6 @@ export class DonorRegistrationComponent implements OnInit {
         habits: this.habits.value
       });
     }
-    this.router.navigate(['/donor-table']);
   }
 
   get form() { return this.registerForm; }
