@@ -21,7 +21,7 @@ export class DonorService {
       .pipe(map((donorData) => {
         return donorData.donors.map(donor => {
           return {
-            _id: donor._id,
+            id: donor._id,
             lastName: donor.lastName,
             firstName: donor.firstName,
             middleName: donor.middleName,
