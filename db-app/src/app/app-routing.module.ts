@@ -6,7 +6,8 @@ import { DonorRegistrationComponent } from './donors/donor-registration/donor-re
 const routes: Routes = [
   { path: '', component: DonorTableComponent },
   { path: 'donor-table', component: DonorTableComponent },
-  { path: 'donor-registration', component: DonorRegistrationComponent}
+  { path: 'donor-registration', component: DonorRegistrationComponent},
+  { path: 'edit/:id', component: DonorRegistrationComponent}
 ];
 
 @NgModule({
