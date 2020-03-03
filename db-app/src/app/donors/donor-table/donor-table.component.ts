@@ -35,6 +35,7 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
 
   onDelete(selectedDonors: Donor[]) {
     console.log("Deleting donors");
+    console.log(selectedDonors[0]);
     this.donorService.deleteDonor(selectedDonors);
     this.selection.clear();
   }
