@@ -195,9 +195,9 @@ export class DonorRegistrationComponent implements OnInit {
       habits : new FormControl('')
     })
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('donorId')) {
+      if (paramMap.has('donor_Id')) {
         this.mode = 'edit';
-        this.donorId = paramMap.get('donorId');
+        this.donorId = paramMap.get('donor_Id');
         this.donor = this.donorService.getDonor(this.donorId);
         console.log(JSON.stringify(this.donor));
         this.registerForm.setValue({

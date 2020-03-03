@@ -21,6 +21,7 @@ export class DonorService {
       .pipe(map((donorData) => {
         return donorData.donors.map(donor => {
           return {
+            _id: donor._id,
             lastName: donor.lastName,
             firstName: donor.firstName,
             middleName: donor.middleName,
@@ -111,7 +112,7 @@ export class DonorService {
 
   // get("/api/donors/:id")
   getDonor(_id: string) {
-    return { ...this.donors.find(d => d._id === d._id)};
+    return { ...this.donors.find(d => d._id === _id)};
   }
 
   // delete("/api/donors/:id")
@@ -129,6 +130,7 @@ export class DonorService {
   // put("/api/donors/:id")
   updateDonor(putDonor: Donor) {
     var putUrl = this.donorsUrl + '/' + putDonor._id;
+    console.log(putDonor._id);
     this.http.put(putUrl, putDonor)
       .subscribe(response => {
         const updatedDonors = [...this.donors];

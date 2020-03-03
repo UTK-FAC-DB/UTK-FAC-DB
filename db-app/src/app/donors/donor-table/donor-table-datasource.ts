@@ -76,7 +76,8 @@ export class DonorTableDataSource extends DataSource<Donor> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.firstName, b.firstName, isAsc);
+        case 'firstName': return compare(a.firstName, b.firstName, isAsc);
+        case 'lastName': return compare(a.lastName, b.lastName, isAsc);
         default: return 0;
       }
     });
