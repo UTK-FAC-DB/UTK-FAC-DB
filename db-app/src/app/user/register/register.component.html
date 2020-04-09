@@ -1,0 +1,170 @@
+<style>
+    .input-container {
+        display:flex;
+        flex-direction: column;
+        width: 30%;
+        margin: 0 auto;
+    }
+    .header {
+        text-align: center;
+    }
+    .buttonStyle {
+        display: flex;
+        flex-direction: column;
+        width: 15%;
+        margin: 0 auto;
+        text-align: center;
+    }
+</style>
+<!--<div *ngIf="error" class="alert alert-danger">{{error}}</div>-->
+<h2 class="header">Register</h2>
+
+<!--Registeration Form-->
+<form [formGroup]="registerationForm" (ngSubmit)="onSubmit()">
+
+    <!--First name field-->
+    <div class="input-container">
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput required placeholder="James" formControlName="firstName"> 
+
+            <!--Errors-->
+            <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                class="alert alert-danger">
+
+                <!--Error for missing field-->
+                <mat-error *ngIf="firstName.errors.required">
+                    Please enter your first name
+                </mat-error>
+
+                <!--Error for pattern break-->
+                <mat-error *ngIf="firstName.errors.pattern">
+                    Please only use letters
+                </mat-error>
+
+            </mat-error>
+
+        </mat-form-field>
+    </div>
+    <br>
+
+    <!--Last Name Field-->
+    <div class="input-container">
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput required placeholder="Moriarty" formControlName="lastName">
+
+            <!--Errors-->
+            <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+            class="alert alert-danger">
+
+                <!--Error for missing field-->
+                <mat-error *ngIf="lastName.errors.required">
+                    Please enter your last name
+                </mat-error>
+
+                <!--Error for pattern break-->
+                <mat-error *ngIf="lastName.errors.pattern">
+                    Please only use letters
+                </mat-error>
+
+            </mat-error>
+
+        </mat-form-field>
+    </div>
+    <br>
+
+    <!--Username Field-->
+    <div class="input-container">
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput required placeholder="jMoriarty123" formControlName="userName">
+
+            <!--Errors-->
+            <mat-error *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+            class="alert alert-danger">
+
+                <!--Error for missing field-->
+                <mat-error *ngIf="userName.errors.required">
+                    Please enter your user name
+                </mat-error>
+
+                <!--Error for pattern break-->
+                <mat-error *ngIf="userName.errors.pattern">
+                    Please only use letters and numbers
+                </mat-error>
+
+                <!--Error for already in use username-->
+                <mat-error *ngIf="userName.errors.userNameCheck">
+                    Username already in use, please try another
+                </mat-error>
+
+            </mat-error>
+
+        </mat-form-field>
+    </div>
+    <br>
+
+    <!--Password Field-->
+    <div class="input-container">
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput required type="password" formControlName="password">
+
+            <!--Errors-->
+            <mat-error *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="alert alert-danger">
+
+                <!--Error for missing field-->
+                <mat-error *ngIf="password.errors.required">
+                    Please enter a password
+                </mat-error>
+
+                <!--Error for pattern break-->
+                <mat-error *ngIf="password.errors.pattern">
+                    8 charcters, 1 upper, 1 lower, 1 number, 1 special
+                </mat-error>
+
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <br>
+
+    <!--Confirm password-->
+    <div class="input-container">
+        <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input matInput required type="password" formControlName="passwordConfirmation">
+
+            <!--Errors-->
+            <mat-error *ngIf="passwordConfirmation.errors && (passwordConfirmation.dirty || passwordConfirmation.touched)"
+            class="alert alert-danger">
+
+                <!--Error for missing field-->
+                <mat-error *ngIf="passwordConfirmation.errors.required">
+                    Please enter password again
+                </mat-error>
+
+                <!--Error for password confirmation-->
+                <mat-error *ngIf="passwordConfirmation.errors.passwordConf">
+                    Password does not match the one above
+                </mat-error>
+
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <br>
+
+    <!--Register Button-->
+    <div class="buttonStyle">
+        <button mat-raised-button type="submit" [disabled]="!form.valid">
+            Register
+        </button>
+    </div>
+    <br>
+
+    <!--Cancel Button-->
+    <div class="buttonStyle">
+        <a mat-raised-button routerLink="/login">Cancel</a>
+    </div>
+</form>
