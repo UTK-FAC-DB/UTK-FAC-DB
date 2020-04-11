@@ -15,6 +15,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(distDir));
 
 try {
+    /* This is one of the simpliest ways of connecting,
+        however this is a whitelist server port then. 
+        Meaning that anyone can access this via the web.
+        We need to double back to makesure it's a secure connection rather than */
     mongoose.connect("mongodb+srv://Default:2HKD3KU4rxGfRSwP@body-farm-db-test-ledxr.gcp.mongodb.net/live-people?retryWrites=true&w=majority").then(() => {
         var server = app.listen(process.env.PORT || 8080, () => {
             var port = server.address().port;

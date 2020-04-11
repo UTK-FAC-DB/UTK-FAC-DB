@@ -22,6 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { DonorTableComponent } from './donors/donor-table/donor-table.component';
 import { DonorRegistrationComponent } from './donors/donor-registration/donor-registration.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { DonorRegistrationComponent } from './donors/donor-registration/donor-re
     routingComponents,
     HeaderComponent,
     DonorTableComponent,
-    DonorRegistrationComponent
+    DonorRegistrationComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

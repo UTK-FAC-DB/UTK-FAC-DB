@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,19 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'db-app';
-  constructor(private router: Router) {}
+  showHead: boolean = false;
+
+  constructor(private router: Router) {
+    router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+
+        if (event['url'] === '/login' || event['url'] === '/register' || event['url'] === '/') {
+          this.showHead = false;
+        } else {
+          // console.log("NU")
+          this.showHead = true;
+        }
+      }
+    });
+  }
 }
