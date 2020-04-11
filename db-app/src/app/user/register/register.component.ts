@@ -8,7 +8,10 @@ import { passwordConf } from './passwordConfirmation';
 import { userNameCheck } from './userNameCheck';
 
 /* Registeraton component */
-@Component({templateUrl: 'register.component.html'})
+@Component({
+    templateUrl: 'register.component.html',
+    styleUrls: ['register.component.css']
+})
 export class RegisterComponent implements OnInit {
     public registerationForm : FormGroup;
     _dataStream = new BehaviorSubject<User[]>([]);

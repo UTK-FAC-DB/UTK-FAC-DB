@@ -4,7 +4,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserService } from '../user.service';
 //import { AuthenticationService } from '../../services';
 
-@Component({templateUrl: 'login.component.html'})
+@Component({
+    templateUrl: 'login.component.html', 
+    styleUrls: ['login.component.css']
+})
 export class LoginComponent implements OnInit {
     public loginForm: FormGroup;
 
