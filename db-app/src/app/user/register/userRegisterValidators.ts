@@ -1,5 +1,5 @@
 import { FormGroup } from '@angular/forms';
-import { UserService } from './user.service';
+import { UserService } from '../user.service';
 
 // Custom validator to check that two fields match
 export function passwordConfirmation(controlName: string, matchingControlName: string) {
