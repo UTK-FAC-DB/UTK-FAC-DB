@@ -4,8 +4,7 @@ import { Observable, of as observableOf, merge, BehaviorSubject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
-import { passwordConf } from '../passwordConfirmation';
-import { userNameCheck } from '../userNameCheck';
+import { passwordConfirmation, userNameCheck } from '../userRegisterValidators';
 
 /* Registeraton component */
 @Component({
@@ -68,7 +67,7 @@ export class RegisterComponent implements OnInit {
             ])
         }, 
         {validators: [
-            passwordConf('password', 'passwordConfirmation'), 
+            passwordConfirmation('password', 'passwordConfirmation'), 
             userNameCheck('userName', this.userService)
         ]})
     }
