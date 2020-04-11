@@ -14,7 +14,8 @@ export class UserService {
 
     constructor(private http: HttpClient) {}
 
-    /* Grabs all users from database */
+    // Currently not in use
+    /* Grabs all users from database 
     getUsers() {
         this.http.get<{message: string, users: any}>(this.userUrl)
         .pipe(map((userData) => {
@@ -35,16 +36,13 @@ export class UserService {
             this.users = transformedUsers;
             this.usersUpdated.next([...this.users]);
         });
-    }
+    }*/
 
-    getUserCollection() {
-        return this.http.get<{message: string, users: User[]}>(this.userUrl);
-    }
+    /* Grabs the user collections */
+    getUserCollection() {return this.http.get<{message: string, users: User[]}>(this.userUrl); }
 
     /* Returns observable of users */
-    getUserUpdateListener() {
-        return this.usersUpdated.asObservable();
-    }
+    getUserUpdateListener() {return this.usersUpdated.asObservable(); }
 
     /* Adds a new user to database */
     addUser(user: User) {
@@ -77,7 +75,7 @@ export class UserService {
         var expire = new Date();
 
         // Set how long for it to be valid
-        expire.setDate(expire.getDate());
+        expire.setDate(expire.getDate()+7);
 
         return jwt.sign({
             _id: user.id,
@@ -88,4 +86,5 @@ export class UserService {
             // Need to change the 'Secret' to private key
         }, "SECRET");
     }
+
 }
