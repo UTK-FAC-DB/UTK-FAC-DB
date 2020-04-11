@@ -7,6 +7,8 @@ import {User} from './user.model';
 /* General service class to GET, POST, DELETE, and UPDATE users */
 @Injectable({providedIn: 'root'})
 export class UserService {
+    private userUrl = 'http://localhost:8080/api/users';
+    //private userUrl = '/api/users';
     private users: User[] = [];
     private usersUpdated = new Subject<User[]>();
 
@@ -14,7 +16,7 @@ export class UserService {
 
     /* Grabs all users from database */
     getUsers() {
-        this.http.get<{message: string, users: any}>('http://localhost:3000/api/users')
+        this.http.get<{message: string, users: any}>(this.userUrl)
         .pipe(map((userData) => {
            // console.log(userData);
             return userData.users.map(user => {
@@ -36,7 +38,7 @@ export class UserService {
     }
 
     getUserCollection() {
-        return this.http.get<{message: string, users: User[]}>('http://localhost:3000/api/users');
+        return this.http.get<{message: string, users: User[]}>(this.userUrl);
     }
 
     /* Returns observable of users */
@@ -46,7 +48,7 @@ export class UserService {
 
     /* Adds a new user to database */
     addUser(user: User) {
-        this.http.post<{message: string, userId: string}>('http://localhost:3000/api/users', user)
+        this.http.post<{message: string, userId: string}>(this.userUrl, user)
         .subscribe(responseData => {
             console.log(responseData.message);
             console.log(responseData.userId);
@@ -60,7 +62,7 @@ export class UserService {
     /* Deletes a list of given users from database */
     deleteUser(users: User[]) {
         for (let i = 0; i < users.length; i++) {
-            this.http.delete('http://localhost:3000/api/users' + users[i].id)
+            this.http.delete(this.userUrl + users[i].id)
             .subscribe(() => {
                 const updatedUsers = this.users.filter(user => user.id !== user[i].id );
                 this.users = updatedUsers;

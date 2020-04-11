@@ -13,7 +13,7 @@ export class RegisterService {
 
     /* Grabs all users from database */
     getUsers() {
-        this.http.get<{message: string, users: any}>('http://localhost:3000/api/users')
+        this.http.get<{message: string, users: any}>('http://localhost:8080/api/users')
         .pipe(map((userData) => {
             return userData.users.map(user => {
                 return {
@@ -37,7 +37,7 @@ export class RegisterService {
 
     /* Adds a new user to database */
     addUser(user: User) {
-        this.http.post<{message: string, userId: string}>('http://localhost:3000/api/users', user)
+        this.http.post<{message: string, userId: string}>('http://localhost:8080/api/users', user)
         .subscribe(responseData => {
             console.log(responseData.message);
             console.log(responseData.userId);
@@ -51,7 +51,7 @@ export class RegisterService {
     /* Deletes a list of given users from database */
     deleteUser(users: User[]) {
         for (let i = 0; i < users.length; i++) {
-            this.http.delete('http://localhost:3000/api/users' + users[i].id)
+            this.http.delete('http://localhost:8080/api/users' + users[i].id)
             .subscribe(() => {
                 const updatedUsers = this.users.filter(user => user.id !== user[i].id );
                 this.users = updatedUsers;
