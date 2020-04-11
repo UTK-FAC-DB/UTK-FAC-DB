@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
 
-Checkout the live site at https://vast-retreat-05624.herokuapp.com/
+Checkout the live site at https://bodyfarmdb.herokuapp.com/
 
 ## Development server
 
