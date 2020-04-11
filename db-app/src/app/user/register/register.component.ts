@@ -4,8 +4,8 @@ import { Observable, of as observableOf, merge, BehaviorSubject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
-import { passwordConf } from './passwordConfirmation';
-import { userNameCheck } from './userNameCheck';
+import { passwordConf } from '../passwordConfirmation';
+import { userNameCheck } from '../userNameCheck';
 
 /* Registeraton component */
 @Component({

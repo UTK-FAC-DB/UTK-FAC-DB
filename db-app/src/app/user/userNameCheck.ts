@@ -1,5 +1,5 @@
 import { FormGroup } from '@angular/forms';
-import { UserService } from '../user.service';
+import { UserService } from './user.service';
 
 // Custom validator to check for a specific username is already in use
 export function userNameCheck(userName: string, userService : UserService) {
