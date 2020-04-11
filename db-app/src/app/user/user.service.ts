@@ -7,8 +7,8 @@ import {User} from './user.model';
 /* General service class to GET, POST, DELETE, and UPDATE users */
 @Injectable({providedIn: 'root'})
 export class UserService {
-    private userUrl = 'http://localhost:8080/api/users';
-    //private userUrl = '/api/users';
+    //private userUrl = 'http://localhost:8080/api/users';
+    private userUrl = '/api/users';
     private users: User[] = [];
     private usersUpdated = new Subject<User[]>();
 
