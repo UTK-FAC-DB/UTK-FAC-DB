@@ -1,11 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
-const userRoutes = require('./routes/users');
-const donorsRoutes = require('./routes/donors');
+// Bring in user schema
+require('./api/models/user');
 
-const Donor = require('./models/donor');
+// [SH] Bring in the Passport config after model is defined
+require('./api/config/passport');
+
+// [SH] Bring in the routes for the API (delete the default routes)
+var routesApi = require('./api/routes/index');
+
+const userRoutes = require('./api/routes/users');
+const donorsRoutes = require('./api/routes/donors');
+
+const Donor = require('./api/models/donor');
 
 const app = express();
 var distDir = __dirname + "/dist/";
@@ -29,6 +39,50 @@ try {
     console.log(error);
     process.exit(1);
 }
+
+// Initialize passport and forward routes
+app.use(passport.initialize());
+app.use('/api', routesApi);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// error handlers
+
+// [SH] Catch unauthorised errors
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401);
+    res.json({"message" : err.name + ": " + err.message});
+  }
+});
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+});
+
 
 app.use('/api/users', userRoutes);
 app.use('/api/donors', donorsRoutes);
