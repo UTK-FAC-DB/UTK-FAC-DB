@@ -9,18 +9,26 @@ var sendJSONresponse = function(res, status, content) {
 
 module.exports.register = function(req, res) {
 
-  // if(!req.body.name || !req.body.email || !req.body.password) {
-  //   sendJSONresponse(res, 400, {
-  //     "message": "All fields required"
-  //   });
-  //   return;
-  // }
+  // Make sure all fields are filled
+  if(!req.body.firstName || 
+    !req.body.lastName || 
+    !req.body.password ||
+    !req.body.userName ||
+    !req.body.userRole) {
+    sendJSONresponse(res, 400, {
+      "message": "All fields required"
+    });
+    return;
+  }
 
+  // Saving new user and generate new token
   var user = new User();
 
-  user.name = req.body.name;
-  user.email = req.body.email;
-
+  user.firstName = req.body.firstName;
+  user.lastName = req.body.lastName;
+  user.userName = req.body.userName;
+  user.userRole = req.body.userRole;
+  
   user.setPassword(req.body.password);
 
   user.save(function(err) {
@@ -36,12 +44,13 @@ module.exports.register = function(req, res) {
 
 module.exports.login = function(req, res) {
 
-  // if(!req.body.email || !req.body.password) {
-  //   sendJSONresponse(res, 400, {
-  //     "message": "All fields required"
-  //   });
-  //   return;
-  // }
+  // Ensure that all fields are filled
+  if(!req.body.userName || !req.body.password) {
+    sendJSONresponse(res, 400, {
+      "message": "All fields required"
+    });
+   return;
+  }
 
   passport.authenticate('local', function(err, user, info){
     var token;
