@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+/* Will eventually need to add priveleges here... */
+
 const userSchema = mongoose.Schema({
     firstName: { type: String, required: true},
     lastName: { type: String, required: true},
