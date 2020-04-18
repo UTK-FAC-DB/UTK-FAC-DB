@@ -1,42 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
 import {User} from './user.model';
 
 /* General service class to GET, POST, DELETE, and UPDATE users */
 @Injectable({providedIn: 'root'})
 export class UserService {
-    //private userUrl = 'http://localhost:8080/api/users';
-    private userUrl = '/api/users';
+
+    // THIS NEEDED DURING LOCAL PRODUCTION
+    private userUrl = 'http://localhost:8080/api/users';
+
+    // THIS IS NEEDED WHEN BEING PUSHED TO PRODUCTION (AKA MASTER)
+    //private userUrl = '/api/users';
+    
     private users: User[] = [];
     private usersUpdated = new Subject<User[]>();
 
     constructor(private http: HttpClient) {}
-
-    // Currently not in use
-    /* Grabs all users from database 
-    getUsers() {
-        this.http.get<{message: string, users: any}>(this.userUrl)
-        .pipe(map((userData) => {
-           // console.log(userData);
-            return userData.users.map(user => {
-                return {
-                    id: user._id,
-                    lastName: user.lastName,
-                    firstName: user.firstName,
-                    password: user.password,
-                    userName: user.userName,
-                    userRole: user.userRole
-                };
-            });
-        }))
-        .subscribe(transformedUsers => {
-            //console.log(transformedUsers);
-            this.users = transformedUsers;
-            this.usersUpdated.next([...this.users]);
-        });
-    }*/
 
     /* Grabs the user collections */
     getUserCollection() {return this.http.get<{message: string, users: User[]}>(this.userUrl); }
