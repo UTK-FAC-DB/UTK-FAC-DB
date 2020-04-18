@@ -8,6 +8,8 @@ Checkout the live site at https://bodyfarmdb.herokuapp.com/
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+In '/UTK-FAC-DB/db-app/src/app/user/user.service.ts' that the proper userUrl is commented in (One for local and production).
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
