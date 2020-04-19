@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
 import { passwordConfirmation, userNameCheck } from './userRegisterValidators';
+import { AuthenticationService, TokenPayload } from '../../authentication.service';
 
 /* Registeraton component */
 @Component({
@@ -16,8 +17,18 @@ export class RegisterComponent implements OnInit {
     _dataStream = new BehaviorSubject<User[]>([]);
     public get data(): User[] { return this._dataStream.value; }
     public set data(v: User[]) { this._dataStream.next(v); }
+
+    // User data
+    registerData: TokenPayload = {
+        userName: '',
+        userRole: 'graduate',
+        firstName: '',
+        lastName: '',
+        password: ''
+      };
     
     constructor(
+        private auth: AuthenticationService,
         private formBuilder : FormBuilder, 
         private userService : UserService,
         private router : Router
@@ -74,6 +85,22 @@ export class RegisterComponent implements OnInit {
 
     // Validates form and adds new user to database
     onSubmit() {
+
+        // Set form data to register data
+        this.registerData.firstName = this.firstName.value;
+        this.registerData.lastName = this.lastName.value;
+        this.registerData.userName = this.userName.value;
+        this.registerData.password = this.password.value;
+    
+        // Register new user
+        this.auth.register(this.registerData).subscribe(() => {
+            this.router.navigateByUrl('/login');
+        }, (err) => {
+            console.error(err);
+        });
+    
+
+        /*
         const bcrypt = require('bcryptjs');
 
         bcrypt.hash(this.password.value, 10, (err, hash) => {
@@ -88,7 +115,7 @@ export class RegisterComponent implements OnInit {
                 /* May need to subscribe to the registering
                     user method. (Backend already confirms
                     for us) However that may not be necessary.
-                    If so though it'll be here */
+                    If so though it'll be here 
 
                 // Send to server to register account
                 this.userService.addUser({
@@ -102,10 +129,10 @@ export class RegisterComponent implements OnInit {
 
                 /* Sends users back to login screen,
                     they'll need to contact admin
-                    to confirm they can be a user  */
+                    to confirm they can be a user  
                 this.router.navigate(['/login']);
             }
-        });
+        });*/
     }
 
     // Getters for all inputs

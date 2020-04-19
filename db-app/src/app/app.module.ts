@@ -24,6 +24,8 @@ import { DonorTableComponent } from './donors/donor-table/donor-table.component'
 import { DonorRegistrationComponent } from './donors/donor-registration/donor-registration.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
+import { AuthenticationService } from './authentication.service';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,10 @@ import { RegisterComponent } from './user/register/register.component';
     ReactiveFormsModule,
     MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService, 
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

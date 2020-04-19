@@ -21,6 +21,8 @@ module.exports.register = function(req, res) {
     return;
   }
 
+  console.log("Making new user!");
+
   // Saving new user and generate new token
   var user = new User();
 
@@ -44,6 +46,8 @@ module.exports.register = function(req, res) {
 
 module.exports.login = function(req, res) {
 
+  console.log("Trying to log in!!!!!");
+
   // Ensure that all fields are filled
   if(!req.body.userName || !req.body.password) {
     sendJSONresponse(res, 400, {
@@ -62,6 +66,7 @@ module.exports.login = function(req, res) {
     }
 
     // If a user is found
+    console.log("Validating user shit...");
     if(user){
       token = user.generateJwt();
       res.status(200);

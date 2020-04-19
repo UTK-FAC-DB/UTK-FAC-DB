@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
-//import { AuthenticationService } from '../../services';
+import { AuthenticationService, TokenPayload } from '../../authentication.service';
 
 @Component({
     templateUrl: 'login.component.html', 
@@ -11,12 +11,18 @@ import { UserService } from '../user.service';
 export class LoginComponent implements OnInit {
     public loginForm: FormGroup;
 
+    // Grabs login data
+    loginData: TokenPayload = {
+        userName: '',
+        password: ''
+    };
+
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private userService : UserService,
-        //private authenticationService: AuthenticationService
+        private auth: AuthenticationService
     ) {
        /* if (this.authenticationService.currentUserValue) { 
             this.router.navigate(['/']);
@@ -43,6 +49,19 @@ export class LoginComponent implements OnInit {
     /* Attempts to login with given creditials */
     onSubmit() {
 
+        // Set data for potential user
+        this.loginData.userName = this.username.value;
+        this.loginData.password = this.password.value;
+     
+        // Login user
+        this.auth.login(this.loginData).subscribe(() => {
+            this.router.navigate[('/donor-table')];
+        }, (err) => {
+            console.error(err);
+        }); 
+            
+
+        /*
         // Grab user collection
         this.userService.getUserCollection().subscribe(data => {
             const bcrypt = require('bcryptjs');
@@ -81,7 +100,7 @@ export class LoginComponent implements OnInit {
                 this.password.setErrors({ loginCreditials: true});
             }
 
-        });
+        });*/
     }
 
     /* Getter functions */

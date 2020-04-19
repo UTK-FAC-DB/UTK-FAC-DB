@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,13 @@ export class AppComponent {
   title = 'db-app';
   showHead: boolean = false;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    public auth: AuthenticationService) {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
 
-        if (event['url'] === '/login' || event['url'] === '/register' || event['url'] === '/') {
+        if (event['url'] === '/login' || event['url'] === '/register') {
           this.showHead = false;
         } else {
           // console.log("NU")
