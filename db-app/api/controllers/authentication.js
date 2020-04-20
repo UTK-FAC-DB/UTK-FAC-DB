@@ -23,7 +23,7 @@ module.exports.register = function(req, res) {
 
   console.log("Making new user!");
 
-  // Creates token data and saves it
+  // Creates token data
   var user = new User();
 
   user.firstName = req.body.firstName;
@@ -33,6 +33,7 @@ module.exports.register = function(req, res) {
   
   user.setPassword(req.body.password);
 
+  // Saves the user to the database
   user.save(function(err) {
 
     if(err) {
@@ -48,13 +49,9 @@ module.exports.register = function(req, res) {
       "token" : token
     });
   });
-
-  console.log("Made the token!")
-
-  // Saves user to database
-
 };
 
+/* Login method */
 module.exports.login = function(req, res) {
 
   console.log("Trying to log in!!!!!");
@@ -67,6 +64,7 @@ module.exports.login = function(req, res) {
    return;
   }
 
+  // Uses passport to authenticate users from database
   passport.authenticate('local', function(err, user, info){
     var token;
 

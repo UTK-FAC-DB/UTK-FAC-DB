@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, of as observableOf, merge, BehaviorSubject } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
 import { passwordConfirmation, userNameCheck } from './userRegisterValidators';
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     public get data(): User[] { return this._dataStream.value; }
     public set data(v: User[]) { this._dataStream.next(v); }
 
-    // User data
+    // User data token
     registerData: TokenPayload = {
         userName: '',
         userRole: 'graduate',
@@ -98,41 +98,6 @@ export class RegisterComponent implements OnInit {
         }, (err) => {
             console.error(err);
         });
-    
-
-        /*
-        const bcrypt = require('bcryptjs');
-
-        bcrypt.hash(this.password.value, 10, (err, hash) => {
-        
-            // Catch error (such as the server is shutdown)
-            if(err) {
-                console.error(err);
-            }
-
-            else {
-
-                /* May need to subscribe to the registering
-                    user method. (Backend already confirms
-                    for us) However that may not be necessary.
-                    If so though it'll be here 
-
-                // Send to server to register account
-                this.userService.addUser({
-                    firstName: this.firstName.value,
-                    lastName: this.lastName.value,
-                    userName: this.userName.value,
-                    password: hash,
-                    id: null,
-                    userRole: "graduate"
-                });
-
-                /* Sends users back to login screen,
-                    they'll need to contact admin
-                    to confirm they can be a user  
-                this.router.navigate(['/login']);
-            }
-        });*/
     }
 
     // Getters for all inputs
