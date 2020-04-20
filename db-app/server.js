@@ -7,7 +7,7 @@ require('./api/config/passport');
 
 // API routes
 const routesApi = require('./api/routes/index');
-const userRoutes = require('./api/routes/users');
+//const userRoutes = require('./api/routes/users');
 const donorsRoutes = require('./api/routes/donors');
 
 const Donor = require('./api/models/donor');
@@ -35,7 +35,7 @@ try {
 // Initialize passport and forward routes
 app.use(passport.initialize());
 app.use('/api', routesApi);
-app.use('/api/users', userRoutes);
+//app.use('/api/users', userRoutes);
 app.use('/api/donors', donorsRoutes);
 
 /* Error handling */

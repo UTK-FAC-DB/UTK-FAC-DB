@@ -108,9 +108,10 @@ export class AuthenticationService {
     return this.request('get', 'profile');
   }
 
+
   public logout(): void {
     this.token = '';
     window.localStorage.removeItem('UT-BODY-FARM-TOKEN');
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/login');
   }
 }
