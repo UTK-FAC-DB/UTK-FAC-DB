@@ -23,7 +23,7 @@ module.exports.register = function(req, res) {
 
   console.log("Making new user!");
 
-  // Saving new user and generate new token
+  // Creates token data and saves it
   var user = new User();
 
   user.firstName = req.body.firstName;
@@ -34,6 +34,13 @@ module.exports.register = function(req, res) {
   user.setPassword(req.body.password);
 
   user.save(function(err) {
+
+    if(err) {
+      console.log(err);
+      res.status(404).json(err);
+      return;
+    }
+
     var token;
     token = user.generateJwt();
     res.status(200);
@@ -41,6 +48,10 @@ module.exports.register = function(req, res) {
       "token" : token
     });
   });
+
+  console.log("Made the token!")
+
+  // Saves user to database
 
 };
 

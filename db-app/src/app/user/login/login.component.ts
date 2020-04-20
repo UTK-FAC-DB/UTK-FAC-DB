@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
      
         // Login user
         this.auth.login(this.loginData).subscribe(() => {
-            this.router.navigate[('/donor-table')];
+            this.router.navigateByUrl('/');
         }, (err) => {
             console.error(err);
         }); 

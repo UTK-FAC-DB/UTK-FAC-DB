@@ -41,8 +41,12 @@ try {
 }
 
 // Initialize passport and forward routes
+var URL = '/api';
+//var URL = 'http://localhost:8080/api/';
 app.use(passport.initialize());
-app.use('/api', routesApi);
+app.use(URL, routesApi);
+//app.use('/api/users', userRoutes);
+//app.use('/api/donors', donorsRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -82,9 +86,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-
-app.use('/api/users', userRoutes);
-app.use('/api/donors', donorsRoutes);
 
 module.exports = app;
