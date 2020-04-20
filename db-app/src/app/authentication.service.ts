@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { Router } from '@angular/router';
+import { Globals } from './globals';
 
 // Setting up data structures for communicating with backends schemas
 export interface UserDetails {
@@ -30,7 +31,11 @@ export interface TokenPayload {
 export class AuthenticationService {
   private token: string;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private globals: Globals
+    ) {}
 
   // Saving JWT to browser
   private saveToken(token: string): void {
@@ -69,19 +74,14 @@ export class AuthenticationService {
     }
   }
 
-  private request(method: 'post'|'get', type: 'login'|'register'|'profile', user?: TokenPayload): Observable<any> {
+  // Sends the HTTP request to the database
+  private request(method: 'post'|'get', type: 'login'|'register'|'nameCheck', user?: TokenPayload): Observable<any> {
     let base;
-    let userUrl = 'http://localhost:8080';
-
-    // THIS IS NEEDED WHEN BEING PUSHED TO PRODUCTION (AKA MASTER)
-    //private userUrl = '/api/users';
 
     if (method === 'post') {
-      //base = this.http.post(`/api/${type}`, user);
-      base = this.http.post(userUrl + `/api/${type}`, user);
+      base = this.http.post(this.globals.URL + `/api/${type}`, user);
     } else {
-      //base = this.http.get(`/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
-      base = this.http.get(userUrl + `/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
+      base = this.http.get(this.globals.URL + `/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
     }
 
     const request = base.pipe(
@@ -96,19 +96,21 @@ export class AuthenticationService {
     return request;
   }
 
+  // Sends data to make new user
   public register(user: TokenPayload): Observable<any> {
     return this.request('post', 'register', user);
   }
 
+  // Sends a request to validate login creditials
   public login(user: TokenPayload): Observable<any> {
     return this.request('post', 'login', user);
   }
 
-  public profile(): Observable<any> {
-    return this.request('get', 'profile');
+  public isValidUsername(user: TokenPayload): Observable<any> {
+    return this.request('get', 'nameCheck', user);
   }
 
-
+  // Deletes cookies and fowards user to login page
   public logout(): void {
     this.token = '';
     window.localStorage.removeItem('UT-BODY-FARM-TOKEN');

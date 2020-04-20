@@ -4,21 +4,25 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Globals } from '../globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DonorService {
-  private donorsUrl = '/api/donors';
   private donorsUpdated = new Subject<Donor[]>();
   private donors: Donor[] = [];
   private donor: Donor;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private globals: Globals
+    ) {}
 
   // get("/api/donors")
   getDonors() {
-    this.http.get<{donors: any}>(this.donorsUrl)
+    this.http.get<{donors: any}>(this.globals.URL + '/api/donors')
       .pipe(map((donorData) => {
         return donorData.donors.map(donor => {
           return {
@@ -101,7 +105,7 @@ export class DonorService {
 
   // post("/api/donors")
   createDonor(newDonor: Donor){
-    this.http.post(this.donorsUrl, newDonor)
+    this.http.post(this.globals.URL + '/api/donors', newDonor)
     .subscribe(responseData => {
       const id = responseData.toString();
       newDonor.id = id;
@@ -120,7 +124,7 @@ export class DonorService {
   deleteDonor(donors: Donor[]) {
     for (let i = 0; i < donors.length; i++) {
       console.log(donors[i].id);
-      this.http.delete(this.donorsUrl + '/' + donors[i].id)
+      this.http.delete(this.globals.URL + '/api/donors' + '/' + donors[i].id)
       .subscribe(() => {
         const updatedDonors = this.donors.filter(donor => donor.id !== donors[i].id);
         this.donors = updatedDonors;
@@ -132,7 +136,7 @@ export class DonorService {
   // put("/api/donors/:id")
   updateDonor(id: string, donor: Donor) {
     console.log(id);
-    this.http.put(this.donorsUrl + '/' + id, donor)
+    this.http.put(this.globals.URL + '/api/donors' + '/' + id, donor)
       .subscribe(response => {
         const updatedDonors = [...this.donors];
         const oldDonorIndex = updatedDonors.findIndex(d => d.id === donor.id);
