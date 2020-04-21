@@ -54,6 +54,8 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('/');
         }, (err) => {
             console.error(err);
+            this.username.setErrors({ loginCreditials: true});
+            this.password.setErrors({ loginCreditials: true});
         }); 
     }
 
