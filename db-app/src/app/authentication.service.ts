@@ -106,6 +106,7 @@ export class AuthenticationService {
     return this.request('post', 'login', user);
   }
 
+  // Send a request to check for unused username
   public isValidUsername(user: TokenPayload): Observable<any> {
     return this.request('post', 'nameCheck', user);
   }

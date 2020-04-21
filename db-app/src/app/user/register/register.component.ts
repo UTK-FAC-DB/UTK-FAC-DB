@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-import { User } from '../user.model';
-import { UserService } from '../user.service';
-import { passwordConfirmation, userNameCheck } from './userRegisterValidators';
+import { passwordConfirmation } from './userRegisterValidators';
 import { AuthenticationService, TokenPayload } from '../../authentication.service';
 
 /* Registeraton component */
@@ -14,9 +11,6 @@ import { AuthenticationService, TokenPayload } from '../../authentication.servic
 })
 export class RegisterComponent implements OnInit {
     public registerationForm : FormGroup;
-    _dataStream = new BehaviorSubject<User[]>([]);
-    public get data(): User[] { return this._dataStream.value; }
-    public set data(v: User[]) { this._dataStream.next(v); }
 
     // User data token
     registerData: TokenPayload = {
@@ -30,7 +24,6 @@ export class RegisterComponent implements OnInit {
     constructor(
         private auth: AuthenticationService,
         private formBuilder : FormBuilder, 
-        private userService : UserService,
         private router : Router
     ) { } 
 
@@ -78,9 +71,7 @@ export class RegisterComponent implements OnInit {
             ])
         }, 
         {validators: [
-            passwordConfirmation('password', 'passwordConfirmation'), 
-            //userNameCheck('userName', this.auth)
-            //userNameCheck('userName', this.userService)
+            passwordConfirmation('password', 'passwordConfirmation')
         ]})
     }
 
