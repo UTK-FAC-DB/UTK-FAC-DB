@@ -107,7 +107,7 @@ export class AuthenticationService {
   }
 
   public isValidUsername(user: TokenPayload): Observable<any> {
-    return this.request('get', 'nameCheck', user);
+    return this.request('post', 'nameCheck', user);
   }
 
   // Deletes cookies and fowards user to login page

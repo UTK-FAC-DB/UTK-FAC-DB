@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
-//import { Observable, of as observableOf, merge, BehaviorSubject } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../user.model';
@@ -80,30 +79,42 @@ export class RegisterComponent implements OnInit {
         }, 
         {validators: [
             passwordConfirmation('password', 'passwordConfirmation'), 
-            userNameCheck('userName', this.userService)
+            //userNameCheck('userName', this.auth)
+            //userNameCheck('userName', this.userService)
         ]})
     }
 
     // Validates form and adds new user to database
     onSubmit() {
 
-        console.log("Trying to make new user");
+        // Grabs user data
+        var nameData: TokenPayload = {
+            userName: this.userName.value,
+            password: 'invalid'
+        };
 
-        // Set form data to register data
-        this.registerData.firstName = this.firstName.value;
-        this.registerData.lastName = this.lastName.value;
-        this.registerData.userName = this.userName.value;
-        this.registerData.password = this.password.value;
-    
-        // Register new user
-        this.auth.register(this.registerData).subscribe(() => {
-            this.router.navigateByUrl('/login');
-        }, (err) => {
+        // Check username
+        this.auth.isValidUsername(nameData).subscribe(() => {
+            console.log("Trying to make new user");
+
+            // Set form data to register data
+            this.registerData.firstName = this.firstName.value;
+            this.registerData.lastName = this.lastName.value;
+            this.registerData.userName = this.userName.value;
+            this.registerData.password = this.password.value;
+        
+            // Register new user
+            this.auth.register(this.registerData).subscribe(() => {
+                this.router.navigateByUrl('/login');
+            }, (err) => {
+                console.error(err);
+            });
+        }, 
+        // Invalidate username field
+        (err) => {
             console.error(err);
-        });
-
-        //
-        //this.router.navigateByUrl('/login');
+            this.userName.setErrors({ userNameCheck: true});
+        }); 
     }
 
     // Getters for all inputs

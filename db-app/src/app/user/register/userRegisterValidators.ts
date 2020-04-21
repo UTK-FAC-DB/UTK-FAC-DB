@@ -1,5 +1,6 @@
 import { FormGroup } from '@angular/forms';
 import { UserService } from '../user.service';
+import { AuthenticationService, TokenPayload } from '../../authentication.service';
 
 // Custom validator to check that two fields match
 export function passwordConfirmation(controlName: string, matchingControlName: string) {
@@ -22,12 +23,27 @@ export function passwordConfirmation(controlName: string, matchingControlName: s
 }
 
 // Custom validator to check for a specific username is already in use
-export function userNameCheck(userName: string, userService : UserService) {
+export function userNameCheck(userName: string, auth : AuthenticationService) {
     return (formGroup: FormGroup) => {
         const userNameControl = formGroup.controls[userName];
 
+        // Grabs login data
+        var nameData: TokenPayload = {
+            userName: userNameControl.value,
+            password: ''
+        };
+
+        // Login user to check for username
+        auth.isValidUsername(nameData).subscribe(() => {
+        }, (err) => {
+            console.error(err);
+            /*
+            this.username.setErrors({ loginCreditials: true});
+            this.password.setErrors({ loginCreditials: true});*/
+        }); 
+
         // Grab user collection
-        userService.getUserCollection().subscribe(data => {
+        /*userService.getUserCollection().subscribe(data => {
             
             // Go through users and find any matches (yes slow, but works)
             data.users.forEach(user => {
@@ -36,7 +52,7 @@ export function userNameCheck(userName: string, userService : UserService) {
                 }
             })
 
-        });
+        });*/
     }
 }
 

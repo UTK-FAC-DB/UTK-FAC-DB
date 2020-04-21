@@ -89,3 +89,40 @@ module.exports.login = function(req, res) {
   })(req, res);
 
 };
+
+/* Checking username method */
+module.exports.nameCheck = function(req, res) {
+
+  console.log("Trying to check name!!!!!");
+
+  // Ensure that all fields are filled
+  if(!req.body.userName) {
+    sendJSONresponse(res, 400, {
+      "message": "username required"
+    });
+   return;
+  }
+
+  //a simple if/else to check if email already exists in db
+  User.findOne({ userName: req.body.userName }, function(err, user) {
+    
+    // error checking
+    if(err) {
+      res.status(404).json(err);
+      return;
+    }
+
+    // if a user was found return an error message to invalidate field
+    if (user) {
+      res.status(401).json(err);
+    } 
+    // If not send a blank token back to allow registeration
+    else {
+      res.status(200);
+      res.json({
+        "token" : ''
+      });
+    }
+  }); 
+
+};

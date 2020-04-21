@@ -16,7 +16,7 @@ export class UserService {
         ) {}
 
     /* Grabs the user collections */
-    getUserCollection() {return this.http.get<{message: string, users: User[]}>(this.globals.URL); }
+    getUserCollection() {return this.http.get<{message: string, users: User[]}>(this.globals.URL+'/api/users'); }
 
     /* Returns observable of users */
     getUserUpdateListener() {return this.usersUpdated.asObservable(); }

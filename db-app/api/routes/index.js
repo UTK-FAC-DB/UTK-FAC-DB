@@ -10,10 +10,11 @@ var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
 
 // profile getters
-router.get('/nameCheck', ctrlProfile.nameCheck);
+//router.get('/nameCheck', ctrlProfile.nameCheck);
 
 // authentication
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
+router.post('/nameCheck', ctrlAuth.nameCheck);
 
 module.exports = router;
