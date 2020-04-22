@@ -5,6 +5,7 @@ import { DonorRegistrationComponent } from './donors/donor-registration/donor-re
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { AuthGuardService } from './authentication/auth-guard.service';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   { path: '', component: DonorTableComponent, canActivate: [AuthGuardService]},
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'edit/:donorId', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'setting', component: SettingsComponent }
 ];
 
 @NgModule({
