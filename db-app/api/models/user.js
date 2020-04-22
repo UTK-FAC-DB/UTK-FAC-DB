@@ -7,6 +7,9 @@ var userSchema = mongoose.Schema({
     lastName: { type: String, required: true},
     userName: { type: String, required: true},
     userRole: { type: String, required: true},
+    createPriv: { type: Boolean, required: true},
+    editPriv: { type: Boolean, required: true},
+    deletePriv: { type: Boolean, required: true},
     
     hash: String, // Password hash
     salt: String

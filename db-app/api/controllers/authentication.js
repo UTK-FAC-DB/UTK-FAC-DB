@@ -30,6 +30,9 @@ module.exports.register = function(req, res) {
   user.lastName = req.body.lastName;
   user.userName = req.body.userName;
   user.userRole = req.body.userRole;
+  user.createPriv = false;
+  user.editPriv = false;
+  user.deletePriv = false;
   
   user.setPassword(req.body.password);
 
