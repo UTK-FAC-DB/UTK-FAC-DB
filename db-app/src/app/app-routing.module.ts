@@ -8,13 +8,13 @@ import { AuthGuardService } from './authentication/auth-guard.service';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
-  { path: '', component: DonorTableComponent, canActivate: [AuthGuardService]},
-  { path: 'donor-table', component: DonorTableComponent, canActivate: [AuthGuardService]},
-  { path: 'donor-registration', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
-  { path: 'edit/:donorId', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
+  { path: '', component: DonorTableComponent, canActivate: [AuthGuardService] },
+  { path: 'donor-table', component: DonorTableComponent, canActivate: [AuthGuardService] },
+  { path: 'donor-registration', component: DonorRegistrationComponent, canActivate: [AuthGuardService] },
+  { path: 'edit/:donorId', component: DonorRegistrationComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'setting', component: SettingsComponent }
+  { path: 'setting', component: SettingsComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({
