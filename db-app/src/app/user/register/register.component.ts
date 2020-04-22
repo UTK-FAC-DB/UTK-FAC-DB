@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { passwordConfirmation } from './userRegisterValidators';
-import { AuthenticationService, TokenPayload } from '../../authentication.service';
+import { AuthenticationService, TokenPayload } from '../../authentication/authentication.service';
 
 /* Registeraton component */
 @Component({

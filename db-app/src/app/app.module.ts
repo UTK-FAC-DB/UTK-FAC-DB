@@ -24,9 +24,10 @@ import { DonorTableComponent } from './donors/donor-table/donor-table.component'
 import { DonorRegistrationComponent } from './donors/donor-registration/donor-registration.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
-import { AuthenticationService } from './authentication.service';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthenticationService } from './authentication/authentication.service';
+import { AuthGuardService } from './authentication/auth-guard.service';
 import { Globals } from './globals';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { Globals } from './globals';
     DonorTableComponent,
     DonorRegistrationComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

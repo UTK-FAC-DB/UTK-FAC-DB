@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { Router } from '@angular/router';
-import { Globals } from './globals';
+import { Globals } from '../globals';
 
 // Setting up data structures for communicating with backends schemas
 export interface UserDetails {
