@@ -1,5 +1,20 @@
-import {Component, OnInit } from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { UserDetails, AuthenticationService } from '../authentication/authentication.service';
+
+/* 
+Got a lot of this example from the 'Table with expandable rows'
+example at https://material.angular.io/components/table/examples 
+*/
+
+// Table data interface
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-settings',
@@ -7,36 +22,39 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   styleUrls: ['./settings.component.css'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
 })
-
-// Class 
 export class SettingsComponent implements OnInit {
-  constructor() { }
-  ngOnInit(): void {}
+  private users: UserDetails[] = [];
+  
+  constructor(private auth: AuthenticationService) { }
+
+  // On init will need to grab the user collection from the db
+  ngOnInit(): void {
+    console.log("Trying to get user collection");
+    
+    this.auth.getUserCollection().subscribe(data => {
+      this.users = data;
+      console.log(data);
+    }, (err) => {
+      console.error(err);
+    });
+  }
 
   // Will need to replace with user collection from db
   dataSource = ELEMENT_DATA;
 
   columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
-  //columnsToDisplay = ['First Name', 'Last Name', 'Username', 'Role'];
-  
+  //columnsToDisplay = ['firstName', 'lastName', 'userName', 'userRole'];
+
   // Whether is expanded or not
   expandedElement: PeriodicElement | null;
+  //expandedElement: UserElement | null;
 
-}
-
-// Row data interface
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  description: string;
 }
 
 // Data where table draws from

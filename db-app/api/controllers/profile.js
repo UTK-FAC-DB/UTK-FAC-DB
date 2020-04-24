@@ -1,19 +1,30 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-var sendJSONresponse = function(res, status, content) {
-  res.status(status);
-  res.json(content);
-};
+module.exports.profileRead = function (req, res) {
 
-module.exports.nameCheck = function(req, res) {
-
-  // Make sure all fields are filled
-  if(!req.body.userName) {
-    sendJSONresponse(res, 400, {
-      "message": "username required"
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "UnauthorizedError: private profile"
     });
-    return;
+  } else {
+    User
+      .findById(req.payload._id)
+      .exec(function (err, user) {
+        res.status(200).json(user);
+      });
   }
 
 };
+
+/* Get the user collection */
+module.exports.userCollection = function (req, res) {
+
+  User
+  .find({})
+  .exec(function (err, user) {
+    console.log(user);
+    res.status(200).json(user);
+  });
+
+}

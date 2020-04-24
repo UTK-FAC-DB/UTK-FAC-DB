@@ -1,31 +1,37 @@
 <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+
+  <!-- Headers -->
   <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
     <th mat-header-cell *matHeaderCellDef> {{column}} </th>
     <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
   </ng-container>
 
-  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <!-- When expanded -->
   <ng-container matColumnDef="expandedDetail">
     <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-      <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-        <div class="example-element-diagram">
-          <div class="example-element-position"> {{element.position}} </div>
-          <div class="example-element-symbol"> {{element.symbol}} </div>
-          <div class="example-element-name"> {{element.name}} </div>
-          <div class="example-element-weight"> {{element.weight}} </div>
+      <div class="details" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        
+        <!-- Description -->
+        <!-- this will be the section that'll hold the user's privs, del option, and password change option -->
+        <div class="element-description">
+          <!--{{element.description}}-->
+          <mat-checkbox class="privelge-checkbox">Create</mat-checkbox>
+          <mat-checkbox class="privelge-checkbox">Edit</mat-checkbox>
+          <mat-checkbox class="privelge-checkbox">Delete</mat-checkbox>
         </div>
-        <div class="example-element-description">
-          {{element.description}}
-          <span class="example-element-description-attribution"> -- Wikipedia </span>
-        </div>
+
       </div>
     </td>
   </ng-container>
 
+  <!-- When not expanded -->
+  <!-- this will just list the basic data of the user-->
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
+
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="element-row"
     [class.example-expanded-row]="expandedElement === element"
     (click)="expandedElement = expandedElement === element ? null : element">
   </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
 </table>

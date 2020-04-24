@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
+import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Globals } from '../globals';
 
@@ -11,6 +12,9 @@ export interface UserDetails {
   userName: string;
   firstName: string,
   lastName: string,
+  editPriv: boolean,
+  createPriv: boolean,
+  deletePriv: boolean,
   exp: number;
   iat: number;
 }
@@ -32,10 +36,10 @@ export class AuthenticationService {
   private token: string;
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private router: Router,
     private globals: Globals
-    ) {}
+  ) { }
 
   // Saving JWT to browser
   private saveToken(token: string): void {
@@ -75,15 +79,19 @@ export class AuthenticationService {
   }
 
   // Sends the HTTP request to the database
-  private request(method: 'post'|'get', type: 'login'|'register'|'nameCheck', user?: TokenPayload): Observable<any> {
+  private request(method: 'post' | 'get', type: 'login' | 'register' | 'nameCheck' | 'userCollection', user?: TokenPayload): Observable<any> {
     let base;
 
     if (method === 'post') {
+      console.log("Initializing 'post' request");
       base = this.http.post(this.globals.URL + `/api/${type}`, user);
     } else {
-      base = this.http.get(this.globals.URL + `/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
+      console.log("Initializing 'get' request");
+      //base = this.http.get(this.globals.URL + `/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+      base = this.http.get(this.globals.URL + `/api/${type}`);
     }
 
+    //const request = base.pipe(
     const request = base.pipe(
       map((data: TokenResponse) => {
         if (data.token) {
@@ -109,6 +117,11 @@ export class AuthenticationService {
   // Send a request to check for unused username
   public isValidUsername(user: TokenPayload): Observable<any> {
     return this.request('post', 'nameCheck', user);
+  }
+
+  // Gets the user collection 
+  public getUserCollection(): Observable<any> {
+    return this.request('get', 'userCollection');
   }
 
   // Deletes cookies and fowards user to login page

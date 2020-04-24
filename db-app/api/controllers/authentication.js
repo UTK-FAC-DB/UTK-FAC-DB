@@ -2,16 +2,16 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-var sendJSONresponse = function(res, status, content) {
+var sendJSONresponse = function (res, status, content) {
   res.status(status);
   res.json(content);
 };
 
-module.exports.register = function(req, res) {
+module.exports.register = function (req, res) {
 
   // Make sure all fields are filled
-  if(!req.body.firstName || 
-    !req.body.lastName || 
+  if (!req.body.firstName ||
+    !req.body.lastName ||
     !req.body.password ||
     !req.body.userName ||
     !req.body.userRole) {
@@ -33,13 +33,13 @@ module.exports.register = function(req, res) {
   user.createPriv = false;
   user.editPriv = false;
   user.deletePriv = false;
-  
+
   user.setPassword(req.body.password);
 
   // Saves the user to the database
-  user.save(function(err) {
+  user.save(function (err) {
 
-    if(err) {
+    if (err) {
       console.log(err);
       res.status(404).json(err);
       return;
@@ -49,26 +49,26 @@ module.exports.register = function(req, res) {
     //token = user.generateJwt();
     res.status(200);
     res.json({
-      "token" : token
+      "token": token
     });
   });
 };
 
 /* Login method */
-module.exports.login = function(req, res) {
+module.exports.login = function (req, res) {
 
   console.log("Trying to log in!!!!!");
 
   // Ensure that all fields are filled
-  if(!req.body.userName || !req.body.password) {
+  if (!req.body.userName || !req.body.password) {
     sendJSONresponse(res, 400, {
       "message": "All fields required"
     });
-   return;
+    return;
   }
 
   // Uses passport to authenticate users from database
-  passport.authenticate('local', function(err, user, info){
+  passport.authenticate('local', function (err, user, info) {
     var token;
 
     // If Passport throws/catches an error
@@ -79,11 +79,11 @@ module.exports.login = function(req, res) {
 
     // If a user is found
     console.log("Validating user shit...");
-    if(user){
+    if (user) {
       token = user.generateJwt();
       res.status(200);
       res.json({
-        "token" : token
+        "token": token
       });
     } else {
       // If user is not found
@@ -94,23 +94,25 @@ module.exports.login = function(req, res) {
 };
 
 /* Checking username method */
-module.exports.nameCheck = function(req, res) {
+module.exports.nameCheck = function (req, res) {
 
   console.log("Trying to check name!!!!!");
 
   // Ensure that all fields are filled
-  if(!req.body.userName) {
+  if (!req.body.userName) {
     sendJSONresponse(res, 400, {
       "message": "username required"
     });
-   return;
+    return;
   }
 
   //a simple if/else to check if email already exists in db
-  User.findOne({ userName: req.body.userName }, function(err, user) {
-    
+  User.findOne({
+    userName: req.body.userName
+  }, function (err, user) {
+
     // error checking
-    if(err) {
+    if (err) {
       res.status(404).json(err);
       return;
     }
@@ -118,14 +120,13 @@ module.exports.nameCheck = function(req, res) {
     // if a user was found return an error message to invalidate field
     if (user) {
       res.status(401).json(err);
-    } 
+    }
     // If not send a blank token back to allow registeration
     else {
       res.status(200);
       res.json({
-        "token" : ''
+        "token": ''
       });
     }
-  }); 
-
+  });
 };
