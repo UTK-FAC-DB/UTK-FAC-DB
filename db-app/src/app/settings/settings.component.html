@@ -19,7 +19,22 @@
         </div>
 
         <!-- Spacer between buttons and privelges-->
-        <div class="spacer"></div>
+        <div class="textFields">
+          <mat-form-field class="textInputs">
+            <mat-label>First name</mat-label>
+            <textarea matInput [value]="element.firstName"></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="textInputs">
+            <mat-label>Last name</mat-label>
+            <textarea matInput [value]="element.lastName"></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="textInputs">
+            <mat-label>Username</mat-label>
+            <textarea matInput [value]="element.userName"></textarea>
+          </mat-form-field>
+        </div>
 
         <!-- Save, Delete, Change Password Buttons -->
         <div class="element-button-container">
