@@ -59,4 +59,10 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
       return '${this.selection.isSelected(row) ? deselect : select} row ${row.position + 1}';
     }
   }
+
+  applyFilter(event: Event) {
+    console.log("press")
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
