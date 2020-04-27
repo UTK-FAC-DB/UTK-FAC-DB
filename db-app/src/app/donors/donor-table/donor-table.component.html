@@ -1,15 +1,23 @@
-<a class="buttonStyle" mat-raised-button routerLink="/donor-registration">Add New Donor</a>
-<a class="buttonStyle" mat-raised-button (click)="onDelete(selection.selected)">Delete</a>
 <div class="container">
-  <div class="mat-elevation-z8 donor-table">
+  <div class="table-actions">
+    <a class="buttonStyle" mat-raised-button routerLink="/donor-registration">Add New Donor</a>
+    <a class="buttonStyle" mat-raised-button (click)="onDelete(selection.selected)">Delete</a>
+  </div>
+  <div class="filtering">
     <mat-form-field>
-      
       <input matInput placeholder="Search" type="text" (keyup)="applyFilter($event)">
     </mat-form-field>
     <mat-menu #filterMenu="matMenu">
-
+      <button mat-menu-item>Sex</button>
+      <button mat-menu-item>Ancestry/Race</button>
+      <button mat-menu-item>Research</button>
+      <button mat-menu-item>Handedness</button>
+      <button mat-menu-item>Shoe Size</button>
+      <button mat-menu-item>Blood Type</button>
     </mat-menu>
-    <a mat-raised-button>Advanced Filters</a>
+    <a mat-raised-button [matMenuTriggerFor]="filterMenu">Advanced Filters</a>
+  </div>
+  <div class="mat-elevation-z8 donor-table">
     <table mat-table class="full-width-table" matSort aria-label="Elements">
 
       <ng-container matColumnDef="select">
