@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 35rem;
+  margin-left: 1rem;
+}
+
+td, th {
+  width: 25%;
+}
+
+.table-actions a {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.filtering a {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}

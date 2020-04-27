@@ -4,12 +4,14 @@ import { DonorTableComponent } from './donors/donor-table/donor-table.component'
 import { DonorRegistrationComponent } from './donors/donor-registration/donor-registration.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
+import { DonorCTableComponent } from './donors/donor-c-table/donor-c-table.component';
 import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
   { path: '', component: DonorTableComponent, canActivate: [AuthGuardService]},
   { path: 'donor-table', component: DonorTableComponent, canActivate: [AuthGuardService]},
   { path: 'donor-registration', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
+  { path: 'donor-c-table', component: DonorCTableComponent, canActivate: [AuthGuardService]},
   { path: 'edit/:donorId', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

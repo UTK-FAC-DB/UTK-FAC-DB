@@ -2,19 +2,19 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
-import { Observable, of as observableOf, merge, Subscription, BehaviorSubject, combineLatest, Subject } from 'rxjs';
-import { Donor } from '../donor';
-import { DonorService } from '../donor.service';
+import { Observable, of as observableOf, merge, BehaviorSubject, Subject, Subscription, combineLatest } from 'rxjs';
+import { DonorService } from '../controlDonor.service';
 import { _isNumberValue } from '@angular/cdk/coercion';
+import { Donor } from '../donor';
 
 const MAX_SAFE_INTEGER = 9007199254740991;
 
 /**
- * Data source for the DonorTable view. This class should
+ * Data source for the DonorCTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class DonorTableDataSource extends DataSource<Donor> {
+export class DonorCTableDataSource extends DataSource<Donor> {
   private readonly _data: BehaviorSubject<Donor[]> = new BehaviorSubject<Donor[]>([]);
 
   /** Stream emitting render data to the table (depends on ordered data changes). */
@@ -301,9 +301,4 @@ export class DonorTableDataSource extends DataSource<Donor> {
    * @docs-private
    */
   disconnect() { }
-}
-
-/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a: string | number, b: string | number, isAsc: boolean) {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

@@ -17,6 +17,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+//import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
@@ -27,6 +28,10 @@ import { RegisterComponent } from './user/register/register.component';
 import { AuthenticationService } from './authentication.service';
 import { AuthGuardService } from './auth-guard.service';
 import { Globals } from './globals';
+import { DonorCTableComponent } from './donors/donor-c-table/donor-c-table.component';
+import { InventoryCremationTableComponent } from './inventory/inventory-cremation-table/inventory-cremation-table.component';
+import { InventoryAdultTableComponent } from './inventory/inventory-adult-table/inventory-adult-table.component';
+import { InventorySubadultTableComponent } from './inventory/inventory-subadult-table/inventory-subadult-table.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,11 @@ import { Globals } from './globals';
     DonorTableComponent,
     DonorRegistrationComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DonorCTableComponent,
+    InventoryCremationTableComponent,
+    InventoryAdultTableComponent,
+    InventorySubadultTableComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +66,7 @@ import { Globals } from './globals';
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [
     AuthenticationService, 

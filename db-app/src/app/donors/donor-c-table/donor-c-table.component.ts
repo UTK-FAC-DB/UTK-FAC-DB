@@ -1,44 +1,37 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
-import { DonorTableDataSource } from './donor-table-datasource';
-import { Donor } from '../donor';
-import { DonorService } from '../donor.service';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { DonorCTableDataSource} from './donor-c-table-datasource';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Donor } from '../donor';
+import { DonorService } from '../controlDonor.service';
 
 @Component({
-  selector: 'app-donor-table',
-  templateUrl: './donor-table.component.html',
-  styleUrls: ['./donor-table.component.css']
+  selector: 'app-donor-c-table',
+  templateUrl: './donor-c-table.component.html',
+  styleUrls: ['./donor-c-table.component.css']
 })
-export class DonorTableComponent implements AfterViewInit, OnInit {
+export class DonorCTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<Donor>;
-  dataSource: any;
-  selection = new SelectionModel<Donor>(true, []);
+  dataSource: DonorCTableDataSource;
+  selection = new SelectionModel(true, []);
 
-  
-  displayedColumns = ['select', 'firstName', 'lastName', 'dob', 'actions'];
+  /** Columns displayed in the table. **/
+  displayedColumns = ['select', 'firstName', 'lastName'];
 
   constructor(private donorService: DonorService) {}
 
   ngOnInit() {
-    this.dataSource = new DonorTableDataSource(this.donorService);
+    this.dataSource = new DonorCTableDataSource(this.donorService);
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
-  }
-
-  onDelete(selectedDonors: Donor[]) {
-    console.log("Deleting donors");
-    console.log(selectedDonors[0]);
-    this.donorService.deleteDonor(selectedDonors);
-    this.selection.clear();
   }
 
   isAllSelected() {
