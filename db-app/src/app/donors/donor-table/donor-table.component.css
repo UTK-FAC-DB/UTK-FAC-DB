@@ -8,12 +8,22 @@
   margin: 10%;
   margin-top: 1%;
 }
-.mat-form-field{
+.filtering{
   font-size: 14px;
-  width: 30rem;
   margin-left: 1rem;
+}
+.mat-form-field {
+  width: 30rem;
 }
 a {
   margin-top: 1rem;
   margin-left: 1rem;
+}
+.menu-select {
+  width: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.mat-option {
+  width: 3rem;
 }

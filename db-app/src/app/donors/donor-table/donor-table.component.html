@@ -7,15 +7,56 @@
     <mat-form-field>
       <input matInput placeholder="Search" type="text" (keyup)="applyFilter($event)">
     </mat-form-field>
-    <mat-menu #filterMenu="matMenu">
-      <button mat-menu-item>Sex</button>
-      <button mat-menu-item>Ancestry/Race</button>
-      <button mat-menu-item>Research</button>
-      <button mat-menu-item>Handedness</button>
-      <button mat-menu-item>Shoe Size</button>
-      <button mat-menu-item>Blood Type</button>
-    </mat-menu>
     <a mat-raised-button [matMenuTriggerFor]="filterMenu">Advanced Filters</a>
+    <!-- Root Menu for filtering -->
+    <mat-menu #filterMenu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="sexMenu">Sex</button>
+      <button mat-menu-item [matMenuTriggerFor]="raceMenu">Race</button>
+      <button mat-menu-item [matMenuTriggerFor]="researchMenu">Research</button>
+      <button mat-menu-item [matMenuTriggerFor]="handMenu">Handedness</button>
+      <button mat-menu-item [matMenuTriggerFor]="shoeMenu">Shoe Size</button>
+      <button mat-menu-item [matMenuTriggerFor]="bloodMenu">Blood Type</button>
+    </mat-menu>
+    <!-- Sex Menu -->
+    <mat-menu #sexMenu="matMenu">
+      <button mat-menu-item>Male</button>
+      <button mat-menu-item>Female</button>
+    </mat-menu>
+    <!-- Race Menu -->
+    <mat-menu #raceMenu="matMenu">
+      <button mat-menu-item>Hispanic</button>
+      <button mat-menu-item>African</button>
+      <button mat-menu-item>Asian</button>
+      <button mat-menu-item>White</button>
+    </mat-menu>
+    <!-- Research Menu -->
+    <mat-menu #researchMenu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="liveResearchMenu">Living Research</button>
+      <button mat-menu-item [matMenuTriggerFor]="traumaResearchMenu">Trauma Research</button>
+    </mat-menu>
+    <!-- Living Research Sub Menu -->
+    <mat-menu #liveResearchMenu="matMenu">
+      <button mat-menu-item>Yes</button>
+      <button mat-menu-item>No</button>
+    </mat-menu>
+    <!-- Trauma Research Sub Menu -->
+    <mat-menu #traumaResearchMenu="matMenu">
+      <button mat-menu-item>Yes</button>
+      <button mat-menu-item>No</button>
+    </mat-menu>
+    <!-- Handedness Menu -->
+    <mat-menu #handMenu="matMenu">
+      <button mat-menu-item>Right</button>
+      <button mat-menu-item>Left</button>
+    </mat-menu>
+    <!-- Shoe Size Menu -->
+    <mat-menu #shoeMenu="matMenu">
+
+    </mat-menu>
+    <!-- Blood Type Menu -->
+    <mat-menu #bloodMenu="matMenu">
+
+    </mat-menu>
   </div>
   <div class="mat-elevation-z8 donor-table">
     <table mat-table class="full-width-table" matSort aria-label="Elements">
