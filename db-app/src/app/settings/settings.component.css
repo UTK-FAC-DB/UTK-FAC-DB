@@ -22,12 +22,34 @@ tr.element-row:not(.expanded-row):active {
 .details {
   overflow: hidden;
   display: flex;
+  width: 100%;
+  /*border: 2px solid red;*/
 }
 
-.element-description {
+.spacer {
+  width: 40%;
+}
+
+.element-privs {
+  width: 30%;
   padding: 16px;
+  float: left;
+  /*border: 2px solid green;*/
+}
+
+.element-button-container {
+  padding: 16px;
+  width: 30%;
+  float: right;
+  /*border: 2px solid purple;*/
+}
+
+.element-buttons {
+  margin: 5px 10px;
+  /*border: 2px solid blue;*/
 }
 
 .privelge-checkbox {
     padding: 5px;
+    margin: 0 10px;
 }

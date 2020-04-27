@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
-import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Globals } from '../globals';
 
@@ -87,7 +86,11 @@ export class AuthenticationService {
       base = this.http.post(this.globals.URL + `/api/${type}`, user);
     } else {
       console.log("Initializing 'get' request");
+      
+      // Come back and fix this to allow auth get request
       //base = this.http.get(this.globals.URL + `/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+      
+      // Unauth get request for user collection
       base = this.http.get(this.globals.URL + `/api/${type}`);
     }
 
