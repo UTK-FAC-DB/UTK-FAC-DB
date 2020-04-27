@@ -6,6 +6,9 @@
       
       <input matInput placeholder="Search" type="text" (keyup)="applyFilter($event)">
     </mat-form-field>
+    <mat-menu #filterMenu="matMenu">
+
+    </mat-menu>
     <a mat-raised-button>Advanced Filters</a>
     <table mat-table class="full-width-table" matSort aria-label="Elements">
 
