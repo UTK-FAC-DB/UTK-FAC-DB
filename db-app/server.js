@@ -9,6 +9,7 @@ require('./api/config/passport');
 const routesApi = require('./api/routes/index');
 //const userRoutes = require('./api/routes/users');
 const donorsRoutes = require('./api/routes/donors');
+const controlDonorsRoutes = require('./api/routes/control-donors');
 
 const Donor = require('./api/models/donor');
 
@@ -37,6 +38,7 @@ app.use(passport.initialize());
 app.use('/api', routesApi);
 //app.use('/api/users', userRoutes);
 app.use('/api/donors', donorsRoutes);
+app.use('/api/control-donors', controlDonorsRoutes);
 
 /* Error handling */
 

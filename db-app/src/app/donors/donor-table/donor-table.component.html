@@ -1,54 +1,113 @@
-<a mat-raised-button routerLink="/donor-registration">Add New Donor</a>
-<a mat-raised-button (click)="onDelete(selection.selected)">Delete</a>
-<div class="mat-elevation-z8 donor-table">
-  <table mat-table class="full-width-table" matSort aria-label="Elements">
+<div class="container">
+  <div class="table-actions">
+    <a class="buttonStyle" mat-raised-button routerLink="/donor-registration">Add New Donor</a>
+    <a class="buttonStyle" mat-raised-button (click)="onDelete(selection.selected)">Delete</a>
+  </div>
+  <div class="filtering">
+    <mat-form-field>
+      <input matInput placeholder="Search" type="text" (keyup)="applyFilter($event)">
+    </mat-form-field>
+    <a mat-raised-button [matMenuTriggerFor]="filterMenu">Advanced Filters</a>
+    <!-- Root Menu for filtering -->
+    <mat-menu #filterMenu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="sexMenu">Sex</button>
+      <button mat-menu-item [matMenuTriggerFor]="raceMenu">Race</button>
+      <button mat-menu-item [matMenuTriggerFor]="researchMenu">Research</button>
+      <button mat-menu-item [matMenuTriggerFor]="handMenu">Handedness</button>
+      <button mat-menu-item [matMenuTriggerFor]="shoeMenu">Shoe Size</button>
+      <button mat-menu-item [matMenuTriggerFor]="bloodMenu">Blood Type</button>
+    </mat-menu>
+    <!-- Sex Menu -->
+    <mat-menu #sexMenu="matMenu">
+      <button mat-menu-item>Male</button>
+      <button mat-menu-item>Female</button>
+    </mat-menu>
+    <!-- Race Menu -->
+    <mat-menu #raceMenu="matMenu">
+      <button mat-menu-item>Hispanic</button>
+      <button mat-menu-item>African</button>
+      <button mat-menu-item>Asian</button>
+      <button mat-menu-item>White</button>
+    </mat-menu>
+    <!-- Research Menu -->
+    <mat-menu #researchMenu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="liveResearchMenu">Living Research</button>
+      <button mat-menu-item [matMenuTriggerFor]="traumaResearchMenu">Trauma Research</button>
+    </mat-menu>
+    <!-- Living Research Sub Menu -->
+    <mat-menu #liveResearchMenu="matMenu">
+      <button mat-menu-item>Yes</button>
+      <button mat-menu-item>No</button>
+    </mat-menu>
+    <!-- Trauma Research Sub Menu -->
+    <mat-menu #traumaResearchMenu="matMenu">
+      <button mat-menu-item>Yes</button>
+      <button mat-menu-item>No</button>
+    </mat-menu>
+    <!-- Handedness Menu -->
+    <mat-menu #handMenu="matMenu">
+      <button mat-menu-item>Right</button>
+      <button mat-menu-item>Left</button>
+    </mat-menu>
+    <!-- Shoe Size Menu -->
+    <mat-menu #shoeMenu="matMenu">
 
-    <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-checkbox (change)="$event ? masterToggle() : null"
-                      [checked]="selection.hasValue() && isAllSelected()"
-                      [indeterminate]="selection.hasValue() && !isAllSelected()"
-                      [aria-label]="checkboxLabel()">
-        </mat-checkbox>
-      </th>
-      <td mat-cell *matCellDef="let row">
-        <mat-checkbox   (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)"
-                        [aria-label]="checkboxLabel(row)">
-        </mat-checkbox>
-      </td>
-    </ng-container>
+    </mat-menu>
+    <!-- Blood Type Menu -->
+    <mat-menu #bloodMenu="matMenu">
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-      <td mat-cell *matCellDef="let row">{{row.firstName}}</td>
-    </ng-container>
+    </mat-menu>
+  </div>
+  <div class="mat-elevation-z8 donor-table">
+    <table mat-table class="full-width-table" matSort aria-label="Elements">
 
-    <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
-      <td mat-cell *matCellDef="let row">{{row.lastName}}</td>
-    </ng-container>
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox   (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)"
+                          [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="dob">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</th>
-      <td mat-cell *matCellDef="let row">{{row.birthDate | date}}</td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+        <td mat-cell *matCellDef="let row">{{row.firstName}}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Edit</th>
-      <td mat-cell *matCellDef="let row"><button mat-raised-button [routerLink]="['/edit', row.id]">Edit</button></td>
-    </ng-container>
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+        <td mat-cell *matCellDef="let row">{{row.lastName}}</td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</th>
+        <td mat-cell *matCellDef="let row">{{row.birthDate | date}}</td>
+      </ng-container>
 
-  <mat-paginator #paginator
-      [length]="dataSource?.data.length"
-      [pageIndex]="0"
-      [pageSize]="25"
-      [pageSizeOptions]="[25, 50, 100, 250]">
-  </mat-paginator>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Edit</th>
+        <td mat-cell *matCellDef="let row"><button mat-raised-button [routerLink]="['/edit', row.id]">Edit</button></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator #paginator
+        [length]="dataSource?.data.length"
+        [pageIndex]="0"
+        [pageSize]="25"
+        [pageSizeOptions]="[25, 50, 100, 250]">
+    </mat-paginator>
+  </div>
 </div>

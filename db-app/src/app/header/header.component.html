@@ -4,11 +4,11 @@
     <div class="title">Forensic Anthropology Center</div>
     <div>
         <a mat-raised-button routerLink="/donor-table">Donor Registration</a>
-        <a mat-raised-button>Donor Control</a>
+        <a mat-raised-button routerLink="/donor-c-table">Donor Control</a>
         <mat-menu #invMenu="matMenu">
-            <button mat-menu-item>Cremation</button>
-            <button mat-menu-item>Sub Adult</button>
-            <button mat-menu-item>Adult</button>
+            <button mat-menu-item routerLink="/inventory-cremation-table">Cremation</button>
+            <button mat-menu-item routerLink="/inventory-subadult-table">Sub Adult</button>
+            <button mat-menu-item routerLink="/inventory-adult-table">Adult</button>
         </mat-menu>
         <a mat-raised-button [matMenuTriggerFor]="invMenu">Inventory</a>
         <mat-menu #dmMenu="matMenu">

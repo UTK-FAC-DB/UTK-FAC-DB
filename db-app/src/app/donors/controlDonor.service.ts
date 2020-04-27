@@ -22,7 +22,7 @@ export class DonorService {
 
   // get("/api/donors")
   getDonors() {
-    this.http.get<{donors: any}>(this.globals.URL + '/api/donors')
+    this.http.get<{donors: any}>(this.globals.URL + '/api/control-donors')
       .pipe(map((donorData) => {
         return donorData.donors.map(donor => {
           return {
@@ -105,13 +105,13 @@ export class DonorService {
 
   // post("/api/donors")
   createDonor(newDonor: Donor){
-    this.http.post(this.globals.URL + '/api/donors', newDonor)
+    this.http.post(this.globals.URL + '/api/control-donors', newDonor)
     .subscribe(responseData => {
       const id = responseData.toString();
       newDonor.id = id;
       this.donors.push(newDonor);
       this.donorsUpdated.next([...this.donors]);
-      this.router.navigate(["/donor-table"]);
+      this.router.navigate(["/donor-control-table"]);
     });
   } 
 
@@ -124,7 +124,7 @@ export class DonorService {
   deleteDonor(donors: Donor[]) {
     for (let i = 0; i < donors.length; i++) {
       console.log(donors[i].id);
-      this.http.delete(this.globals.URL + '/api/donors' + '/' + donors[i].id)
+      this.http.delete(this.globals.URL + '/api/control-donors' + '/' + donors[i].id)
       .subscribe(() => {
         const updatedDonors = this.donors.filter(donor => donor.id !== donors[i].id);
         this.donors = updatedDonors;
@@ -136,14 +136,14 @@ export class DonorService {
   // put("/api/donors/:id")
   updateDonor(id: string, donor: Donor) {
     console.log(id);
-    this.http.put(this.globals.URL + '/api/donors' + '/' + id, donor)
+    this.http.put(this.globals.URL + '/api/control-donors' + '/' + id, donor)
       .subscribe(response => {
         const updatedDonors = [...this.donors];
         const oldDonorIndex = updatedDonors.findIndex(d => d.id === donor.id);
         updatedDonors[oldDonorIndex] = donor;
         this.donors = updatedDonors;
         this.donorsUpdated.next([...this.donors]);
-        this.router.navigate(["/donor-table"]);
+        this.router.navigate(["/donor-control-table"]);
       })
   }
 
