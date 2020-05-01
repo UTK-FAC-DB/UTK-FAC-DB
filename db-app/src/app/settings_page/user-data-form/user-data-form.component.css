@@ -22,7 +22,7 @@
   /*border: 2px solid green;*/
 }
 
-.element-privs > tr > td {
+.element-privs>tr>td {
   padding: 10px;
   text-align: center;
 }
@@ -42,4 +42,29 @@
 .privelge-checkbox {
   padding: 5px;
   margin: 0 10px;
+}
+
+.pop-up-box {
+  text-align: center;
+  border: 1px solid white;
+  padding: 3ch;
+  position: relative;
+  min-width: 30ch;
+}
+
+.pop-up-header {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  top: -.65em;
+}
+
+.pop-up-title {
+  font-size: large;
+  padding: 0 1ch;
+}
+
+.pop-up-footer {
+  padding-top: 2ch;
 }
