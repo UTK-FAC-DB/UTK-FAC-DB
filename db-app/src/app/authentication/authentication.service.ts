@@ -154,7 +154,7 @@ export class AuthenticationService {
 
    // Sends a request to validate login creditials
    public changePassword(user: TokenPayload): Observable<any> {
-    return this.request('post', 'changePassword', user);
+    return this.request('put', 'changePassword', user);
   }
 
   // Send a request to check for unused username

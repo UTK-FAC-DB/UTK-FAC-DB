@@ -106,16 +106,33 @@ export class UserDataFormComponent implements OnInit {
       window.location.reload();
     }, (err) => {
       console.error(err);
-    })
+    });
   }
+  
+  // This is the pop up functionality for changing password Pop up
+  popUpOpen = false;
+  openPopUp() { this.popUpOpen = true; }
+  cancelOption() { this.popUpOpen = false; }
+  changePassword(newPassword : string): void {
+    
+    // Close prompt
+    this.popUpOpen = false;
 
-  // Changing password
-  onChangePassword(): void {
-    console.log("CHANGING " + this.user.userName);
+    // Test print
+    console.log("CHANGING " + this.user.userName + " PASSWORD");
 
-    // Execute pop up
+    // Set up token and edits
+    var token: TokenPayload = {
+      _id: this.user._id,
+      password: '',
+    };
 
     // Execute changing of password and reset page
+    this.auth.changePassword(token).subscribe(() => {
+      //window.location.reload();
+    }, (err) => {
+      console.error(err);
+    });
   }
 
   // Delete user from db

@@ -138,7 +138,23 @@
 
   <!-- Save, Delete, Change Password Buttons -->
   <div class="element-button-container">
-    <button mat-raised-button class="element-buttons" (click)="onChangePassword()">Change Password</button>
+    <button mat-raised-button class="element-buttons" [disabled]="popUpOpen" (click)="openPopUp()">Change
+      Password</button>
+    <app-password-pop-up class="my-prompt" [isOpen]="popUpOpen">
+        <div class="box">
+            <header>
+              <span class="title">Change Password</span>
+            </header>
+            <main>
+              Are you sure you want to delete this record?
+            </main>
+            <footer>
+              <button (click)="changePassword('')">&lt;&nbsp;Delete&nbsp;&gt;</button>
+              <button (click)="cancelOption()">&lt;&nbsp;Cancel&nbsp;&gt;</button>
+            </footer>
+          </div>
+    </app-password-pop-up>
+
     <button mat-raised-button class="element-buttons" (click)="onSave()" [disabled]="!form.valid">Save</button>
     <button mat-raised-button class="element-buttons" (click)="onDelete()">Delete</button>
   </div>

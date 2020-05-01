@@ -26,27 +26,33 @@ module.exports.register = function (req, res) {
   // Creates token data
   var user = new User();
 
+  // Regular user data
   user.firstName = req.body.firstName;
   user.lastName = req.body.lastName;
   user.userName = req.body.userName;
   user.userRole = req.body.userRole;
 
+  // Donor Reg Privs
   user.donorRegCreatePriv = false;
   user.donorRegEditPriv = false;
   user.donorRegDeletePriv = false;
 
+  // Donor Control Privs
   user.donorControlCreatePriv = false;
   user.donorControlEditPriv = false;
   user.donorControlDeletePriv = false;
 
+  // Inventory Privs
   user.inventoryCreatePriv = false;
   user.inventoryEditPriv = false;
   user.inventoryDeletePriv = false;
 
+  // Donor Metric Privs
   user.donorMetricCreatePriv = false;
   user.donorMetricEditPriv = false;
   user.donorMetricDeletePriv = false;
 
+  // Password
   user.setPassword(req.body.password);
 
   // Saves the user to the database

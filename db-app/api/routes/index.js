@@ -14,6 +14,7 @@ var ctrlProfile = require('../controllers/profile');
 router.get('/userCollection', ctrlProfile.userCollection);
 router.put('/updateUser', ctrlProfile.profileUpdate);
 router.post('/deleteUser', ctrlProfile.profileDelete);
+router.put('/changePassword', ctrlProfile.changePassword)
 
 // authentication
 router.post('/register', ctrlAuth.register);
