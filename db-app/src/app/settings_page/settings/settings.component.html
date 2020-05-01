@@ -1,14 +1,16 @@
+<!-- Valid user table-->
+<h2 class="table-header">Users</h2>
 <table mat-table [dataSource]="users" multiTemplateDataRows class="mat-elevation-z8">
 
   <!-- Headers -->
-  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of validUsersColumns ">
     <th mat-header-cell *matHeaderCellDef> {{column}} </th>
     <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
   </ng-container>
 
   <!-- When expanded -->
   <ng-container matColumnDef="expandedDetail">
-    <td mat-cell [formGroup]="registerationForm" *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="validUsersColumns .length">
       <div class="details" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
         
         <!-- User data form compontent, per user-->
@@ -18,12 +20,16 @@
   </ng-container>
 
   <!-- When not expanded -->
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-header-row *matHeaderRowDef="validUsersColumns "></tr>
 
-  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="element-row"
+  <tr mat-row *matRowDef="let element; columns: validUsersColumns ;" class="element-row"
     [class.expanded-row]="expandedElement === element"
     (click)="expandedElement = expandedElement === element ? null : element">
   </tr>
 
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
 </table>
+<br>
+
+<!-- Pending users table-->
+<h2 class="table-header">Needs Validation</h2>

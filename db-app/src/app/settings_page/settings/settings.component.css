@@ -1,3 +1,8 @@
+.table-header {
+  margin: 10px;
+  text-align: center;
+}
+
 table {
   width: 80%;
   margin: 20px auto;
