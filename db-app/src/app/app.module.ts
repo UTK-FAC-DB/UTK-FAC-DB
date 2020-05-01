@@ -29,7 +29,7 @@ import { AuthGuardService } from './authentication/auth-guard.service';
 import { Globals } from './globals';
 import { SettingsComponent } from './settings_page/settings/settings.component';
 import { UserDataFormComponent } from './settings_page/user-data-form/user-data-form.component';
-import { PasswordPopUpComponent } from './settings_page/password-pop-up/password-pop-up.component';
+import { PopUpComponent } from './settings_page/pop-up/pop-up.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { PasswordPopUpComponent } from './settings_page/password-pop-up/password
     RegisterComponent,
     SettingsComponent,
     UserDataFormComponent,
-    PasswordPopUpComponent
+    PopUpComponent
   ],
   imports: [
     BrowserModule,

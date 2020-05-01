@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PasswordPopUpComponent } from './password-pop-up.component';
+import { PopUpComponent } from './pop-up.component';
 
-describe('PasswordPopUpComponent', () => {
-  let component: PasswordPopUpComponent;
-  let fixture: ComponentFixture<PasswordPopUpComponent>;
+describe('PopUpComponent', () => {
+  let component: PopUpComponent;
+  let fixture: ComponentFixture<PopUpComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PasswordPopUpComponent ]
+      declarations: [ PopUpComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PasswordPopUpComponent);
+    fixture = TestBed.createComponent(PopUpComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

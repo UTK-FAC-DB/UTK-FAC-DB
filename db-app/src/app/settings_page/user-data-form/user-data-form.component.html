@@ -140,7 +140,7 @@
   <div class="element-button-container">
     <button mat-raised-button class="element-buttons" [disabled]="popUpOpen" (click)="openPopUp()">Change
       Password</button>
-    <app-password-pop-up class="my-prompt" [isOpen]="popUpOpen">
+    <app-pop-up class="my-prompt" [isOpen]="popUpOpen">
         <div class="box">
             <header>
               <span class="title">Change Password</span>
@@ -153,7 +153,7 @@
               <button (click)="cancelOption()">&lt;&nbsp;Cancel&nbsp;&gt;</button>
             </footer>
           </div>
-    </app-password-pop-up>
+    </app-pop-up>
 
     <button mat-raised-button class="element-buttons" (click)="onSave()" [disabled]="!form.valid">Save</button>
     <button mat-raised-button class="element-buttons" (click)="onDelete()">Delete</button>
