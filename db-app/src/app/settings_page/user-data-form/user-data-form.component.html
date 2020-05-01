@@ -138,25 +138,42 @@
 
   <!-- Save, Delete, Change Password Buttons -->
   <div class="element-button-container">
-    <button mat-raised-button class="element-buttons" [disabled]="popUpOpen" (click)="openPopUp()">Change
+
+    <!-- Changing Password-->
+    <button mat-raised-button class="element-buttons" [disabled]="popChange" (click)="openChange()">Change
       Password</button>
-    <app-pop-up class="my-prompt" [isOpen]="popUpOpen">
-        <div class="box">
-            <header>
-              <span class="title">Change Password</span>
-            </header>
-            <main>
-              Are you sure you want to delete this record?
-            </main>
-            <footer>
-              <button (click)="changePassword('')">&lt;&nbsp;Delete&nbsp;&gt;</button>
-              <button (click)="cancelOption()">&lt;&nbsp;Cancel&nbsp;&gt;</button>
-            </footer>
-          </div>
+    <app-pop-up class="my-prompt" [isOpen]="popChange">
+      <div class="box">
+        <header>
+          <span class="title">Change Password</span>
+        </header>
+        <main>
+          Are you sure you want to delete this record?
+        </main>
+        <footer>
+          <button (click)="onChangePassword('')">&lt;&nbsp;Delete&nbsp;&gt;</button>
+          <button (click)="cancelChange()">&lt;&nbsp;Cancel&nbsp;&gt;</button>
+        </footer>
+      </div>
     </app-pop-up>
 
+    <!-- Saving User-->
     <button mat-raised-button class="element-buttons" (click)="onSave()" [disabled]="!form.valid">Save</button>
-    <button mat-raised-button class="element-buttons" (click)="onDelete()">Delete</button>
+
+    <!-- Deleting User-->
+    <button mat-raised-button class="element-buttons" [disabled]="popChange" (click)="openDelete()">Delete</button>
+    <app-pop-up class="my-prompt" [isOpen]="popDelete">
+      <div class="box">
+        <header>
+          <span class="title">Delete User</span>
+        </header>
+        <footer>
+          <button (click)="onDelete()">&lt;&nbsp;Delete&nbsp;&gt;</button>
+          <button (click)="cancelDelete()">&lt;&nbsp;Cancel&nbsp;&gt;</button>
+        </footer>
+      </div>
+    </app-pop-up>
+
   </div>
 
 </form>

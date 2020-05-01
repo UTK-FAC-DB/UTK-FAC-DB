@@ -110,13 +110,13 @@ export class UserDataFormComponent implements OnInit {
   }
   
   // This is the pop up functionality for changing password Pop up
-  popUpOpen = false;
-  openPopUp() { this.popUpOpen = true; }
-  cancelOption() { this.popUpOpen = false; }
-  changePassword(newPassword : string): void {
+  popChange = false;
+  openChange() { this.popChange = true; }
+  cancelChange() { this.popChange = false; }
+  onChangePassword(newPassword : string): void {
     
     // Close prompt
-    this.popUpOpen = false;
+    this.popChange = false;
 
     // Test print
     console.log("CHANGING " + this.user.userName + " PASSWORD");
@@ -135,16 +135,21 @@ export class UserDataFormComponent implements OnInit {
     });
   }
 
-  // Delete user from db
+  // Deleting functionality
+  popDelete = false;
+  openDelete() { this.popDelete = true; }
+  cancelDelete() { this.popDelete = false; }
   onDelete(): void {
+
+    // Close prompt
+    this.popDelete = false; 
 
     // Set up token and edits
     var token: TokenPayload = {
       _id: this.user._id,
     };
 
-    // Execute pop up / confirmation for deletion
-
+    // Test print
     console.log("DELETING " + this.user.userName);
 
     // Update user in backend
