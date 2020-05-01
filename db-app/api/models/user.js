@@ -7,9 +7,18 @@ var userSchema = mongoose.Schema({
     lastName: { type: String, required: true},
     userName: { type: String, required: true},
     userRole: { type: String, required: true},
-    createPriv: { type: Boolean, required: true},
-    editPriv: { type: Boolean, required: true},
-    deletePriv: { type: Boolean, required: true},
+    donorRegEditPriv: { type: Boolean, required: true},
+    donorRegCreatePriv: { type: Boolean, required: true},
+    donorRegDeletePriv: { type: Boolean, required: true},
+    donorControlEditPriv: { type: Boolean, required: true},
+    donorControlCreatePriv: { type: Boolean, required: true},
+    donorControlDeletePriv: { type: Boolean, required: true},
+    inventoryEditPriv: { type: Boolean, required: true},
+    inventoryCreatePriv: { type: Boolean, required: true},
+    inventoryDeletePriv: { type: Boolean, required: true},
+    donorMetricEditPriv: { type: Boolean, required: true},
+    donorMetricCreatePriv: { type: Boolean, required: true},
+    donorMetricDeletePriv: { type: Boolean, required: true},
     
     hash: String, // Password hash
     salt: String

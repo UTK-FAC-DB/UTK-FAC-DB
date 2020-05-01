@@ -5,7 +5,7 @@ import { DonorRegistrationComponent } from './donors/donor-registration/donor-re
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { AuthGuardService } from './authentication/auth-guard.service';
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsComponent } from './settings_page/settings/settings.component';
 
 const routes: Routes = [
   { path: '', component: DonorTableComponent, canActivate: [AuthGuardService] },

@@ -27,7 +27,8 @@ import { RegisterComponent } from './user/register/register.component';
 import { AuthenticationService } from './authentication/authentication.service';
 import { AuthGuardService } from './authentication/auth-guard.service';
 import { Globals } from './globals';
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsComponent } from './settings_page/settings/settings.component';
+import { UserDataFormComponent } from './settings_page/user-data-form/user-data-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SettingsComponent } from './settings/settings.component';
     DonorRegistrationComponent,
     LoginComponent,
     RegisterComponent,
-    SettingsComponent
+    SettingsComponent,
+    UserDataFormComponent
   ],
   imports: [
     BrowserModule,

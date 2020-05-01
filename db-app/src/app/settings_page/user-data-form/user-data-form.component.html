@@ -1,0 +1,146 @@
+<form class="details" [formGroup]="userForm">
+
+  <!-- Privelges-->
+  <table class="element-privs">
+
+    <!--Headers-->
+    <tr>
+      <th>Page</th>
+      <th>Create</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+
+    <!-- Donor Registeration-->
+    <tr>
+      <td>Donor Registeration</td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="donorRegCreatePriv"></mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="donorRegEditPriv"></mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="donorRegDeletePriv"></mat-checkbox>
+      </td>
+    </tr>
+
+    <!-- Donor Control-->
+    <tr>
+      <td>Donor Control</td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="donorControlCreatePriv"></mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="donorControlEditPriv"></mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="donorControlDeletePriv"></mat-checkbox>
+      </td>
+    </tr>
+
+    <!-- Inventory-->
+    <tr>
+      <td>Inventory</td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="inventoryCreatePriv"></mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="inventoryEditPriv"></mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="inventoryDeletePriv"></mat-checkbox>
+      </td>
+    </tr>
+
+    <!-- Donor Metrics-->
+    <tr>
+      <td>Donor Metrics</td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="donorMetricCreatePriv"></mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="donorMetricEditPriv"></mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" formControlName="donorMetricDeletePriv"></mat-checkbox>
+      </td>
+    </tr>
+
+  </table>
+
+  <!-- Spacer between buttons and privelges-->
+  <div class="textFields">
+    <mat-form-field class="textInputs">
+      <mat-label>First name</mat-label>
+      <textarea matInput formControlName="firstName"></textarea>
+
+      <!--Errors-->
+      <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+
+        <!--Error for missing field-->
+        <mat-error *ngIf="firstName.errors.required">
+          Please enter your first name
+        </mat-error>
+
+        <!--Error for pattern break-->
+        <mat-error *ngIf="firstName.errors.pattern">
+          Please only use letters
+        </mat-error>
+
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="textInputs">
+      <mat-label>Last name</mat-label>
+      <textarea matInput formControlName="lastName"></textarea>
+      <!--Errors-->
+      <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+
+        <!--Error for missing field-->
+        <mat-error *ngIf="lastName.errors.required">
+          Please enter your last name
+        </mat-error>
+
+        <!--Error for pattern break-->
+        <mat-error *ngIf="lastName.errors.pattern">
+          Please only use letters
+        </mat-error>
+
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="textInputs">
+      <mat-label>Username</mat-label>
+      <textarea matInput formControlName="userName"></textarea>
+
+      <!--Errors-->
+      <mat-error *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="alert alert-danger">
+
+        <!--Error for missing field-->
+        <mat-error *ngIf="userName.errors.required">
+          Please enter your user name
+        </mat-error>
+
+        <!--Error for pattern break-->
+        <mat-error *ngIf="userName.errors.pattern">
+          Please only use letters and numbers
+        </mat-error>
+
+        <!--Error for already in use username-->
+        <mat-error *ngIf="userName.errors.userNameCheck">
+          Username already in use, please try another
+        </mat-error>
+
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Save, Delete, Change Password Buttons -->
+  <div class="element-button-container">
+    <button mat-raised-button class="element-buttons" (click)="onChangePassword()">Change Password</button>
+    <button mat-raised-button class="element-buttons" (click)="onSave()" [disabled]="!form.valid">Save</button>
+    <button mat-raised-button class="element-buttons" (click)="onDelete()">Delete</button>
+  </div>
+
+</form>

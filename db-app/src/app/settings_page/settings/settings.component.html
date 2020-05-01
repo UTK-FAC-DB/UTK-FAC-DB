@@ -1,0 +1,29 @@
+<table mat-table [dataSource]="users" multiTemplateDataRows class="mat-elevation-z8">
+
+  <!-- Headers -->
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container>
+
+  <!-- When expanded -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell [formGroup]="registerationForm" *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="details" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        
+        <!-- User data form compontent, per user-->
+        <app-user-data-form [user] = "element" ></app-user-data-form>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- When not expanded -->
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="element-row"
+    [class.expanded-row]="expandedElement === element"
+    (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+</table>

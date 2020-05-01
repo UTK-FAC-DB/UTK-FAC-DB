@@ -30,9 +30,22 @@ module.exports.register = function (req, res) {
   user.lastName = req.body.lastName;
   user.userName = req.body.userName;
   user.userRole = req.body.userRole;
-  user.createPriv = false;
-  user.editPriv = false;
-  user.deletePriv = false;
+
+  user.donorRegCreatePriv = false;
+  user.donorRegEditPriv = false;
+  user.donorRegDeletePriv = false;
+
+  user.donorControlCreatePriv = false;
+  user.donorControlEditPriv = false;
+  user.donorControlDeletePriv = false;
+
+  user.inventoryCreatePriv = false;
+  user.inventoryEditPriv = false;
+  user.inventoryDeletePriv = false;
+
+  user.donorMetricCreatePriv = false;
+  user.donorMetricEditPriv = false;
+  user.donorMetricDeletePriv = false;
 
   user.setPassword(req.body.password);
 

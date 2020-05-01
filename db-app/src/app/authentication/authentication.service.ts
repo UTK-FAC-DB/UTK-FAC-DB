@@ -11,9 +11,19 @@ export interface UserDetails {
   userName: string;
   firstName: string,
   lastName: string,
-  editPriv: boolean,
-  createPriv: boolean,
-  deletePriv: boolean,
+  password: string,
+  donorRegEditPriv: boolean,
+  donorRegCreatePriv: boolean,
+  donorRegDeletePriv: boolean,
+  donorControlEditPriv: boolean,
+  donorControlCreatePriv: boolean,
+  donorControlDeletePriv: boolean,
+  inventoryEditPriv: boolean,
+  inventoryCreatePriv: boolean,
+  inventoryDeletePriv: boolean,
+  donorMetricEditPriv: boolean,
+  donorMetricCreatePriv: boolean,
+  donorMetricDeletePriv: boolean,
   exp: number;
   iat: number;
 }
@@ -23,11 +33,24 @@ interface TokenResponse {
 }
 
 export interface TokenPayload {
-  userName: string;
-  password: string;
+  userName?: string;
+  password?: string;
   firstName?: string;
   lastName?: string;
   userRole?: string;
+  donorRegEditPriv?: boolean,
+  donorRegCreatePriv?: boolean,
+  donorRegDeletePriv?: boolean,
+  donorControlEditPriv?: boolean,
+  donorControlCreatePriv?: boolean,
+  donorControlDeletePriv?: boolean,
+  inventoryEditPriv?: boolean,
+  inventoryCreatePriv?: boolean,
+  inventoryDeletePriv?: boolean,
+  donorMetricEditPriv?: boolean,
+  donorMetricCreatePriv?: boolean,
+  donorMetricDeletePriv?: boolean,
+  _id?: string;
 }
 
 @Injectable()
@@ -78,18 +101,30 @@ export class AuthenticationService {
   }
 
   // Sends the HTTP request to the database
-  private request(method: 'post' | 'get', type: 'login' | 'register' | 'nameCheck' | 'userCollection', user?: TokenPayload): Observable<any> {
+  private request(method: 'put' | 'post' | 'get', 
+  type: 
+  'login' |'changePassword'| 'register' | 
+  'nameCheck' | 'userCollection' | 'deleteUser' 
+  | 'updateUser', 
+  user?: TokenPayload): Observable<any> {
     let base;
 
     if (method === 'post') {
       console.log("Initializing 'post' request");
       base = this.http.post(this.globals.URL + `/api/${type}`, user);
-    } else {
+    } 
+    
+    else if(method === 'put'){
+      console.log("Initializing 'put' request");
+      base = this.http.put(this.globals.URL + `/api/${type}`, user);
+    }
+    
+    else {
       console.log("Initializing 'get' request");
-      
+
       // Come back and fix this to allow auth get request
       //base = this.http.get(this.globals.URL + `/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` } });
-      
+
       // Unauth get request for user collection
       base = this.http.get(this.globals.URL + `/api/${type}`);
     }
@@ -117,6 +152,11 @@ export class AuthenticationService {
     return this.request('post', 'login', user);
   }
 
+   // Sends a request to validate login creditials
+   public changePassword(user: TokenPayload): Observable<any> {
+    return this.request('post', 'changePassword', user);
+  }
+
   // Send a request to check for unused username
   public isValidUsername(user: TokenPayload): Observable<any> {
     return this.request('post', 'nameCheck', user);
@@ -125,6 +165,16 @@ export class AuthenticationService {
   // Gets the user collection 
   public getUserCollection(): Observable<any> {
     return this.request('get', 'userCollection');
+  }
+
+  // Updates the user
+  public updateUser(user:TokenPayload): Observable<any> {
+    return this.request('put', 'updateUser', user);
+  }
+
+  // Delete the user 
+  public deleteUser(user: TokenPayload): Observable<any> {
+    return this.request('post', 'deleteUser', user);
   }
 
   // Deletes cookies and fowards user to login page

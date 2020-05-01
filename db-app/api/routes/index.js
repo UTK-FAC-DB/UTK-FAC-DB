@@ -12,6 +12,8 @@ var ctrlProfile = require('../controllers/profile');
 // profile getters
 //router.get('/userCollection', auth, ctrlProfile.userCollection);
 router.get('/userCollection', ctrlProfile.userCollection);
+router.put('/updateUser', ctrlProfile.profileUpdate);
+router.post('/deleteUser', ctrlProfile.profileDelete);
 
 // authentication
 router.post('/register', ctrlAuth.register);

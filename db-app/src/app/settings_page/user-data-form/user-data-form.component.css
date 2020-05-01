@@ -1,0 +1,66 @@
+table {
+  width: 80%;
+  margin: 20px auto;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.details {
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  /*border: 2px solid red;*/
+}
+
+.textFields {
+  width: 40%;
+}
+
+.textInputs {
+  margin: 10px;
+  padding: 0;
+}
+
+.element-privs {
+  width: 30%;
+  padding: 16px;
+  float: left;
+  margin: 10px;
+  /*border: 2px solid green;*/
+}
+
+.element-privs > tr > td {
+  padding: 10px;
+  text-align: center;
+}
+
+.element-button-container {
+  padding: 16px;
+  width: 30%;
+  float: right;
+  /*border: 2px solid purple;*/
+}
+
+.element-buttons {
+  margin: 5px 10px;
+  /*border: 2px solid blue;*/
+}
+
+.privelge-checkbox {
+  padding: 5px;
+  margin: 0 10px;
+}
