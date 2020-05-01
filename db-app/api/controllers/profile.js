@@ -67,7 +67,7 @@ module.exports.changePassword = function (req, res) {
 
   // Error check
   if (!req.body.userName ||
-    !req.body.userRole ||
+    !req.body._id ||
     !req.body.password) {
     sendJSONresponse(res, 400, {
       "message": "All fields required"

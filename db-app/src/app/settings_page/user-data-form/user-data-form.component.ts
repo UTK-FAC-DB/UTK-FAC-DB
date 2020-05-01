@@ -4,6 +4,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { UserDetails, TokenPayload, AuthenticationService } from '../../authentication/authentication.service';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
+import { passwordConfirmation } from '../../user/register/userRegisterValidators';
+
 
 @Component({
   selector: 'app-user-data-form',
@@ -19,6 +21,7 @@ import { Token } from '@angular/compiler/src/ml_parser/lexer';
 })
 export class UserDataFormComponent implements OnInit {
   public userForm: FormGroup;
+  public passwordForm: FormGroup;
   @Input() user: UserDetails;
 
   constructor(
@@ -27,7 +30,8 @@ export class UserDataFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Form inputs and validators
+
+    // General user and priveleges form
     this.userForm = this.formBuilder.group({
 
       // First name check
@@ -67,7 +71,29 @@ export class UserDataFormComponent implements OnInit {
       donorMetricCreatePriv: new FormControl(this.user.donorMetricCreatePriv),
       donorMetricEditPriv: new FormControl(this.user.donorMetricEditPriv),
       donorMetricDeletePriv: new FormControl(this.user.donorMetricDeletePriv),
-    })
+    });
+
+    // Password form
+    this.passwordForm = this.formBuilder.group({
+      
+      // Password
+      password: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})")
+        ),
+      ]),
+
+      // Double checks password validity
+      passwordConfirmation: new FormControl('', [
+        Validators.required
+      ])
+    },
+      {
+        validators: [
+          passwordConfirmation('password', 'passwordConfirmation')
+        ]
+      });
   }
 
   // Whether is expanded or not
@@ -108,13 +134,13 @@ export class UserDataFormComponent implements OnInit {
       console.error(err);
     });
   }
-  
+
   // This is the pop up functionality for changing password Pop up
   popChange = false;
   openChange() { this.popChange = true; }
   cancelChange() { this.popChange = false; }
-  onChangePassword(newPassword : string): void {
-    
+  onChangePassword(): void {
+
     // Close prompt
     this.popChange = false;
 
@@ -124,12 +150,13 @@ export class UserDataFormComponent implements OnInit {
     // Set up token and edits
     var token: TokenPayload = {
       _id: this.user._id,
-      password: '',
+      userName: this.userName.value,
+      password: this.password.value,
     };
 
     // Execute changing of password and reset page
     this.auth.changePassword(token).subscribe(() => {
-      //window.location.reload();
+      window.location.reload();
     }, (err) => {
       console.error(err);
     });
@@ -142,7 +169,7 @@ export class UserDataFormComponent implements OnInit {
   onDelete(): void {
 
     // Close prompt
-    this.popDelete = false; 
+    this.popDelete = false;
 
     // Set up token and edits
     var token: TokenPayload = {
@@ -160,7 +187,8 @@ export class UserDataFormComponent implements OnInit {
     });
   }
 
-  get form() { return this.userForm; }
+  get formUser() { return this.userForm; }
+  get formPassword() { return this.passwordForm; }
   get firstName() { return this.userForm.get('firstName'); }
   get lastName() { return this.userForm.get('lastName'); }
   get userName() { return this.userForm.get('userName'); }
@@ -176,5 +204,7 @@ export class UserDataFormComponent implements OnInit {
   get donorMetricEditPriv() { return this.userForm.get('donorMetricEditPriv'); }
   get donorMetricCreatePriv() { return this.userForm.get('donorMetricCreatePriv'); }
   get donorMetricDeletePriv() { return this.userForm.get('donorMetricDeletePriv'); }
+  get password() { return this.passwordForm.get('password'); }
+  get passwordConfirmation() { return this.passwordForm.get('passwordConfirmation'); }
 }
 
