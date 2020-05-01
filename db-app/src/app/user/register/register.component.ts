@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
             // User name check
             userName : new FormControl('', [
                 Validators.required,
-                Validators.pattern('[A-Za-z1-9]*'),
+                Validators.pattern('[A-Za-z0-9]*'),
             ]),
     
             /* 
