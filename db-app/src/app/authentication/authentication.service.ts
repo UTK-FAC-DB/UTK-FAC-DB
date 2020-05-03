@@ -12,6 +12,7 @@ export interface UserDetails {
   firstName: string,
   lastName: string,
   password: string,
+  userRole: string,
   donorRegEditPriv: boolean,
   donorRegCreatePriv: boolean,
   donorRegDeletePriv: boolean,
@@ -24,7 +25,7 @@ export interface UserDetails {
   donorMetricEditPriv: boolean,
   donorMetricCreatePriv: boolean,
   donorMetricDeletePriv: boolean,
-  position?: number, 
+  position?: number,
   validUser: boolean,
   exp: number;
   iat: number;
@@ -96,6 +97,7 @@ export class AuthenticationService {
   // Check for login status
   public isLoggedIn(): boolean {
     const user = this.getUserDetails();
+    console.log(user);
     if (user) {
       return user.exp > Date.now() / 1000;
     } else {
@@ -103,25 +105,35 @@ export class AuthenticationService {
     }
   }
 
+  // Check for admin status
+  public isAdmin(): boolean {
+    const user = this.getUserDetails();
+    if (user.userRole === 'admin') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   // Sends the HTTP request to the database
-  private request(method: 'put' | 'post' | 'get', 
-  type: 
-  'login' |'changePassword'| 'register' | 
-  'nameCheck' | 'userCollection' | 'deleteUser' 
-  | 'updateUser', 
-  user?: TokenPayload): Observable<any> {
+  private request(method: 'put' | 'post' | 'get',
+    type:
+      'login' | 'changePassword' | 'register' |
+      'nameCheck' | 'userCollection' | 'deleteUser'
+      | 'updateUser',
+    user?: TokenPayload): Observable<any> {
     let base;
 
     if (method === 'post') {
       console.log("Initializing 'post' request");
       base = this.http.post(this.globals.URL + `/api/${type}`, user);
-    } 
-    
-    else if(method === 'put'){
+    }
+
+    else if (method === 'put') {
       console.log("Initializing 'put' request");
       base = this.http.put(this.globals.URL + `/api/${type}`, user);
     }
-    
+
     else {
       console.log("Initializing 'get' request");
 
@@ -155,8 +167,8 @@ export class AuthenticationService {
     return this.request('post', 'login', user);
   }
 
-   // Sends a request to validate login creditials
-   public changePassword(user: TokenPayload): Observable<any> {
+  // Sends a request to validate login creditials
+  public changePassword(user: TokenPayload): Observable<any> {
     return this.request('put', 'changePassword', user);
   }
 
@@ -171,7 +183,7 @@ export class AuthenticationService {
   }
 
   // Updates the user
-  public updateUser(user:TokenPayload): Observable<any> {
+  public updateUser(user: TokenPayload): Observable<any> {
     return this.request('put', 'updateUser', user);
   }
 
