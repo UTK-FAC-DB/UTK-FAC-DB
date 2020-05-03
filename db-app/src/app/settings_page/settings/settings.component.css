@@ -63,3 +63,11 @@ tr.element-row:not(.expanded-row):active {
     padding: 5px;
     margin: 0 10px;
 }
+
+.validationButtonsContainer {
+  text-align: center;
+}
+
+.validationButtons {
+  margin: 10px;
+}

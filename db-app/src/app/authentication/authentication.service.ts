@@ -24,6 +24,8 @@ export interface UserDetails {
   donorMetricEditPriv: boolean,
   donorMetricCreatePriv: boolean,
   donorMetricDeletePriv: boolean,
+  position?: number, 
+  validUser: boolean,
   exp: number;
   iat: number;
 }
@@ -50,6 +52,7 @@ export interface TokenPayload {
   donorMetricEditPriv?: boolean,
   donorMetricCreatePriv?: boolean,
   donorMetricDeletePriv?: boolean,
+  validUser?: boolean,
   _id?: string;
 }
 
