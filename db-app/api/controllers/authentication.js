@@ -52,6 +52,9 @@ module.exports.register = function (req, res) {
   user.donorMetricEditPriv = false;
   user.donorMetricDeletePriv = false;
 
+  // Valid User
+  user.validUser = false;
+
   // Password
   user.setPassword(req.body.password);
 

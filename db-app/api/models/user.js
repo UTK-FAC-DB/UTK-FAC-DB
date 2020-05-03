@@ -67,7 +67,10 @@ var userSchema = mongoose.Schema({
     type: Boolean,
     required: true
   },
-
+  validUser: {
+    type: Boolean,
+    require: true
+  },
   hash: String, // Password hash
   salt: String
 });
