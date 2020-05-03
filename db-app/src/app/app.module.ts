@@ -30,6 +30,8 @@ import { Globals } from './globals';
 import { SettingsComponent } from './settings_page/settings/settings.component';
 import { UserDataFormComponent } from './settings_page/user-data-form/user-data-form.component';
 import { PopUpComponent } from './settings_page/pop-up/pop-up.component';
+import { UserPageComponent } from './user/user-page/user-page.component';
+import { AdminGuardService } from './authentication/admin-guard.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { PopUpComponent } from './settings_page/pop-up/pop-up.component';
     RegisterComponent,
     SettingsComponent,
     UserDataFormComponent,
-    PopUpComponent
+    PopUpComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { PopUpComponent } from './settings_page/pop-up/pop-up.component';
   providers: [
     AuthenticationService, 
     AuthGuardService,
+    AdminGuardService,
     Globals
   ],
   bootstrap: [AppComponent]

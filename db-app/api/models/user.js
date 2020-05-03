@@ -92,6 +92,19 @@ userSchema.methods.generateJwt = function () {
   return jwt.sign({
     _id: this._id,
     userName: this.userName,
+    userRole: this.userRole,
+    donorRegEditPriv: this.donorRegEditPriv,
+    donorRegCreatePriv: this.donorRegCreatePriv,
+    donorRegDeletePriv: this.donorRegDeletePriv,
+    donorControlEditPriv: this.donorControlEditPriv,
+    donorControlCreatePriv: this.donorControlCreatePriv,
+    donorControlDeletePriv: this.donorControlDeletePriv,
+    inventoryEditPriv: this.inventoryEditPriv,
+    inventoryCreatePriv: this.inventoryCreatePriv,
+    inventoryDeletePriv: this.inventoryDeletePriv,
+    donorMetricEditPriv: this.donorMetricEditPriv,
+    donorMetricCreatePriv: this.donorMetricCreatePriv,
+    donorMetricDeletePriv: this.donorMetricDeletePriv,
     exp: parseInt(expiry.getTime() / 1000),
   }, "MY_SECRET"); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };

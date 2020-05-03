@@ -1,0 +1,86 @@
+<div class="userPage">
+  <h1>Hi {{user.userName}}!</h1>
+  <br>
+  <h2>These are your privelges</h2>
+
+  <!-- Privelges-->
+  <table class="element-privs">
+
+    <!--Headers-->
+    <tr>
+      <th>Page</th>
+      <th>Create</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+
+    <!-- Donor Registeration-->
+    <tr>
+      <td>Donor Registeration</td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.donorRegCreatePriv">
+        </mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.donorRegEditPriv">
+        </mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.donorRegDeletePriv">
+        </mat-checkbox>
+      </td>
+    </tr>
+
+    <!-- Donor Control-->
+    <tr>
+      <td>Donor Control</td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.donorControlCreatePriv">
+        </mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.donorControlEditPriv">
+        </mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.donorControlDeletePriv">
+        </mat-checkbox>
+      </td>
+    </tr>
+
+    <!-- Inventory-->
+    <tr>
+      <td>Inventory</td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.inventoryCreatePriv">
+        </mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.inventoryEditPriv">
+        </mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.inventoryDeletePriv">
+        </mat-checkbox>
+      </td>
+    </tr>
+
+    <!-- Donor Metrics-->
+    <tr>
+      <td>Donor Metrics</td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.donorMetricCreatePriv">
+        </mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.donorMetricEditPriv">
+        </mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox class="privelge-checkbox" (click)="CheckboxReadOnly()" [(ngModel)]="user.donorMetricDeletePriv">
+        </mat-checkbox>
+      </td>
+    </tr>
+
+  </table>
+</div>
