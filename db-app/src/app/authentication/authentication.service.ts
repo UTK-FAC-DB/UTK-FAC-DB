@@ -97,7 +97,7 @@ export class AuthenticationService {
   // Check for login status
   public isLoggedIn(): boolean {
     const user = this.getUserDetails();
-    console.log(user);
+    //console.log(user);
     if (user) {
       return user.exp > Date.now() / 1000;
     } else {

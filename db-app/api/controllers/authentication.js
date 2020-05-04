@@ -101,7 +101,7 @@ module.exports.login = function (req, res) {
 
     // If a user is found
     console.log("Validating user shit...");
-    if (user) {
+    if (user && user.validUser) {
       token = user.generateJwt();
       res.status(200);
       res.json({

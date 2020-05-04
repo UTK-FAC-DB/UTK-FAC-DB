@@ -12,12 +12,12 @@ export class UserPageComponent implements OnInit {
 
   constructor(private auth: AuthenticationService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     console.log(this.user);
   }
 
   CheckboxReadOnly() {
     return false;
- }
+  }
 
 }
