@@ -153,11 +153,11 @@ export class AuthenticationService {
     else {
       console.log("Initializing 'get' request");
 
-      // Come back and fix this to allow auth get request
-      //base = this.http.get(this.globals.URL + `/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+      // auth get request for user collection
+      base = this.http.get(this.globals.URL + `/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` } });
 
       // Unauth get request for user collection
-      base = this.http.get(this.globals.URL + `/api/${type}`);
+      //base = this.http.get(this.globals.URL + `/api/${type}`);
     }
 
     //const request = base.pipe(

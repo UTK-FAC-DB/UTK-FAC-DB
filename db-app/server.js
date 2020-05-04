@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const cors = require('cors');
 require('./api/models/user');
 require('./api/config/passport');
 
@@ -31,6 +32,9 @@ try {
     console.log(error);
     process.exit(1);
 }
+
+// Cors usage for backend request
+app.use(cors());
 
 // Initialize passport and forward routes
 app.use(passport.initialize());
