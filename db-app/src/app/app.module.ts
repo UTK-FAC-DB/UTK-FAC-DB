@@ -17,6 +17,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+//import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
@@ -27,11 +28,18 @@ import { RegisterComponent } from './user/register/register.component';
 import { AuthenticationService } from './authentication/authentication.service';
 import { AuthGuardService } from './authentication/auth-guard.service';
 import { Globals } from './globals';
+<<<<<<< HEAD
 import { SettingsComponent } from './settings_page/settings/settings.component';
 import { UserDataFormComponent } from './settings_page/user-data-form/user-data-form.component';
 import { PopUpComponent } from './settings_page/pop-up/pop-up.component';
 import { UserPageComponent } from './user/user-page/user-page.component';
 import { AdminGuardService } from './authentication/admin-guard.service';
+=======
+import { DonorCTableComponent } from './donors/donor-c-table/donor-c-table.component';
+import { InventoryCremationTableComponent } from './inventory/inventory-cremation-table/inventory-cremation-table.component';
+import { InventoryAdultTableComponent } from './inventory/inventory-adult-table/inventory-adult-table.component';
+import { InventorySubadultTableComponent } from './inventory/inventory-subadult-table/inventory-subadult-table.component';
+>>>>>>> master
 
 @NgModule({
   declarations: [
@@ -42,10 +50,17 @@ import { AdminGuardService } from './authentication/admin-guard.service';
     DonorRegistrationComponent,
     LoginComponent,
     RegisterComponent,
+<<<<<<< HEAD
     SettingsComponent,
     UserDataFormComponent,
     PopUpComponent,
     UserPageComponent
+=======
+    DonorCTableComponent,
+    InventoryCremationTableComponent,
+    InventoryAdultTableComponent,
+    InventorySubadultTableComponent
+>>>>>>> master
   ],
   imports: [
     BrowserModule,
@@ -66,7 +81,7 @@ import { AdminGuardService } from './authentication/admin-guard.service';
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [
     AuthenticationService, 
