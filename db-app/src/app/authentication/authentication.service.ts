@@ -105,6 +105,22 @@ export class AuthenticationService {
     }
   }
 
+  // Checks for proper privelges
+  public hasPrivelges(url: string): boolean {
+    console.log("checking privs for " + url);
+
+    // Get user data
+    const user = this.getUserDetails();
+
+    // Check token's privelges for proper page
+    switch (url) {
+      case "/donor-table":
+        return (user.donorRegCreatePriv || user.donorRegDeletePriv || user.donorRegEditPriv);
+    }
+
+    return true;
+  }
+
   // Check for admin status
   public isAdmin(): boolean {
     const user = this.getUserDetails();
