@@ -60,6 +60,10 @@
   top: -.65em;
 }
 
+.pop-up-textfield {
+  margin: 12px;
+}
+
 .pop-up-title {
   font-size: large;
   padding: 0 1ch;

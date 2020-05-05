@@ -75,7 +75,7 @@ export class UserDataFormComponent implements OnInit {
 
     // Password form
     this.passwordForm = this.formBuilder.group({
-      
+
       // Password
       password: new FormControl('', [
         Validators.required,
@@ -127,12 +127,23 @@ export class UserDataFormComponent implements OnInit {
     console.log(this.user);
     console.log(token);
 
-    // Update user in backend
-    this.auth.updateUser(token).subscribe(() => {
-      window.location.reload();
-    }, (err) => {
-      console.error(err);
-    });
+    // Check username
+    this.auth.isValidUsername(token).subscribe(() => {
+
+      // Update user in backend
+      this.auth.updateUser(token).subscribe(() => {
+        window.location.reload();
+      }, (err) => {
+        console.error(err);
+      });
+    },
+      // Invalidate username field
+      (err) => {
+        console.error(err);
+        this.userName.setErrors({ userNameCheck: true });
+      });
+
+
   }
 
   // This is the pop up functionality for changing password Pop up

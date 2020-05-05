@@ -71,9 +71,11 @@
 
   <!-- Spacer between buttons and privelges-->
   <div class="textFields">
+
+    <!-- Firstname-->
     <mat-form-field class="textInputs">
       <mat-label>First name</mat-label>
-      <textarea matInput formControlName="firstName"></textarea>
+      <input matInput required formControlName="firstName">
 
       <!--Errors-->
       <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
@@ -91,9 +93,10 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- Lastname-->
     <mat-form-field class="textInputs">
       <mat-label>Last name</mat-label>
-      <textarea matInput formControlName="lastName"></textarea>
+      <input matInput required formControlName="lastName">
       <!--Errors-->
       <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
 
@@ -110,9 +113,10 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- Username-->
     <mat-form-field class="textInputs">
       <mat-label>Username</mat-label>
-      <textarea matInput formControlName="userName"></textarea>
+      <input matInput required formControlName="userName">
 
       <!--Errors-->
       <mat-error *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="alert alert-danger">
@@ -150,7 +154,7 @@
         <form [formGroup]="passwordForm">
 
           <!--Password Field-->
-          <div class="input-container">
+          <div class="pop-up-textfield">
             <mat-form-field>
               <mat-label>Password</mat-label>
               <input matInput required type="password" formControlName="password">
@@ -173,7 +177,7 @@
           </div>
 
           <!--Confirm password-->
-          <div class="input-container">
+          <div class="pop-up-textfield">
             <mat-form-field>
               <mat-label>Confirm Password</mat-label>
               <input matInput required type="password" formControlName="passwordConfirmation">
@@ -199,7 +203,8 @@
         </form>
 
         <footer class="pop-up-footer">
-          <button mat-raised-button class="element-buttons" [disabled]="!formPassword.valid" (click)="onChangePassword()">Save</button>
+          <button mat-raised-button class="element-buttons" [disabled]="!formPassword.valid"
+            (click)="onChangePassword()">Save</button>
           <button mat-raised-button class="element-buttons" (click)="cancelChange()">Cancel</button>
         </footer>
       </div>
