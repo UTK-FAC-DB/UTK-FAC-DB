@@ -114,10 +114,27 @@ export class AuthenticationService {
 
     // Check token's privelges for proper page
     switch (url) {
+
+      // Donor Reg
       case "/donor-table":
         return (user.donorRegCreatePriv || user.donorRegDeletePriv || user.donorRegEditPriv);
+
+      // Donor Control
+      case "/donor-c-table":
+        return (user.donorControlCreatePriv || user.donorControlDeletePriv || user.donorControlEditPriv);
+
+      // Inventory
+      case "/inventory-cremation-table":
+        return (user.inventoryCreatePriv || user.inventoryDeletePriv || user.inventoryEditPriv);
+
+      case "/inventory-subadult-table":
+        return (user.inventoryCreatePriv || user.inventoryDeletePriv || user.inventoryEditPriv);
+
+      case "/inventory-adult-table":
+        return (user.inventoryCreatePriv || user.inventoryDeletePriv || user.inventoryEditPriv);
     }
 
+    // Default
     return true;
   }
 

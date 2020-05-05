@@ -4,26 +4,17 @@ import { DonorTableComponent } from './donors/donor-table/donor-table.component'
 import { DonorRegistrationComponent } from './donors/donor-registration/donor-registration.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
-<<<<<<< HEAD
-import { AuthGuardService } from './authentication/auth-guard.service';
-import { AdminGuardService } from './authentication/admin-guard.service';
-import { SettingsComponent } from './settings_page/settings/settings.component';
 import { UserPageComponent } from './user/user-page/user-page.component'
-
-const routes: Routes = [
-  { path: '', component: UserPageComponent, canActivate: [AuthGuardService] },
-  { path: 'donor-table', component: DonorTableComponent, canActivate: [AuthGuardService] },
-  { path: 'donor-registration', component: DonorRegistrationComponent, canActivate: [AuthGuardService] },
-  { path: 'edit/:donorId', component: DonorRegistrationComponent, canActivate: [AuthGuardService] },
-=======
 import { DonorCTableComponent } from './donors/donor-c-table/donor-c-table.component';
 import { InventoryCremationTableComponent } from './inventory/inventory-cremation-table/inventory-cremation-table.component';
 import { InventorySubadultTableComponent } from './inventory/inventory-subadult-table/inventory-subadult-table.component';
 import { InventoryAdultTableComponent } from './inventory/inventory-adult-table/inventory-adult-table.component';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService } from './authentication/auth-guard.service';
+import { SettingsComponent } from './settings_page/settings/settings.component';
+import { AdminGuardService } from './authentication/admin-guard.service';
 
 const routes: Routes = [
-  { path: '', component: DonorTableComponent, canActivate: [AuthGuardService]},
+  { path: '', component: UserPageComponent, canActivate: [AuthGuardService]},
   { path: 'donor-table', component: DonorTableComponent, canActivate: [AuthGuardService]},
   { path: 'donor-registration', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
   { path: 'donor-c-table', component: DonorCTableComponent, canActivate: [AuthGuardService]},
@@ -31,7 +22,6 @@ const routes: Routes = [
   { path: 'inventory-subadult-table', component: InventorySubadultTableComponent, canActivate: [AuthGuardService]},
   { path: 'inventory-adult-table', component: InventoryAdultTableComponent, canActivate: [AuthGuardService]},
   { path: 'edit/:donorId', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
->>>>>>> master
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'setting', component: SettingsComponent, canActivate: [AdminGuardService] },
