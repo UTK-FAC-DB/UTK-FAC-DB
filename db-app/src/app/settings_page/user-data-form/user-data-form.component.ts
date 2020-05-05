@@ -128,7 +128,7 @@ export class UserDataFormComponent implements OnInit {
     console.log(token);
 
     // Check username
-    this.auth.isValidUsername(token).subscribe(() => {
+    this.auth.checkUsernamePost(token).subscribe(() => {
 
       // Update user in backend
       this.auth.updateUser(token).subscribe(() => {

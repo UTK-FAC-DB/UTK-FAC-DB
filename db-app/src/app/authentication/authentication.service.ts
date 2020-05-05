@@ -153,7 +153,7 @@ export class AuthenticationService {
     type:
       'login' | 'changePassword' | 'register' |
       'nameCheck' | 'userCollection' | 'deleteUser'
-      | 'updateUser',
+      | 'updateUser' | 'checkUsernamePost',
     user?: TokenPayload): Observable<any> {
     let base;
 
@@ -208,6 +208,11 @@ export class AuthenticationService {
   // Send a request to check for unused username
   public isValidUsername(user: TokenPayload): Observable<any> {
     return this.request('post', 'nameCheck', user);
+  }
+
+  // Send a request to check for unused username for already valid users
+  public checkUsernamePost(user: TokenPayload): Observable<any> {
+    return this.request('post', 'checkUsernamePost', user);
   }
 
   // Gets the user collection 

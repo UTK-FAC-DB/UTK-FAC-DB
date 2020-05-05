@@ -11,10 +11,11 @@ var ctrlProfile = require('../controllers/profile');
 
 // profile getters
 //router.get('/userCollection', auth, ctrlProfile.userCollection);
-router.get('/userCollection', ctrlProfile.userCollection);
+router.get('/userCollection', auth, ctrlProfile.userCollection);
 router.put('/updateUser', ctrlProfile.profileUpdate);
 router.post('/deleteUser', ctrlProfile.profileDelete);
-router.put('/changePassword', ctrlProfile.changePassword)
+router.put('/changePassword', ctrlProfile.changePassword);
+router.post('/checkUsernamePost', ctrlProfile.validUsernameIgnoreSelf);
 
 // authentication
 router.post('/register', ctrlAuth.register);

@@ -51,7 +51,46 @@ module.exports.profileUpdate = function (req, res) {
 };
 
 /* Get the user collection */
+module.exports.validUsernameIgnoreSelf = function (req, res) {
+
+  // Ensure that all fields are filled
+  if (!req.body.userName) {
+    sendJSONresponse(res, 400, {
+      "message": "username required"
+    });
+    return;
+  }
+
+  console.log("Checking for valid username, not in use");
+
+  User.findOne({
+    userName: req.body.userName
+  }, function (err, user) {
+
+    // error checking
+    if (err) {
+      res.status(404).json(err);
+      return;
+    }
+
+    // if a user was found return an error message to invalidate field
+    if (user && user._id != req.body._id) {
+      res.status(401).json(err);
+    }
+    // If not send a blank token back to allow registeration
+    else {
+      res.status(200);
+      res.json({
+        "token": ''
+      });
+    }
+  });
+
+};
+
+/* Get the user collection */
 module.exports.userCollection = function (req, res) {
+  console.log("Getting user collection");
 
   User
     .find({})
@@ -78,12 +117,17 @@ module.exports.changePassword = function (req, res) {
   // Test prints
   console.log("Changing user password:" + req.body.userName);
   console.log("User ID:" + req.body._id);
-  console.log("New Password: "  + req.body.password)
+  console.log("New Password: " + req.body.password)
   var salt = crypto.randomBytes(16).toString('hex');
   var hash = crypto.pbkdf2Sync(req.body.password, salt, 1000, 64, 'sha512').toString('hex');
 
   User
-    .findByIdAndUpdate(req.body._id, {$set : {salt : salt, hash: hash}}, {
+    .findByIdAndUpdate(req.body._id, {
+      $set: {
+        salt: salt,
+        hash: hash
+      }
+    }, {
       new: true
     }, function (err, doc) {
       if (err) {
