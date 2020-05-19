@@ -3,7 +3,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { UserDetails, AuthenticationService } from '../../authentication/authentication.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
-import { async } from '@angular/core/testing';
 
 /* 
 Got a lot of this example from the 'Table with expandable rows'
