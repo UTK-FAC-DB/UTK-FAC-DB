@@ -124,7 +124,8 @@ import { InventorySubadultTableComponent } from './inventory/inventory-subadult-
     AuthenticationService, 
     AuthGuardService,
     AdminGuardService,
-    Globals
+    Globals,
+    Headers,
   ],
   bootstrap: [AppComponent]
 })
