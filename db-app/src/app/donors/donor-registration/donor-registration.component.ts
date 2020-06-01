@@ -25,13 +25,13 @@ export class DonorRegistrationComponent implements OnInit {
     {value: 'postGrad-5', viewValue: 'Graduate or Professional Degree'}
   ];
   races: AncestryRaceList[] = [
-    {value: 'hispanic-0', viewValue: 'Hispanic or Latino of any race'},
-    {value: 'amerIndian-1', viewValue: 'American Indian or Alaskan Native'},
-    {value: 'asian-2', viewValue: 'Asian'},
-    {value: 'pacificIsland-3', viewValue: 'Native Hawaiian or Other Pacific Islander'},
-    {value: 'black-4', viewValue: 'Black or African American'},
-    {value: 'white-5', viewValue: 'White'},
-    {value: 'twoPlus-6', viewValue: 'Two or more races'}
+    {value: 'hispanicrace', viewValue: 'Hispanic or Latino of any race'},
+    {value: 'indianrace', viewValue: 'American Indian or Alaskan Native'},
+    {value: 'asianrace', viewValue: 'Asian'},
+    {value: 'pacificrace', viewValue: 'Native Hawaiian or Other Pacific Islander'},
+    {value: 'blackrace', viewValue: 'Black or African American'},
+    {value: 'whiterace', viewValue: 'White'},
+    {value: 'tworace', viewValue: 'Two or more races'}
   ];
   feetRange: HeightInFeet[] = [
     {value: 2, viewValue: '2 ft.'},
@@ -96,12 +96,12 @@ export class DonorRegistrationComponent implements OnInit {
     {value: 'O_neg-7', viewValue: 'O-'}
   ];
   hairColors: HairColors[] = [
-    {value: 'blackk-0', viewValue: 'Black'},
-    {value: 'blonde-1', viewValue: 'Blonde'},
-    {value: 'brown-2', viewValue: 'Brown'},
-    {value: 'red-3', viewValue: 'Red'},
-    {value: 'white-4', viewValue: 'White'},
-    {value: 'other-5', viewValue: 'Other - Please Specify'}
+    {value: 'blackhair', viewValue: 'Black'},
+    {value: 'blondehair', viewValue: 'Blonde'},
+    {value: 'brownhair', viewValue: 'Brown'},
+    {value: 'redhair', viewValue: 'Red'},
+    {value: 'grayhair', viewValue: 'Gray'},
+    {value: 'otherhair', viewValue: 'Other'}
   ];
   maritalStatus: MaritalStatus[] = [
     {value: 'single-0', viewValue: 'Single'},

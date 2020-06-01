@@ -1,62 +1,103 @@
 <div class="container">
   <div class="table-actions">
-    <a class="buttonStyle" mat-raised-button routerLink="/donor-registration">Add New Donor</a>
-    <a class="buttonStyle" mat-raised-button (click)="onDelete(selection.selected)">Delete</a>
+    <a class="buttonStyle deleteButton" mat-raised-button (click)="onDelete(selection.selected)">Delete</a>
+    <a class="buttonStyle exportButton" mat-raised-button (click)="onExport(selection.selected)">Export</a>
+    <a class="buttonStyle addButton" mat-raised-button routerLink="/donor-registration">Add New Donor</a>
   </div>
   <div class="filtering">
-    <mat-form-field>
+    <mat-form-field class="searchBar">
       <input matInput placeholder="Search" type="text" (keyup)="applyFilter($event)">
     </mat-form-field>
-    <a mat-raised-button [matMenuTriggerFor]="filterMenu">Advanced Filters</a>
-    <!-- Root Menu for filtering -->
-    <mat-menu #filterMenu="matMenu">
-      <button mat-menu-item [matMenuTriggerFor]="sexMenu">Sex</button>
-      <button mat-menu-item [matMenuTriggerFor]="raceMenu">Race</button>
-      <button mat-menu-item [matMenuTriggerFor]="researchMenu">Research</button>
-      <button mat-menu-item [matMenuTriggerFor]="handMenu">Handedness</button>
-      <button mat-menu-item [matMenuTriggerFor]="shoeMenu">Shoe Size</button>
-      <button mat-menu-item [matMenuTriggerFor]="bloodMenu">Blood Type</button>
-    </mat-menu>
-    <!-- Sex Menu -->
-    <mat-menu #sexMenu="matMenu">
-      <button mat-menu-item>Male</button>
-      <button mat-menu-item>Female</button>
-    </mat-menu>
-    <!-- Race Menu -->
-    <mat-menu #raceMenu="matMenu">
-      <button mat-menu-item>Hispanic</button>
-      <button mat-menu-item>African</button>
-      <button mat-menu-item>Asian</button>
-      <button mat-menu-item>White</button>
-    </mat-menu>
-    <!-- Research Menu -->
-    <mat-menu #researchMenu="matMenu">
-      <button mat-menu-item [matMenuTriggerFor]="liveResearchMenu">Living Research</button>
-      <button mat-menu-item [matMenuTriggerFor]="traumaResearchMenu">Trauma Research</button>
-    </mat-menu>
-    <!-- Living Research Sub Menu -->
-    <mat-menu #liveResearchMenu="matMenu">
-      <button mat-menu-item>Yes</button>
-      <button mat-menu-item>No</button>
-    </mat-menu>
-    <!-- Trauma Research Sub Menu -->
-    <mat-menu #traumaResearchMenu="matMenu">
-      <button mat-menu-item>Yes</button>
-      <button mat-menu-item>No</button>
-    </mat-menu>
-    <!-- Handedness Menu -->
-    <mat-menu #handMenu="matMenu">
-      <button mat-menu-item>Right</button>
-      <button mat-menu-item>Left</button>
-    </mat-menu>
-    <!-- Shoe Size Menu -->
-    <mat-menu #shoeMenu="matMenu">
+    <br>
+    <form [formGroup]="filterForm">
+    <mat-accordion multi=true id="filterPanel">
+      <mat-expansion-panel [expanded]="filterPanelState">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Advanced Filters</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-tab-group >
+          <mat-tab label="Personal">
+            <div class="tab-container">
+              <div class="one">
+                <mat-checkbox formControlName="hairToggle" class="filterSelectionBox">Hair Color:</mat-checkbox>
+                <div *ngIf="filterForm.value.hairToggle">
+                  <mat-selection-list formControlName="hairControl">
+                    <mat-list-option *ngFor="let type of hairType" [value]="type.value">
+                      {{type.view}}
+                    </mat-list-option>
+                  </mat-selection-list>
+                </div>
+              </div>
+              <mat-divider vertical=true></mat-divider>
+              <div class="two">
+                <mat-checkbox class="filterSelectionBox" formControlName="sexToggle">Sex:</mat-checkbox>
+                <div *ngIf="filterForm.value.sexToggle">
+                  <mat-selection-list formControlName="sexControl">
+                    <mat-list-option *ngFor="let type of sexType" [value]="type.value">
+                      {{type.view}}
+                    </mat-list-option>
+                  </mat-selection-list>
+                </div>
+              </div>
+              <mat-divider vertical=true></mat-divider>
+              <div class="three">
+                <mat-checkbox class="filterSelectionBox" formControlName="raceToggle">Race:</mat-checkbox>
+                <div *ngIf="filterForm.value.raceToggle">
+                  <mat-selection-list formControlName="raceControl">
+                    <mat-list-option *ngFor="let type of raceType" [value]="type.value">
+                      {{type.view}}
+                    </mat-list-option>
+                  </mat-selection-list>
+                </div>
+              </div>
+              <mat-divider vertical=true></mat-divider>
+              <div class="four">
+                <mat-checkbox class="filterSelectionBox" formControlName="bloodToggle">Blood Type:</mat-checkbox>
+                <div id="bloodType" *ngIf="filterForm.value.bloodToggle">
+                  <mat-selection-list formControlName="bloodControl">
+                    <mat-list-option *ngFor="let type of bloodType" [value]="type.value">
+                      {{type.view}}
+                    </mat-list-option>
+                  </mat-selection-list>
+                </div>
+              </div>
+              <mat-divider vertical=true></mat-divider>
+              <div class="five">
+                <mat-radio-group formControlName="ageRadio">
+                  <mat-radio-button value="exact">Exact Age</mat-radio-button>
+                  <mat-radio-button value="range">Age Range</mat-radio-button>
+                </mat-radio-group>
+                <div *ngIf="filterForm.value.ageRadio == 'exact'">
+                  <mat-form-field>
+                    <mat-label>Exact Age</mat-label>
+                    <input matInput type="text" formControlName="exactAgeControl">
+                  </mat-form-field>
+                </div>
+                <div *ngIf="filterForm.value.ageRadio == 'range'">
+                  <mat-form-field>
+                    <mat-label>Lower Age</mat-label>
+                    <input matInput type="text" formControlName="rangeAgeControlLower">
+                  </mat-form-field>
+                  to
+                  <mat-form-field>
+                    <mat-label>Upper Age</mat-label>
+                    <input matInput type="text" formControlName="rangeAgeControlUpper">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+              
+              
+          </mat-tab>
+          <mat-tab label="Medical">
 
-    </mat-menu>
-    <!-- Blood Type Menu -->
-    <mat-menu #bloodMenu="matMenu">
-
-    </mat-menu>
+          </mat-tab>
+        </mat-tab-group>
+        <button class="resetButton" mat-raised-button type="submit" (click)="onResetFilters();accordion.closeAll()">Reset Filters</button>
+        <button class="filterButton" mat-raised-button type="submit" (click)="onApplyFilters();accordion.closeAll()">Apply Filters</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </form>
   </div>
   <div class="mat-elevation-z8 donor-table">
     <table mat-table class="full-width-table" matSort aria-label="Elements">
