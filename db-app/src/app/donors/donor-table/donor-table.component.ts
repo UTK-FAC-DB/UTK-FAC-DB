@@ -11,6 +11,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
 import { ExportCSVService } from 'src/app/export2csv/export-csv.service';
 import { element } from 'protractor';
 import { MatAccordion } from '@angular/material/expansion';
+import { Globals } from 'src/app/globals';
 
 export interface Types {
   view: string;
@@ -34,7 +35,7 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
   displayedColumns = ['select', 'firstName', 'lastName', 'dob', 'actions'];
 
   
-  constructor(private formBuilder: FormBuilder, private donorService: DonorService, private exportService: ExportCSVService) {}
+  constructor(private formBuilder: FormBuilder, private donorService: DonorService, private exportService: ExportCSVService, private global : Globals) {}
   
   ngOnInit() {
     this.dataSource = new DonorTableDataSource(this.donorService);
@@ -71,7 +72,7 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
   onExport(selectedDonors: Donor[]): void {
     console.log("Exporting donors");
     console.log(selectedDonors[0]);
-    this.exportService.downloadFile(selectedDonors, Donor);
+    this.exportService.downloadFile(selectedDonors, this.global.donorHeaders);
   }
   
   isAllSelected(): boolean {
