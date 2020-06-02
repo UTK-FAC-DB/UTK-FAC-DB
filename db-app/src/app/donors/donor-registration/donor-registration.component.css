@@ -60,3 +60,14 @@ mat-expansion-panel {
 #top-panel {
     margin-top: 1rem;
 }
+.subtitle {
+    margin-right: 0.5rem;
+}
+.inline-subtitle {
+    margin-left: 1rem;
+}
+.dentalContainer {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+}

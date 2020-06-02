@@ -4,104 +4,116 @@
     <mat-accordion multi="true">
         <mat-expansion-panel id="top-panel">
             <mat-expansion-panel-header>
-                <mat-panel-title>General Information</mat-panel-title>
-                <mat-panel-description style="text-align:center">
-                    Subject information such as name, date of birth and address
-                </mat-panel-description>
+                <mat-panel-title>General and Contact Information</mat-panel-title>
             </mat-expansion-panel-header>
-            <b>Name(s):</b>
-            <mat-form-field class="name last inputText">
-                <input matInput type="text" required placeholder="Last Name" formControlName="lastName">
-            </mat-form-field>
-            <mat-form-field class="name first inputText">
-                <input matInput type="text" required placeholder="First Name" formControlName="firstName">
-            </mat-form-field>
-        
-        <mat-form-field class="name middle inputText">
-          <input matInput type="text" placeholder="Middle Name" formControlName="middleName">
-        </mat-form-field>
-        <mat-form-field class="name suffix inputText" style="width:2.5%">
-          <input matInput type="text" placeholder="Suffix" formControlName="suffixName">
-        </mat-form-field>
-        <mat-form-field class="name maiden inputText">
-          <input matInput type="text" placeholder="Maiden Name" formControlName="maidenName">
-        </mat-form-field>
-        <mat-form-field class="inputSelect">
-          <mat-label>Known by Other Name</mat-label><!--- TODO: Generate additional name fields if user enters 'Yes'-->
-          <mat-select required formControlName="selectedOther">
-            <mat-option *ngFor="let x of truefalse" [value]="x.value">
-              {{x.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+          <b class="subtitle">Name:</b>
+          <mat-form-field>
+              <input matInput type="text" required placeholder="Last Name" formControlName="lastName">
+          </mat-form-field>
+          /
+          <mat-form-field>
+              <input matInput type="text" required placeholder="First Name" formControlName="firstName">
+          </mat-form-field>
+          /
+          <mat-form-field>
+            <input matInput type="text" placeholder="Middle Name" formControlName="middleName">
+          </mat-form-field>
+          <b class="subtitle inline-subtitle">Sex:</b>
+          <mat-form-field>
+            <mat-label>Sex</mat-label>
+            <mat-select required formControlName="selectedSex">
+              <mat-option value="male-0">Male</mat-option>
+              <mat-option value="female-1">Female</mat-option>
+            </mat-select>
+          </mat-form-field>
         <br>
-        <b>Background Information:</b>
-        <mat-form-field class ='inputSelect'>
-          <mat-label>Sex</mat-label>
-          <mat-select required formControlName="selectedSex">
-            <mat-option value="male">Male</mat-option>
-            <mat-option value="female">Female</mat-option>
-          </mat-select>
+        <b class="subtitle">Social Security #</b>
+        <mat-form-field>
+          <mat-label>Social Security #</mat-label>
+          <input matInput type="text" formControlName="socialSecurity">
         </mat-form-field>
-        <mat-form-field class='inputSelect'>
-          <mat-label>Ancestry/Race</mat-label>
+        <b class="subtitle inline-subtitle">Race:</b>
+        <mat-form-field>
+          <mat-label>Race</mat-label>
           <mat-select required formControlName="selectedRace">
             <mat-option *ngFor="let race of races" [value]="race.value"> 
               {{race.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <div *ngIf="registerForm.value.selectedRace == 'otherrace'" style="display: inline">
+          <b class="subtitle inline-subtitle">Please Enter Race:</b>
+          <mat-form-field>
+            <mat-label>Race</mat-label>
+            <input matInput type="text" formControlName="otherRace">
+          </mat-form-field>
+        </div>
         <br>
-        <b>Birth Information:</b>
-        <mat-form-field class='inputText'>
+        <b class="subtitle">Date of Birth:</b>
+        <mat-form-field>
           <mat-label>Date of Birth</mat-label>
           <input matInput type="text" [matDatepicker]="BirthDatepicker" required formControlName="birthDate">
           <mat-datepicker-toggle matSuffix [for]="BirthDatepicker"></mat-datepicker-toggle>
           <mat-datepicker #BirthDatepicker></mat-datepicker>
         </mat-form-field>
-        <mat-form-field class="inputText">
-          <input matInput type="text" placeholder="City of Birth" formControlName="cityBirth">
+        <b class="subtitle inline-subtitle">Age:</b>
+        <mat-form-field style="width: 2rem;">
+          <mat-label>Age</mat-label>
+          <input matInput type="text" formControlName="ageControl">
         </mat-form-field>
-        <mat-form-field class="inputText">
-          <input matInput type="text" placeholder="State/Province of Birth" formControlName="stateBirth">
+        <b class="subtitle inline-subtitle">Place of Birth(city/state):</b>
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input matInput type="text" formControlName="cityBirth">
         </mat-form-field>
-        <mat-form-field class="inputText">
-          <input matInput type="text" placeholder="Country of Birth" formControlName="countryBirth">
+        /
+        <mat-form-field>
+          <mat-label>State</mat-label>
+          <input matInput type="text" formControlName="stateBirth">
         </mat-form-field>
         <br>
-        <b>Donation Information:</b>
-        <mat-form-field class='inputText'>
-          <mat-label>Date of Donation</mat-label>
-          <input matInput type="text" class='inputText' [matDatepicker]="DonationDatepicker" required formControlName="donationDate">
-          <mat-datepicker-toggle matSuffix [for]="DonationDatepicker"></mat-datepicker-toggle>
-          <mat-datepicker #DonationDatepicker></mat-datepicker>
+        <b class="subtitle">Home Address:</b>
+        <mat-form-field style="width: 50%;">
+          <mat-label>Home Address</mat-label>
+          <input matInput type="text" formControlName="homeAddress">
         </mat-form-field>
-        <!-- TODO: Figure out why these checkboxes cause expansion panels to hang
+        <br>
+        <b class="subtitle">City:</b>
         <mat-form-field>
-          <mat-checkbox>Living Research OK</mat-checkbox>
+          <mat-label>City</mat-label>
+          <input matInput type="text" formControlName="cityAddress">
         </mat-form-field>
+        <b class="subtitle inline-subtitle">County:</b>
         <mat-form-field>
-          <mat-checkbox>Trauma Research OK</mat-checkbox>
+          <mat-label>County</mat-label>
+          <input matInput type="text" formControlName="countyAddress">
         </mat-form-field>
-        -->
-        <mat-form-field class="inputSelect">
-          <mat-label>Living Research OK</mat-label>
-          <mat-select required formControlName="livingResearch">
-            <mat-option *ngFor="let x of truefalse" [value]="x.value">
-              {{x.viewValue}}
-            </mat-option>
-          </mat-select>
+        <b class="subtitle inline-subtitle">State:</b>
+        <mat-form-field>
+          <mat-label>State</mat-label>
+          <input matInput type="text" formControlName="stateAddress">
         </mat-form-field>
-        <mat-form-field class="inputSelect">
-          <mat-label>Trauma Research OK</mat-label>
-          <mat-select required formControlName="traumaResearch">
-            <mat-option *ngFor="let x of truefalse" [value]="x.value">
-              {{x.viewValue}}
-            </mat-option>
+        <b class="subtitle inline-subtitle">Zip:</b>
+        <mat-form-field>
+          <mat-label>Zip</mat-label>
+          <input matInput type="text" formControlName="zipAddress">
+        </mat-form-field>
+        <br>
+        <b class="subtitle">Phone Number:</b>
+        <mat-form-field>
+          <mat-label>Phone Number</mat-label>
+          <input matInput type="text" formControlName="phoneNumber">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Inside City Limits:</b>
+        <mat-form-field>
+          <mat-label>Yes/No</mat-label>
+          <mat-select formControlName="cityLimits">
+            <mat-option value="yes-inside-limits">Yes</mat-option>
+            <mat-option value="no-inside-limits">No</mat-option>
           </mat-select>
         </mat-form-field>
         <br>
-        <b>Mother's Name:</b>
+        <b class="subtitle">Mother's Name:</b>
         <mat-form-field class="inputText">
           <input matInput type="text" placeholder="Last Name" formControlName="motherLast">
         </mat-form-field>
@@ -111,11 +123,18 @@
         <mat-form-field class="inputText">
           <input matInput type="text" placeholder="Middle Name" formControlName="motherMiddle">
         </mat-form-field>
-        <mat-form-field class="inputText" style="width:2.5%">
-          <input matInput type="text" placeholder="Suffix" formControlName="motherSuffix">
-        </mat-form-field>
         <mat-form-field class="inputText">
           <input matInput type="text" placeholder="Maiden Name" formControlName="motherMaiden">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Place of Birth:</b>
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input matInput type="text" formControlName="cityMother">
+        </mat-form-field>
+        /
+        <mat-form-field>
+          <mat-label>State</mat-label>
+          <input matInput type="text" formControlName="stateMother">
         </mat-form-field>
         <br>
         <b>Father's Name:</b>
@@ -128,330 +147,464 @@
         <mat-form-field class="inputText">
           <input matInput type="text" placeholder="Middle Name" formControlName="fatherMiddle">
         </mat-form-field>
-        <mat-form-field class="inputText" style="width:2.5%">
-          <input matInput type="text" placeholder="Suffix" formControlName="fatherSuffix">
+        <b class="subtitle inline-subtitle">Place of Birth:</b>
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input matInput type="text" formControlName="cityFather">
         </mat-form-field>
-        </mat-expansion-panel>
-
-          <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>Contact Information</mat-panel-title>
-        <mat-panel-description style="text-align:center">
-            Contact information and most recent address
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-form-field class="inputText" style="width:40.3125%">
-        <input matInput type="text" placeholder="Email Address" required formControlName="email">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="inputText" style="width:26.625%">
-        <input matInput type="text" placeholder="Phone Number" required formControlName="phone">
-      </mat-form-field>
-      <mat-form-field class="inputSelect">
-          <mat-label>Phone Type</mat-label>
-          <mat-select required formControlName="phoneType">
-            <mat-option value="mobile">Mobile</mat-option>
-            <mat-option value="home">Home</mat-option>
-            <mat-option value="work">Work</mat-option>
+        /
+        <mat-form-field>
+          <mat-label>State</mat-label>
+          <input matInput type="text" formControlName="stateFather">
+        </mat-form-field>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Natural and Marital Information</mat-panel-title>
+        </mat-expansion-panel-header>
+        <b class="subtitle">Driver's Lincense Height:</b>
+        <mat-form-field>
+          <mat-label>Height</mat-label>
+          <input matInput type="text" formControlName="heightControl">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Weight:</b>
+        <mat-form-field>
+          <mat-label>Weight</mat-label>
+          <input matInput type="text" formControlName="weightControl">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Recent Weight Loss:</b>
+        <mat-form-field style="width: 5rem;">
+          <mat-label>Yes/No</mat-label>
+          <mat-select formControlName="weightLoss">
+            <mat-option value="yes-recent-weight-loss">Yes</mat-option>
+            <mat-option value="no-recent-weight-loss">No</mat-option>
           </mat-select>
         </mat-form-field>
-      <br>
-      <br>
-      <br>
-      <mat-form-field class="inputText" style="width:40.3125%">
-        <input matInput type="text" placeholder="Address Line 1" required formControlName="streetAddress">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="inputText" style="width:40.3125%">
-        <input matInput type="text" placeholder="Address Line 2">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="inputText">
-          <input matInput type="text" placeholder="City" required formControlName="cityAddress">
-        </mat-form-field>
-        <mat-form-field class="inputText">
-          <input matInput type="text" placeholder="State/Province" required formControlName="stateAddress">
-        </mat-form-field>
-        <mat-form-field class="inputText">
-          <input matInput type="text" placeholder="Postal Code" required formControlName="zipAddress">
-        </mat-form-field>
         <br>
-        <mat-form-field class="inputText" style="width:40.3125%">
-          <input matInput type="text" placeholder="Country" required formControlName="countryAddress">
+        <b class="subtitle">Handedness:</b>
+        <mat-form-field>
+          <mat-label>Right/Left</mat-label>
+          <mat-select formControlName="handednessControl">
+            <mat-option value="right-handedness">Right</mat-option>
+            <mat-option value="left-handedness">Left</mat-option>
+          </mat-select>
         </mat-form-field>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>Personal Information</mat-panel-title>
-        <mat-panel-description style="text-align:center">
-            Personal information such as height, weight, etc
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <b>Height:</b>
-      <mat-form-field class='inputSelect'>
-        <mat-label>Feet</mat-label>
-        <mat-select required formControlName="heightFeet">
-          <mat-option *ngFor="let feet of feetRange" [value]="feet.value"> 
-            {{feet.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class='inputSelect'>
-        <mat-label>Inches</mat-label>
-        <mat-select required formControlName="heightInch">
-          <mat-option *ngFor="let inch of inchRange" [value]="inch.value"> 
-            {{inch.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Estimate</mat-label>
-        <mat-select formControlName="estimateHeight">
-          <mat-option *ngFor="let x of truefalse" [value]="x.value">
-            {{x.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weight:</b>
-      <mat-form-field class="inputText">
-        <input matInput type="text" placeholder="Weight (In Pounds)" required formControlName="weight">
-      </mat-form-field>
-      <!-- TODO: Figure out why mat-slide causes panel stuck state
-      <mat-form-field>
-        <mat-label>Esitmate</mat-label>
-        <mat-slide-toggle>Slide me!</mat-slide-toggle>
-      </mat-form-field>
-      -->
-      <mat-form-field>
-        <mat-label>Estimate</mat-label>
-        <mat-select formControlName="estimateWeight">
-          <mat-option *ngFor="let x of truefalse" [value]="x.value">
-            {{x.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br>
-      <mat-form-field class="inputSelect">
-        <mat-label>Handedness</mat-label>
-        <mat-select required formControlName="handedness">
-          <mat-option value="right">Right</mat-option>
-          <mat-option value="left">Left</mat-option>
-          <mat-option value="ambidextrous">Ambidextrous</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="inputSelect">
-        <mat-label>Shoe Size</mat-label>
-        <mat-select required formControlName="shoesize">
-          <mat-option *ngFor="let size of shoeSizes" [value]="size.value"> 
-            {{size.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="inputSelect">
-        <mat-label>Blood Type</mat-label>
-        <mat-select required formControlName="bloodtype">
-          <mat-option *ngFor="let type of bloodTypes" [value]="type.value"> 
-            {{type.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="inputSelect">
-        <mat-label>Natural Hair Color</mat-label>
-        <mat-select required formControlName="hairColor">
-          <mat-option *ngFor="let color of hairColors" [value]="color.value"> 
-            {{color.viewValue}}
-          </mat-option><!-- Generate extra 'specify' field if user selects other-->
-        </mat-select>
-      </mat-form-field>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>Marriage and Family History</mat-panel-title>
-        <mat-panel-description style="text-align:center">
-            Marriage and Familial Information
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-form-field class="inputSelect">
-        <mat-label>Marital Status</mat-label>
-        <mat-select required formControlName="maritalstatus">
-          <mat-option *ngFor="let status of maritalStatus" [value]="status.value"> 
-            {{status.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <!-- TODO: Make spuse info dynamic based on select value-->
-      <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spouse Name:</b>
-        <mat-form-field class="inputText">
-          <input matInput type="text" placeholder="Last Name" formControlName="spouseLast">
-        </mat-form-field>
-        <mat-form-field class="inputText">
-          <input matInput type="text" placeholder="First Name" formControlName="spouseFirst">
-        </mat-form-field>
-        <mat-form-field class="inputText">
-          <input matInput type="text" placeholder="Middle Name" formControlName="spouseMiddle">
-        </mat-form-field>
-        <mat-form-field class="inputText" style="width:2.5%">
-          <input matInput type="text" placeholder="Suffix" name="id" formControlName="spouseSuffix">
-        </mat-form-field>
-        <mat-form-field class="inputText">
-          <input matInput type="text" placeholder="Maiden Name" formControlName="spouseMaiden">
-        </mat-form-field>
-        <br>
-        <mat-form-field class="inputSelect">
-          <mat-label>Living Spouse?</mat-label>
-          <mat-select formControlName="livingSpouse">
-            <mat-option *ngFor="let x of truefalse" [value]="x.value">
-              {{x.viewValue}}
+        <b class="subtitle inline-subtitle">Shoe Size:</b>
+        <mat-form-field style="width: 5rem;">
+          <mat-label>Size</mat-label>
+          <mat-select formControlName="shoeSize">
+            <mat-option *ngFor="let size of shoeSizes" [value]="size.value">
+              {{size.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="inputSelect">
-          <mat-label>Is Spouse a Donor?</mat-label>
-          <mat-select formControlName="spouseDonor">
-            <mat-option *ngFor="let x of truefalse" [value]="x.value">
-              {{x.viewValue}}
+        <b class="subtitle inline-subtitle">Blood Type:</b>
+        <mat-form-field style="width: 6rem;">
+          <mat-label>Blood Type</mat-label>
+          <mat-select formControlName="bloodType">
+            <mat-option *ngFor="let type of bloodTypes" [value]="type.value">
+              {{type.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="inputText">
-          <input matInput type="text" placeholder="Number of Children" formControlName="childrenNumber">
+        <b class="subtitle inline-subtitle">Hair Color:</b>
+        <mat-form-field style="width: 8rem;">
+          <mat-label>Hair Color</mat-label>
+          <mat-select formControlName="hairColor">
+            <mat-option *ngFor="let color of hairColors" [value]="color.value">
+              {{color.viewValue}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>Educational and Occupational History</mat-panel-title>
-        <mat-panel-description style="text-align:center">
-            Educational and Occupational background
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-form-field class='inputSelect'>
-      <mat-label>Highest Education</mat-label>
-        <mat-select required formControlName="education">
-          <mat-option *ngFor="let level of levels" [value]="level.value" name="selectedEducationLevel"> 
-            {{level.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <!-- TODO: Fixe checkbox issue
-      <mat-form-field>
-        <mat-checkbox>Military Service</mat-checkbox>
-      </mat-form-field>
-      -->
-      <mat-form-field class="inputSelect">
-        <mat-label>Military Service Member</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
-        <mat-select required formControlName="military">
-          <mat-option *ngFor="let x of truefalse" [value]="x.value">
-            {{x.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class='inputSelect'>
-        <mat-label>Childhood Economic Class</mat-label>
-        <mat-select required formControlName="ecoClass">
-          <mat-option *ngFor="let class of socialClasses" [value]="class.value"> 
-            {{class.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br>
-      <mat-form-field class="inputText" style="width:19.5%">
-        <input matInput type="text" placeholder="Usual Occupation" formControlName="occupation">
-      </mat-form-field>
-      <mat-form-field class="inputText" style="width:19.5%">
-        <input matInput type="text" placeholder="Business/Industry" formControlName="business">
-      </mat-form-field>
-    </mat-expansion-panel>
-    
-
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>Dental History</mat-panel-title>
-        <mat-panel-description style="text-align:center">
-            Brief dental history including notable features
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-form-field class="inputSelect">
-        <mat-label>Extensive Dental Work</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
-        <mat-select formControlName="extDentalWork">
-          <mat-option *ngFor="let x of truefalse" [value]="x.value">
-            {{x.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="inputSelect">
-        <mat-label>Lower Denture</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
-        <mat-select formControlName="lowerDenture">
-          <mat-option *ngFor="let x of truefalse" [value]="x.value">
-            {{x.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="inputSelect">
-        <mat-label>Upper Denture</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
-        <mat-select formControlName="upperDenture">
-          <mat-option *ngFor="let x of truefalse" [value]="x.value">
-            {{x.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="inputSelect">
-        <mat-label>Partial Plate</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
-        <mat-select formControlName="partialPlate">
-          <mat-option *ngFor="let x of truefalse" [value]="x.value">
-            {{x.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br>
-      <mat-form-field class="inputSelect">
-        <mat-label>Braces</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
-        <mat-select formControlName="braces">
-          <mat-option *ngFor="let x of truefalse" [value]="x.value">
-          {{x.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="inputSelect">
-        <mat-label>Most Teeth</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
-        <mat-select formControlName="mostTeeth">
-          <mat-option *ngFor="let x of truefalse" [value]="x.value">
-            {{x.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="inputSelect">
-        <mat-label>Gum Disease</mat-label> <!--- TODO: Generate additional branch info field if user enters 'Yes'-->
-        <mat-select formControlName="gumDisease">
-          <mat-option *ngFor="let x of truefalse" [value]="x.value">
-            {{x.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-expansion-panel>
-    
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>Medical History</mat-panel-title>
-        <mat-panel-description style="text-align:center">
-            Brief medical history including notable features
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      
-    </mat-expansion-panel>
-    
-        <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>Habitual Activities</mat-panel-title>
-        <mat-panel-description style="text-align:center">
-            Habitual activities such as drinking, smoking, exercise, etc
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-            <mat-form-field class="inputText" style="width:80%">
-                <input matInput type="text" placeholder="Enter habitual activities seperated by commas." formControlName="habits">
+        <br>
+        <b class="subtitle">Marital Status:</b>
+        <mat-form-field>
+          <mat-label>Marital Status</mat-label>
+          <mat-select formControlName="maritalStatus">
+            <mat-option *ngFor="let status of maritalStatusTypes" [value]="status.value">
+              {{status.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Spouse Name:</b>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput type="text" formControlName="spouseLast">
+        </mat-form-field>
+        /
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput type="text" formControlName="spouseFirst">
+        </mat-form-field>
+        /
+        <mat-form-field>
+          <mat-label>Middle Name</mat-label>
+          <input matInput type="text" formControlName="spouseMiddle">
+        </mat-form-field>
+        <br>
+        <b class="subtitle">Condition:</b>
+        <mat-form-field>
+          <mat-label>Spouse Living Condition</mat-label>
+          <mat-select formControlName="spouseCondition">
+            <mat-option value="living-spouse-condition">Living</mat-option>
+            <mat-option value="deceased-spouse-condition">Deceased</mat-option>
+            <mat-option value="unknown-spouse-condition">Unknown</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Number of Children:</b>
+        <mat-form-field>
+          <mat-label>Children #</mat-label>
+          <input matInput type="text" formControlName="childrenNumber">
+        </mat-form-field>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Education and Occupation History</mat-panel-title>
+        </mat-expansion-panel-header>
+        <b class="subtitle">Highest Education Level (indicate number of years):</b>
+        <mat-form-field>
+          <mat-label>Education Level</mat-label>
+          <input matInput type="text" formControlName="educationLevel">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Military Service:</b>
+        <mat-form-field>
+          <mat-label>Yes/No</mat-label>
+          <mat-select formControlName="militaryService">
+            <mat-option value="yes-military-service">Yes</mat-option>
+            <mat-option value="no-military-service">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <b class="subtitle">Childhood Socio-Economic Status:</b>
+        <mat-form-field>
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="socioEconomicStatus">
+            <mat-option *ngFor="let status of socioEconomicStatusTypes" [value]="status.value">
+              {{status.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <b class="subtitle">Usual (life-long) Occupation:</b>
+        <mat-form-field>
+          <mat-label>Occupation</mat-label>
+          <input matInput type="text" formControlName="occupationControl">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Business/Industry</b>
+        <mat-form-field>
+          <mat-label>Business/Industry</mat-label>
+          <input matInput type="text" formControlName="industryControl">
+        </mat-form-field>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Residence History</mat-panel-title>
+        </mat-expansion-panel-header>
+        <b class="subtitle">Childhood Hometown (0-15 years of age):</b>
+        <b>City/State  Start Date - End Date</b>
+        <br>
+        <mat-form-field appearance="fill" style="width:100%;height:100px;">
+          <mat-label>Childhood Residential History</mat-label>
+          <textarea matInput style="height:100px;" formControlName="childhoodResidentialHistory"></textarea>
+        </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <b class="subtitle">Location as an Adult (any place you have lived for more than 1 year)</b>
+        <b>City/State   Start Date - End Date</b>
+        <br>
+        <mat-form-field appearance="fill" style="width:100%;height:100px;">
+          <mat-label>Adult Residential History</mat-label>
+          <textarea matInput style="height:100px;" formControlName="adultResidentialHistory"></textarea>
+        </mat-form-field>
+        <br>
+        <br>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Dental History</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="dentalContainer">
+          <mat-checkbox class="subtitle" formControlName="extensiveDentalWork">Extensive Dental Work</mat-checkbox>
+          <mat-checkbox class="subtitle inline-subtitle" formControlName="mostTeeth">Most/all teeth</mat-checkbox>
+          <mat-checkbox class="subtitle inline-subtitle" formControlName="teethMissing">Teeth Missing</mat-checkbox>
+          <mat-form-field *ngIf="registerForm.value.teethMissing">
+            <mat-label>Teeth Missing:</mat-label>
+            <mat-select formControlName="teethMissingAmount">
+              <mat-option value="few-teeth-missing">Few</mat-option>
+              <mat-option value="many-teeth-missing">Many</mat-option>
+              <mat-option value="all-teeth-missing">All</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-checkbox class="subtitle inline-subtitle" formControlName="lowerDenture">Lower Denture:</mat-checkbox>
+          <div *ngIf="registerForm.value.lowerDenture" style="display:inline;">
+            <mat-form-field>
+              <mat-label>When</mat-label>
+              <input matInput formControlName="lowerDentureDate" type="text">
             </mat-form-field>
-        </mat-expansion-panel>
+          </div>
+          <mat-checkbox class="subtitle inline-subtitle" formControlName="upperDenture">Upper Denture:</mat-checkbox>
+          <div *ngIf="registerForm.value.upperDenture" style="display:inline;">
+            <mat-form-field>
+              <mat-label>When</mat-label>
+              <input matInput formControlName="upperDentureDate" type="text">
+            </mat-form-field>
+          </div>
+          <mat-checkbox class="subtitle inline-subtitle" formControlName="bothDenture">Upper and Lower Dentures:</mat-checkbox>
+          <div *ngIf="registerForm.value.bothDenture" style="display:inline;">
+            <mat-form-field>
+              <mat-label>When</mat-label>
+              <input matInput formControlName="bothDentureDate" type="text">
+            </mat-form-field>
+          </div>
+          <mat-checkbox class="subtitle inline-subtitle" formControlName="partialPlate">Partial Plate</mat-checkbox>
+          <mat-checkbox class="subtitle inline-subtitle" formControlName="bracesControl">Braces</mat-checkbox>
+          <mat-checkbox class="subtitle inline-subtitle" formControlName="bridgeControl">Bridge</mat-checkbox>
+          <mat-checkbox class="subtitle inline-subtitle" formControlName="gumDisease">Gum Disease</mat-checkbox>
+          <mat-checkbox class="subtitle inline-subtitle" formControlName="dentalDisease">Dental Disease</mat-checkbox>
+          <mat-checkbox class="subtitle inline-subtitle" formControlName="otherDentalControl">Other:</mat-checkbox>
+          <mat-form-field *ngIf="registerForm.value.otherDentalControl">
+            <mat-label>Other Dental Information</mat-label>
+            <textarea matInput formControlName="otherDental"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-expansion-panel> 
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Medical History</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-checkbox class="subtitle" formControlName="surgeryMedical">Surgery(general)</mat-checkbox>
+        <div style="display:inline;" *ngIf="registerForm.value.surgeryMedical">
+          <mat-form-field>
+            <mat-label>List of Surgeries</mat-label>
+            <textarea matInput formControlName="surgeryTypes"></textarea>
+          </mat-form-field>
+        </div>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="plasticSurgeryMedical">Plastic Surgery (indicate type and location></mat-checkbox>
+        <div style="display:inline;" *ngIf="registerForm.value.plasticSurgeryMedical">
+          <mat-form-field>
+            <mat-label>List of Surgeries</mat-label>
+            <textarea matInput formControlName="plasticSurgeryTypes"></textarea>
+          </mat-form-field>
+        </div>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="fracturesMedical">Fractures</mat-checkbox>
+        <div style="display:inline;" *ngIf="registerForm.value.fracturesMedical">
+          <mat-form-field>
+            <mat-label>Fractures</mat-label>
+            <textarea matInput formControlName="fracturesTypes"></textarea>
+          </mat-form-field>
+        </div>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="cancerMedical">Cancer</mat-checkbox>
+        <div style="display:inline;" *ngIf="registerForm.value.cancerMedical">
+          <mat-form-field>
+            <mat-label>Type</mat-label>
+            <input matInput type="text" formControlName="cancerTypes">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Treatment</mat-label>
+            <input matInput type="text" formControlName="cancerTreatment">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Length of Illness</mat-label>
+            <input matInput type="text" formControlName="cancerLength">
+          </mat-form-field>
+        </div>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="autoAccident">Auto Accident (traumatic)</mat-checkbox>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="smokerControl">Smoker</mat-checkbox>
+        <div style="display:inline;" *ngIf="registerForm.value.smokerControl">
+          <mat-form-field>
+            <mat-label>How long?</mat-label>
+            <input matInput type="text" formControlName="smokerLength">
+          </mat-form-field>
+        </div>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="spinalInjury">Spinal Injuries</mat-checkbox>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="alcoholControl">Alcoholism</mat-checkbox>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="openHeartSurgery">Open Heart Surgery</mat-checkbox>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="amputations">Amputations</mat-checkbox>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="diabetesControl">Diabetes</mat-checkbox>
+        <div style="display:inline;" *ngIf="registerForm.value.diabetesControl">
+          <mat-form-field>
+            <mat-label>Type</mat-label>
+            <input matInput type="text" formControlName="diabetesType">
+          </mat-form-field>
+        </div>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="prostheticsControl">Prosthetics (e.g. Hip or knee replacement)</mat-checkbox>
+        <div style="display:inline;" *ngIf="registerForm.value.prostheticsControl">
+          <mat-form-field>
+            <mat-label>When?</mat-label>
+            <input matInput type="text" formControlName="prostheticsDate">
+          </mat-form-field>
+        </div>
+        <mat-form-field>
+          <mat-label>Other Medical Disorders</mat-label>
+          <textarea matInput formControlName="disordersMedical"></textarea>
+        </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <b class="subtitle">Medical History (continued) –<br>
+          Please describe the above and any other information you feel may be important, including
+          current medications, timing of injuries, the locations of traumatic injuries, or a family history
+          of an illness, etc.</b>
+        <mat-form-field>
+          <mat-label>More Information</mat-label>
+          <textarea matInput formControlName="medicalContinued"></textarea>
+        </mat-form-field>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Habitual Activities (i.e., jogging, repetitive motions, life-long occupation activities, etc.)</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field style="width:100%;">
+          <mat-label>Activities</mat-label>
+          <textarea matInput formControlName="habitualActivities"></textarea>
+        </mat-form-field>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Extra Information</mat-panel-title>
+        </mat-expansion-panel-header>
+        <b class="subtitle">Eye Color:</b>
+        <mat-form-field>
+          <mat-label>Eye Color</mat-label>
+          <mat-select formControlName="eyeColor">
+            <mat-option *ngFor="let color of eyeColors" [value]="color.value">
+              {{color.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="registerForm.value.eyeColor == 'othereye'" style="display:inline;margin-left:1rem;">
+          <mat-form-field>
+            <mat-label>Other Eye Color</mat-label>
+            <input matInput type="text" formControlName="otherEyeColor">
+          </mat-form-field>
+        </div>
+        <br>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="tattooControl">Tattoo(s)</mat-checkbox>
+        <div *ngIf="registerForm.value.tattooControl" style="display:inline;">
+          <b class="subtitle inline-subtitle">Description:</b>
+          <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea matInput type="text" formControlName="tattooDescription"></textarea>
+          </mat-form-field>
+          <b class="subtitle inline-subtitle">Location:</b>
+          <mat-form-field>
+            <mat-label>Location</mat-label>
+            <textarea matInput type="text" formControlName="tattooLocation"></textarea>
+          </mat-form-field>
+        </div>
+        <br>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="piercingControl">Body Piercing(s)</mat-checkbox>
+        <div *ngIf="registerForm.value.piercingControl" style="display:inline;">
+          <b class="subtitle inline-subtitle">Description:</b>
+          <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea matInput type="text" formControlName="piercingDescription"></textarea>
+          </mat-form-field>
+          <b class="subtitle inline-subtitle">Location:</b>
+          <mat-form-field>
+            <mat-label>Location</mat-label>
+            <textarea matInput type="text" formControlName="piercingLocation"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Next of Kin and Informant Information</mat-panel-title>
+        </mat-expansion-panel-header>
+        <b class="subtitle">Next of Kin Information</b>
+        <br>
+        <b class="subtitle">Name:</b>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="nextKinName">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Relationship:</b>
+        <mat-form-field>
+          <mat-label>Relationship</mat-label>
+          <input matInput type="text" formControlName="nextKinRelationship">
+        </mat-form-field>
+        <br>
+        <b class="subtitle">Address:</b>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput type="text" formControlName="nextKinAddress">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Phone Number:</b>
+        <mat-form-field>
+          <mat-label>Phone Number</mat-label>
+          <input matInput type="text" formControlName="nextKinPhoneNumber">
+        </mat-form-field>
+        <br>
+        <b class="subtitle">City:</b>
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input matInput type="text" formControlName="nextKinCity">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">State:</b>
+        <mat-form-field>
+          <mat-label>State</mat-label>
+          <input matInput type="text" formControlName="nextKinState">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Zip:</b>
+        <mat-form-field>
+          <mat-label>Zip</mat-label>
+          <input matInput type="text" formControlName="nextKinZip">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Email:</b>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput type="text" formControlName="nextKinEmail">
+        </mat-form-field>
+        <br>
+        <mat-divider></mat-divider>
+        <br>
+        <b class="subtitle">Informant Information (if other than donor or Next of Kin)</b>
+        <br>
+        <b class="subtitle">Name:</b>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="informantName">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Relationship:</b>
+        <mat-form-field>
+          <mat-label>Relationship</mat-label>
+          <input matInput type="text" formControlName="informantRelationship">
+        </mat-form-field>
+        <br>
+        <b class="subtitle">Address:</b>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput type="text" formControlName="informantAddress">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Phone Number:</b>
+        <mat-form-field>
+          <mat-label>Phone Number</mat-label>
+          <input matInput type="text" formControlName="informantPhoneNumber">
+        </mat-form-field>
+        <br>
+        <b class="subtitle">City:</b>
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input matInput type="text" formControlName="informantCity">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">State:</b>
+        <mat-form-field>
+          <mat-label>State</mat-label>
+          <input matInput type="text" formControlName="informantState">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Zip:</b>
+        <mat-form-field>
+          <mat-label>Zip</mat-label>
+          <input matInput type="text" formControlName="informantZip">
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Email:</b>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput type="text" formControlName="informantEmail">
+        </mat-form-field>
+      </mat-expansion-panel>
     </mat-accordion>
-
     <div class="container">
         <button class="saveButton" mat-raised-button type="submit">Save</button>
     </div>

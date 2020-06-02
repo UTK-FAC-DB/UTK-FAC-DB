@@ -248,8 +248,6 @@ export class DonorTableDataSource extends DataSource<Donor> {
   }
 
   _multipleFilterData(data: Donor[]): Donor[] {
-    console.log(JSON.stringify(data[0]));
-    console.log(this.multipleFilter);
     if (this.multipleFilter.length == 0) {
       this.multipleFilteredData = data;
     } else {
@@ -273,7 +271,6 @@ export class DonorTableDataSource extends DataSource<Donor> {
   }
 
   multipleFilterPredicate: ((data: Donor, filter: string[]) => boolean) = (data: Donor, filter: string[]): boolean => {
-    console.log(this.filter);
     let check = 0;
     let dataStr = Object.keys(data).reduce((currentTerm: string, key: string) => {
       return currentTerm + (data as {[key: string]: any})[key] + '◬';
