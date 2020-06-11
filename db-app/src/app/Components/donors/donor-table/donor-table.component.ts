@@ -13,6 +13,7 @@ import { element } from 'protractor';
 import { MatAccordion } from '@angular/material/expansion';
 import { Globals } from 'src/app/globals';
 import { Observable } from 'rxjs';
+import {Filters} from 'src/app/Exports/filters';
 
 export interface Types {
   view: string;
@@ -34,7 +35,8 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
   selection = new SelectionModel<Donor>(true, []);
   filterPanelState: boolean =  false;
   displayedColumns = ['select', 'firstName', 'lastName', 'dob', 'actions'];
-  isLoading = true;
+  filters: Filters;
+  hairToggle: boolean = false;
 
   
   constructor(private formBuilder: FormBuilder, private donorService: DonorService, private exportService: ExportCSVService, private global : Globals) {}
@@ -43,39 +45,38 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
     this.dataSource = new DonorTableDataSource(this.donorService);
   }
 
-  filterForm = this.formBuilder.group({
-    hairToggle: new FormControl(''),
-    hairControl: new FormControl([]),
-    sexToggle: new FormControl(''),
-    sexControl: new FormControl([]),
-    raceToggle: new FormControl(''),
-    raceControl: new FormControl([]),
-    bloodToggle: new FormControl(''),
-    bloodControl: new FormControl([]),
-    ageRadio: new FormControl(''),
-    exactAgeControl: new FormControl(''),
-    rangeAgeControlUpper: new FormControl(''),
-    rangeAgeControlLower: new FormControl('') 
+  filterForm: FormGroup = this.createForm({
+    hairColor: [],
+    selectedRace: [],
+    selectedSex: [],
+    bloodType: [],
+    ageControl: []
   });
-  
+
+  private createForm(model: Filters): FormGroup {
+    return this.formBuilder.group(model);
+  }
+
+  private updateForm(model: Partial<Filters>): void {
+    this.filterForm.patchValue(model);
+  }
+
+  get formValue() {
+    return this.filterForm.value as Filters;
+  }
+
   ngAfterViewInit() {
-    this.isLoading = true;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
-    this.isLoading = false;
   }
   
   onDelete(selectedDonors: Donor[]): void {
-    console.log("Deleting donors");
-    console.log(selectedDonors[0]);
     this.donorService.deleteDonor(selectedDonors);
     this.selection.clear();
   }
 
   onExport(selectedDonors: Donor[]): void {
-    console.log("Exporting donors");
-    console.log(selectedDonors[0]);
     this.exportService.downloadFile(selectedDonors, this.global.donorHeaders);
   }
   
@@ -105,44 +106,18 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
   }
   
   onApplyFilters(): void {
-    //Get the filter controls from the filter form, then for each value in the control array push it
-    //onto the filter arr
-    this.filterForm.get("hairControl").value.forEach(element => { this.filterArr.push(element); });
-    this.filterForm.get("sexControl").value.forEach(element => { this.filterArr.push(element) });
-    this.filterForm.get("raceControl").value.forEach(element => { this.filterArr.push(element); });
-    this.filterForm.get("bloodControl").value.forEach(element => { this.filterArr.push(element); });
-
-    if (this.filterForm.get('ageRadio').value == 'exact'
-        && this.filterForm.get("exactAgeControl").value) {
-      this.filterArr.push(this.filterForm.get("exactAgeControl").value + 'Age');
-    } else if (this.filterForm.get('ageRadio').value == 'range'
-                && this.filterForm.get("rangeAgeControlLower").value 
-                && this.filterForm.get("rangeAgeControlUpper").value) {
-      this.filterArr.push(this.filterForm.get('rangeAgeControlLower').value + 'AgeLower');
-      this.filterArr.push(this.filterForm.get('rangeAgeControlUpper').value + 'AgeUpper');
-      this.dataSource.rangeAge = true;
-    }
-    //Set the datasource multiple filter to the filter array, this will cause the datasource to update and
-    //and run the multiple filter functions
-    this.dataSource.multipleFilter = this.filterArr;
-
-    //reset the filter array
-    this.filterArr = [];
+    this.dataSource.multipleFilter = this.filterForm.value as Filters;
   }
   onResetFilters(): void {
-    this.filterForm.get("hairToggle").setValue('');
-    this.filterForm.get("hairControl").setValue([]);
-    this.filterForm.get("sexToggle").setValue('');
-    this.filterForm.get("sexControl").setValue([]);
-    this.filterForm.get("raceToggle").setValue('');
-    this.filterForm.get("raceControl").setValue([]);
-    this.filterForm.get("bloodToggle").setValue('');
-    this.filterForm.get("bloodControl").setValue([]);
-    this.filterForm.get("ageRadio").setValue('');
-    this.filterForm.get("exactAgeControl").setValue('');
-    this.filterForm.get("rangeAgeControlLower").setValue('');
-    this.filterForm.get("rangeAgeControlUpper").setValue('');
+    
   }
+
+  toggleFunction(menu: string): void {
+    let x = document.getElementById(menu);
+    if (x.style.display === 'none') { x.style.display = 'block'; } 
+    else { x.style.display = 'none'; }
+  }
+
   hairType: Types[] = [
     {view: 'Black', value: 'blackhair'},
     {view: 'Brown', value: 'brownhair'},
@@ -153,8 +128,8 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
     {view: 'Other', value: 'otherhair'}
   ]
   sexType: Types[] = [
-    {view: 'Male', value: 'male'},
-    {view: 'Female', value: 'female'},
+    {view: 'Male', value: 'male-0'},
+    {view: 'Female', value: 'female-1'},
     {view: 'Non-binary', value: 'non-binary'}
   ]
   raceType: Types[] = [

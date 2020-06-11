@@ -92,3 +92,6 @@ a {
 .filteringPanel {
   margin: 1rem;
 }
+.filterSelectionButton {
+  width: 100%;
+}
