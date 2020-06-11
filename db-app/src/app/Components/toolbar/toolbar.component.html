@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
-    <mat-icon class="menu-icon" (click)="toggleSidenav()">menu</mat-icon>
-    <span>Forensic Anthropology Center</span>
+    <mat-icon class="menu-icon black-text" (click)="toggleSidenav()">menu</mat-icon>
+    <span class="black-text">Forensic Anthropology Center</span>
     <span class="fill-remaining-space"></span>
-    <button mat-icon-button [matMenuTriggerFor]="themeMenu" mdTooltip="Change theme"><mat-icon>invert_colors</mat-icon></button>
+    <button mat-icon-button [matMenuTriggerFor]="themeMenu" mdTooltip="Change theme" class="black-text"><mat-icon>invert_colors</mat-icon></button>
     <mat-menu #themeMenu="matMenu">
         <button mat-menu-item (click)="changeTheme('light-theme')">Light</button>
         <button mat-menu-item (click)="changeTheme('dark-theme')">Dark</button>
