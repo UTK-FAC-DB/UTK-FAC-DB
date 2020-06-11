@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over">
+      <div class="sidenav-header">
+        <h2>Menu</h2>
+      </div>
+      <div class="sidenav-content">
+        <ul>
+          <li>
+            <button mat-button routerLink="/donor-table" (click)="toggleSidenav()">Donor Registration</button>
+          </li>
+          <li>
+            <button mat-button routerLink="/donor-c-table" (click)="toggleSidenav()">Donor Control</button>
+          </li>
+          <li>
+            <button mat-button [matMenuTriggerFor]="invMenu">Inventory</button>
+            <mat-menu #invMenu="matMenu" xPosition="after">
+                <button mat-menu-item routerLink="/inventory-cremation-table" (click)="toggleSidenav()">Cremation</button>
+                <button mat-menu-item routerLink="/inventory-subadult-table" (click)="toggleSidenav()">Sub Adult</button>
+                <button mat-menu-item routerLink="/inventory-adult-table" (click)="toggleSidenav()">Adult</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button mat-button [matMenuTriggerFor]="dmMenu">Donor Metrics</button>
+            <mat-menu #dmMenu="matMenu" xPosition="after">
+              <button mat-menu-item (click)="toggleSidenav()">PostCran</button>
+              <button mat-menu-item (click)="toggleSidenav()">Fully</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button mat-button routerLink="/setting" (click)="toggleSidenav()"><mat-icon>settings</mat-icon>Settings</button>
+          </li>
+          <li>
+            <button mat-button (click)="auth.logout()" (click)="toggleSidenav()"><mat-icon>exit_to_app</mat-icon>Logout</button>
+          </li>
+        </ul>
+      </div>
+    </mat-sidenav>
+    <ng-content></ng-content>
+  </mat-sidenav-container>
