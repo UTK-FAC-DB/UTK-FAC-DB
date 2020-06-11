@@ -6,6 +6,8 @@ import { Observable, of as observableOf, merge, Subscription, BehaviorSubject, c
 import { Donor } from 'src/app/Exports/donor';
 import { DonorService } from 'src/app/Services/Donor/donor.service';
 import { _isNumberValue } from '@angular/cdk/coercion';
+import {Filters} from 'src/app/Exports/filters';
+import { isDefined } from '@angular/compiler/src/util';
 
 const MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -23,7 +25,7 @@ export class DonorTableDataSource extends DataSource<Donor> {
   /** Stream that emits when a new filter string is set on the data source. */
   private readonly _filter = new BehaviorSubject<string>('');
 
-  private readonly _multipleFilter = new BehaviorSubject<string[]>([]);
+  private readonly _multipleFilter = new BehaviorSubject<Filters>(null);
 
   /** Used to react to internal changes of the paginator that are made by the data source itself. */
   private readonly _internalPageChanges = new Subject<void>();
@@ -57,8 +59,8 @@ export class DonorTableDataSource extends DataSource<Donor> {
   get filter(): string { return this._filter.value; }
   set filter(filter: string) { this._filter.next(filter); }
 
-  get multipleFilter(): string[] { return this._multipleFilter.value; }
-  set multipleFilter(filter: string[]) { this._multipleFilter.next(filter); }
+  get multipleFilter(): Filters { return this._multipleFilter.value; }
+  set multipleFilter(filters: Filters) { this._multipleFilter.next(filters); }
 
   /**
    * Instance of the MatSort directive used by the table to control its sorting. Sort changes
@@ -248,48 +250,33 @@ export class DonorTableDataSource extends DataSource<Donor> {
   }
 
   _multipleFilterData(data: Donor[]): Donor[] {
-    if (this.multipleFilter.length == 0) {
-      this.multipleFilteredData = data;
-    } else {
-      this.multipleFilteredData = data.filter(obj => this.multipleFilterPredicate(obj, this.multipleFilter));
-    }
-    
-    if (this.paginator) { this._updatePaginator(this.multipleFilteredData.length); }
-
-    return this.multipleFilteredData;
-  }
-
-  getAge(dob: Date): string {
-    const today = new Date();
-    const birthDate = new Date(dob);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      age = age - 1;
-    }
-    return age.toString();
-  }
-
-  multipleFilterPredicate: ((data: Donor, filter: string[]) => boolean) = (data: Donor, filter: string[]): boolean => {
+    let count = 0;
     let check = 0;
-    let dataStr = Object.keys(data).reduce((currentTerm: string, key: string) => {
-      return currentTerm + (data as {[key: string]: any})[key] + '◬';
-    }, '').toLowerCase();
-    let age = this.getAge(data.birthDate);
-    filter.forEach(element => {
-      if (element.indexOf('AgeUpper') != -1) {
-        if (age <= element.replace('AgeUpper','')) { check++; }
-      } 
-      else if (element.indexOf('AgeLower') != -1) {
-        if (age >= element.replace('AgeLower','')) { check++; }
-      } 
-      else if (element.indexOf('Age') != -1) {
-        if (age == element.replace('Age', '')) { check++; }
-      } 
-      else if (dataStr.indexOf(element) != -1) { check++; }
-    })
-    if (check == filter.length) { return true;}
-    else { return false; }
+    if (this.multipleFilter) {
+      this.multipleFilteredData = data.filter(donor => {
+        for (let key in this.multipleFilter) {
+          if (this.multipleFilter[key]) {
+            count++;
+            if (Array.isArray(this.multipleFilter[key])) {
+              for (let index in this.multipleFilter[key]) {
+                if (isDefined(donor[key][index]) && donor[key] == this.multipleFilter[key][index]) { 
+                  check++; 
+                }
+              }
+            } else {
+              if (isDefined(donor[key]) && donor[key] == this.multipleFilter[key]) { check++; }
+            }
+          }
+        }
+        if (check === count) { return true; } 
+        else { return false; }
+      })
+    } else {
+      this.multipleFilteredData = data;
+    }
+
+    if (this.paginator) { this._updatePaginator(this.multipleFilteredData.length); }
+    return this.multipleFilteredData;
   }
 
   /**
