@@ -23,7 +23,8 @@ a {
 }
 .filterButton {
   float: right;
-  background-color: green;
+  background-color: white;
+  color: black;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -74,10 +75,11 @@ a {
   float: right;
 }
 .deleteButton {
-  background-color: red;
+  color: white;
 }
 .exportButton {
   background-color: green;
+  color: white;
 }
 .mat-radio-button {
   margin-left: 1rem;

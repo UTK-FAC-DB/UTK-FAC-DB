@@ -75,6 +75,9 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
     this.donorService.deleteDonor(selectedDonors);
     this.selection.clear();
   }
+  onSingleDelete(id: string): void {
+    this.donorService.deleteSingleDonor(id);
+  }
 
   onExport(selectedDonors: Donor[]): void {
     this.exportService.downloadFile(selectedDonors, this.global.donorHeaders);

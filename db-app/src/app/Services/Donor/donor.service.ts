@@ -183,6 +183,15 @@ export class DonorService {
       });
     }
   }
+  
+  deleteSingleDonor(id: string) {
+    this.http.delete(this.globals.URL + '/api/donors' + '/' + id)
+    .subscribe(() => {
+      const updatedDonors = this.donors.filter(donor => donor.id !== id);
+      this.donors = updatedDonors;
+      this.donorsUpdated.next([...this.donors]);
+    })
+  }
 
   // put("/api/donors/:id")
   updateDonor(id: string, donor: Donor) {
