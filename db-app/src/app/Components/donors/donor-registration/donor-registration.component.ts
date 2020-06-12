@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Donor, TrueFalse, EducationLevels, AncestryRaceList, HeightInFeet, HeightInInches, ShoeSizeRange, BloodTypes, HairColors, MaritalStatus, SocialClass } from 'src/app/Exports/donor';
-import { NgForm, FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import { Subscription, BehaviorSubject } from 'rxjs';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { Donor } from 'src/app/Exports/donor';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 import { DonorService } from '../../../Services/Donor/donor.service';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
-export interface viewType {
+export interface viewString {
   value: string;
+  viewValue: string;
+}
+
+export interface viewNumber {
+  value: number;
   viewValue: string;
 }
 
@@ -17,117 +21,7 @@ export interface viewType {
   styleUrls: ['./donor-registration.component.css']
 })
 export class DonorRegistrationComponent implements OnInit {
-  socioEconomicStatusTypes: viewType[] = [
-    {value: 'lower-socio-economic-status', viewValue: 'Lower'},
-    {value: 'lowermiddle-socio-economic-status', viewValue: 'Lower Middle'},
-    {value: 'middle-0-socio-economic-status', viewValue: 'Middle'},
-    {value: 'uppermiddle-socio-economic-status', viewValue: 'Upper Middle'},
-    {value: 'upper-socio-economic-status', viewValue: 'Upper'}
-  ]
-  truefalse: TrueFalse[] = [
-    {value: 'true', viewValue: 'Yes'}, 
-    {value: 'false', viewValue: 'No'} 
-  ];
-  races: AncestryRaceList[] = [
-    {value: 'whiterace', viewValue: 'White'},
-    {value: 'blackrace', viewValue: 'Black'},
-    {value: 'hispanicrace', viewValue: 'Hispanic'},
-    {value: 'otherrace', viewValue: 'Other'}
-  ];
-  feetRange: HeightInFeet[] = [
-    {value: 2, viewValue: '2 ft.'},
-    {value: 3, viewValue: '3 ft.'},
-    {value: 4, viewValue: '4 ft.'},
-    {value: 5, viewValue: '5 ft.'},
-    {value: 6, viewValue: '6 ft.'},
-    {value: 7, viewValue: '7 ft.'},
-    {value: 8, viewValue: '8 ft.'}
-  ];
-  inchRange: HeightInInches[] = [
-    {value: 0, viewValue: '0 in.'},
-    {value: 1, viewValue: '1 in.'},
-    {value: 2, viewValue: '2 in.'},
-    {value: 3, viewValue: '3 in.'},
-    {value: 4, viewValue: '4 in.'},
-    {value: 5, viewValue: '5 in.'},
-    {value: 6, viewValue: '6 in.'},
-    {value: 7, viewValue: '7 in.'},
-    {value: 8, viewValue: '8 in.'},
-    {value: 9, viewValue: '9 in.'},
-    {value: 10, viewValue: '10 in.'},
-    {value: 11, viewValue: '11 in.'}
-  ];
-  shoeSizes: ShoeSizeRange[] = [
-    {value: 3, viewValue: '3'},
-    {value: 3.5, viewValue: '3 1/2'},
-    {value: 4, viewValue: '4'},
-    {value: 4.5, viewValue: '4 1/2'},
-    {value: 5, viewValue: '5'},
-    {value: 5.5, viewValue: '5 1/2'},
-    {value: 6, viewValue: '6'},
-    {value: 6.5, viewValue: '6 1/2'},
-    {value: 7, viewValue: '7'},
-    {value: 7.5, viewValue: '7 1/2'},
-    {value: 8, viewValue: '8'},
-    {value: 8.5, viewValue: '8 1/2'},
-    {value: 9, viewValue: '9'},
-    {value: 9.5, viewValue: '9 1/2'},
-    {value: 10, viewValue: '10'},
-    {value: 10.5, viewValue: '10 1/2'},
-    {value: 11, viewValue: '11'},
-    {value: 11.5, viewValue: '11 1/2'},
-    {value: 12, viewValue: '12'},
-    {value: 12.5, viewValue: '12 1/2'},
-    {value: 13, viewValue: '13'},
-    {value: 13.5, viewValue: '13 1/2'},
-    {value: 14, viewValue: '14'},
-    {value: 14.5, viewValue: '14 1/2'},
-    {value: 15, viewValue: '15'},
-    {value: 15.5, viewValue: '15 1/2'},
-    {value: 16, viewValue: '16'}
-  ];
-  bloodTypes: BloodTypes[] = [
-    {value: 'a+', viewValue: 'A+'},
-    {value: 'a-', viewValue: 'A-'},
-    {value: 'b+', viewValue: 'B+'},
-    {value: 'b-', viewValue: 'B-'},
-    {value: 'ab+', viewValue: 'AB+'},
-    {value: 'ab-', viewValue: 'AB-'},
-    {value: 'o+', viewValue: 'O+'},
-    {value: 'o-', viewValue: 'O-'}
-  ];
-  hairColors: HairColors[] = [
-    {value: 'blackhair', viewValue: 'Black'},
-    {value: 'blondehair', viewValue: 'Blonde'},
-    {value: 'brownhair', viewValue: 'Brown'},
-    {value: 'redhair', viewValue: 'Red'},
-    {value: 'grayhair', viewValue: 'Gray'},
-    {value: 'otherhair', viewValue: 'Other'}
-  ];
-  maritalStatusTypes: MaritalStatus[] = [
-    {value: 'single-0', viewValue: 'Single'},
-    {value: 'married-1', viewValue: 'Married'},
-    {value: 'divoreceSeperated-2', viewValue: 'Divorced or Seperated'},
-    {value: 'widowed-3', viewValue: 'Widowed'}
-  ];
-  socialClasses: SocialClass[] = [
-    {value: 'lower-0', viewValue: 'Lower'},
-    {value: 'working-1', viewValue: 'Working'},
-    {value: 'middle-2', viewValue: 'Middle'},
-    {value: 'upperMid-3', viewValue: 'Upper Middle'},
-    {value: 'upper-4', viewValue: 'Upper'}
-  ];
-  eyeColors: viewType[] = [
-    {value: 'blueeye', viewValue: 'Blue'},
-    {value: 'greeneye', viewValue: 'Green'},
-    {value: 'Grayeye', viewValue: 'Gray'},
-    {value: 'Browneye', viewValue: 'Brown'},
-    {value: 'hazeleye', viewValue: 'Hazel'},
-    {value: 'othereye', viewValue: 'Other'}
-  ]
-
   public registerForm : FormGroup;
-  private registerSub: Subscription;
   private mode = 'create';
   private donorId: string;
   donor: Donor;
@@ -135,7 +29,7 @@ export class DonorRegistrationComponent implements OnInit {
   public get data(): Donor[] { return this._dataStream.value; }
   public set data(v: Donor[]) { this._dataStream.next(v); }
 
-  constructor(public donorService: DonorService, private formBuilder: FormBuilder, public route: ActivatedRoute, private router: Router) {}
+  constructor(public donorService: DonorService, private formBuilder: FormBuilder, public route: ActivatedRoute) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -623,6 +517,17 @@ export class DonorRegistrationComponent implements OnInit {
       });
     }
   }
+  onAddField() {
+    let newDiv = document.createElement('div');
+    let newFormField = document.createElement('mat-form-field');
+    let newInput = document.createElement('input');
+    let att = document.createAttribute('matInput');
+    newInput.setAttributeNode(att);
+    newFormField.appendChild(newInput);
+    newDiv.appendChild(newFormField);
+    var currentDiv = document.getElementById('additionDiv');
+    document.body.insertBefore(newDiv, currentDiv);
+  }
 
   get form() { return this.registerForm; }
   get firstName() { return this.registerForm.get('firstName'); }
@@ -740,10 +645,112 @@ export class DonorRegistrationComponent implements OnInit {
   get informantZip() { return this.registerForm.get('informantZip'); }
   get informantEmail() { return this.registerForm.get('informantEmail'); }
 
-  loadForm(data: Donor) {
-    console.log(JSON.stringify(this.donor));
-    this.registerForm.setValue({
-      lastName: this.donor.lastName
-    });
-  }
+  socioEconomicStatusTypes: viewString[] = [
+    {value: 'lower', viewValue: 'Lower'},
+    {value: 'lower-middle', viewValue: 'Lower Middle'},
+    {value: 'middle', viewValue: 'Middle'},
+    {value: 'upper-middle', viewValue: 'Upper Middle'},
+    {value: 'upper', viewValue: 'Upper'}
+  ]
+  truefalse: viewString[] = [
+    {value: 'true', viewValue: 'Yes'},
+    {value: 'false', viewValue: 'No'}
+  ];
+  races: viewString[] = [
+    {value: 'white', viewValue: 'White'},
+    {value: 'black', viewValue: 'Black'},
+    {value: 'hispanic', viewValue: 'Hispanic'},
+    {value: 'other', viewValue: 'Other'}
+  ];
+  feetRange: viewNumber[] = [
+    {value: 2, viewValue: '2 ft.'},
+    {value: 3, viewValue: '3 ft.'},
+    {value: 4, viewValue: '4 ft.'},
+    {value: 5, viewValue: '5 ft.'},
+    {value: 6, viewValue: '6 ft.'},
+    {value: 7, viewValue: '7 ft.'},
+    {value: 8, viewValue: '8 ft.'}
+  ];
+  inchRange: viewNumber[] = [
+    {value: 0, viewValue: '0 in.'},
+    {value: 1, viewValue: '1 in.'},
+    {value: 2, viewValue: '2 in.'},
+    {value: 3, viewValue: '3 in.'},
+    {value: 4, viewValue: '4 in.'},
+    {value: 5, viewValue: '5 in.'},
+    {value: 6, viewValue: '6 in.'},
+    {value: 7, viewValue: '7 in.'},
+    {value: 8, viewValue: '8 in.'},
+    {value: 9, viewValue: '9 in.'},
+    {value: 10, viewValue: '10 in.'},
+    {value: 11, viewValue: '11 in.'}
+  ];
+  shoeSizes: viewNumber[] = [
+    {value: 3, viewValue: '3'},
+    {value: 3.5, viewValue: '3 1/2'},
+    {value: 4, viewValue: '4'},
+    {value: 4.5, viewValue: '4 1/2'},
+    {value: 5, viewValue: '5'},
+    {value: 5.5, viewValue: '5 1/2'},
+    {value: 6, viewValue: '6'},
+    {value: 6.5, viewValue: '6 1/2'},
+    {value: 7, viewValue: '7'},
+    {value: 7.5, viewValue: '7 1/2'},
+    {value: 8, viewValue: '8'},
+    {value: 8.5, viewValue: '8 1/2'},
+    {value: 9, viewValue: '9'},
+    {value: 9.5, viewValue: '9 1/2'},
+    {value: 10, viewValue: '10'},
+    {value: 10.5, viewValue: '10 1/2'},
+    {value: 11, viewValue: '11'},
+    {value: 11.5, viewValue: '11 1/2'},
+    {value: 12, viewValue: '12'},
+    {value: 12.5, viewValue: '12 1/2'},
+    {value: 13, viewValue: '13'},
+    {value: 13.5, viewValue: '13 1/2'},
+    {value: 14, viewValue: '14'},
+    {value: 14.5, viewValue: '14 1/2'},
+    {value: 15, viewValue: '15'},
+    {value: 15.5, viewValue: '15 1/2'},
+    {value: 16, viewValue: '16'}
+  ];
+  bloodTypes: viewString[] = [
+    {value: 'a+', viewValue: 'A+'},
+    {value: 'a-', viewValue: 'A-'},
+    {value: 'b+', viewValue: 'B+'},
+    {value: 'b-', viewValue: 'B-'},
+    {value: 'ab+', viewValue: 'AB+'},
+    {value: 'ab-', viewValue: 'AB-'},
+    {value: 'o+', viewValue: 'O+'},
+    {value: 'o-', viewValue: 'O-'}
+  ];
+  hairColors: viewString[] = [
+    {value: 'black', viewValue: 'Black'},
+    {value: 'blonde', viewValue: 'Blonde'},
+    {value: 'brown', viewValue: 'Brown'},
+    {value: 'red', viewValue: 'Red'},
+    {value: 'gray', viewValue: 'Gray'},
+    {value: 'other', viewValue: 'Other'}
+  ];
+  maritalStatusTypes: viewString[] = [
+    {value: 'single', viewValue: 'Single'},
+    {value: 'married', viewValue: 'Married'},
+    {value: 'divoreced', viewValue: 'Divorced or Seperated'},
+    {value: 'widowed', viewValue: 'Widowed'}
+  ];
+  socialClasses: viewString[] = [
+    {value: 'lower', viewValue: 'Lower'},
+    {value: 'working', viewValue: 'Working'},
+    {value: 'middle', viewValue: 'Middle'},
+    {value: 'upper-middle', viewValue: 'Upper Middle'},
+    {value: 'upper', viewValue: 'Upper'}
+  ];
+  eyeColors: viewString[] = [
+    {value: 'blue', viewValue: 'Blue'},
+    {value: 'green', viewValue: 'Green'},
+    {value: 'Gray', viewValue: 'Gray'},
+    {value: 'brown', viewValue: 'Brown'},
+    {value: 'hazel', viewValue: 'Hazel'},
+    {value: 'other', viewValue: 'Other'}
+  ]
 }

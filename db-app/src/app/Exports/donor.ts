@@ -1,4 +1,4 @@
-export class Donor {
+export interface Donor {
     id: string;
     lastName: string;
     firstName: string;
@@ -114,54 +114,4 @@ export class Donor {
     informantState: string;
     informantZip: string;
     informantEmail: string;
-}
-
-export interface TrueFalse {
-    value: string;
-    viewValue: string;
-}
-
-export interface EducationLevels {
-    value: string;
-    viewValue: string;
-}
-  
-export interface AncestryRaceList {
-    value: string;
-    viewValue: string;
-}
-  
-export interface HeightInFeet {
-    value: number;
-    viewValue: string;
-}
-  
-export interface HeightInInches {
-    value: number;
-    viewValue: string;
-}
-  
-export interface ShoeSizeRange {
-    value: number;
-    viewValue: string;
-}
-  
-export interface BloodTypes {
-    value: string;
-    viewValue: string;
-}
-  
-export interface HairColors {
-    value: string;
-    viewValue: string;
-}
-  
-export interface MaritalStatus {
-    value: string;
-    viewValue: string;
-}
-  
-export interface SocialClass {
-    value: string;
-    viewValue: string;
 }

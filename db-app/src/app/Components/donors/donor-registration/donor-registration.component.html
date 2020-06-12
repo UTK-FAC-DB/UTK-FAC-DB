@@ -1,6 +1,6 @@
 <div id="wrap">
 <div id="content-wrap">
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="registerForm">
     <mat-accordion multi="true">
         <mat-expansion-panel id="top-panel">
             <mat-expansion-panel-header>
@@ -36,7 +36,7 @@
         <mat-form-field>
           <mat-label>Race</mat-label>
           <mat-select required formControlName="selectedRace">
-            <mat-option *ngFor="let race of races" [value]="race.value"> 
+            <mat-option *ngFor="let race of races" [value]="race.value">
               {{race.viewValue}}
             </mat-option>
           </mat-select>
@@ -368,7 +368,7 @@
             <textarea matInput formControlName="otherDental"></textarea>
           </mat-form-field>
         </div>
-      </mat-expansion-panel> 
+      </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>Medical History</mat-panel-title>
@@ -604,9 +604,16 @@
           <input matInput type="text" formControlName="informantEmail">
         </mat-form-field>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Added Fields</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div id="additionalDiv"></div>
+      </mat-expansion-panel>
     </mat-accordion>
     <div class="container">
-        <button class="saveButton" mat-raised-button type="submit">Save</button>
+        <button class="cancelButton" mat-raised-button [routerLink]="['/donor-table']">Cancel</button>
+        <button class="saveButton" mat-raised-button type="submit" (click)="onSubmit()">Save</button>
     </div>
 </form>
 </div>

@@ -17,6 +17,7 @@
       color: mat-color($primary, default-contrast);
       position: relative;
       height: 5rem;
+      display:flex;
   
       h2 {
         padding: 0;
@@ -25,6 +26,13 @@
         padding: 1rem;
         font-family: sans-serif;
         line-height: 2.8rem;
+      }
+      button.mat-button {
+        justify-content: center;
+        align-items: center;
+        color: black;
+        font-size: 2rem;
+        width: 100%;
       }
     }
   
@@ -49,6 +57,22 @@
               color: mat-color($foreground, text);
             }
           }
+        }
+      }
+      mat-nav-list {
+        button.mat-button {
+          height: 3rem;
+          line-height: 2.8rem;
+          text-align: left;
+          width: 100%;
+          font-size: 1rem;
+        }
+        mat-slide-toggle {
+          height: 3rem;
+          line-height: 2.8rem;
+          text-align: left;
+          width: 100%;
+          font-size: 1rem;
         }
       }
     }

@@ -3,7 +3,9 @@
     display: inline-block;
     margin: 1rem auto;
 }
-
+.cancelButton {
+    margin-right: 2rem;
+}
 .container {
     width: 100%;
     text-align: center;
@@ -35,7 +37,6 @@
 }
 
 mat-form-field:hover {
-    background-color: lightcyan;
     opacity: 0.3;
 }
 
