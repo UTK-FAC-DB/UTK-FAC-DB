@@ -1,9 +1,17 @@
+import { Time } from '@angular/common';
+
 export interface Donor {
     id: string;
+    flag: string;
+    signDate: Date;
+    enterDate: Date;
     lastName: string;
     firstName: string;
     middleName: string;
     selectedSex: string;
+    maidenName: string;
+    alternativeName: string;
+    suffix: string;
     socialSecurity: string;
     selectedRace: string;
     otherRace: string;
@@ -17,7 +25,9 @@ export interface Donor {
     stateAddress: string;
     zipAddress: string;
     phoneNumber: string;
+    emailAddress: string;
     cityLimits: string;
+    badAddress: boolean;
     motherLast: string;
     motherFirst: string;
     motherMiddle: string;
@@ -31,6 +41,8 @@ export interface Donor {
     stateFather: string;
     heightControl: string;
     weightControl: string;
+    weightUnit: string;
+    weightNote: string;
     weightLoss: string;
     handednessControl: string;
     shoeSize: string;
@@ -44,6 +56,7 @@ export interface Donor {
     childrenNumber: string;
     educationLevel: string;
     militaryService: string;
+    military: boolean;
     socioEconomicStatus: string;
     occupationControl: string;
     industryControl: string;
@@ -92,6 +105,9 @@ export interface Donor {
     habitualActivities: string;
     eyeColor: string;
     otherEyeColor: string;
+    biometrics: boolean;
+    biometricsNumber: number;
+    bioDate: Date;
     tattooControl: string;
     tattooDescription: string;
     tattooLocation: string;
@@ -115,10 +131,11 @@ export interface Donor {
     informantZip: string;
     informantEmail: string;
     deathDate: Date;
-    deathHospital: string;
+    deathInstitution: string;
     deathAddress: string;
     deathCity: string;
     deathCounty: string;
     deathState: string;
     deathZip: string;
+    deathTime: Time;
 }
