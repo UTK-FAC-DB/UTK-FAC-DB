@@ -5,6 +5,7 @@ import { Subscription, BehaviorSubject } from 'rxjs';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { DonorService } from '../donor.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
 
 export interface viewType {
   value: string;
@@ -139,10 +140,16 @@ export class DonorRegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
+      flag: new FormControl(''),
+      signDate: new FormControl(''),
+      enterDate: new FormControl(''),
       lastName: new FormControl(''),
       firstName: new FormControl(''),
       middleName: new FormControl(''),
       selectedSex: new FormControl(''),
+      maidenName: new FormControl(''),
+      alternativeName: new FormControl(''),
+      suffix: new FormControl(''),
       socialSecurity: new FormControl(''),
       selectedRace: new FormControl(''),
       otherRace: new FormControl(''),
@@ -156,7 +163,9 @@ export class DonorRegistrationComponent implements OnInit {
       stateAddress: new FormControl(''),
       zipAddress: new FormControl(''),
       phoneNumber: new FormControl(''),
+      emailAddress: new FormControl(''),
       cityLimits: new FormControl(''),
+      badAddress: new FormControl(''),
       motherLast: new FormControl(''),
       motherFirst: new FormControl(''),
       motherMiddle: new FormControl(''),
@@ -170,6 +179,8 @@ export class DonorRegistrationComponent implements OnInit {
       stateFather: new FormControl(''),
       heightControl: new FormControl(''),
       weightControl: new FormControl(''),
+      weightUnit: new FormControl(''),
+      weightNote: new FormControl(''),
       weightLoss: new FormControl(''),
       handednessControl: new FormControl(''),
       shoeSize: new FormControl(''),
@@ -183,6 +194,7 @@ export class DonorRegistrationComponent implements OnInit {
       childrenNumber: new FormControl(''),
       educationLevel: new FormControl(''),
       militaryService: new FormControl(''),
+      military: new FormControl(''),
       socioEconomicStatus: new FormControl(''),
       occupationControl: new FormControl(''),
       industryControl: new FormControl(''),
@@ -231,6 +243,9 @@ export class DonorRegistrationComponent implements OnInit {
       habitualActivities: new FormControl(''),
       eyeColor: new FormControl(''),
       otherEyeColor: new FormControl(''),
+      biometrics: new FormControl(''),
+      biometricsNumber: new FormControl(''),
+      bioDate: new FormControl(''),
       tattooControl: new FormControl(''),
       tattooDescription: new FormControl(''),
       tattooLocation: new FormControl(''),
@@ -252,7 +267,15 @@ export class DonorRegistrationComponent implements OnInit {
       informantCity: new FormControl(''),
       informantState: new FormControl(''),
       informantZip: new FormControl(''),
-      informantEmail: new FormControl('')
+      informantEmail: new FormControl(''),
+      deathInstitution: new FormControl(''),
+      deathAddress: new FormControl(''),
+      deathCity: new FormControl(''),
+      deathCounty: new FormControl(''),
+      deathState: new FormControl(''),
+      deathZip: new FormControl(''),
+      deathDate: new FormControl(''),
+      deathTime: new FormControl('')
     })
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('donorId')) {
@@ -261,10 +284,16 @@ export class DonorRegistrationComponent implements OnInit {
         this.donor = this.donorService.getDonor(this.donorId);
         console.log(JSON.stringify(this.donor));
         this.registerForm.setValue({
+          flag: this.donor.flag,
+          signDate: this.donor.signDate,
+          enterDate: this.donor.enterDate,
           lastName: this.donor.lastName,
           firstName: this.donor.firstName,
           middleName: this.donor.middleName,
           selectedSex: this.donor.selectedSex,
+          maidenName: this.donor.maidenName,
+          alternativeName: this.donor.alternativeName,
+          suffix: this.donor.suffix,
           socialSecurity: this.donor.socialSecurity,
           selectedRace: this.donor.selectedRace,
           otherRace: this.donor.otherRace,
@@ -278,7 +307,9 @@ export class DonorRegistrationComponent implements OnInit {
           stateAddress: this.donor.stateAddress,
           zipAddress: this.donor.zipAddress,
           phoneNumber: this.donor.phoneNumber,
+          emailAddress: this.donor.emailAddress,
           cityLimits: this.donor.cityLimits,
+          badAddress: this.donor.badAddress,
           motherLast: this.donor.motherLast,
           motherFirst: this.donor.motherFirst,
           motherMiddle: this.donor.motherMiddle,
@@ -292,6 +323,8 @@ export class DonorRegistrationComponent implements OnInit {
           stateFather: this.donor.stateFather,
           heightControl: this.donor.heightControl,
           weightControl: this.donor.weightControl,
+          weightUnit: this.donor.weightUnit,
+          weightNote: this.donor.weightNote,
           weightLoss: this.donor.weightLoss,
           handednessControl: this.donor.handednessControl,
           shoeSize: this.donor.shoeSize,
@@ -305,6 +338,7 @@ export class DonorRegistrationComponent implements OnInit {
           childrenNumber: this.donor.childrenNumber,
           educationLevel: this.donor.educationLevel,
           militaryService: this.donor.militaryService,
+          military: this.donor.military,
           socioEconomicStatus: this.donor.socioEconomicStatus,
           occupationControl: this.donor.occupationControl,
           industryControl: this.donor.industryControl,
@@ -353,6 +387,9 @@ export class DonorRegistrationComponent implements OnInit {
           habitualActivities: this.donor.habitualActivities,
           eyeColor: this.donor.eyeColor,
           otherEyeColor: this.donor.otherEyeColor,
+          biometrics: this.donor.biometrics,
+          biometricsNumber: this.donor.biometricsNumber,
+          bioDate: this.donor.bioDate,
           tattooControl: this.donor.tattooControl,
           tattooDescription: this.donor.tattooDescription,
           tattooLocation: this.donor.tattooLocation,
@@ -374,7 +411,15 @@ export class DonorRegistrationComponent implements OnInit {
           informantCity: this.donor.informantCity,
           informantState: this.donor.informantState,
           informantZip: this.donor.informantZip,
-          informantEmail: this.donor.informantEmail
+          informantEmail: this.donor.informantEmail,
+          deathInstitution: this.donor.deathInstitution,
+          deathAddress: this.donor.deathAddress,
+          deathCity: this.donor.deathCity,
+          deathCounty: this.donor.deathCounty,
+          deathState: this.donor.deathState,
+          deathZip: this.donor.deathZip,
+          deathDate: this.donor.deathDate,
+          deathTime: this.donor.deathTime
         })
       } else {
         this.mode = 'create';
@@ -388,10 +433,16 @@ export class DonorRegistrationComponent implements OnInit {
     if (this.mode === 'create') {
       this.donorService.createDonor({
         id: null,
+        flag: this.flag.value,
+        signDate: this.signDate.value,
+        enterDate: this.enterDate.value,
         lastName: this.lastName.value,
         firstName: this.firstName.value,
         middleName: this.middleName.value,
         selectedSex: this.selectedSex.value,
+        maidenName: this.maidenName.value,
+        alternativeName: this.alternativeName.value,
+        suffix: this.suffix.value,
         socialSecurity: this.socialSecurity.value,
         selectedRace: this.selectedRace.value,
         otherRace: this.otherRace.value,
@@ -405,7 +456,9 @@ export class DonorRegistrationComponent implements OnInit {
         stateAddress: this.stateAddress.value,
         zipAddress: this.zipAddress.value,
         phoneNumber: this.phoneNumber.value,
+        emailAddress: this.emailAddress.value,
         cityLimits: this.cityLimits.value,
+        badAddress: this.badAddress.value,
         motherLast: this.motherLast.value,
         motherFirst: this.motherFirst.value,
         motherMiddle: this.motherMiddle.value,
@@ -419,6 +472,8 @@ export class DonorRegistrationComponent implements OnInit {
         stateFather: this.stateFather.value,
         heightControl: this.heightControl.value,
         weightControl: this.weightControl.value,
+        weightUnit: this.weightUnit.value,
+        weightNote: this.weightNote.value,
         weightLoss: this.weightLoss.value,
         handednessControl: this.handednessControl.value,
         shoeSize: this.shoeSize.value,
@@ -432,6 +487,7 @@ export class DonorRegistrationComponent implements OnInit {
         childrenNumber: this.childrenNumber.value,
         educationLevel: this.educationLevel.value,
         militaryService: this.militaryService.value,
+        military: this.military.value,
         socioEconomicStatus: this.socioEconomicStatus.value,
         occupationControl: this.occupationControl.value,
         industryControl: this.industryControl.value,
@@ -480,6 +536,9 @@ export class DonorRegistrationComponent implements OnInit {
         habitualActivities: this.habitualActivities.value,
         eyeColor: this.eyeColor.value,
         otherEyeColor: this.otherEyeColor.value,
+        biometrics: this.biometrics.value,
+        biometricsNumber: this.biometricsNumber.value,
+        bioDate: this.bioDate.value,
         tattooControl: this.tattooControl.value,
         tattooDescription: this.tattooDescription.value,
         tattooLocation: this.tattooLocation.value,
@@ -501,15 +560,29 @@ export class DonorRegistrationComponent implements OnInit {
         informantCity: this.informantCity.value,
         informantState: this.informantState.value,
         informantZip: this.informantZip.value,
-        informantEmail: this.informantEmail.value
+        informantEmail: this.informantEmail.value,
+        deathInstitution: this.deathInstitution.value,
+        deathAddress: this.deathAddress.value,
+        deathCity: this.deathCity.value,
+        deathCounty: this.deathCounty.value,
+        deathState: this.deathState.value,
+        deathZip: this.deathZip.value,
+        deathDate: this.deathDate.value,
+        deathTime: this.deathTime.value,
       })
     } else {
       this.donorService.updateDonor(this.donorId, {
         id: null,
+        flag: this.flag.value,
+        signDate: this.signDate.value,
+        enterDate: this.enterDate.value,
         lastName: this.lastName.value,
         firstName: this.firstName.value,
         middleName: this.middleName.value,
         selectedSex: this.selectedSex.value,
+        maidenName: this.maidenName.value,
+        alternativeName: this.alternativeName.value,
+        suffix: this.suffix.value,
         socialSecurity: this.socialSecurity.value,
         selectedRace: this.selectedRace.value,
         otherRace: this.otherRace.value,
@@ -523,7 +596,9 @@ export class DonorRegistrationComponent implements OnInit {
         stateAddress: this.stateAddress.value,
         zipAddress: this.zipAddress.value,
         phoneNumber: this.phoneNumber.value,
+        emailAddress: this.emailAddress.value,
         cityLimits: this.cityLimits.value,
+        badAddress: this.badAddress.value,
         motherLast: this.motherLast.value,
         motherFirst: this.motherFirst.value,
         motherMiddle: this.motherMiddle.value,
@@ -537,6 +612,8 @@ export class DonorRegistrationComponent implements OnInit {
         stateFather: this.stateFather.value,
         heightControl: this.heightControl.value,
         weightControl: this.weightControl.value,
+        weightUnit: this.weightUnit.value,
+        weightNote: this.weightNote.value,
         weightLoss: this.weightLoss.value,
         handednessControl: this.handednessControl.value,
         shoeSize: this.shoeSize.value,
@@ -550,6 +627,7 @@ export class DonorRegistrationComponent implements OnInit {
         childrenNumber: this.childrenNumber.value,
         educationLevel: this.educationLevel.value,
         militaryService: this.militaryService.value,
+        military: this.military.value,
         socioEconomicStatus: this.socioEconomicStatus.value,
         occupationControl: this.occupationControl.value,
         industryControl: this.industryControl.value,
@@ -598,6 +676,9 @@ export class DonorRegistrationComponent implements OnInit {
         habitualActivities: this.habitualActivities.value,
         eyeColor: this.eyeColor.value,
         otherEyeColor: this.otherEyeColor.value,
+        biometrics: this.biometrics.value,
+        biometricsNumber: this.biometricsNumber.value,
+        bioDate: this.bioDate.value,
         tattooControl: this.tattooControl.value,
         tattooDescription: this.tattooDescription.value,
         tattooLocation: this.tattooLocation.value,
@@ -619,16 +700,30 @@ export class DonorRegistrationComponent implements OnInit {
         informantCity: this.informantCity.value,
         informantState: this.informantState.value,
         informantZip: this.informantZip.value,
-        informantEmail: this.informantEmail.value
+        informantEmail: this.informantEmail.value,
+        deathInstitution: this.deathInstitution.value,
+        deathAddress: this.deathAddress.value,
+        deathCity: this.deathCity.value,
+        deathCounty: this.deathCounty.value,
+        deathState: this.deathState.value,
+        deathZip: this.deathZip.value,
+        deathDate: this.deathDate.value,
+        deathTime: this.deathTime.value
       });
     }
   }
 
   get form() { return this.registerForm; }
+  get flag() { return this.registerForm.get('flag'); }
+  get signDate() { return this.registerForm.get('signDate'); }
+  get enterDate() { return this.registerForm.get('enterDate'); }
   get firstName() { return this.registerForm.get('firstName'); }
   get lastName() { return this.registerForm.get('lastName'); }
   get middleName() { return this.registerForm.get('middleName'); }
   get selectedSex() { return this.registerForm.get('selectedSex'); }
+  get maidenName() { return this.registerForm.get('maidenName'); }
+  get alternativeName() { return this.registerForm.get('alternativeName'); }
+  get suffix() { return this.registerForm.get('suffix'); }
   get socialSecurity() { return this.registerForm.get('socialSecurity'); }
   get selectedRace() { return this.registerForm.get('selectedRace'); }
   get otherRace() { return this.registerForm.get('otherRace'); }
@@ -642,7 +737,9 @@ export class DonorRegistrationComponent implements OnInit {
   get stateAddress() { return this.registerForm.get('stateAddress'); }
   get zipAddress() { return this.registerForm.get('zipAddress'); }
   get phoneNumber() { return this.registerForm.get('phoneNumber'); }
+  get emailAddress() { return this.registerForm.get('emailAddress'); }
   get cityLimits() { return this.registerForm.get('cityLimits'); }
+  get badAddress() { return this.registerForm.get('badAddress'); }
   get motherLast() { return this.registerForm.get('motherLast'); }
   get motherFirst() { return this.registerForm.get('motherFirst'); }
   get motherMiddle() { return this.registerForm.get('motherMiddle'); }
@@ -656,6 +753,8 @@ export class DonorRegistrationComponent implements OnInit {
   get stateFather() { return this.registerForm.get('stateFather'); }
   get heightControl() { return this.registerForm.get('heightControl'); }
   get weightControl() { return this.registerForm.get('weightControl'); }
+  get weightUnit() { return this.registerForm.get('weightUnit'); }
+  get weightNote() { return this.registerForm.get('weightNote'); }
   get weightLoss() { return this.registerForm.get('weightLoss'); }
   get handednessControl() { return this.registerForm.get('handednessControl'); }
   get shoeSize() { return this.registerForm.get('shoeSize'); }
@@ -669,6 +768,7 @@ export class DonorRegistrationComponent implements OnInit {
   get childrenNumber() { return this.registerForm.get('childrenNumber'); }
   get educationLevel() { return this.registerForm.get('educationLevel'); }
   get militaryService() { return this.registerForm.get('militaryService'); }
+  get military() { return this.registerForm.get('military'); }
   get socioEconomicStatus() { return this.registerForm.get('socioEconomicStatus'); }
   get occupationControl() { return this.registerForm.get('occupationControl'); }
   get industryControl() { return this.registerForm.get('industryControl'); }
@@ -717,6 +817,9 @@ export class DonorRegistrationComponent implements OnInit {
   get habitualActivities() { return this.registerForm.get('habitualActivities'); }
   get eyeColor() { return this.registerForm.get('eyeColor'); }
   get otherEyeColor() { return this.registerForm.get('otherEyeColor'); }
+  get biometrics() { return this.registerForm.get('biometrics'); }
+  get biometricsNumber() { return this.registerForm.get('biometricsNumber'); }
+  get bioDate() { return this.registerForm.get('bioDate'); }
   get tattooControl() { return this.registerForm.get('tattooControl'); }
   get tattooDescription() { return this.registerForm.get('tattooDescription'); }
   get tattooLocation() { return this.registerForm.get('tattooLocation'); }
@@ -739,6 +842,14 @@ export class DonorRegistrationComponent implements OnInit {
   get informantState() { return this.registerForm.get('informantState'); }
   get informantZip() { return this.registerForm.get('informantZip'); }
   get informantEmail() { return this.registerForm.get('informantEmail'); }
+  get deathInstitution() { return this.registerForm.get('deathInstitution'); }
+  get deathAddress() { return this.registerForm.get('deathAddress'); }
+  get deathCity() { return this.registerForm.get('deathCity'); }
+  get deathCounty() { return this.registerForm.get('deathCounty'); }
+  get deathState() { return this.registerForm.get('deathState'); }
+  get deathZip() { return this.registerForm.get('deathZip'); }
+  get deathDate() { return this.registerForm.get('deathDate'); }
+  get deathTime() { return this.registerForm.get('deathTime'); }
 
   loadForm(data: Donor) {
     console.log(JSON.stringify(this.donor));
