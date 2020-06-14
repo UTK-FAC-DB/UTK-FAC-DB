@@ -26,6 +26,7 @@ import { InventoryCremationTableComponent } from 'src/app/Components/inventory/i
 import { InventoryAdultTableComponent } from 'src/app/Components/inventory/inventory-adult-table/inventory-adult-table.component';
 import { InventorySubadultTableComponent } from 'src/app/Components/inventory/inventory-subadult-table/inventory-subadult-table.component';
 import { SidenavComponent } from './Components/sidenav/sidenav.component';
+import { DonorCRegistrationComponent } from './Components/donors/donor-c-registration/donor-c-registration.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SidenavComponent } from './Components/sidenav/sidenav.component';
     InventoryCremationTableComponent,
     InventoryAdultTableComponent,
     InventorySubadultTableComponent,
-    SidenavComponent
+    SidenavComponent,
+    DonorCRegistrationComponent
   ],
   imports: [
     BrowserModule,

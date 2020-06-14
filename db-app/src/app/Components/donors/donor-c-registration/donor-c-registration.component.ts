@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Donor } from 'src/app/Exports/donor';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { DonorService } from '../../../Services/Donor/donor.service';
+import { DonorService } from '../../../Services/Donor/controlDonor.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 export interface viewString {
@@ -16,11 +16,11 @@ export interface viewNumber {
 }
 
 @Component({
-  selector: 'app-donor-registration',
-  templateUrl: './donor-registration.component.html',
-  styleUrls: ['./donor-registration.component.css']
+  selector: 'app-donor-c-registration',
+  templateUrl: './donor-c-registration.component.html',
+  styleUrls: ['./donor-c-registration.component.css']
 })
-export class DonorRegistrationComponent implements OnInit {
+export class DonorCRegistrationComponent implements OnInit {
   public registerForm : FormGroup;
   private mode = 'create';
   private donorId: string;

@@ -114,4 +114,11 @@ export interface Donor {
     informantState: string;
     informantZip: string;
     informantEmail: string;
+    deathDate: Date;
+    deathHospital: string;
+    deathAddress: string;
+    deathCity: string;
+    deathCounty: string;
+    deathState: string;
+    deathZip: string;
 }

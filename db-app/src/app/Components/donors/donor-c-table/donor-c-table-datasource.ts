@@ -2,15 +2,17 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
-import { Observable, of as observableOf, merge, BehaviorSubject, Subject, Subscription, combineLatest } from 'rxjs';
+import { Observable, of as observableOf, merge, Subscription, BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { Donor } from 'src/app/Exports/donor';
 import { DonorService } from 'src/app/Services/Donor/controlDonor.service';
 import { _isNumberValue } from '@angular/cdk/coercion';
-import { Donor } from 'src/app/Exports/donor';
+import {Filters} from 'src/app/Exports/filters';
+import { isDefined } from '@angular/compiler/src/util';
 
 const MAX_SAFE_INTEGER = 9007199254740991;
 
 /**
- * Data source for the DonorCTable view. This class should
+ * Data source for the DonorTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
@@ -22,6 +24,8 @@ export class DonorCTableDataSource extends DataSource<Donor> {
 
   /** Stream that emits when a new filter string is set on the data source. */
   private readonly _filter = new BehaviorSubject<string>('');
+
+  private readonly _multipleFilter = new BehaviorSubject<Filters>(null);
 
   /** Used to react to internal changes of the paginator that are made by the data source itself. */
   private readonly _internalPageChanges = new Subject<void>();
@@ -41,6 +45,8 @@ export class DonorCTableDataSource extends DataSource<Donor> {
    * shown to the user rather than all the data.
    */
   filteredData: Donor[];
+  multipleFilteredData: Donor[];
+  rangeAge: boolean = false;
 
   /** Array of data that should be rendered by the table, where each object represents one row. */
   get data() { return this._data.value; }
@@ -52,6 +58,9 @@ export class DonorCTableDataSource extends DataSource<Donor> {
    */
   get filter(): string { return this._filter.value; }
   set filter(filter: string) { this._filter.next(filter); }
+
+  get multipleFilter(): Filters { return this._multipleFilter.value; }
+  set multipleFilter(filters: Filters) { this._multipleFilter.next(filters); }
 
   /**
    * Instance of the MatSort directive used by the table to control its sorting. Sort changes
@@ -166,7 +175,7 @@ export class DonorCTableDataSource extends DataSource<Donor> {
       // https://en.wikipedia.org/wiki/List_of_Unicode_characters
       return currentTerm + (data as {[key: string]: any})[key] + '◬';
     }, '').toLowerCase();
-
+    console.log(dataStr);
     // Transform the filter by converting it to lowercase and removing whitespace.
     const transformedFilter = filter.trim().toLowerCase();
 
@@ -207,8 +216,10 @@ export class DonorCTableDataSource extends DataSource<Donor> {
         ) as Observable<PageEvent|void> :
         observableOf(null);
     const dataStream = this._data;
+    const multipleFilteredData = combineLatest([dataStream, this._multipleFilter])
+      .pipe(map(([data]) => this._multipleFilterData(data)));
     // Watch for base data or filter changes to provide a filtered set of data.
-    const filteredData = combineLatest([dataStream, this._filter])
+    const filteredData = combineLatest([multipleFilteredData, this._filter])
       .pipe(map(([data]) => this._filterData(data)));
     // Watch for filtered data or sort changes to provide an ordered set of data.
     const orderedData = combineLatest([filteredData, sortChange])
@@ -236,6 +247,36 @@ export class DonorCTableDataSource extends DataSource<Donor> {
     if (this.paginator) { this._updatePaginator(this.filteredData.length); }
 
     return this.filteredData;
+  }
+
+  _multipleFilterData(data: Donor[]): Donor[] {
+    let count = 0;
+    let check = 0;
+    if (this.multipleFilter) {
+      this.multipleFilteredData = data.filter(donor => {
+        for (let key in this.multipleFilter) {
+          if (this.multipleFilter[key]) {
+            count++;
+            if (Array.isArray(this.multipleFilter[key])) {
+              for (let index in this.multipleFilter[key]) {
+                if (isDefined(donor[key][index]) && donor[key] == this.multipleFilter[key][index]) { 
+                  check++; 
+                }
+              }
+            } else {
+              if (isDefined(donor[key]) && donor[key] == this.multipleFilter[key]) { check++; }
+            }
+          }
+        }
+        if (check === count) { return true; } 
+        else { return false; }
+      })
+    } else {
+      this.multipleFilteredData = data;
+    }
+
+    if (this.paginator) { this._updatePaginator(this.multipleFilteredData.length); }
+    return this.multipleFilteredData;
   }
 
   /**
@@ -301,4 +342,9 @@ export class DonorCTableDataSource extends DataSource<Donor> {
    * @docs-private
    */
   disconnect() { }
+}
+
+/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
+function compare(a: string | number, b: string | number, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

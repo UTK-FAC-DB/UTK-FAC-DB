@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="table-title">
+    <h1>Donor Registration Table</h1>
+  </div>
   <div class="table-actions">
     <a class="buttonStyle deleteButton" color="warn" mat-raised-button (click)="onDelete(selection.selected)">Delete</a>
     <a class="buttonStyle exportButton" mat-raised-button (click)="onExport(selection.selected)">Export</a>
@@ -21,7 +24,7 @@
               <mat-divider vertical=true></mat-divider>
               <div class="one">
                 <button mat-button class="filterSelectionButton" (click)="toggleFunction('hairMenu')">Hair Color</button>
-                <div class="hairMenu" id="hairMenu" style="display: none;">
+                <div class="hairMenu toggle-menu" id="hairMenu" style="display: none;">
                   <mat-selection-list formControlName="hairColor">
                     <mat-list-option *ngFor="let type of hairType" [value]="type.value">
                       {{type.view}}
@@ -32,7 +35,7 @@
               <mat-divider vertical=true></mat-divider>
               <div class="two">
                 <button mat-button class="filterSelectionButton" (click)="toggleFunction('sexMenu')">Sex</button>
-                <div id="sexMenu" style="display: none;">
+                <div class="toggle-menu" id="sexMenu" style="display: none;">
                   <mat-selection-list formControlName="selectedSex">
                     <mat-list-option *ngFor="let type of sexType" [value]="type.value">
                       {{type.view}}
@@ -43,7 +46,7 @@
               <mat-divider vertical=true></mat-divider>
               <div class="three">
                 <button mat-button class="filterSelectionButton" (click)="toggleFunction('raceMenu')">Race</button>
-                <div id="raceMenu" style="display: none;">
+                <div class="toggle-menu" id="raceMenu" style="display: none;">
                   <mat-selection-list formControlName="selectedRace">
                     <mat-list-option *ngFor="let type of raceType" [value]="type.value">
                       {{type.view}}
@@ -54,7 +57,7 @@
               <mat-divider vertical=true></mat-divider>
               <div class="four">
                 <button mat-button class="filterSelectionButton" (click)="toggleFunction('bloodMenu')">Blood Types</button>
-                <div id="bloodMenu" style="display: none;">
+                <div class="toggle-menu" id="bloodMenu" style="display: none;">
                   <mat-selection-list formControlName="bloodType">
                     <mat-list-option *ngFor="let type of bloodType" [value]="type.value">
                       {{type.view}}
@@ -144,7 +147,7 @@
           </button>
           <mat-menu #optionsMenu="matMenu">
             <button mat-menu-item>Move to Control</button>
-            <button mat-menu-item [routerLink]="['/edit', row.id]">Edit</button>
+            <button mat-menu-item [routerLink]="['/edit-donor', row.id]">Edit</button>
             <button mat-menu-item (click)="onSingleDelete(row.id)">Delete</button>
           </mat-menu>
         </td>

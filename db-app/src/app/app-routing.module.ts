@@ -6,6 +6,7 @@ import { LoginComponent } from 'src/app/Components/user/login/login.component';
 import { RegisterComponent } from 'src/app/Components/user/register/register.component';
 import { UserPageComponent } from 'src/app/Components/user/user-page/user-page.component'
 import { DonorCTableComponent } from 'src/app/Components/donors/donor-c-table/donor-c-table.component';
+import { DonorCRegistrationComponent } from 'src/app/Components/donors/donor-c-registration/donor-c-registration.component';
 import { InventoryCremationTableComponent } from 'src/app/Components/inventory/inventory-cremation-table/inventory-cremation-table.component';
 import { InventorySubadultTableComponent } from 'src/app/Components/inventory/inventory-subadult-table/inventory-subadult-table.component';
 import { InventoryAdultTableComponent } from 'src/app/Components/inventory/inventory-adult-table/inventory-adult-table.component';
@@ -18,10 +19,12 @@ const routes: Routes = [
   { path: 'donor-table', component: DonorTableComponent, canActivate: [AuthGuardService]},
   { path: 'donor-registration', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
   { path: 'donor-c-table', component: DonorCTableComponent, canActivate: [AuthGuardService]},
+  { path: 'donor-c-registration', component: DonorCRegistrationComponent, canActivate: [AuthGuardService]},
   { path: 'inventory-cremation-table', component: InventoryCremationTableComponent, canActivate: [AuthGuardService]},
   { path: 'inventory-subadult-table', component: InventorySubadultTableComponent, canActivate: [AuthGuardService]},
   { path: 'inventory-adult-table', component: InventoryAdultTableComponent, canActivate: [AuthGuardService]},
-  { path: 'edit/:donorId', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
+  { path: 'edit-donor/:donorId', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
+  { path: 'edit-donor-c/:donorId', component: DonorCRegistrationComponent, canActivate: [AuthGuardService]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'setting', component: SettingsComponent, canActivate: [AdminGuardService] },

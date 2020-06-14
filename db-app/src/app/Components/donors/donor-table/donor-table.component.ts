@@ -6,13 +6,10 @@ import { DonorTableDataSource } from './donor-table-datasource';
 import { Donor } from 'src/app/Exports/donor';
 import { DonorService } from 'src/app/Services/Donor/donor.service';
 import { SelectionModel } from '@angular/cdk/collections';
-import { NgForm, FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import { MatCheckbox } from '@angular/material/checkbox';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ExportCSVService } from 'src/app/Services/Utility/export-csv.service';
-import { element } from 'protractor';
 import { MatAccordion } from '@angular/material/expansion';
 import { Globals } from 'src/app/globals';
-import { Observable } from 'rxjs';
 import {Filters} from 'src/app/Exports/filters';
 
 export interface Types {
@@ -36,8 +33,6 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
   filterPanelState: boolean =  false;
   displayedColumns = ['select', 'firstName', 'lastName', 'dob', 'actions'];
   filters: Filters;
-  hairToggle: boolean = false;
-
   
   constructor(private formBuilder: FormBuilder, private donorService: DonorService, private exportService: ExportCSVService, private global : Globals) {}
   
@@ -102,19 +97,33 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
       return '${this.selection.isSelected(row) ? deselect : select} row ${row.position + 1}';
     }
   }
-  
+  //applyFilter is a method that applies the search field
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  
+  //onApplyFilters is a method that applies the advanced filters panel
   onApplyFilters(): void {
+    //this updates the datasource multipleFilter field with the falue of the filter form
+    //which updates the table with the correct rows
     this.dataSource.multipleFilter = this.filterForm.value as Filters;
   }
+  //reset filters in the advanced filters panel
   onResetFilters(): void {
-    
-  }
+    //resets all the fields in the advanced filters panel
+    this.filterForm.reset();
 
+    //this is used for closing all the open selection menus in the advanced filters panel
+    let x = document.getElementsByClassName("toggle-menu");
+    for (let i = 0; i < x.length; i++) {
+      let id = x[i].id;
+      let element = document.getElementById(id);
+      if (element.style.display === 'block') {
+        this.toggleFunction(id);
+      }
+    }
+  }
+  //toggle function to control the toggle selections in the advanced filters panel
   toggleFunction(menu: string): void {
     let x = document.getElementById(menu);
     if (x.style.display === 'none') { x.style.display = 'block'; } 
