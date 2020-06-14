@@ -1,0 +1,69 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over">
+      <div class="sidenav-header">
+        <button mat-button (click)="toggleSidenav()">Menu</button>
+      </div>
+      <div class="sidenav-content">
+        <mat-nav-list>
+          <h2 matSubheader>Donor Tables</h2>
+          <button mat-button [routerLink]="['/donor-table']" routerLinkActive="active" (click)="toggleSidenav()">
+            <mat-icon>table_view</mat-icon>
+            Donor Registration
+          </button>
+          <button mat-button [routerLink]="['/donor-c-table']" routerLinkActive="active" (click)="toggleSidenav()">
+            <mat-icon>table_view</mat-icon>
+            Donor Control
+          </button>
+        </mat-nav-list>
+        <mat-divider></mat-divider>
+        <mat-nav-list>
+          <h2 matSubheader>Inventory Tables</h2>
+          <button mat-button [routerLink]="['/inventory-cremation-table']" routerLinkActive="active">
+            <mat-icon>table_view</mat-icon>
+            Cremation
+          </button>
+          <button mat-button [routerLink]="['/inventory-subadult-table']" routerLinkActive="active">
+            <mat-icon>table_view</mat-icon>
+            Sub Adult
+          </button> 
+          <button mat-button [routerLink]="['/inventory-adult-table']" routerLinkActive="active">
+            <mat-icon>table_view</mat-icon>
+            Adult
+          </button> 
+        </mat-nav-list>
+        <mat-divider></mat-divider>
+        <mat-nav-list>
+          <h2 matSubheader>Donor Metrics Tables</h2>
+          <button mat-button>
+            <mat-icon>table_view</mat-icon>
+            Post Craniotomy
+          </button>
+          <button mat-button>
+            <mat-icon>table_view</mat-icon>
+            Fully
+          </button>
+        </mat-nav-list>
+        <mat-divider></mat-divider>
+        <mat-nav-list>
+          <h2 matSubheader>Options</h2>
+          <button mat-button [routerLink]="['/setting']" routerLinkActive="router-link-active" (click)="toggleSidenav()">
+            <mat-icon>settings</mat-icon>
+            Admin Panel
+          </button>
+          <button mat-button (click)="toggleTheme()">
+            <mat-icon>invert_colors</mat-icon>
+            Change Theme
+          </button>
+        </mat-nav-list>
+        <mat-divider></mat-divider>
+        <mat-nav-list>
+          <h2 matSubheader>Logout</h2>
+          <button mat-button (click)="toggleSidenav()" (click)="auth.logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            Logout
+          </button>
+        </mat-nav-list>
+      </div>
+    </mat-sidenav>
+    <ng-content></ng-content>
+  </mat-sidenav-container>

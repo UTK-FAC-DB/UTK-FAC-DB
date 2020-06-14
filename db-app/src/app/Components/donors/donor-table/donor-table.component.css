@@ -1,0 +1,99 @@
+.full-width-table {
+  width: 100%;
+}
+
+.container {
+  width: 80%;
+  position: fixed;
+  margin: 10%;
+  margin-top: 1%;
+}
+.filtering{
+  font-size: 14px;
+}
+.searchBar {
+  width: 30rem;
+}
+a {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+.mat-option {
+  width: 3rem;
+}
+.filterButton {
+  float: right;
+  background-color: white;
+  color: black;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.resetButton {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.filterSelectionBox {
+  font-weight: normal;
+  margin-left: 1rem;
+  float: center;
+}
+.filterType {
+  margin-left: 1rem;
+}
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+  display: block;
+  height: 30px;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  padding: 0;
+  position: relative;
+}
+.tab-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: space-between;
+}
+
+.one {
+  flex: 1;
+}
+
+.two {
+  flex: 1;
+}
+.three {
+  flex: 2;
+}
+.four {
+  flex: 1;
+}
+.five {
+  flex: 1;
+}
+.buttonStyle {
+  float: right;
+}
+.deleteButton {
+  color: white;
+}
+.exportButton {
+  background-color: green;
+  color: white;
+}
+.mat-radio-button {
+  margin-left: 1rem;
+}
+.spinner-container {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  background-color: #fafafa; 
+  box-shadow:0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12)
+}
+.filteringPanel {
+  margin: 1rem;
+}
+.filterSelectionButton {
+  width: 100%;
+}

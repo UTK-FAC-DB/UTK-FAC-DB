@@ -1,0 +1,74 @@
+.saveButton {
+    text-align: center;
+    display: inline-block;
+    margin: 1rem auto;
+}
+.cancelButton {
+    margin-right: 2rem;
+}
+.container {
+    width: 100%;
+    text-align: center;
+}
+
+.panel {
+    margin-top: 1rem;
+}
+
+.month {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    width: 5%;
+}
+
+.inputText {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.inputSelect {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.inputCheckbox {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+mat-form-field:hover {
+    opacity: 0.3;
+}
+
+mat-label:hover {
+    color: black;
+}
+
+mat-spinner {
+    margin: auto;
+}
+
+mat-expansion-panel {
+    overflow-x: hidden;
+}
+#wrap {
+    width: 100vw;
+}
+#content-wrap {
+    margin: 0 auto;
+    width: 80%;
+}
+#top-panel {
+    margin-top: 1rem;
+}
+.subtitle {
+    margin-right: 0.5rem;
+}
+.inline-subtitle {
+    margin-left: 1rem;
+}
+.dentalContainer {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+}

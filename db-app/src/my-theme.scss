@@ -2,9 +2,38 @@
 
 @include mat-core();
 
-$my-theme-primary: mat-palette($mat-amber, 800);
+/****************
+    Theming
+*****************/
+
+@import "app/Components/sidenav/sidenav.component";
+@mixin custom-components-theme($theme) {
+    @include sidenav-theme($theme);
+}
+
+//Theme Colors
+$my-theme-primary: mat-palette($mat-orange, 800);
 $my-theme-accent: mat-palette($mat-gray, 700);
+$my-theme-warn: mat-palette($mat-red);
 
-$my-theme: mat-light-theme($my-theme-primary, $my-theme-accent);
+//Dark Theme
+$my-theme-dark: mat-dark-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
+//Light Theme
+$my-theme-light: mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
 
-@include angular-material-theme($my-theme);
+//Includes for Dark Theme
+.dark-theme {
+    @include angular-material-theme($my-theme-dark);
+    @include custom-components-theme($my-theme-dark);
+}
+
+//Includes for Light Theme
+.light-theme {
+    @include angular-material-theme($my-theme-light);
+    @include custom-components-theme($my-theme-light);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}

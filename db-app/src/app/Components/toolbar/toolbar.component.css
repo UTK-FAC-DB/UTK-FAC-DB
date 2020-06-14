@@ -1,0 +1,12 @@
+.fill-remaining-space {    
+    flex: 1 1 auto;
+}
+
+.menu-icon{
+    padding-right: 1rem;
+    cursor: pointer;
+}
+
+.black-text {
+    color: black;
+}
