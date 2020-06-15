@@ -160,15 +160,7 @@ export class DonorRegistrationComponent implements OnInit {
       informantCity: new FormControl(''),
       informantState: new FormControl(''),
       informantZip: new FormControl(''),
-      informantEmail: new FormControl(''),
-      deathDate: new FormControl(''),
-      deathInstitution: new FormControl(''),
-      deathAddress: new FormControl(''),
-      deathCity: new FormControl(''),
-      deathCounty: new FormControl(''),
-      deathState: new FormControl(''),
-      deathZip: new FormControl(''),
-      deathTime: new FormControl('')
+      informantEmail: new FormControl('')
     })
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('donorId')) {
@@ -304,15 +296,7 @@ export class DonorRegistrationComponent implements OnInit {
           informantCity: this.donor.informantCity,
           informantState: this.donor.informantState,
           informantZip: this.donor.informantZip,
-          informantEmail: this.donor.informantEmail,
-          deathDate: this.donor.deathDate,
-          deathInstitution: this.donor.deathInstitution,
-          deathAddress: this.donor.deathAddress,
-          deathCity: this.donor.deathCity,
-          deathCounty: this.donor.deathCounty,
-          deathState: this.donor.deathState,
-          deathZip: this.donor.deathZip,
-          deathTime: this.donor.deathTime
+          informantEmail: this.donor.informantEmail
         })
       } else {
         this.mode = 'create';
@@ -454,14 +438,14 @@ export class DonorRegistrationComponent implements OnInit {
         informantState: this.informantState.value,
         informantZip: this.informantZip.value,
         informantEmail: this.informantEmail.value,
-        deathDate: this.deathDate.value,
-        deathInstitution: this.deathInstitution.value,
-        deathAddress: this.deathAddress.value,
-        deathCity: this.deathCity.value,
-        deathCounty: this.deathCounty.value,
-        deathState: this.deathState.value,
-        deathZip: this.deathZip.value,
-        deathTime: this.deathTime.value
+        deathDate: null,
+        deathInstitution: '',
+        deathAddress: '',
+        deathCity: '',
+        deathCounty: '',
+        deathState: '',
+        deathZip: '',
+        deathTime: null
       })
     } else {
       this.donorService.updateDonor(this.donorId, {
@@ -594,14 +578,14 @@ export class DonorRegistrationComponent implements OnInit {
         informantState: this.informantState.value,
         informantZip: this.informantZip.value,
         informantEmail: this.informantEmail.value,
-        deathDate: this.deathDate.value,
-        deathInstitution: this.deathInstitution.value,
-        deathAddress: this.deathAddress.value,
-        deathCity: this.deathCity.value,
-        deathCounty: this.deathCounty.value,
-        deathState: this.deathState.value,
-        deathZip: this.deathZip.value,
-        deathTime: this.deathTime.value
+        deathDate: null,
+        deathInstitution: '',
+        deathAddress: '',
+        deathCity: '',
+        deathCounty: '',
+        deathState: '',
+        deathZip: '',
+        deathTime: null
       });
     }
   }
@@ -735,15 +719,6 @@ export class DonorRegistrationComponent implements OnInit {
   get informantState() { return this.registerForm.get('informantState'); }
   get informantZip() { return this.registerForm.get('informantZip'); }
   get informantEmail() { return this.registerForm.get('informantEmail'); }
-  get deathDate() { return this.registerForm.get('deathDate'); }
-  get deathInstitution() { return this.registerForm.get('deathInstitution'); }
-  get deathAddress() { return this.registerForm.get('deathAddress'); }
-  get deathCity() { return this.registerForm.get('deathCity'); }
-  get deathCounty() { return this.registerForm.get('deathCounty'); }
-  get deathState() { return this.registerForm.get('deathState'); }
-  get deathZip() { return this.registerForm.get('deathZip'); }
-  get deathTime() { return this.registerForm.get('deathTime'); }
-
 
   socioEconomicStatusTypes: viewString[] = [
     {value: 'lower', viewValue: 'Lower'},

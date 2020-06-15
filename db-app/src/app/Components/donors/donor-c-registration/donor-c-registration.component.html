@@ -6,6 +6,29 @@
                 <mat-expansion-panel-header>
                     <mat-panel-title>General and Contact Information</mat-panel-title>
                 </mat-expansion-panel-header>
+                <b class="subtitle">Flag:</b>
+                <mat-form-field>
+                  <mat-label>Yes/No</mat-label>
+                  <mat-select required formControlName="flag">
+                    <mat-option value="true">Yes</mat-option>
+                    <mat-option value="false">No</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Date Signed:</b>
+                <mat-form-field>
+                  <mat-label>Date Signed</mat-label>
+                  <input matInput type="text" [matDatepicker]="SignDatepicker" formControlName="signDate">
+                  <mat-datepicker-toggle matSuffix [for]="SignDatepicker"></mat-datepicker-toggle>
+                  <mat-datepicker #SignDatepicker></mat-datepicker>
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Date Entered:</b>
+                <mat-form-field>
+                  <mat-label>Date Entered</mat-label>
+                  <input matInput type="text" [matDatepicker]="EnterDatepicker" required formControlName="enterDate">
+                  <mat-datepicker-toggle matSuffix [for]="EnterDatepicker"></mat-datepicker-toggle>
+                  <mat-datepicker #EnterDatepicker></mat-datepicker>
+                </mat-form-field>
+                <br>
               <b class="subtitle">Name:</b>
               <mat-form-field>
                   <input matInput type="text" required placeholder="Last Name" formControlName="lastName">
@@ -620,7 +643,7 @@
             <b class="subtitle">Institution/Hospital:</b>
             <mat-form-field style="width: 50%;">
                 <mat-label>Institution/Hospital</mat-label>
-                <input matInput type="text" formControlName="deathHospital">
+                <input matInput type="text" formControlName="deathInstitution">
             </mat-form-field>
             <br>
             <b class="subtitle">Address:</b>

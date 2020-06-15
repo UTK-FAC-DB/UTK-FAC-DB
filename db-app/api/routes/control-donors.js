@@ -17,10 +17,16 @@ router.get('', (req, res, next) => {
 router.post('', (req, res, next) => {
     console.log("Adding new donor");
     const donor = new Donor({
+        flag: req.body.flag,
+        signDate: req.body.signDate,
+        enterDate: req.body.enterDate,
         lastName: req.body.lastName,
         firstName: req.body.firstName,
         middleName: req.body.middleName,
         selectedSex: req.body.selectedSex,
+        maidenName: req.body.maidenName,
+        alternativeName: req.body.alternativeName,
+        suffix: req.body.suffix,
         socialSecurity: req.body.socialSecurity,
         selectedRace: req.body.selectedRace,
         otherRace: req.body.otherRace,
@@ -34,7 +40,9 @@ router.post('', (req, res, next) => {
         stateAddress: req.body.stateAddress,
         zipAddress: req.body.zipAddress,
         phoneNumber: req.body.phoneNumber,
+        emailAddress: req.body.emailAddress,
         cityLimits: req.body.cityLimits,
+        badAddress: req.body.badAddress,
         motherLast: req.body.motherLast,
         motherFirst: req.body.motherFirst,
         motherMiddle: req.body.motherMiddle,
@@ -48,6 +56,8 @@ router.post('', (req, res, next) => {
         stateFather: req.body.stateFather,
         heightControl: req.body.heightControl,
         weightControl: req.body.weightControl,
+        weightUnit: req.body.weightUnit,
+        weightNote: req.body.weightNote,
         weightLoss: req.body.weightLoss,
         handednessControl: req.body.handednessControl,
         shoeSize: req.body.shoeSize,
@@ -61,6 +71,7 @@ router.post('', (req, res, next) => {
         childrenNumber: req.body.childrenNumber,
         educationLevel: req.body.educationLevel,
         militaryService: req.body.militaryService,
+        military: req.body.military,
         socioEconomicStatus: req.body.socioEconomicStatus,
         occupationControl: req.body.occupationControl,
         industryControl: req.body.industryControl,
@@ -109,6 +120,9 @@ router.post('', (req, res, next) => {
         habitualActivities: req.body.habitualActivities,
         eyeColor: req.body.eyeColor,
         otherEyeColor: req.body.otherEyeColor,
+        biometrics: req.body.biometrics,
+        biometricsNumber: req.body.biometrics,
+        bioDate: req.body.bioDate,
         tattooControl: req.body.tattooControl,
         tattooDescription: req.body.tattooDescription,
         tattooLocation: req.body.tattooLocation,
@@ -132,12 +146,13 @@ router.post('', (req, res, next) => {
         informantZip: req.body.informantZip,
         informantEmail: req.body.informantEmail,
         deathDate: req.body.deathDate,
-        deathHospital: req.body.deathHospital,
+        deathInstitution: req.body.deathInstitution,
         deathAddress: req.body.deathAddress,
         deathCity: req.body.deathCity,
         deathCounty: req.body.deathCounty,
         deathState: req.body.deathState,
-        deathZip: req.body.deathZip
+        deathZip: req.body.deathZip,
+        deathTime: req.body.deathTime
     });
     donor.save().then(createdDonor => {
         res.status(201).json({
@@ -150,10 +165,16 @@ router.post('', (req, res, next) => {
 //used to update a donor in the server
 router.put('/:id', (req, res, next) => {
     Donor.updateOne({_id: req.params.id }, {
+        flag: req.body.flag,
+        signDate: req.body.signDate,
+        enterDate: req.body.enterDate,
         lastName: req.body.lastName,
         firstName: req.body.firstName,
         middleName: req.body.middleName,
         selectedSex: req.body.selectedSex,
+        maidenName: req.body.maidenName,
+        alternativeName: req.body.alternativeName,
+        suffix: req.body.suffix,
         socialSecurity: req.body.socialSecurity,
         selectedRace: req.body.selectedRace,
         otherRace: req.body.otherRace,
@@ -167,7 +188,9 @@ router.put('/:id', (req, res, next) => {
         stateAddress: req.body.stateAddress,
         zipAddress: req.body.zipAddress,
         phoneNumber: req.body.phoneNumber,
+        emailAddress: req.body.emailAddress,
         cityLimits: req.body.cityLimits,
+        badAddress: req.body.badAddress,
         motherLast: req.body.motherLast,
         motherFirst: req.body.motherFirst,
         motherMiddle: req.body.motherMiddle,
@@ -181,6 +204,8 @@ router.put('/:id', (req, res, next) => {
         stateFather: req.body.stateFather,
         heightControl: req.body.heightControl,
         weightControl: req.body.weightControl,
+        weightUnit: req.body.weightUnit,
+        weightNote: req.body.weightNote,
         weightLoss: req.body.weightLoss,
         handednessControl: req.body.handednessControl,
         shoeSize: req.body.shoeSize,
@@ -194,6 +219,7 @@ router.put('/:id', (req, res, next) => {
         childrenNumber: req.body.childrenNumber,
         educationLevel: req.body.educationLevel,
         militaryService: req.body.militaryService,
+        military: req.body.military,
         socioEconomicStatus: req.body.socioEconomicStatus,
         occupationControl: req.body.occupationControl,
         industryControl: req.body.industryControl,
@@ -242,6 +268,9 @@ router.put('/:id', (req, res, next) => {
         habitualActivities: req.body.habitualActivities,
         eyeColor: req.body.eyeColor,
         otherEyeColor: req.body.otherEyeColor,
+        biometrics: req.body.biometrics,
+        biometricsNumber: req.body.biometrics,
+        bioDate: req.body.bioDate,
         tattooControl: req.body.tattooControl,
         tattooDescription: req.body.tattooDescription,
         tattooLocation: req.body.tattooLocation,
@@ -265,12 +294,13 @@ router.put('/:id', (req, res, next) => {
         informantZip: req.body.informantZip,
         informantEmail: req.body.informantEmail,
         deathDate: req.body.deathDate,
-        deathHospital: req.body.deathHospital,
+        deathInstitution: req.body.deathInstitution,
         deathAddress: req.body.deathAddress,
         deathCity: req.body.deathCity,
         deathCounty: req.body.deathCounty,
         deathState: req.body.deathState,
-        deathZip: req.body.deathZip
+        deathZip: req.body.deathZip,
+        deathTime: req.body.deathTime
     }).then(result => {
         res.status(200).json({ message: "Update Success" });
     })

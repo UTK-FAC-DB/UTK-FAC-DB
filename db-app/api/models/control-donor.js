@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
 
 const donorSchema = mongoose.Schema({
+    flag: {type:String},
+    signDate: {type:String},
+    enterDate: {type:String},
     lastName: {type:String},
     firstName: {type:String},
     middleName: {type:String},
     selectedSex: {type:String},
+    maidenName: {type:String},
+    alternativeName: {type:String},
+    suffix: {type:String},
     socialSecurity: {type:String},
     selectedRace: {type:String},
     otherRace: {type:String},
@@ -18,7 +24,9 @@ const donorSchema = mongoose.Schema({
     stateAddress: {type:String},
     zipAddress: {type:String},
     phoneNumber: {type:String},
+    emailAddress: {type:String},
     cityLimits: {type:String},
+    badAddress: {type:String},
     motherLast: {type:String},
     motherFirst: {type:String},
     motherMiddle: {type:String},
@@ -33,6 +41,8 @@ const donorSchema = mongoose.Schema({
     heightControl: {type:String},
     weightControl: {type:String},
     weightLoss: {type:String},
+    weightUnit: {type:String},
+    weightNote: {type:String},
     handednessControl: {type:String},
     shoeSize: {type:String},
     bloodType: {type:String},
@@ -45,6 +55,7 @@ const donorSchema = mongoose.Schema({
     childrenNumber: {type:String},
     educationLevel: {type:String},
     militaryService: {type:String},
+    military: {type:String},
     socioEconomicStatus: {type:String},
     occupationControl: {type:String},
     industryControl: {type:String},
@@ -93,6 +104,9 @@ const donorSchema = mongoose.Schema({
     habitualActivities: {type:String},
     eyeColor: {type:String},
     otherEyeColor: {type:String},
+    biometrics: {type:String},
+    biometricsNumber: {type:String},
+    bioDate: {type:Date},
     tattooControl: {type:String},
     tattooDescription: {type:String},
     tattooLocation: {type:String},
@@ -116,12 +130,13 @@ const donorSchema = mongoose.Schema({
     informantZip: {type:String},
     informantEmail: {type:String},
     deathDate: {type:Date},
-    deathHospital: {type:String},
+    deathInstitution: {type:String},
     deathAddress: {type:String},
     deathCity: {type:String},
     deathCounty: {type:String},
     deathState: {type:String},
-    deathZip: {type:String}
+    deathZip: {type:String},
+    deathTime: {type:String}
 });
 
 module.exports = mongoose.model('Control-Donor', donorSchema);
