@@ -12,7 +12,6 @@ import { Globals } from '../../globals';
 export class DonorService {
   private donorsUpdated = new Subject<Donor[]>();
   private donors: Donor[] = [];
-  private donor: Donor;
 
   constructor(
     private http: HttpClient, 
@@ -133,6 +132,20 @@ export class DonorService {
             biometrics: donor.biometrics,
             biometricsNumber: donor.biometricsNumber,
             bioDate: donor.bioDate,
+            dentalComments: donor.dentalComments,
+            fOrD: donor.fOrD,
+            policy: donor.policy,
+            webOrPaper: donor.webOrPaper,
+            changecodeRegister: donor.changecodeRegister,
+            livingResearchOk: donor.livingResearchOk,
+            closeFile: donor.closeFile,
+            pictures: donor.pictures,
+            other: donor.other,
+            traumaResearchOk: donor.traumaResearchOk,
+            medicalHistory: donor.medicalHistory,
+            traumaType: donor.traumaType,
+            cancerRx: donor.cancerRx,
+            comments: donor.comments,
             tattooControl: donor.tattooControl,
             tattooDescription: donor.tattooDescription,
             tattooLocation: donor.tattooLocation,

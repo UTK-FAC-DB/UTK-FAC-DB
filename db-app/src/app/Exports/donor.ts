@@ -108,6 +108,20 @@ export interface Donor {
     biometrics: boolean;
     biometricsNumber: number;
     bioDate: Date;
+    dentalComments: string,
+    fOrD: string,
+    policy: string,
+    webOrPaper: string,
+    changecodeRegister: string,
+    livingResearchOk: string,
+    closeFile: string,
+    pictures: string,
+    other: string,
+    traumaResearchOk: string,
+    medicalHistory: string,
+    traumaType: string,
+    cancerRx: string,
+    comments: string,
     tattooControl: string;
     tattooDescription: string;
     tattooLocation: string;

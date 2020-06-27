@@ -139,6 +139,20 @@ export class DonorRegistrationComponent implements OnInit {
       biometrics: new FormControl(''),
       biometricsNumber: new FormControl(''),
       bioDate: new FormControl(''),
+      dentalComments: new FormControl(''),
+      fOrD: new FormControl(''),
+      policy: new FormControl(''),
+      webOrPaper: new FormControl(''),
+      changecodeRegister: new FormControl(''),
+      livingResearchOk: new FormControl(''),
+      closeFile: new FormControl(''),
+      other: new FormControl(''),
+      pictures: new FormControl(''),
+      traumaResearchOk: new FormControl(''),
+      medicalHistory: new FormControl(''),
+      traumaType: new FormControl(''),
+      cancerRx: new FormControl(''),
+      comments: new FormControl(''),
       tattooControl: new FormControl(''),
       tattooDescription: new FormControl(''),
       tattooLocation: new FormControl(''),
@@ -275,6 +289,20 @@ export class DonorRegistrationComponent implements OnInit {
           biometrics: this.donor.biometrics,
           biometricsNumber: this.donor.biometricsNumber,
           bioDate: this.donor.bioDate,
+          dentalComments: this.donor.dentalComments,
+          fOrD: this.donor.fOrD,
+          policy: this.donor.policy,
+          webOrPaper: this.donor.webOrPaper,
+          changecodeRegister: this.donor.changecodeRegister,
+          livingResearchOk: this.donor.livingResearchOk,
+          closeFile: this.donor.closeFile,
+          other: this.donor.other,
+          pictures: this.donor.pictures,
+          traumaResearchOk: this.donor.traumaResearchOk,
+          medicalHistory: this.donor.medicalHistory,
+          traumaType: this.donor.traumaType,
+          cancerRx: this.donor.cancerRx,
+          comments: this.donor.comments,
           tattooControl: this.donor.tattooControl,
           tattooDescription: this.donor.tattooDescription,
           tattooLocation: this.donor.tattooLocation,
@@ -416,6 +444,20 @@ export class DonorRegistrationComponent implements OnInit {
         biometrics: this.biometrics.value,
         biometricsNumber: this.biometricsNumber.value,
         bioDate: this.bioDate.value,
+        dentalComments: this.dentalComments.value,
+        fOrD: this.fOrD.value,
+        policy: this.policy.value,
+        webOrPaper: this.webOrPaper.value,
+        changecodeRegister: this.changecodeRegister.value,
+        livingResearchOk: this.livingResearchOk.value,
+        closeFile: this.closeFile.value,
+        other: this.other.value,
+        pictures: this.pictures.value,
+        traumaResearchOk: this.traumaResearchOk.value,
+        medicalHistory: this.medicalHistory.value,
+        traumaType: this.traumaType.value,
+        cancerRx: this.cancerRx.value,
+        comments: this.comments.value,
         tattooControl: this.tattooControl.value,
         tattooDescription: this.tattooDescription.value,
         tattooLocation: this.tattooLocation.value,
@@ -556,6 +598,20 @@ export class DonorRegistrationComponent implements OnInit {
         biometrics: this.biometrics.value,
         biometricsNumber: this.biometricsNumber.value,
         bioDate: this.bioDate.value,
+        dentalComments: this.dentalComments.value,
+        fOrD: this.fOrD.value,
+        policy: this.policy.value,
+        webOrPaper: this.webOrPaper.value,
+        changecodeRegister: this.changecodeRegister.value,
+        livingResearchOk: this.livingResearchOk.value,
+        closeFile: this.closeFile.value,
+        other: this.other.value,
+        pictures: this.pictures.value,
+        traumaResearchOk: this.traumaResearchOk.value,
+        medicalHistory: this.medicalHistory.value,
+        traumaType: this.traumaType.value,
+        cancerRx: this.cancerRx.value,
+        comments: this.comments.value,
         tattooControl: this.tattooControl.value,
         tattooDescription: this.tattooDescription.value,
         tattooLocation: this.tattooLocation.value,
@@ -697,6 +753,20 @@ export class DonorRegistrationComponent implements OnInit {
   get biometrics() { return this.registerForm.get('biometrics'); }
   get biometricsNumber() { return this.registerForm.get('biometricsNumber'); }
   get bioDate() { return this.registerForm.get('bioDate'); }
+  get dentalComments() { return this.registerForm.get('dentalComments'); }
+  get fOrD() { return this.registerForm.get('fOrD'); }
+  get policy() { return this.registerForm.get('policy'); }
+  get webOrPaper() { return this.registerForm.get('webOrPaper'); }
+  get changecodeRegister() { return this.registerForm.get('changecodeRegister'); }
+  get livingResearchOk() { return this.registerForm.get('livingResearchOk'); }
+  get closeFile() { return this.registerForm.get('closeFile'); }
+  get other() { return this.registerForm.get('other'); }
+  get pictures() { return this.registerForm.get('pictures'); }
+  get traumaResearchOk() { return this.registerForm.get('traumaResearchOk'); }
+  get medicalHistory() { return this.registerForm.get('medicalHistory'); }
+  get traumaType() { return this.registerForm.get('traumaType'); }
+  get cancerRx() { return this.registerForm.get('cancerRx'); }
+  get comments() { return this.registerForm.get('comments'); }
   get tattooControl() { return this.registerForm.get('tattooControl'); }
   get tattooDescription() { return this.registerForm.get('tattooDescription'); }
   get tattooLocation() { return this.registerForm.get('tattooLocation'); }
@@ -810,7 +880,7 @@ export class DonorRegistrationComponent implements OnInit {
   maritalStatusTypes: viewString[] = [
     {value: 'single', viewValue: 'Single'},
     {value: 'married', viewValue: 'Married'},
-    {value: 'divoreced', viewValue: 'Divorced or Seperated'},
+    {value: 'divorced', viewValue: 'Divorced or Seperated'},
     {value: 'widowed', viewValue: 'Widowed'}
   ];
   socialClasses: viewString[] = [
@@ -823,7 +893,7 @@ export class DonorRegistrationComponent implements OnInit {
   eyeColors: viewString[] = [
     {value: 'blue', viewValue: 'Blue'},
     {value: 'green', viewValue: 'Green'},
-    {value: 'Gray', viewValue: 'Gray'},
+    {value: 'gray', viewValue: 'Gray'},
     {value: 'brown', viewValue: 'Brown'},
     {value: 'hazel', viewValue: 'Hazel'},
     {value: 'other', viewValue: 'Other'}

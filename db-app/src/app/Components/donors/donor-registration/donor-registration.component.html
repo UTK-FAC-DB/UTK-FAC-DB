@@ -64,7 +64,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <div *ngIf="registerForm.value.selectedRace == 'otherrace'" style="display: inline">
+        <div *ngIf="registerForm.value.selectedRace == 'other'" style="display: inline">
           <b class="subtitle inline-subtitle">Please Enter Race:</b>
           <mat-form-field>
             <mat-label>Race</mat-label>
@@ -126,6 +126,11 @@
         <mat-form-field>
           <mat-label>Phone Number</mat-label>
           <input matInput type="text" formControlName="phoneNumber">
+        </mat-form-field>
+        <b class="subtitle">Email:</b>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput type="text" formControlName="emailAddress">
         </mat-form-field>
         <b class="subtitle inline-subtitle">Inside City Limits:</b>
         <mat-form-field>
@@ -391,6 +396,10 @@
             <textarea matInput formControlName="otherDental"></textarea>
           </mat-form-field>
         </div>
+        <mat-form-field style="width:100%;">
+          <mat-label>Comments</mat-label>
+          <textarea matInput formControlName="dentalComments"></textarea>
+        </mat-form-field>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -496,12 +505,86 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <div *ngIf="registerForm.value.eyeColor == 'othereye'" style="display:inline;margin-left:1rem;">
+        <div *ngIf="registerForm.value.eyeColor == 'other'" style="display:inline;margin-left:1rem;">
           <mat-form-field>
             <mat-label>Other Eye Color</mat-label>
             <input matInput type="text" formControlName="otherEyeColor">
           </mat-form-field>
         </div>
+        <b class="subtitle inline-subtitle">F/D:</b>
+        <mat-form-field style="width: 5rem;">
+          <mat-label>F/D</mat-label>
+          <mat-select formControlName="fOrD">
+            <mat-option value="fOrD-value-F">F</mat-option>
+            <mat-option value="fOrD-value-D">D</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Policy:</b>
+        <mat-form-field style="width: 5rem;">
+          <mat-label>Y/A</mat-label>
+          <mat-select formControlName="policy">
+            <mat-option value="policy-value-Y">Y</mat-option>
+            <mat-option value="policy-value-A">A</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Web or Paper:</b>
+        <mat-form-field style="width: 5rem;">
+          <mat-label>W/P</mat-label>
+          <mat-select formControlName="webOrPaper">
+            <mat-option value="webOrPaper-Web">Web</mat-option>
+            <mat-option value="webOrPaper-Paper">Paper</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <b class="subtitle">ChangeCode Register:</b>
+        <mat-form-field style="width: 5rem;">
+          <mat-label>T/F</mat-label>
+          <mat-select formControlName="changecodeRegister">
+            <mat-option value="changecodeRegister-True">True</mat-option>
+            <mat-option value="changecodeRegister-False">False</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Living Research OK:</b>
+        <mat-form-field style="width: 5rem;">
+          <mat-label>T/F</mat-label>
+          <mat-select formControlName="livingResearchOk">
+            <mat-option value="livingResearchOk-True">True</mat-option>
+            <mat-option value="livingResearchOk-False">False</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Trauma Research OK:</b>
+        <mat-form-field style="width: 5rem;">
+          <mat-label>T/F</mat-label>
+          <mat-select formControlName="traumaResearchOk">
+            <mat-option value="traumaResearchOk-True">True</mat-option>
+            <mat-option value="traumaResearchOk-False">False</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <b class="subtitle">Close File:</b>
+        <mat-form-field style="width: 5rem;">
+          <mat-label>T/F</mat-label>
+          <mat-select formControlName="closeFile">
+            <mat-option value="closeFile-True">True</mat-option>
+            <mat-option value="closeFile-False">False</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Pictures:</b>
+        <mat-form-field style="width: 5rem;">
+          <mat-label>T/F</mat-label>
+          <mat-select formControlName="pictures">
+            <mat-option value="pictures-True">True</mat-option>
+            <mat-option value="pictures-False">False</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <b class="subtitle inline-subtitle">Other:</b>
+        <mat-form-field style="width: 5rem;">
+          <mat-label>T/F</mat-label>
+          <mat-select formControlName="other">
+            <mat-option value="other-True">True</mat-option>
+            <mat-option value="other-False">False</mat-option>
+          </mat-select>
+        </mat-form-field>
         <br>
         <mat-checkbox class="subtitle inline-subtitle" formControlName="tattooControl">Tattoo(s)</mat-checkbox>
         <div *ngIf="registerForm.value.tattooControl" style="display:inline;">
@@ -530,6 +613,26 @@
             <textarea matInput type="text" formControlName="piercingLocation"></textarea>
           </mat-form-field>
         </div>
+        <br>
+        <mat-form-field style="width:100%;">
+          <mat-label>Medical History</mat-label>
+          <textarea matInput formControlName="medicalHistory"></textarea>
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width:100%;">
+          <mat-label>Trauma Type</mat-label>
+          <textarea matInput formControlName="traumaType"></textarea>
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width:100%;">
+          <mat-label>Cancer RX</mat-label>
+          <textarea matInput formControlName="cancerRx"></textarea>
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width:100%;">
+          <mat-label>Comments</mat-label>
+          <textarea matInput formControlName="comments"></textarea>
+        </mat-form-field>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
