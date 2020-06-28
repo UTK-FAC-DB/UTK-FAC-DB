@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const donorSchema = mongoose.Schema({
     flag: {type:String},
-    signDate: {type:String},
-    enterDate: {type:String},
+    signDate: {type:Date},
+    enterDate: {type:Date},
     lastName: {type:String},
     firstName: {type:String},
     middleName: {type:String},
@@ -44,7 +44,7 @@ const donorSchema = mongoose.Schema({
     weightUnit: {type:String},
     weightNote: {type:String},
     handednessControl: {type:String},
-    shoeSize: {type:String},
+    shoeSize: {type:Number},
     bloodType: {type:String},
     hairColor: {type:String},
     maritalStatus: {type:String},
