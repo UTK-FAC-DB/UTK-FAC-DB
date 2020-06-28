@@ -337,7 +337,8 @@ export class DonorRegistrationComponent implements OnInit {
     console.log(JSON.stringify(this.form.value));
     if (this.mode === 'create') {
       this.donorService.createDonor({
-        id: null,
+        regId: null,
+        origId: null,
         flag: this.flag.value,
         signDate: this.signDate.value,
         enterDate: this.enterDate.value,
@@ -491,7 +492,8 @@ export class DonorRegistrationComponent implements OnInit {
       })
     } else {
       this.donorService.updateDonor(this.donorId, {
-        id: null,
+        regId: null,
+        origId: null,
         flag: this.flag.value,
         signDate: this.signDate.value,
         enterDate: this.enterDate.value,

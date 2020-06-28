@@ -1,7 +1,8 @@
 import { Time } from '@angular/common';
 
 export interface Donor {
-    id: string;
+    regId: string;
+    origId: string;
     flag: string;
     signDate: Date;
     enterDate: Date;
