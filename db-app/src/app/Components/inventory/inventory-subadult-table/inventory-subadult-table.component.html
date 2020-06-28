@@ -34,21 +34,21 @@
       </ng-container>
 
       <!-- UTID Column -->
-      <ng-container matColumnDef="id">
+      <ng-container matColumnDef="utid">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>UTID</th>
         <td mat-cell *matCellDef="let row">{{row.UTID}}</td>
       </ng-container>
 
       <!-- Recorder Column -->
-      <ng-container matColumnDef="name">
+      <ng-container matColumnDef="recorder">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Recorder</th>
         <td mat-cell *matCellDef="let row">{{row.Recorder}}</td>
       </ng-container>
 
       <!-- Date Inventoried Column-->
-      <ng-container matColumnDef="name">
+      <ng-container matColumnDef="dateInv">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Inventoried</th>
-        <td mat-cell *matCellDef="let row">{{row.dateInventoried | Date}}</td>
+        <td mat-cell *matCellDef="let row">{{row.dateInventoried | date}}</td>
       </ng-container>
 
       <!-- Actions Columnn -->

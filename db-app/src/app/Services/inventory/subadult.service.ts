@@ -31,7 +31,7 @@ export class SubadultService {
         })
     }
     getItems() {
-        this.http.get<{items: any}>(this.globals.URL + '/api/cremation-inventory')
+        this.http.get<{items: any}>(this.globals.URL + '/api/subadult-inventory')
         .pipe(map((itemData) => {
             return itemData.items.map(item => {
                 return {
