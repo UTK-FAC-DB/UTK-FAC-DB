@@ -11,6 +11,7 @@ const routesApi = require('./api/routes/index');
 //const userRoutes = require('./api/routes/users');
 const donorsRoutes = require('./api/routes/donors');
 const controlDonorsRoutes = require('./api/routes/control-donors');
+const cremationRoute = require('./api/routes/cremation-inventory');
 
 const Donor = require('./api/models/donor');
 
@@ -43,7 +44,7 @@ app.use('/api', routesApi);
 //app.use('/api/users', userRoutes);
 app.use('/api/donors', donorsRoutes);
 app.use('/api/control-donors', controlDonorsRoutes);
-
+app.use('/api/cremation-inventory', cremationRoute);
 /* Error handling */
 
 // Catch 404 and forward to error handler

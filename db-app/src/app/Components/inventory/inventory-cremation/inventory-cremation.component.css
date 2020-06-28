@@ -1,0 +1,19 @@
+.container {
+    width: 80%;
+    margin-top: 1rem;
+    margin-left: 10%;
+}
+.subtitle {
+    margin-right: 0.5rem;
+}
+.inline-subtitle {
+    margin-left: 1rem;
+}
+#saveButton {
+    background-color: green;
+}
+.matTextarea {
+    max-width: 500px;
+    min-width: 150px;
+    width: 100%;
+}

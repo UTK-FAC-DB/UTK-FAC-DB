@@ -27,6 +27,9 @@ import { InventoryAdultTableComponent } from 'src/app/Components/inventory/inven
 import { InventorySubadultTableComponent } from 'src/app/Components/inventory/inventory-subadult-table/inventory-subadult-table.component';
 import { SidenavComponent } from './Components/sidenav/sidenav.component';
 import { DonorCRegistrationComponent } from './Components/donors/donor-c-registration/donor-c-registration.component';
+import { InventoryCremationComponent } from './Components/inventory/inventory-cremation/inventory-cremation.component';
+import { InventoryAdultComponent } from './Components/inventory/inventory-adult/inventory-adult.component';
+import { InventorySubadultComponent } from './Components/inventory/inventory-subadult/inventory-subadult.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { DonorCRegistrationComponent } from './Components/donors/donor-c-registr
     InventoryAdultTableComponent,
     InventorySubadultTableComponent,
     SidenavComponent,
-    DonorCRegistrationComponent
+    DonorCRegistrationComponent,
+    InventoryCremationComponent,
+    InventoryAdultComponent,
+    InventorySubadultComponent
   ],
   imports: [
     BrowserModule,
