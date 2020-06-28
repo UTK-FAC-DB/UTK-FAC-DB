@@ -21,7 +21,6 @@ export class CremationService {
     ) {}
 
     createItem(item: CremationInventory): void {
-        console.log(JSON.stringify(item));
         this.http.post(this.globals.URL + '/api/cremation-inventory', item)
         .subscribe(res => {
             const _id = res.toString();
@@ -29,7 +28,6 @@ export class CremationService {
             this.items.push(item);
             this.itemsUpdated.next([...this.items]);
             this.router.navigate(['/inventory-cremation-table']);
-            console.log('test');
         });
     }
     getItems() {
