@@ -2,7 +2,7 @@ export interface SubadultInventory {
     id: string;
     UTID: string;
     Recorder: string;
-    DateInventoried: string;
+    DateInventoried: Date;
     Condition: string;
     Autopsy:string;
     Anc:string;
