@@ -1,7 +1,7 @@
 import { Time } from '@angular/common';
 
 export interface Donor {
-    regId: string;
+    id: string;
     origId: string;
     flag: string;
     signDate: Date;
@@ -93,9 +93,13 @@ export interface Donor {
     autoAccident: string;
     smokerControl: string;
     smokerLength: string;
+    smokerStart: string;
     spinalInjury: string;
+    dislocationsMedical: string;
     alcoholControl: string;
     openHeartSurgery: string;
+    openHeartSurgeryYear: string;
+    amputationsYear: string;
     amputations: string;
     diabetesControl: string;
     diabetesType: string;
@@ -103,6 +107,8 @@ export interface Donor {
     prostheticsDate: string;
     disordersMedical: string;
     medicalContinued: string;
+    additionalMedicalHistory: string;
+    medicalHistoryNarrative: string;
     habitualActivities: string;
     eyeColor: string;
     otherEyeColor: string;

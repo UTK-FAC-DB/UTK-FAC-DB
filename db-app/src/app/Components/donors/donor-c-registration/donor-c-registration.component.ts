@@ -123,9 +123,13 @@ export class DonorCRegistrationComponent implements OnInit {
       autoAccident: new FormControl(''),
       smokerControl: new FormControl(''),
       smokerLength: new FormControl(''),
+      smokerStart: new FormControl(''),
       spinalInjury: new FormControl(''),
+      dislocationsMedical: new FormControl(''),
       alcoholControl: new FormControl(''),
       openHeartSurgery: new FormControl(''),
+      openHeartSurgeryYear: new FormControl(''),
+      amputationsYear: new FormControl(''),
       amputations: new FormControl(''),
       diabetesControl: new FormControl(''),
       diabetesType: new FormControl(''),
@@ -133,6 +137,8 @@ export class DonorCRegistrationComponent implements OnInit {
       prostheticsDate: new FormControl(''),
       disordersMedical: new FormControl(''),
       medicalContinued: new FormControl(''),
+      additionalMedicalHistory: new FormControl(''),
+      medicalHistoryNarrative: new FormControl(''),
       habitualActivities: new FormControl(''),
       eyeColor: new FormControl(''),
       otherEyeColor: new FormControl(''),
@@ -281,9 +287,13 @@ export class DonorCRegistrationComponent implements OnInit {
           autoAccident: this.autoAccident.value,
           smokerControl: this.smokerControl.value,
           smokerLength: this.smokerLength.value,
+          smokerStart: this.smokerStart.value,
           spinalInjury: this.spinalInjury.value,
+          dislocationsMedical: this.dislocationsMedical.value,
           alcoholControl: this.alcoholControl.value,
           openHeartSurgery: this.openHeartSurgery.value,
+          openHeartSurgeryYear: this.openHeartSurgeryYear.value,
+          amputationsYear: this.amputationsYear.value,
           amputations: this.amputations.value,
           diabetesControl: this.diabetesControl.value,
           diabetesType: this.diabetesType.value,
@@ -291,6 +301,8 @@ export class DonorCRegistrationComponent implements OnInit {
           prostheticsDate: this.prostheticsDate.value,
           disordersMedical: this.disordersMedical.value,
           medicalContinued: this.medicalContinued.value,
+          additionalMedicalHistory: this.additionalMedicalHistory.value,
+          medicalHistoryNarrative: this.medicalHistoryNarrative.value,
           habitualActivities: this.habitualActivities.value,
           eyeColor: this.eyeColor.value,
           otherEyeColor: this.otherEyeColor.value,
@@ -354,6 +366,7 @@ export class DonorCRegistrationComponent implements OnInit {
     if (this.mode === 'create') {
       this.donorService.createDonor({
         id: null,
+        origId: null,
         flag: this.flag.value,
         signDate: this.signDate.value,
         enterDate: this.enterDate.value,
@@ -444,9 +457,13 @@ export class DonorCRegistrationComponent implements OnInit {
         autoAccident: this.autoAccident.value,
         smokerControl: this.smokerControl.value,
         smokerLength: this.smokerLength.value,
+        smokerStart: this.smokerStart.value,
         spinalInjury: this.spinalInjury.value,
+        dislocationsMedical: this.dislocationsMedical.value,
         alcoholControl: this.alcoholControl.value,
         openHeartSurgery: this.openHeartSurgery.value,
+        openHeartSurgeryYear: this.openHeartSurgeryYear.value,
+        amputationsYear: this.amputationsYear.value,
         amputations: this.amputations.value,
         diabetesControl: this.diabetesControl.value,
         diabetesType: this.diabetesType.value,
@@ -454,6 +471,8 @@ export class DonorCRegistrationComponent implements OnInit {
         prostheticsDate: this.prostheticsDate.value,
         disordersMedical: this.disordersMedical.value,
         medicalContinued: this.medicalContinued.value,
+        additionalMedicalHistory: this.additionalMedicalHistory.value,
+        medicalHistoryNarrative: this.medicalHistoryNarrative.value,
         habitualActivities: this.habitualActivities.value,
         eyeColor: this.eyeColor.value,
         otherEyeColor: this.otherEyeColor.value,
@@ -599,9 +618,13 @@ export class DonorCRegistrationComponent implements OnInit {
   get autoAccident() { return this.registerForm.get('autoAccident'); }
   get smokerControl() { return this.registerForm.get('smokerControl'); }
   get smokerLength() { return this.registerForm.get('smokerLength'); }
+  get smokerStart() { return this.registerForm.get('smokerStart'); }
   get spinalInjury() { return this.registerForm.get('spinalInjury'); }
+  get dislocationsMedical() { return this.registerForm.get('dislocationsMedical')}
   get alcoholControl() { return this.registerForm.get('alcoholControl'); }
   get openHeartSurgery() { return this.registerForm.get('openHeartSurgery'); }
+  get openHeartSurgeryYear() { return this.registerForm.get('openHeartSurgeryYear'); }
+  get amputationsYear() { return this.registerForm.get('amputationsYear'); }
   get amputations() { return this.registerForm.get('amputations'); }
   get diabetesControl() { return this.registerForm.get('diabetesControl'); }
   get diabetesType() { return this.registerForm.get('diabetesType'); }
@@ -609,6 +632,8 @@ export class DonorCRegistrationComponent implements OnInit {
   get prostheticsDate() { return this.registerForm.get('prostheticsDate'); }
   get disordersMedical() { return this.registerForm.get('disordersMedical'); }
   get medicalContinued() { return this.registerForm.get('medicalContinued'); }
+  get additionalMedicalHistory() { return this.registerForm.get('additionalMedicalHistory'); }
+  get medicalHistoryNarrative() { return this.registerForm.get('medicalHistoryNarrative'); }
   get habitualActivities() { return this.registerForm.get('habitualActivities'); }
   get eyeColor() { return this.registerForm.get('eyeColor'); }
   get otherEyeColor() { return this.registerForm.get('otherEyeColor'); }

@@ -449,11 +449,28 @@
             <mat-label>How long?</mat-label>
             <input matInput type="text" formControlName="smokerLength">
           </mat-form-field>
+          <mat-form-field>
+            <mat-label>First started?</mat-label>
+            <input matInput type="text" formControlName="smokerStart">
+          </mat-form-field>
         </div>
         <mat-checkbox class="subtitle inline-subtitle" formControlName="spinalInjury">Spinal Injuries</mat-checkbox>
+        <mat-checkbox class="subtitle inline-subtitle" formControlName="dislocationsMedical">Dislocations</mat-checkbox>
         <mat-checkbox class="subtitle inline-subtitle" formControlName="alcoholControl">Alcoholism</mat-checkbox>
         <mat-checkbox class="subtitle inline-subtitle" formControlName="openHeartSurgery">Open Heart Surgery</mat-checkbox>
+        <div style="display:inline;" *ngIf="registerForm.value.openHeartSurgery">
+          <mat-form-field>
+            <mat-label>Year of Surgery</mat-label>
+            <textarea matInput formControlName="openHeartSurgeryYear"></textarea>
+          </mat-form-field>
+        </div>
         <mat-checkbox class="subtitle inline-subtitle" formControlName="amputations">Amputations</mat-checkbox>
+        <div style="display:inline;" *ngIf="registerForm.value.amputations">
+          <mat-form-field>
+            <mat-label>What Year?</mat-label>
+            <input matInput type="text" formControlName="amputationsYear">
+          </mat-form-field>
+        </div>
         <mat-checkbox class="subtitle inline-subtitle" formControlName="diabetesControl">Diabetes</mat-checkbox>
         <div style="display:inline;" *ngIf="registerForm.value.diabetesControl">
           <mat-form-field>
@@ -479,9 +496,17 @@
           Please describe the above and any other information you feel may be important, including
           current medications, timing of injuries, the locations of traumatic injuries, or a family history
           of an illness, etc.</b>
-        <mat-form-field>
+        <mat-form-field style="width:100%;">
           <mat-label>More Information</mat-label>
           <textarea matInput formControlName="medicalContinued"></textarea>
+        </mat-form-field>
+        <mat-form-field style="width:100%;">
+          <mat-label>Addional Medical History</mat-label>
+          <textarea matInput formControlName="additionalMedicalHistory"></textarea>
+        </mat-form-field>
+        <mat-form-field style="width:100%;">
+          <mat-label>Medical History Narrative</mat-label>
+          <textarea matInput formControlName="medicalHistoryNarrative"></textarea>
         </mat-form-field>
       </mat-expansion-panel>
       
