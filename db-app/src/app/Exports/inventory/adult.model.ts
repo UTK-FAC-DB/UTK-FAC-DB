@@ -3,7 +3,7 @@ export class AdultInventory {
     UTID:string;
     Curator:string;
     Recorder:string;
-    DateInventoried:string;
+    DateInventoried:Date;
     Type:string;
     Condition:string;
     Autopsy:string;
