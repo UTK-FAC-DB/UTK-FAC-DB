@@ -12,6 +12,10 @@ const routesApi = require('./api/routes/index');
 const donorsRoutes = require('./api/routes/donors');
 const controlDonorsRoutes = require('./api/routes/control-donors');
 const cremationRoute = require('./api/routes/cremation-inventory');
+const adultRoute = require('./api/routes/adult-inventory');
+const subadultRoute = require('./api/routes/subadult-inventory');
+const postcranRouter = require('./api/routes/postcran-metrics');
+const fullyRouter = require('./api/routes/fully-metrics');
 
 const Donor = require('./api/models/donor');
 
@@ -45,6 +49,10 @@ app.use('/api', routesApi);
 app.use('/api/donors', donorsRoutes);
 app.use('/api/control-donors', controlDonorsRoutes);
 app.use('/api/cremation-inventory', cremationRoute);
+app.use('/api/subadult-inventory', subadultRoute);
+app.use('/api/adult-inventory', adultRoute);
+app.use('/api/fully-metric', fullyRouter);
+app.use('/api/postcran-metric', postcranRouter);
 /* Error handling */
 
 // Catch 404 and forward to error handler

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const itemSchema = mongoose.Schema({
-    id: {type:String},
     UTID: {type:String},
     Recorder: {type:String},
     DateInventoried: {type:Date},

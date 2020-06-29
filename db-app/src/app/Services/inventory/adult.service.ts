@@ -35,7 +35,7 @@ export class AdultService {
         .pipe(map((itemData) => {
             return itemData.items.map(item => {
                 return {
-                    id: item.id,
+                    id: item._id,
                     UTID: item.UTID,
                     Curator: item.Curator,
                     Recorder: item.Recorder,

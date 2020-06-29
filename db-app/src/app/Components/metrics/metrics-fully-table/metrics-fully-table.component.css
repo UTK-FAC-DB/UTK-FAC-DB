@@ -1,3 +1,30 @@
 .full-width-table {
   width: 100%;
+  margin-top: 1rem;
+}
+.container {
+  width: 80%;
+  margin: 10%;
+  margin-top: 1%;
+}
+.filtering{
+  font-size: 14px;
+}
+.searchBar {
+  width: 30rem;
+}
+.table-actions {
+  margin: 1rem;
+  margin-bottom: 2rem;
+}
+a {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+.buttonStyle {
+  float: right;
+}
+.exportButton {
+  background-color: green;
+  color: white;
 }

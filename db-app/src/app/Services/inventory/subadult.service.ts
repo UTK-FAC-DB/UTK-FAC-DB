@@ -35,7 +35,7 @@ export class SubadultService {
         .pipe(map((itemData) => {
             return itemData.items.map(item => {
                 return {
-                    id:item.id,
+                    id:item._id,
                     UTID:item.UTID,
                     Recorder:item.Recorder,
                     DateInventoried:item.DateInventoried,

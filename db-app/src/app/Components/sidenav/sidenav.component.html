@@ -34,11 +34,11 @@
         <mat-divider></mat-divider>
         <mat-nav-list>
           <h2 matSubheader>Donor Metrics Tables</h2>
-          <button mat-button (click)="toggleSidenav()">
+          <button mat-button [routerLink]="['/metrics-postcran-table']" (click)="toggleSidenav()">
             <mat-icon>table_view</mat-icon>
-            Post Craniotomy
+            Post Cran
           </button>
-          <button mat-button (click)="toggleSidenav()">
+          <button mat-button [routerLink]="['/metrics-fully-table']" (click)="toggleSidenav()">
             <mat-icon>table_view</mat-icon>
             Fully
           </button>
