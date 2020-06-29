@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const itemSchema = mongoose.Schema({
     UTID: {type:String},
+    Cremation_DBID: {type:String},
     DateReceived: {type:Date},
     ContactedBy: {type:String},
     ContactFacility: {type:String},
