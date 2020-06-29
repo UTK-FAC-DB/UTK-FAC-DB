@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { AdultInventory } from 'src/app/Exports/inventory/adult.model';
-import { AdultService } from 'src/app/Services/Inventory/adult.service'
+import { AdultService } from '../../../Services/inventory/adult.service'
 import { InventoryAdultTableDataSource } from './inventory-adult-table-datasource';
 import { MatAccordion } from '@angular/material/expansion';
 import { SelectionModel } from '@angular/cdk/collections';

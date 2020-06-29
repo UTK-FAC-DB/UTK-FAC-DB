@@ -36,6 +36,7 @@ export class CremationService {
             return itemData.items.map(item => {
                 return {
                     id: item._id,
+                    Cremation_DBID: item.Cremation_DBID,
                     UTID: item.UTID,
                     DateReceived: item.DateReceived,
                     ContactedBy: item.ContactedBy,

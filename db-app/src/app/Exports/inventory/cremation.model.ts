@@ -1,5 +1,6 @@
 export interface CremationInventory {
     id: string;
+    Cremation_DBID: string;
     UTID: string;
     DateReceived: Date;
     ContactedBy: string;

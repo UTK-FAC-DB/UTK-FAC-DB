@@ -72,6 +72,7 @@ export class InventoryCremationTableComponent implements AfterViewInit, OnInit {
 
   cremationHeaders: string[] = [
     'UTID',
+    'Cremation_DBID',
     'DateReceived',
     'ContactedBy',
     'ContactFacility',	
