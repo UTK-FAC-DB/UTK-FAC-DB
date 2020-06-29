@@ -1,0 +1,159 @@
+<div class="container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Cremation Donation Information</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="cremationForm">
+                <b class="subtitle">UTID:</b>
+                <mat-form-field>
+                    <mat-label>UTID</mat-label>
+                    <input matInput type="text" placeholder="UTID" formControlName="UTID">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Cremation DBID</mat-label>
+                    <input matInput type="text" placeholder="DBID" formControlName="Cremation_DBID">
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Date Received:</b>
+                <mat-form-field>
+                    <mat-label>Date Received</mat-label>
+                    <input matInput type="text" [matDatepicker]="receivedDatepicker" formControlName="DateReceived">
+                    <mat-datepicker-toggle matSuffix [for]="receivedDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #receivedDatepicker></mat-datepicker>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <br>
+                <b class="subtitle">Contacted By:</b>
+                <mat-form-field>
+                    <mat-label>Contacted By</mat-label>
+                    <input matInput type="text" placeholder="Contacted By" formControlName="ContactedBy">
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Contact Facility:</b>
+                <mat-form-field>
+                    <mat-label>Contact Facility</mat-label>
+                    <input matInput type="text" placeholder="Contact Facility" formControlName="ContactFacility">
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Contact Date:</b>
+                <mat-form-field>
+                    <mat-label>Contact Date</mat-label>
+                    <input matInput type="text" [matDatepicker]="contactDatepicker" formControlName="ContactDate">
+                    <mat-datepicker-toggle matSuffix [for]="contactDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #contactDatepicker></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <b class="subtitle">Donated By:</b>
+                <mat-form-field>
+                    <mat-label>Donated By</mat-label>
+                    <input matInput type="text" placeholder="Donated By" formControlName="DonatedBy">
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Relationship:</b>
+                <mat-form-field>
+                    <mat-label>Relationship</mat-label>
+                    <input matInput type="text" placeholder="Relationship" formControlName="Relationship">
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <br>
+                <b class="subtitle">Total Weight:</b>
+                <mat-form-field>
+                    <mat-label>Total Weight</mat-label>
+                    <input matInput type="text" placeholder="Total Weight" formControlName="TotalWeight">
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Total Weight Unit:</b>
+                <mat-form-field>
+                    <mat-label>Total Weight Unit</mat-label>
+                    <input matInput type="text" placeholder="Total Weight Unit" formControlName="TotalWeightUnit">
+                </mat-form-field>
+                <br>
+                <b class="subtitle">Lab Weight:</b>
+                <mat-form-field>
+                    <mat-label>Lab Weight</mat-label>
+                    <input matInput type="text" placeholder="Lab Weight" formControlName="LabWeight">
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Lab Weight Unit:</b>
+                <mat-form-field>
+                    <mat-label>Lab Weight Unit</mat-label>
+                    <input matInput type="text" placeholder="Lab Weight Unit" formControlName="InventoryWeightUnit">
+                </mat-form-field>
+                <br>
+                <b class="subtitle">Current Weight:</b>
+                <mat-form-field>
+                    <mat-label>Current Lab Weight</mat-label>
+                    <input type="text" matInput placeholder="Current Lab Weight" formControlName="CurrentLabWeight">
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Current Weight Unit:</b>
+                <mat-form-field>
+                    <mat-label>Current Weight Unit</mat-label>
+                    <input matInput type="text" placeholder="Current Weight Unit" formControlName="CurrentLabWeightUnit">
+                </mat-form-field>
+                <br>
+                <b class="subtitle">Removed Weight:</b>
+                <mat-form-field>
+                    <mat-label>Removed Weight</mat-label>
+                    <input type="text" matInput placeholder="Removed Weight" formControlName="RemovedLabWeight">
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Removed Weight Unit:</b>
+                <mat-form-field>
+                    <mat-label>Removed Weight Unit</mat-label>
+                    <input matInput type="text" placeholder="Removed Weight Unit" formControlName="RemovedWeightUnit">
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <br>
+                <b class="subtitle">Cremated Remains Process:</b>
+                <mat-form-field class="matTextarea">
+                    <mat-label>Cremated Remains Process</mat-label>
+                    <textarea matInput placeholder="Cremated Remains Process" formControlName="CrematedRemainsProcess"></textarea>
+                </mat-form-field>
+                <br>
+                <b class="subtitle">Prosthetics Removed:</b>
+                <mat-form-field class="matTextarea">
+                    <mat-label>Prosthetics Removed</mat-label>
+                    <textarea matInput type="text" placeholder="Prosthetics Removed" formControlName="ProstheticsRemoved"></textarea>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <br>
+                <b class="subtitle">Tag Placed By:</b>
+                <mat-form-field>
+                    <mat-label>Tag Placed By</mat-label>
+                    <input type="text" matInput placeholder="Tag Placed By" formControlName="TagPlaced_By">
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Tag Placed Date:</b>
+                <mat-form-field>
+                    <mat-label>Tag Placed Date</mat-label>
+                    <input matInput type="text" [matDatepicker]="tagDatepicker" formControlName="TagPlaced_Date">
+                    <mat-datepicker-toggle matSuffix [for]="tagDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #tagDatepicker></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <b class="subtitle">Released By:</b>
+                <mat-form-field>
+                    <mat-label>Released By</mat-label>
+                    <input type="text" matInput placeholder="Released By" formControlName="ReleasedFromDept_By">
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Released Date:</b>
+                <mat-form-field>
+                    <mat-label>Released Date</mat-label>
+                    <input matInput type="text" [matDatepicker]="releasedDatepicker" formControlName="ReleasedFromDept_Date">
+                    <mat-datepicker-toggle matSuffix [for]="releasedDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #releasedDatepicker></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <b class="subtitle">Received Into Collection By:</b>
+                <mat-form-field>
+                    <mat-label>Received Into Collection By</mat-label>
+                    <input type="text" matInput placeholder="Received Into Collection By" formControlName="ReceivedIntoCollection_By">
+                </mat-form-field>
+                <b class="subtitle inline-subtitle">Received Into Collection Date:</b>
+                <mat-form-field>
+                    <mat-label>Received Into Collection Date</mat-label>
+                    <input matInput type="text" [matDatepicker]="intoDatepicker" formControlName="ReceivedIntoCollection_date">
+                    <mat-datepicker-toggle matSuffix [for]="intoDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #intoDatepicker></mat-datepicker>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions class="cardActions">
+            <button mat-raised-button id="cancelButton" color="warn" [routerLink]="['/inventory-cremation-table']">Cancel</button>
+            <button mat-raised-button id="saveButton" (click)="onSubmit()">Save</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

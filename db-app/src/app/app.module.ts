@@ -27,6 +27,14 @@ import { InventoryAdultTableComponent } from 'src/app/Components/inventory/inven
 import { InventorySubadultTableComponent } from 'src/app/Components/inventory/inventory-subadult-table/inventory-subadult-table.component';
 import { SidenavComponent } from './Components/sidenav/sidenav.component';
 import { DonorCRegistrationComponent } from './Components/donors/donor-c-registration/donor-c-registration.component';
+import { InventoryCremationComponent } from './Components/inventory/inventory-cremation/inventory-cremation.component';
+import { InventoryAdultComponent } from './Components/inventory/inventory-adult/inventory-adult.component';
+import { InventorySubadultComponent } from './Components/inventory/inventory-subadult/inventory-subadult.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MetricsFullyTableComponent } from './Components/metrics/metrics-fully-table/metrics-fully-table.component';
+import { MetricsPostcranTableComponent } from './Components/metrics/metrics-postcran-table/metrics-postcran-table.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +54,12 @@ import { DonorCRegistrationComponent } from './Components/donors/donor-c-registr
     InventoryAdultTableComponent,
     InventorySubadultTableComponent,
     SidenavComponent,
-    DonorCRegistrationComponent
+    DonorCRegistrationComponent,
+    InventoryCremationComponent,
+    InventoryAdultComponent,
+    InventorySubadultComponent,
+    MetricsFullyTableComponent,
+    MetricsPostcranTableComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +69,10 @@ import { DonorCRegistrationComponent } from './Components/donors/donor-c-registr
     BrowserAnimationsModule,
     CommonModule,
     ReactiveFormsModule,
-    MatModule
+    MatModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     AuthenticationService, 

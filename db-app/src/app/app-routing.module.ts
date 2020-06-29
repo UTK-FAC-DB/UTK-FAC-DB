@@ -13,6 +13,11 @@ import { InventoryAdultTableComponent } from 'src/app/Components/inventory/inven
 import { AuthGuardService } from './authentication/auth-guard.service';
 import { SettingsComponent } from 'src/app/Components/settings_page/settings/settings.component';
 import { AdminGuardService } from './authentication/admin-guard.service';
+import { InventoryCremationComponent } from './Components/inventory/inventory-cremation/inventory-cremation.component';
+import { InventoryAdultComponent } from './Components/inventory/inventory-adult/inventory-adult.component';
+import { InventorySubadultComponent } from './Components/inventory/inventory-subadult/inventory-subadult.component';
+import { MetricsFullyTableComponent } from './Components/metrics/metrics-fully-table/metrics-fully-table.component';
+import { MetricsPostcranTableComponent } from './Components/metrics/metrics-postcran-table/metrics-postcran-table.component';
 
 const routes: Routes = [
   { path: '', component: UserPageComponent, canActivate: [AuthGuardService]},
@@ -20,11 +25,19 @@ const routes: Routes = [
   { path: 'donor-registration', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
   { path: 'donor-c-table', component: DonorCTableComponent, canActivate: [AuthGuardService]},
   { path: 'donor-c-registration', component: DonorCRegistrationComponent, canActivate: [AuthGuardService]},
+  { path: 'enter-cremation', component: InventoryCremationComponent, canActivate: [AuthGuardService]},
+  { path: 'edit-cremation/:itemId', component: InventoryCremationComponent, canActivate: [AuthGuardService]},
   { path: 'inventory-cremation-table', component: InventoryCremationTableComponent, canActivate: [AuthGuardService]},
+  { path: 'enter-subadult', component: InventorySubadultComponent, canActivate: [AuthGuardService]},
+  { path: 'edit-subadult/:itemId', component: InventorySubadultComponent, canActivate: [AuthGuardService]},
   { path: 'inventory-subadult-table', component: InventorySubadultTableComponent, canActivate: [AuthGuardService]},
+  { path: 'enter-adult', component: InventoryAdultComponent, canActivate: [AuthGuardService]},
+  { path: 'edit-adult/:itemId', component: InventoryAdultComponent, canActivate: [AuthGuardService]},
   { path: 'inventory-adult-table', component: InventoryAdultTableComponent, canActivate: [AuthGuardService]},
   { path: 'edit-donor/:donorId', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
   { path: 'edit-donor-c/:donorId', component: DonorCRegistrationComponent, canActivate: [AuthGuardService]},
+  { path: 'metrics-fully-table', component: MetricsFullyTableComponent, canActivate: [AuthGuardService]},
+  { path: 'metrics-postcran-table', component: MetricsPostcranTableComponent, canActivate: [AuthGuardService]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'setting', component: SettingsComponent, canActivate: [AdminGuardService] },
