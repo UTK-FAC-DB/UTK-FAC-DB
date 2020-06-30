@@ -11,6 +11,8 @@ import { ExportCSVService } from 'src/app/Services/Utility/export-csv.service';
 import { MatAccordion } from '@angular/material/expansion';
 import { Globals } from 'src/app/globals';
 import {Filters} from 'src/app/Exports/filters';
+import {ProgressBarMode, MatProgressBar} from '@angular/material/progress-bar';
+import {ThemePalette} from '@angular/material/core';
 
 export interface Types {
   view: string;
@@ -27,12 +29,16 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<Donor>;
   @ViewChild(MatAccordion) accordion: MatAccordion;
+  @ViewChild(MatProgressBar) progressBar: MatProgressBar;
   filterArr: Array<string> = [];
   dataSource: any;
   selection = new SelectionModel<Donor>(true, []);
   filterPanelState: boolean =  false;
   displayedColumns = ['select', 'firstName', 'lastName', 'dob', 'actions'];
   filters: Filters;
+  mode: ProgressBarMode = 'indeterminate';
+  color: ThemePalette = 'primary';
+  value = 100;
   
   constructor(private formBuilder: FormBuilder, private donorService: DonorService, private exportService: ExportCSVService, private global : Globals) {}
   
@@ -42,7 +48,7 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
 
   filterForm: FormGroup = this.createForm({
     hairColor: [],
-    selectedRace: [],
+    otherRace: [],
     selectedSex: [],
     bloodType: [],
     ageControl: []
@@ -105,7 +111,8 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
   //onApplyFilters is a method that applies the advanced filters panel
   onApplyFilters(): void {
     //this updates the datasource multipleFilter field with the falue of the filter form
-    //which updates the table with the correct rows
+    //which updates the table with the correct rows\
+    console.log(this.filterForm.value);
     this.dataSource.multipleFilter = this.filterForm.value as Filters;
   }
   //reset filters in the advanced filters panel
@@ -122,6 +129,7 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
         this.toggleFunction(id);
       }
     }
+    location.reload();
   }
   //toggle function to control the toggle selections in the advanced filters panel
   toggleFunction(menu: string): void {
@@ -131,13 +139,13 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
   }
 
   hairType: Types[] = [
-    {view: 'Black', value: 'blackhair'},
-    {view: 'Brown', value: 'brownhair'},
-    {view: 'Blonde', value: 'blondehair'},
-    {view: 'Red', value: 'redhair'},
-    {view: 'Gray', value: 'grayhair'},
-    {view: 'Bald', value: 'baldhair'},
-    {view: 'Other', value: 'otherhair'}
+    {view: 'Black', value: 'black'},
+    {view: 'Brown', value: 'brown'},
+    {view: 'Blonde', value: 'blonde'},
+    {view: 'Red', value: 'red'},
+    {view: 'Gray', value: 'gray'},
+    {view: 'Bald', value: 'bald'},
+    {view: 'Other', value: 'other'}
   ]
   sexType: Types[] = [
     {view: 'Male', value: 'male-0'},
@@ -145,13 +153,13 @@ export class DonorTableComponent implements AfterViewInit, OnInit {
     {view: 'Non-binary', value: 'non-binary'}
   ]
   raceType: Types[] = [
-    {view: 'White', value: 'whiterace'},
-    {view: 'Black or African American', value: 'blackrace'},
-    {view: 'American Indian', value: 'indianrace'},
-    {view: 'Asian', value: 'asianrace'},
-    {view: 'Hispanic or Latino', value: 'hispanicrace'},
-    {view: 'Native Hawaiian or Other Pacific Islander', value: 'pacificrace'},
-    {view: 'Two or more races', value: 'tworace'}
+    {view: 'White', value: 'white'},
+    {view: 'Black or African American', value: 'black'},
+    {view: 'American Indian', value: 'indian'},
+    {view: 'Asian', value: 'asian'},
+    {view: 'Hispanic or Latino', value: 'hispanic'},
+    {view: 'Native Hawaiian or Other Pacific Islander', value: 'pacific'},
+    {view: 'Two or more races', value: 'two'}
   ]
   bloodType: Types[] = [
     {view: 'AB+', value: 'ab+'},

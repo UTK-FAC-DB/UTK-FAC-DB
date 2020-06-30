@@ -42,7 +42,7 @@ export class DonorCTableComponent implements AfterViewInit, OnInit {
 
   filterForm: FormGroup = this.createForm({
     hairColor: [],
-    selectedRace: [],
+    otherRace: [],
     selectedSex: [],
     bloodType: [],
     ageControl: []

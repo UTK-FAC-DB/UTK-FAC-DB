@@ -1,6 +1,6 @@
 export interface Filters {
     hairColor: string[];
-    selectedRace: string[];
+    otherRace: string[];
     selectedSex: string[];
     bloodType: string[];
     ageControl: number[];

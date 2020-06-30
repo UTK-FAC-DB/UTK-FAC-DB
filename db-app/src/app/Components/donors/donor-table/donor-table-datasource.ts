@@ -8,6 +8,7 @@ import { DonorService } from 'src/app/Services/Donor/donor.service';
 import { _isNumberValue } from '@angular/cdk/coercion';
 import {Filters} from 'src/app/Exports/filters';
 import { isDefined } from '@angular/compiler/src/util';
+import {ProgressBarMode, MatProgressBar} from '@angular/material/progress-bar';
 
 const MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -250,16 +251,17 @@ export class DonorTableDataSource extends DataSource<Donor> {
   }
 
   _multipleFilterData(data: Donor[]): Donor[] {
-    let count = 0;
-    let check = 0;
     if (this.multipleFilter) {
       this.multipleFilteredData = data.filter(donor => {
+        let count = 0;
+        let check = 0;
         for (let key in this.multipleFilter) {
           if (this.multipleFilter[key]) {
             count++;
             if (Array.isArray(this.multipleFilter[key])) {
               for (let index in this.multipleFilter[key]) {
-                if (isDefined(donor[key][index]) && donor[key] == this.multipleFilter[key][index]) { 
+                console.log(key + ' ' + this.multipleFilter[key][index] + ' ' + isDefined(donor[key]) + ' ' + donor[key]);
+                if (isDefined(donor[key]) && donor[key] == this.multipleFilter[key][index]) { 
                   check++; 
                 }
               }
@@ -268,6 +270,7 @@ export class DonorTableDataSource extends DataSource<Donor> {
             }
           }
         }
+        console.log(count + ' ' + check);
         if (check === count) { return true; } 
         else { return false; }
       })
