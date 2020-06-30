@@ -3,8 +3,8 @@ const Item = require("../models/cremation-inventory");
 
 const router = express.Router();
 
-router.get('', (req, res, next) => {
-    Item.find().then(documents => {
+router.get('', async (req, res, next) => {
+    await Item.find().then(documents => {
         res.status(200).json({
             message: 'Cremation Items Fetched',
             items: documents
