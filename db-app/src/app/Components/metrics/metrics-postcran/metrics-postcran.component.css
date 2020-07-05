@@ -3,12 +3,6 @@
     margin-top: 1rem;
     margin-left: 10%;
 }
-.subtitle {
-    margin-right: 0.5rem;
-}
-.inline-subtitle {
-    margin-left: 1rem;
-}
 #saveButton {
     background-color: green;
 }
@@ -19,16 +13,14 @@
 .actions button {
     margin: 1rem;
 }
-.matTextarea {
-    max-width: 500px;
-    min-width: 150px;
-    width: 100%;
-}
 .card-container {
     display: flex;
 }
-.item-row {
+.item-flex {
     flex: 1;
+}
+.item-flex mat-form-field {
+    margin-left: 1rem;
 }
 .card-container-grid-8 {
     width: 80%;
@@ -37,19 +29,8 @@
     grid-template-columns: auto auto auto auto auto auto auto auto;
     column-gap: 1rem;
 }
-.card-container-grid-6 {
-    width: 80%;
-    margin-left: 5%;
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
-    column-gap: 1rem;
-}
-.card-container-grid-6-special {
-    width: 80%;
-    margin-left: 5%;
-    display: grid;
-    grid-template-columns: auto 10rem 10rem auto auto auto;
-    column-gap: 1rem;
+.card-container-grid-8 mat-form-field {
+    width: 4rem;
 }
 .item-column-1 {
     grid-column: 1;
@@ -59,9 +40,6 @@
 }
 .item-column-2 {
     grid-column: 2;
-}
-.item-column-2-c {
-    grid-column: 2;
     display: flex;
     align-items: center;
     text-align: center;
@@ -69,20 +47,8 @@
 .item-column-3 {
     grid-column: 3;
 }
-.item-column-3-c {
-    grid-column: 3;
-    display: flex;
-    align-items: center;
-    text-align: center;
-}
 .item-column-4 {
     grid-column: 4;
-}
-.item-column-4-c {
-    grid-column: 4;
-    display: flex;
-    align-items: center;
-    text-align: center;
 }
 .item-column-5 {
     grid-column: 5;
@@ -90,19 +56,7 @@
     align-items: center;
     text-align: center;
 }
-.item-column-5-s {
-    grid-column: 5;
-}
-.item-column-5-c {
-    grid-column: 5;
-    display: flex;
-    align-items: center;
-    text-align: center;
-}
 .item-column-6 {
-    grid-column: 6;
-}
-.item-column-6-c {
     grid-column: 6;
     display: flex;
     align-items: center;
@@ -183,9 +137,48 @@
 .item-row-23 {
     grid-row: 23;
 }
-.indv-vert mat-form-field {
-    width: 5rem;
+.item-row-24 {
+    grid-row: 24;
 }
-.cranium-grid mat-form-field {
-    width: 7rem;
+.item-row-25 {
+    grid-row: 25;
+}
+.item-row-26 {
+    grid-row: 26;
+}
+.item-row-27 {
+    grid-row: 27;
+}
+.item-row-28 {
+    grid-row: 28;
+}
+.item-row-29 {
+    grid-row: 29;
+}
+.item-row-30 {
+    grid-row: 30;
+}
+.item-row-31 {
+    grid-row: 31;
+}
+.item-row-32 {
+    grid-row: 32;
+}
+.item-row-33 {
+    grid-row: 33;
+}
+.item-row-34 {
+    grid-row: 34;
+}
+.item-row-35 {
+    grid-row: 35;
+}
+.item-row-36 {
+    grid-row: 36;
+}
+.item-row-37 {
+    grid-row: 37;
+}
+.item-row-38 {
+    grid-row: 38;
 }

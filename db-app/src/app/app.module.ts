@@ -35,6 +35,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MetricsFullyTableComponent } from './Components/metrics/metrics-fully-table/metrics-fully-table.component';
 import { MetricsPostcranTableComponent } from './Components/metrics/metrics-postcran-table/metrics-postcran-table.component';
+import { MetricsFullyComponent } from './Components/metrics/metrics-fully/metrics-fully.component';
+import { MetricsPostcranComponent } from './Components/metrics/metrics-postcran/metrics-postcran.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { MetricsPostcranTableComponent } from './Components/metrics/metrics-post
     InventoryAdultComponent,
     InventorySubadultComponent,
     MetricsFullyTableComponent,
-    MetricsPostcranTableComponent
+    MetricsPostcranTableComponent,
+    MetricsFullyComponent,
+    MetricsPostcranComponent
   ],
   imports: [
     BrowserModule,

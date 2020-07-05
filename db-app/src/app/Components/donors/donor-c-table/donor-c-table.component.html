@@ -47,7 +47,7 @@
                 <div class="three">
                   <button mat-button class="filterSelectionButton" (click)="toggleFunction('raceMenu')">Race</button>
                   <div class="toggle-menu" id="raceMenu" style="display: none;">
-                    <mat-selection-list formControlName="selectedRace">
+                    <mat-selection-list formControlName="otherRace">
                       <mat-list-option *ngFor="let type of raceType" [value]="type.value">
                         {{type.view}}
                       </mat-list-option>

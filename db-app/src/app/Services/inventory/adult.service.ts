@@ -263,6 +263,8 @@ export class AdultService {
         return { ...this.items.find(item => item.id === id)};
     }
     updateItem(_id: string, item: AdultInventory): void {
+        console.log(JSON.stringify(item));
+        console.log(this.globals.URL+'/api/adult-inventory/'+_id);
         this.http.put(this.globals.URL + '/api/adult-inventory/' + _id, item)
         .subscribe(res => {
             const updatedItems = [...this.items];
