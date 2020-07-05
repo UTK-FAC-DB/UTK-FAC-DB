@@ -1,0 +1,810 @@
+<div class="container">
+    <form [formGroup]="postcranForm">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Post-cranial Metrics</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="card-container">
+                    <div class="item-flex">
+                        <b>UTID:</b>
+                        <mat-form-field>
+                            <input matInput formControlName='UTID' type='text' placeholder="UTID">
+                        </mat-form-field>
+                    </div>
+                    <div class="item-flex">
+                        <b>Recorder:</b>
+                        <mat-form-field>
+                            <input matInput formControlName='recorder' type='text' placeholder="Recorder">
+                        </mat-form-field>    
+                    </div>
+                    <div class="item-flex">
+                        <b>Date:</b>
+                        <mat-form-field>
+                            <input matInput [matDatepicker]="postcranDatepicker" formControlName='date' type='text' placeholder="Date">
+                            <mat-datepicker-toggle matSuffix [for]="postcranDatepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #postcranDatepicker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="item-flex">
+                        <b>FDN#:</b>
+                        <mat-form-field>
+                            <input matInput formControlName='FDN' type='text' placeholder="FDN#">
+                        </mat-form-field>                   
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-content>
+                <div class="card-container-grid-8">
+                    <b></b>
+                    <b>(CSD)</b>
+                    <mat-form-field>
+                        <input matInput formControlName='CSD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput formControlName='CSD_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(CVD)</b>
+                    <mat-form-field>
+                        <input matInput formControlName='CVD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='CVD_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(SLS)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='SLS_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='SLS_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(SSL)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='SSL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='SSL_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(SISL)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='SISL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='SISL_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(GIL)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='GIL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='GIL_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(MML)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='MML' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(MSL)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='MSL' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(S1W)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='S1W' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(S3W)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='S3W' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(BUE)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='BUE_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='BUE_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b class='item-column-2'>(LCS)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='LCS_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='LCS_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(RSD)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='RSD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='RSD_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(RTD)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='RTD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='RTD_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(MCS)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='MCS_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='MCS_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(RXD)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='RXD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='RXD_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(MBO)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='MBO_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='MBO_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(WOP)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='WOP_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='WOP_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(ORL)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='ORL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='ORL_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(OCL)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='OCL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='OCL_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(UAD)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='UAD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='UAD_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(UMD)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='UMD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='UMD_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(ILB)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='ILB_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='ILB_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(FTL)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='FTL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='FTL_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(APS)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='APS_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='APS_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(MLS)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='MLS_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='MLS_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(VHD)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='VHD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='VHD_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(HHD)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='HHD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='HHD_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(FEMHDD)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='FEMHDD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='FEMHDD_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b >(BCB)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='BCB_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='BCB_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b >(VDN)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='VDN_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='VDN_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(APN)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='APN_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='APN_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(MLM)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='MLM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='MLM_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(CFL)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='CFL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='CFL_R' type='text'>
+                    </mat-form-field>
+                    <b></b>
+                    <b>(PCN)</b>
+                    <mat-form-field>
+                            <input matInput formControlName='PCN_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <input matInput formControlName='PCN_R' type='text'>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-content>
+                <div class="card-container-grid-8">
+                    <b class="item-column-3 item-row-1">Left</b>
+                    <b class="item-column-4 item-row-1">Right</b>
+                    <b class='item-column-1 item-row-2'>38. Clavicle maximum length</b>
+                    <b class='item-column-2 item-row-2'>(CML)</b>
+                    <mat-form-field class='item-column-3 item-row-2'>
+                            <input matInput formControlName='CML_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-2'>
+                            <input matInput formControlName='CML_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-3'>39. Clav max diam midshaft</b>
+                    <b class='item-column-2 item-row-3'>(CXM)</b>
+                    <mat-form-field class='item-column-3 item-row-3'>
+                            <input matInput formControlName='CXM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-3'>
+                            <input matInput formControlName='CXM_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-4'>40. Clav min diam midshaft</b>
+                    <b class='item-column-2 item-row-4'>(CWM)</b>
+                    <mat-form-field class='item-column-3 item-row-4'>
+                            <input matInput formControlName='CWM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-4'>
+                            <input matInput formControlName='CWM_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-5'>41. Scapula maximum height</b>
+                    <b class='item-column-2 item-row-5'>(SML)</b>
+                    <mat-form-field class='item-column-3 item-row-5'>
+                            <input matInput formControlName='SML_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-5'>
+                            <input matInput formControlName='SML_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-6'>42. Scapula maximum breadth</b>
+                    <b class='item-column-2 item-row-6'>(SMB)</b>
+                    <mat-form-field class='item-column-3 item-row-6'>
+                            <input matInput formControlName='SMB_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-6'>
+                            <input matInput formControlName='SMB_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-7'>43. Scap glenoid cavity breadth</b>
+                    <b class='item-column-2 item-row-7'>(GCB)</b>
+                    <mat-form-field class='item-column-3 item-row-7'>
+                            <input matInput formControlName='GCB_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-7'>
+                            <input matInput formControlName='GCB_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-8'>44. Scap glenoid cavity height</b>
+                    <b class='item-column-2 item-row-8'>(GCH)</b>
+                    <mat-form-field class='item-column-3 item-row-8'>
+                            <input matInput formControlName='GCH_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-8'>
+                            <input matInput formControlName='GCH_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-9'>45. Humerus maximum length</b>
+                    <b class='item-column-2 item-row-9'>(HML)</b>
+                    <mat-form-field class='item-column-3 item-row-9'>
+                        <input matInput formControlName='HML_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-9'>
+                        <input matInput formControlName='HML_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-10'>46. Humerus epicondylar breadth</b>
+                    <b class='item-column-2 item-row-10'>(EBR)</b>
+                    <mat-form-field class='item-column-3 item-row-10'>
+                            <input matInput formControlName='EBR_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-10'>
+                            <input matInput formControlName='EBR_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-11'>47. Hum max vert diam of head</b>
+                    <b class='item-column-2 item-row-11'>(MDH)</b>
+                    <mat-form-field class='item-column-3 item-row-11'>
+                            <input matInput formControlName='MDH_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-11'>
+                            <input matInput formControlName='MDH_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-12'>48. Humerus maximum diam midshaft</b>
+                    <b class='item-column-2 item-row-12'>(MDS)</b>
+                    <mat-form-field class='item-column-3 item-row-12'>
+                            <input matInput formControlName='MDS_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-12'>
+                            <input matInput formControlName='MDS_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-13'>49. Humerus minimum diam midshaft</b>
+                    <b class='item-column-2 item-row-13'>(MDM)</b>
+                    <mat-form-field class='item-column-3 item-row-13'>
+                            <input matInput formControlName='MDM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-13'>
+                            <input matInput formControlName='MDM_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-14'>50. Radius maximum length</b>
+                    <b class='item-column-2 item-row-14'>(RML)</b>
+                    <mat-form-field class='item-column-3 item-row-14'>
+                            <input matInput formControlName='RML_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-14'>
+                            <input matInput formControlName='RML_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-15'>51. Radiusmax diam midshaft</b>
+                    <b class='item-column-2 item-row-15'>(RXM)</b>
+                    <mat-form-field class='item-column-3 item-row-15'>
+                            <input matInput formControlName='RXM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-15'>
+                            <input matInput formControlName='RXM_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-16'>52. Radius min diameter midshaft</b>
+                    <b class='item-column-2 item-row-16'>(RWM)</b>
+                    <mat-form-field class='item-column-3 item-row-16'>
+                            <input matInput formControlName='RWM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-16'>
+                            <input matInput formControlName='RWM_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-17'>53. Radius maximum diam of head</b>
+                    <b class='item-column-2 item-row-17'>(RDH)</b>
+                    <mat-form-field class='item-column-3 item-row-17'>
+                            <input matInput formControlName='RDH_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-17'>
+                            <input matInput formControlName='RDH_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-18'>54. Ulna maximum length</b>
+                    <b class='item-column-2 item-row-18'>(UML)</b>
+                    <mat-form-field class='item-column-3 item-row-18'>
+                            <input matInput formControlName='UML_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-18'>
+                            <input matInput formControlName='UML_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-19'>55. Ulna max diam midshaft</b>
+                    <b class='item-column-2 item-row-19'>(UXM)</b>
+                    <mat-form-field class='item-column-3 item-row-19'>
+                            <input matInput formControlName='UXM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-19'>
+                            <input matInput formControlName='UXM_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-20'>56. Ulna min diam midshaft</b>
+                    <b class='item-column-2 item-row-20'>(UWM)</b>
+                    <mat-form-field class='item-column-3 item-row-20'>
+                            <input matInput formControlName='UWM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-20'>
+                            <input matInput formControlName='UWM_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-21'>57. Ulna physiological length</b>
+                    <b class='item-column-2 item-row-21'>(UPL)</b>
+                    <mat-form-field class='item-column-3 item-row-21'>
+                            <input matInput formControlName='UPL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-21'>
+                            <input matInput formControlName='UPL_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-22'>58. Ulna least circumf of shaft</b>
+                    <b class='item-column-2 item-row-22'>(ULC)</b>
+                    <mat-form-field class='item-column-3 item-row-22'>
+                            <input matInput formControlName='ULC_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-22'>
+                            <input matInput formControlName='ULC_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-23'>59. Ulna max breadth olecranon</b>
+                    <b class='item-column-2 item-row-23'>(BOP)</b>
+                    <mat-form-field class='item-column-3 item-row-23'>
+                            <input matInput formControlName='BOP_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-23'>
+                            <input matInput formControlName='BOP_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-24'>60. Sacrum anterior height</b>
+                    <b class='item-column-2 item-row-24'>(SAL)</b>
+                    <mat-form-field class='item-column-3 item-row-24'>
+                            <input matInput formControlName='SAL' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-25'>61. Sacrum anterior breadth</b>
+                    <b class='item-column-2 item-row-25'>(SAB)</b>
+                    <mat-form-field class='item-column-3 item-row-25'>
+                            <input matInput formControlName='SAB' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-26'>62. Transverse diam sacral segment 1</b>
+                    <b class='item-column-2 item-row-26'>(SMB)</b>
+                    <mat-form-field class='item-column-3 item-row-26'>
+                            <input matInput formControlName='SMB' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-27'>63.Ant/post diam sacral segment 1</b>
+                    <b class='item-column-2 item-row-27'>(SAPD)</b>
+                    <mat-form-field class='item-column-3 item-row-27'>
+                            <input matInput formControlName='SAPD' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-28'>64. Innominate height</b>
+                    <b class='item-column-2 item-row-28'>(INH)</b>
+                    <mat-form-field class='item-column-3 item-row-28'>
+                            <input matInput formControlName='INH_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-28'>
+                            <input matInput formControlName='INH_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-29'>65. Iliac max breadth</b>
+                    <b class='item-column-2 item-row-29'>(XIB)</b>
+                    <mat-form-field class='item-column-3 item-row-29'>
+                            <input matInput formControlName='XIB_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-29'>
+                            <input matInput formControlName='XIB_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-30'>66. Iliac min breadth</b>
+                    <b class='item-column-2 item-row-30'>(WIB)</b>
+                    <mat-form-field class='item-column-3 item-row-30'>
+                            <input matInput formControlName='WIB_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-30'>
+                            <input matInput formControlName='WIB_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-31'>67. Pubis max length</b>
+                    <b class='item-column-2 item-row-31'>(XPL)</b>
+                    <mat-form-field class='item-column-3 item-row-31'>
+                            <input matInput formControlName='XPL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-31'>
+                            <input matInput formControlName='XPL_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-32'>68. Pubis min length</b>
+                    <b class='item-column-2 item-row-32'>(WPL)</b>
+                    <mat-form-field class='item-column-3 item-row-32'>
+                            <input matInput formControlName='WPL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-32'>
+                            <input matInput formControlName='WPL_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-33'>69. Ischial length</b>
+                    <b class='item-column-2 item-row-33'>(ISL)</b>
+                    <mat-form-field class='item-column-3 item-row-33'>
+                            <input matInput formControlName='ISL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-33'>
+                            <input matInput formControlName='ISL_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-34'>70. Ischial minimum length</b>
+                    <b class='item-column-2 item-row-34'>(WISL)</b>
+                    <mat-form-field class='item-column-3 item-row-34'>
+                            <input matInput formControlName='WISL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-34'>
+                            <input matInput formControlName='WISL_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-35'>71. Max ischiopubic ramus length</b>
+                    <b class='item-column-2 item-row-35'>(XIRL)</b>
+                    <mat-form-field class='item-column-3 item-row-35'>
+                            <input matInput formControlName='XIRL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-35'>
+                            <input matInput formControlName='XIRL_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-36'>72. Ant/sup iliac spine to symphysion</b>
+                    <b class='item-column-2 item-row-36'>(ASISS)</b>
+                    <mat-form-field class='item-column-3 item-row-36'>
+                            <input matInput formControlName='ASISS_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-36'>
+                            <input matInput formControlName='ASISS_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-37'>73. Post/sup iliac spine to symphysion</b>
+                    <b class='item-column-2 item-row-37'>(PSISS)</b>
+                    <mat-form-field class='item-column-3 item-row-37'>
+                            <input matInput formControlName='PSISS_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-37'>
+                            <input matInput formControlName='PSISS_R' type='text'>
+                    </mat-form-field>
+                    <b class='item-column-1 item-row-38'>74.Min apical border to symphysion</b>
+                    <b class='item-column-2 item-row-38'>(WAS)</b>
+                    <mat-form-field class='item-column-3 item-row-38'>
+                            <input matInput formControlName='WAS_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-4 item-row-38'>
+                            <input matInput formControlName='WAS_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-7 item-row-1">Left</b>
+                    <b class="item-column-8 item-row-1">Right</b>
+                    <b class='item-column-5 item-row-2'>75. Femur maximum length</b>
+                    <b class='item-column-6 item-row-2'>(FML)</b>
+                    <mat-form-field class='item-column-7 item-row-2'>
+                            <input matInput formControlName='FML_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class='item-column-8 item-row-2'>
+                            <input matInput formControlName='FML_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-3">76. Femur bicondylar length</b>
+                    <b class="item-column-6 item-row-3">(FOL)</b>
+                    <mat-form-field class="item-column-7 item-row-3">
+                            <input matInput formControlName='FOL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-3">
+                            <input matInput formControlName='FOL_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-4">77. Femur epicondylar breadth</b>
+                    <b class="item-column-6 item-row-4">(FEB)</b>
+                    <mat-form-field class="item-column-7 item-row-4">
+                            <input matInput formControlName='FEB_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-4">
+                            <input matInput formControlName='FEB_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-5">78. Femur max diam of head</b>
+                    <b class="item-column-6 item-row-5">(FHXD)</b>
+                    <mat-form-field class="item-column-7 item-row-5">
+                            <input matInput formControlName='FHXD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-5">
+                            <input matInput formControlName='FHXD_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-6">79. Fem subtroch med/lat diam</b>
+                    <b class="item-column-6 item-row-6">(MLD)</b>
+                    <mat-form-field class="item-column-7 item-row-6">
+                            <input matInput formControlName='MLD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-6">
+                            <input matInput formControlName='MLD_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-7">80. Fem subtroch ant/post diam</b>
+                    <b class="item-column-6 item-row-7">(APD)</b>
+                    <mat-form-field class="item-column-7 item-row-7">
+                            <input matInput formControlName='APD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-7">
+                            <input matInput formControlName='APD_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-8">81. Femur max diam midshaft</b>
+                    <b class="item-column-6 item-row-8">(FXDM)</b>
+                    <mat-form-field class="item-column-7 item-row-8">
+                            <input matInput formControlName='FXDM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-8">
+                            <input matInput formControlName='FXDM_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-9">82. Femur min diam midshaft</b>
+                    <b class="item-column-6 item-row-9">(FWDM)</b>
+                    <mat-form-field class="item-column-7 item-row-9">
+                            <input matInput formControlName='FWDM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-9">
+                            <input matInput formControlName='FWDM_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-10">83. Femur circumference midshaft</b>
+                    <b class="item-column-6 item-row-10">(FCS)</b>
+                    <mat-form-field class="item-column-7 item-row-10">
+                            <input matInput formControlName='FCS_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-10">
+                            <input matInput formControlName='FCS_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-11">84. Fem ant/post diam lat condyle</b>
+                    <b class="item-column-6 item-row-11">(APL)</b>
+                    <mat-form-field class="item-column-7 item-row-11">
+                            <input matInput formControlName='APL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-11">
+                            <input matInput formControlName='APL_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-12">85. Fem ant/post diam med condyle</b>
+                    <b class="item-column-6 item-row-12">(APM)</b>
+                    <mat-form-field class="item-column-7 item-row-12">
+                            <input matInput formControlName='APM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-12">
+                            <input matInput formControlName='APM_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-13">86. Tibia length</b>
+                    <b class="item-column-6 item-row-13">(TML)</b>
+                    <mat-form-field class="item-column-7 item-row-13">
+                            <input matInput formControlName='TML_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-13">
+                            <input matInput formControlName='TML_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-14">87. Tibia max breadth prox epiph</b>
+                    <b class="item-column-6 item-row-14">(BPE)</b>
+                    <mat-form-field class="item-column-7 item-row-14">
+                            <input matInput formControlName='BPE_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-14">
+                            <input matInput formControlName='BPE_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-15">88. Tibia max breadth dist epiph</b>
+                    <b class="item-column-6 item-row-15">(BDE)</b>
+                    <mat-form-field class="item-column-7 item-row-15">
+                            <input matInput formControlName='BDE_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-15">
+                            <input matInput formControlName='BDE_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-16">89. Tibia max diam midshaft</b>
+                    <b class="item-column-6 item-row-16">(TXM)</b>
+                    <mat-form-field class="item-column-7 item-row-16">
+                            <input matInput formControlName='TXM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-16">
+                            <input matInput formControlName='TXM_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-17">90. Tibia min diam midshaft</b>
+                    <b class="item-column-6 item-row-17">(TWM)</b>
+                    <mat-form-field class="item-column-7 item-row-17">
+                            <input matInput formControlName='TWM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-17">
+                            <input matInput formControlName='TWM_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-18">91. Tibia circumference at midshaft</b>
+                    <b class="item-column-6 item-row-18">(TMC)</b>
+                    <mat-form-field class="item-column-7 item-row-18">
+                            <input matInput formControlName='TMC_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-18">
+                            <input matInput formControlName='TMC_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-19">Tibia nutrient foramen A-P</b>
+                    <b class="item-column-6 item-row-19">(TFA)</b>
+                    <mat-form-field class="item-column-7 item-row-19">
+                            <input matInput formControlName='TFA_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-19">
+                            <input matInput formControlName='TFA_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-20">Tibia nutrient foramen M-L</b>
+                    <b class="item-column-6 item-row-20">(TFM)</b>
+                    <mat-form-field class="item-column-7 item-row-20">
+                            <input matInput formControlName='TFM_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-20">
+                            <input matInput formControlName='TFM_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-21">Tibia nutrient foramen distance</b>
+                    <b class="item-column-6 item-row-21">(TFD)</b>
+                    <mat-form-field class="item-column-7 item-row-21">
+                            <input matInput formControlName='TFD_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-21">
+                            <input matInput formControlName='TFD_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-22">Tibia ordinary length</b>
+                    <b class="item-column-6 item-row-22">(TOL)</b>
+                    <mat-form-field class="item-column-7 item-row-22">
+                            <input matInput formControlName='TOL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-22">
+                            <input matInput formControlName='TOL_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-23">92. Fibula maximum length</b>
+                    <b class="item-column-6 item-row-23">(BML)</b>
+                    <mat-form-field class="item-column-7 item-row-23">
+                            <input matInput formControlName='BML_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-23">
+                            <input matInput formControlName='BML_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-24">93. Fibula maximum diam midshaft</b>
+                    <b class="item-column-6 item-row-24">(FMD)</b>
+                    <b class="item-column-5 item-row-25">94. Calcaneus maximum length</b>
+                    <b class="item-column-6 item-row-25">(CLL)</b>
+                    <mat-form-field class="item-column-7 item-row-25">
+                            <input matInput formControlName='CLL_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-25">
+                            <input matInput formControlName='CLL_R' type='text'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-26">95. Calcaneus middle breadth</b>
+                    <b class="item-column-6 item-row-26">(CMB)</b>
+                    <mat-form-field class="item-column-7 item-row-26">
+                            <input matInput formControlName='CMB_L' type='text'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-26">
+                            <input matInput formControlName='CMB_R' type='text'>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </form>
+    <br>
+    <div class="actions">
+        <button mat-raised-button color="warn" [routerLink]="['/metrics-postcran-table']">Cancel</button>
+        <button mat-raised-button id="saveButton" (click)="onSubmit()">Submit</button>
+    </div>
+    <br>
+    <br>
+</div>

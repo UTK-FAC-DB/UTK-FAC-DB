@@ -1,0 +1,140 @@
+.container {
+    width: 80%;
+    margin-top: 1rem;
+    margin-left: 10%;
+}
+.subtitle {
+    margin-right: 0.5rem;
+}
+.inline-subtitle {
+    margin-left: 1rem;
+}
+#saveButton {
+    background-color: green;
+}
+.actions {
+    text-align: center;
+    margin: 1rem;
+}
+.actions button {
+    margin: 1rem;
+}
+.matTextarea {
+    max-width: 500px;
+    min-width: 150px;
+    width: 100%;
+}
+.card-container {
+    display: flex;
+}
+.item-row {
+    flex: 1;
+}
+.card-container-grid-8 {
+    width: 80%;
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    column-gap: 1rem;
+}
+.card-container-grid-6 {
+    width: 80%;
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    column-gap: 1rem;
+}
+.card-container-grid-6-special {
+    width: 80%;
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: auto 10rem 10rem auto auto 10rem 10rem;
+    column-gap: 1rem;
+}
+.item-column-1 {
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.item-column-2 {
+    grid-column: 2;
+}
+.item-column-3 {
+    grid-column: 3;
+}
+.item-column-3-c {
+    grid-column: 3;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.item-column-4 {
+    grid-column: 4;
+}
+.item-column-5 {
+    grid-column: 5;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.item-column-6 {
+    grid-column: 6;
+}
+.item-column-7 {
+    grid-column: 7;
+}
+.item-column-8 {
+    grid-column: 8;
+}
+.item-row-1 {
+    grid-row: 1;
+}
+.item-row-2 {
+    grid-row: 2;
+}
+.item-row-3 {
+    grid-row: 3;
+}
+.item-row-4 {
+    grid-row: 4;
+}
+.item-row-5 {
+    grid-row: 5;
+}
+.item-row-6 {
+    grid-row: 6;
+}
+.item-row-7 {
+    grid-row: 7;
+}
+.item-row-8 {
+    grid-row: 8;
+}
+.item-row-9 {
+    grid-row: 9;
+}
+.item-row-10 {
+    grid-row: 10;
+}
+.item-row-11 {
+    grid-row: 11;
+}
+.item-row-12 {
+    grid-row: 12;
+}
+.item-row-13 {
+    grid-row: 13;
+}
+.item-row-14 {
+    grid-row: 14;
+}
+.item-row-15 {
+    grid-row: 15;
+}
+.item-row-16 {
+    grid-row: 16;
+}
+.indv-vert mat-form-field {
+    width: 5rem;
+}

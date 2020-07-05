@@ -10,9 +10,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./inventory-cremation.component.css']
 })
 export class InventoryCremationComponent implements OnInit, AfterViewInit {
-private mode = 'create';
-private itemId: string;
-item: CremationInventory;
+  private mode = 'create';
+  private itemId: string;
+  item: CremationInventory;
 
   constructor(
     private fb: FormBuilder, 

@@ -5,7 +5,7 @@
   <div class="table-actions">
     <a class="buttonStyle deleteButton" color="warn" mat-raised-button (click)="onDelete(selection.selected)">Delete</a>
     <a class="buttonStyle exportButton" mat-raised-button (click)="onExport(selection.selected)">Export</a>
-    <a class="buttonStyle addButton" mat-raised-button routerLink="/enter-adult">Add New Item</a>
+    <a class="buttonStyle addButton" mat-raised-button routerLink="/enter-postcran">Add New Item</a>
   </div>
   <div class="filtering">
     <mat-form-field class="searchBar">
@@ -53,7 +53,7 @@
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #optionsMenu="matMenu">
-            <button mat-menu-item [routerLink]="['/edit-cremation', row.id]">Edit</button>
+            <button mat-menu-item [routerLink]="['/edit-postcran', row.id]">Edit</button>
             <button mat-menu-item (click)="onSingleDelete(row.id)">Delete</button>
           </mat-menu>
         </td>

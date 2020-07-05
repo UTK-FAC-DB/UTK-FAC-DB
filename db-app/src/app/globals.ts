@@ -4,10 +4,10 @@ import { Injectable } from "@angular/core";
 export class Globals {
 
     // For local testing
-    //URL: string = 'http://localhost:8080';
+    URL: string = 'http://localhost:8080';
     
     // For production
-    URL: string = '';
+    //URL: string = '';
 
     donorHeaders :string[] = [
         "id",

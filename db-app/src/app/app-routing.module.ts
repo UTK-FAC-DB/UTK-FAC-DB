@@ -18,6 +18,8 @@ import { InventoryAdultComponent } from './Components/inventory/inventory-adult/
 import { InventorySubadultComponent } from './Components/inventory/inventory-subadult/inventory-subadult.component';
 import { MetricsFullyTableComponent } from './Components/metrics/metrics-fully-table/metrics-fully-table.component';
 import { MetricsPostcranTableComponent } from './Components/metrics/metrics-postcran-table/metrics-postcran-table.component';
+import { MetricsPostcranComponent } from './Components/metrics/metrics-postcran/metrics-postcran.component';
+import { MetricsFullyComponent } from './Components/metrics/metrics-fully/metrics-fully.component';
 
 const routes: Routes = [
   { path: '', component: UserPageComponent, canActivate: [AuthGuardService]},
@@ -36,7 +38,11 @@ const routes: Routes = [
   { path: 'inventory-adult-table', component: InventoryAdultTableComponent, canActivate: [AuthGuardService]},
   { path: 'edit-donor/:donorId', component: DonorRegistrationComponent, canActivate: [AuthGuardService]},
   { path: 'edit-donor-c/:donorId', component: DonorCRegistrationComponent, canActivate: [AuthGuardService]},
+  { path: 'enter-fully', component: MetricsFullyComponent, canActivate: [AuthGuardService] },
+  { path: 'edit-fully/:itemId', component: MetricsFullyComponent, canActivate: [AuthGuardService] },
   { path: 'metrics-fully-table', component: MetricsFullyTableComponent, canActivate: [AuthGuardService]},
+  { path: 'enter-postcran', component: MetricsPostcranComponent, canActivate: [AuthGuardService] },
+  { path: 'edit-postcran/:itemId', component: MetricsPostcranComponent, canActivate: [AuthGuardService] },
   { path: 'metrics-postcran-table', component: MetricsPostcranTableComponent, canActivate: [AuthGuardService]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

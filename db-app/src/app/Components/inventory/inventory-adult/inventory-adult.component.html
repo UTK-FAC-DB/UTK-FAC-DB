@@ -1,1 +1,925 @@
-<p>inventory-adult works!</p>
+<div class="container">
+    <h1>Adult Donation Information</h1>
+    <form [formGroup]="adultForm">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>General Information</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="card-container">
+                    <div class='item-row'>
+                        <b>UTID:</b>
+                        <mat-form-field>
+                                <mat-label>UTID</mat-label>
+                                <input matInput type='text' formControlName='UTID' placeholder='UTID'>
+                        </mat-form-field>
+                    </div>
+                    <div class='item-row'>
+                        <b>Curator:</b>
+                        <mat-form-field>
+                                <mat-label>Curator</mat-label>
+                                <input matInput type='text' formControlName='Curator' placeholder='Curator'>
+                        </mat-form-field>
+                    </div>
+                    <div class='item-row'>
+                        <b>Recorder:</b>
+                        <mat-form-field>
+                                <mat-label>Recorder</mat-label>
+                                <input matInput type='text' formControlName='Recorder' placeholder='Recorder'>
+                        </mat-form-field>
+                    </div>
+                    <div class='item-row'>
+                        <b>Date Inventoried:</b>
+                        <mat-form-field>
+                                <mat-label>Date Inventoried</mat-label>
+                                <input matInput type='text' formControlName='DateInventoried' placeholder='DateInventoried'>
+                        </mat-form-field>
+                    </div>
+                    <div class='item-row'>
+                        <b>Type:</b>
+                        <mat-form-field>
+                                <mat-label>Type</mat-label>
+                                <input matInput type='text' formControlName='Type' placeholder='Type'>
+                        </mat-form-field>
+                    </div>
+                    <div class='item-row'>
+                        <b>Condition:</b>
+                        <mat-form-field>
+                                <mat-label>Condition</mat-label>
+                                <input matInput type='text' formControlName='Condition' placeholder='Condition'>
+                        </mat-form-field>
+                    </div>
+                    <div class='item-row'>
+                        <b>Autopsy:</b>
+                        <mat-form-field>
+                                <mat-label>Autopsy</mat-label>
+                                <input matInput type='text' formControlName='Autopsy' placeholder='Autopsy'>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Cranium</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="card-container-grid-8">
+                    <b class="item-column-1 item-row-1">Cranium:</b>
+                    <mat-form-field>
+                        <mat-label>Cranium</mat-label>
+                        <input matInput type='text' formControlName='Cranium' placeholder='Cranium' class="item-column-2 item-row-1">
+                    </mat-form-field>
+                    <b class="item-column-1 item-row-2">Frontal:</b>
+                    <mat-form-field class="item-column-3 item-row-2">
+                        <mat-label>Frontal</mat-label>
+                        <input matInput type='text' formControlName='Frontal' placeholder='Frontal'>
+                    </mat-form-field>
+                    <b class="item-column-1 item-row-3">Parietal:</b>
+                    <mat-form-field class="item-column-2 item-row-3">
+                            <input matInput type='text' formControlName='Parietal_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-4 item-row-3">
+                            <input matInput type='text' formControlName='Parietal_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-column-1 item-row-4">Occipital:</b>
+                    <mat-form-field class="item-column-3 item-row-4">
+                            <mat-label>Occipital</mat-label>
+                            <input matInput type='text' formControlName='Occipital' placeholder='Occipital'>
+                    </mat-form-field>
+                    <b class="item-column-1 item-row-5">Temporal:</b>
+                    <mat-form-field class="item-column-2 item-row-5">
+                            <input matInput type='text' formControlName='Temporal_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-4 item-row-5">
+                            <input matInput type='text' formControlName='Temporal_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-column-1 item-row-6">Zygomatic:</b>
+                    <mat-form-field class="item-column-2 item-row-6">
+                            <input matInput type='text' formControlName='Zygomatic_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-4 item-row-6">
+                            <input matInput type='text' formControlName='Zygomatic_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-column-1 item-row-7">Palatine:</b>
+                    <mat-form-field class="item-column-2 item-row-7">
+                            <input matInput type='text' formControlName='Palatine_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-4 item-row-7">
+                            <input matInput type='text' formControlName='Palatine_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-2">Maxilla:</b>
+                    <mat-form-field class="item-column-6 item-row-2">
+                            <input matInput type='text' formControlName='Maxilla_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-2">
+                            <input matInput type='text' formControlName='Maxilla_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-3">Nasal:</b>
+                    <mat-form-field class="item-column-6 item-row-3">
+                            <input matInput type='text' formControlName='Nasal_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-3">
+                            <input matInput type='text' formControlName='Nasal_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-4">Ethmoid:</b>
+                    <mat-form-field class="item-column-7 item-row-4">
+                            <input matInput type='text' formControlName='Ethmoid' placeholder='Ethmoid'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-5">Lacrimal:</b>
+                    <mat-form-field class="item-column-6 item-row-5">
+                            <input matInput type='text' formControlName='Lacrimal_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-column-8 item-row-5">
+                            <input matInput type='text' formControlName='Lacrimal_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-6">Vomer:</b>
+                    <mat-form-field class="item-column-7 item-row-6">
+                            <input matInput type='text' formControlName='Vomer' placeholder='Vomer'>
+                    </mat-form-field>
+                    <b class="item-column-5 item-row-7">Sphenoid:</b>
+                    <mat-form-field class="item-column-7 item-row-7">
+                            <input matInput type='text' formControlName='Sphenoid' placeholder='Sphenoid'>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Mandible</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="card-container-grid-6">
+                    <b class="item-row-1 item-column-1">Mandible:</b>
+                    <mat-form-field class="item-row-1 item-column-2">
+                            <mat-label>Mandible</mat-label>
+                            <input matInput type='text' formControlName='Mandible' placeholder='Mandible'>
+                    </mat-form-field>
+                    <b class="item-row-2 item-column-1">Body:</b>
+                    <mat-form-field class="item-row-2 item-column-2">
+                            <input matInput type='text' formControlName='Body_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-2 item-column-4">
+                            <input matInput type='text' formControlName='Body_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-2 item-column-5">Ramus:</b>
+                    <mat-form-field class="item-row-2 item-column-6">
+                            <input matInput type='text' formControlName='Ramus_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-2 item-column-8">
+                            <input matInput type='text' formControlName='Ramus_R' placeholder='Right'>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Dentition</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class='card-container-grid-6'>
+                    <b class="item-row-1 item-column-1">Dentition:</b>
+                    <mat-form-field class="item-row-1 item-column-2">
+                            <mat-label>Dentition</mat-label>
+                            <input matInput type='text' formControlName='Dentition' placeholder='Dentition'>
+                    </mat-form-field>
+                    <b class="item-row-2 item-column-1">Upper:</b>
+                    <mat-form-field class="item-row-2 item-column-2">
+                            <input matInput type='text' formControlName='Upper_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-2 item-column-3">
+                            <input matInput type='text' formControlName='Upper_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-3 item-column-1">Max i1:</b>
+                    <mat-form-field class="item-row-3 item-column-2">
+                            <input matInput type='text' formControlName='Max_i1_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-3 item-column-3">
+                            <input matInput type='text' formControlName='Max_i1_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-4 item-column-1">Max i2:</b>
+                    <mat-form-field class="item-row-4 item-column-2">
+                            <input matInput type='text' formControlName='Max_i2_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-4 item-column-3">
+                            <input matInput type='text' formControlName='Max_i2_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-5 item-column-1">Max Canine:</b>
+                    <mat-form-field class="item-row-5 item-column-2">
+                            <input matInput type='text' formControlName='Max_Canine_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-5 item-column-3">
+                            <input matInput type='text' formControlName='Max_Canine_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-6 item-column-1">Max PreM1:</b>
+                    <mat-form-field class="item-row-6 item-column-2">
+                            <input matInput type='text' formControlName='Max_PreM1_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-6 item-column-3">
+                            <input matInput type='text' formControlName='Max_PreM1_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-7 item-column-1">Max PreM2:</b>
+                    <mat-form-field class="item-row-7 item-column-2">
+                            <input matInput type='text' formControlName='Max_PreM2_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-7 item-column-3">
+                            <input matInput type='text' formControlName='Max_PreM2_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-8 item-column-1">Max M1:</b>
+                    <mat-form-field class="item-row-8 item-column-2">
+                            <input matInput type='text' formControlName='Max_M1_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-8 item-column-3">
+                            <input matInput type='text' formControlName='Max_M1_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-9 item-column-1">Max M2:</b>
+                    <mat-form-field class="item-row-9 item-column-2">
+                            <input matInput type='text' formControlName='Max_M2_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-9 item-column-3">
+                            <input matInput type='text' formControlName='Max_M2_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-10 item-column-1">Max M3:</b>
+                    <mat-form-field class="item-row-10 item-column-2">
+                            <input matInput type='text' formControlName='Max_M3_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-10 item-column-3">
+                            <input matInput type='text' formControlName='Max_M3_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-2 item-column-5">Lower:</b>
+                    <mat-form-field class="item-row-2 item-column-6">
+                            <input matInput type='text' formControlName='Lower_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-2 item-column-7">
+                            <input matInput type='text' formControlName='Lower_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-3 item-column-5">Mand i1:</b>
+                    <mat-form-field class="item-row-3 item-column-6">
+                            <input matInput type='text' formControlName='Mand_i1_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-3 item-column-7">
+                            <input matInput type='text' formControlName='Mand_i1_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-4 item-column-5">Mand i2:</b>
+                    <mat-form-field class="item-row-4 item-column-6">
+                            <input matInput type='text' formControlName='Mand_i2_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-4 item-column-7">
+                            <input matInput type='text' formControlName='Mand_i2_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b  class="item-row-5 item-column-5">Mand Canine:</b>
+                    <mat-form-field class="item-row-5 item-column-6">
+                            <input matInput type='text' formControlName='Mand_Canine_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-5 item-column-7">
+                            <input matInput type='text' formControlName='Mand_Canine_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-6 item-column-5">Mand PreM1:</b>
+                    <mat-form-field class="item-row-6 item-column-6">
+                            <input matInput type='text' formControlName='Mand_PreM1_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-6 item-column-7">
+                            <input matInput type='text' formControlName='Mand_PreM1_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-7 item-column-5">Mand PreM2:</b>
+                    <mat-form-field class="item-row-7 item-column-6">
+                            <input matInput type='text' formControlName='Mand_PreM2_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-7 item-column-7">
+                            <input matInput type='text' formControlName='Mand_PreM2_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-8 item-column-5">Mand M1:</b>
+                    <mat-form-field class="item-row-8 item-column-6">
+                            <input matInput type='text' formControlName='Mand_M1_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-8 item-column-7">
+                            <input matInput type='text' formControlName='Mand_M1_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-9 item-column-5">Mand M2:</b>
+                    <mat-form-field class="item-row-9 item-column-6">
+                            <input matInput type='text' formControlName='Mand_M2_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-9 item-column-7">
+                            <input matInput type='text' formControlName='Mand_M2_R' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-10 item-column-5">Mand M3:</b>
+                    <mat-form-field class="item-row-10 item-column-6">
+                            <input matInput type='text' formControlName='Mand_M3_L' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-10 item-column-7">
+                            <input matInput type='text' formControlName='Mand_M3_R' placeholder='Right'>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Post Cranium</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class='card-container-grid-8'>
+                    <b class="item-row-1 item-column-1">Postcranium:</b>
+                    <mat-form-field class="item-row-1 item-column-2">
+                            <mat-label>Postcranium</mat-label>
+                            <input matInput type='text' formControlName='Postcranium' placeholder='Postcranium'>
+                    </mat-form-field>
+                    <b class="item-row-2 item-column-1">Hyoid:</b>
+                    <mat-form-field class="item-row-2 item-column-3">
+                            <mat-label>Hyoid</mat-label>
+                            <input matInput type='text' formControlName='Hyoid' placeholder='Hyoid'>
+                    </mat-form-field>
+                    <b class="item-row-3 item-column-1">Clavicle:</b>
+                    <mat-form-field class="item-row-3 item-column-2">
+                            <input matInput type='text' formControlName='Clavicle_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-3 item-column-4">
+                            <input matInput type='text' formControlName='Clavicle_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-4 item-column-1">Scapula:</b>
+                    <mat-form-field class="item-row-4 item-column-2">
+                            <input matInput type='text' formControlName='Scapula_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-4 item-column-4">
+                            <input matInput type='text' formControlName='Scapula_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-5 item-column-1">Humerus:</b>
+                    <mat-form-field class="item-row-5 item-column-2">
+                            <input matInput type='text' formControlName='Humerus_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-5 item-column-4">
+                            <input matInput type='text' formControlName='Humerus_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-6 item-column-1">Radius:</b>
+                    <mat-form-field class="item-row-6 item-column-2">
+                            <input matInput type='text' formControlName='Radius_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-6 item-column-4">
+                            <input matInput type='text' formControlName='Radius_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-7 item-column-1">Ulna:</b>
+                    <mat-form-field class="item-row-7 item-column-2">
+                            <input matInput type='text' formControlName='Ulna_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-7 item-column-4">
+                            <input matInput type='text' formControlName='Ulna_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-8 item-column-1">Manubrium:</b>
+                    <mat-form-field class="item-row-8 item-column-3">
+                            <input matInput type='text' formControlName='Manubrium' placeholder='Manubrium'>
+                    </mat-form-field>
+                    <b class="item-row-9 item-column-1">Sternum:</b>
+                    <mat-form-field class="item-row-9 item-column-3">
+                            <input matInput type='text' formControlName='SternumBody' placeholder='Sternum'>
+                    </mat-form-field>
+                    <b class="item-row-2 item-column-5">Xiphoid:</b>
+                    <mat-form-field class="item-row-2 item-column-6">
+                            <input matInput type='text' formControlName='XiphoidProcess' placeholder='Xiphoid'>
+                    </mat-form-field>
+                    <b class="item-row-3 item-column-5">Ilium:</b>
+                    <mat-form-field class="item-row-3 item-column-6">
+                            <input matInput type='text' formControlName='Ilium_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-3 item-column-8">
+                            <input matInput type='text' formControlName='Ilium_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-4 item-column-5">Ischium:</b>
+                    <mat-form-field class="item-row-4 item-column-6">
+                            <input matInput type='text' formControlName='Ischium_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-4 item-column-8">
+                            <input matInput type='text' formControlName='Ischium_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-5 item-column-5">Pubis:</b>
+                    <mat-form-field class="item-row-5 item-column-6">
+                            <input matInput type='text' formControlName='Pubis_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-5 item-column-8">
+                            <input matInput type='text' formControlName='Pubis_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-6 item-column-5">Femur:</b>
+                    <mat-form-field class="item-row-6 item-column-6">
+                            <input matInput type='text' formControlName='Femur_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-6 item-column-8">
+                            <input matInput type='text' formControlName='Femur_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-7 item-column-5">Patella:</b>
+                    <mat-form-field class="item-row-7 item-column-6">
+                            <input matInput type='text' formControlName='Patella_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-7 item-column-8">
+                            <input matInput type='text' formControlName='Patella_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-8 item-column-5">Tibia:</b>
+                    <mat-form-field class="item-row-8 item-column-6">
+                            <input matInput type='text' formControlName='Tibia_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-8 item-column-8">
+                            <input matInput type='text' formControlName='Tibia_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-9 item-column-5">Fibula:</b>
+                    <mat-form-field class="item-row-9 item-column-6">
+                            <input matInput type='text' formControlName='Fibula_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-9 item-column-8">
+                            <input matInput type='text' formControlName='Fibula_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-10 item-column-1">Rib 1:</b>
+                    <mat-form-field class="item-row-10 item-column-2">
+                            <input matInput type='text' formControlName='Rib_1_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-10 item-column-4">
+                            <input matInput type='text' formControlName='Rib_1_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-11 item-column-1">Rib 2:</b>
+                    <mat-form-field class="item-row-11 item-column-2">
+                            <input matInput type='text' formControlName='Rib_2_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-11 item-column-4">
+                            <input matInput type='text' formControlName='Rib_2_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-12 item-column-1">Rib 11:</b>
+                    <mat-form-field class="item-row-12 item-column-2">
+                            <input matInput type='text' formControlName='Rib_11_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-12 item-column-4">
+                            <input matInput type='text' formControlName='Rib_11_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-13 item-column-1">Rib 12:</b>
+                    <mat-form-field class="item-row-13 item-column-2">
+                            <input matInput type='text' formControlName='Rib_12_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-13 item-column-4">
+                            <input matInput type='text' formControlName='Rib_12_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-14 item-column-1">Rib 3-10:</b>
+                    <mat-form-field class="item-row-14 item-column-2">
+                            <input matInput type='text' formControlName='Rib_3_10_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-14 item-column-4">
+                            <input matInput type='text' formControlName='Rib_3_10_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-15 item-column-1">Rib Count:</b>
+                    <mat-form-field class="item-row-15 item-column-2">
+                            <input matInput type='text' formControlName='Rib_3_10_l_Count' placeholder='Count'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-15 item-column-4">
+                            <input matInput type='text' formControlName='Rib_3_10_r_Count' placeholder='Count'>
+                    </mat-form-field>
+                    <b class="item-row-16 item-column-1">Fragments:</b>
+                    <mat-form-field class="item-row-16 item-column-2">
+                            <input matInput type='text' formControlName='Rib_frag_Count' placeholder='Rib_frag_Count'>
+                    </mat-form-field>
+                    <b class="item-row-10 item-column-5">Atlas:</b>
+                    <mat-form-field class="item-row-10 item-column-7">
+                            <input matInput type='text' formControlName='Atlas' placeholder='Atlas'>
+                    </mat-form-field>
+                    <b class="item-row-11 item-column-5">Axis:</b>
+                    <mat-form-field class="item-row-11 item-column-7">
+                            <input matInput type='text' formControlName='Axis' placeholder='Axis'>
+                    </mat-form-field>
+                    <b class="item-row-12 item-column-5">Cervical 3-7:</b>
+                    <mat-form-field class="item-row-12 item-column-6">
+                            <input matInput type='text' formControlName='Cervical_3_7' placeholder='Cervical 3-7'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-12 item-column-8">
+                            <input matInput type='text' formControlName='Cervical_3_7_Count' placeholder='Count'>
+                    </mat-form-field>
+                    <b class="item-row-13 item-column-5">Thoracic 1-12:</b>
+                    <mat-form-field class="item-row-13 item-column-6">
+                            <input matInput type='text' formControlName='Thoracic_1_12' placeholder='Thoracic 1-12'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-13 item-column-8">
+                            <input matInput type='text' formControlName='Thoracic_1_12_Count' placeholder='Count'>
+                    </mat-form-field>
+                    <b class="item-row-14 item-column-5">Lumbar 1-5:</b>
+                    <mat-form-field class="item-row-14 item-column-6">
+                            <input matInput type='text' formControlName='Lumbar_1_5' placeholder='Lumbar 1-5'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-14 item-column-8">
+                            <input matInput type='text' formControlName='Lumbar_1_5_Count' placeholder='Count'>
+                    </mat-form-field>
+                    <b class="item-row-15 item-column-5">Sacrum:</b>
+                    <mat-form-field class="item-row-15 item-column-6">
+                            <input matInput type='text' formControlName='Sacrum' placeholder='Sacrum'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-15 item-column-8">
+                            <input matInput type='text' formControlName='Sacrum_Count' placeholder='Count'>
+                    </mat-form-field>
+                    <b class="item-row-16 item-column-5">Coccyx:</b>
+                    <mat-form-field class="item-row-16 item-column-6">
+                            <input matInput type='text' formControlName='Coccyx' placeholder='Coccyx'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-16 item-column-8">
+                            <input matInput type='text' formControlName='Coccyx_Count' placeholder='Count'>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Individual Vert.</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="indv-vert">
+                <div class='card-container-grid-6' style="width:40%;">
+                    <b class="item-row-1 item-column-1">C3:</b>
+                    <mat-form-field class="item-row-1 item-column-2">
+                            <mat-label>C3</mat-label>
+                            <input matInput type='text' formControlName='C3' placeholder='C3'>
+                    </mat-form-field>
+                    <b class="item-row-2 item-column-1">C4:</b>
+                    <mat-form-field class="item-row-2 item-column-2">
+                            <mat-label>C4</mat-label>
+                            <input matInput type='text' formControlName='C4' placeholder='C4'>
+                    </mat-form-field>
+                    <b class="item-row-3 item-column-1">C5:</b>
+                    <mat-form-field class="item-row-3 item-column-2">
+                            <mat-label>C5</mat-label>
+                            <input matInput type='text' formControlName='C5' placeholder='C5'>
+                    </mat-form-field>
+                    <b class="item-row-4 item-column-1">C6:</b>
+                    <mat-form-field class="item-row-4 item-column-2">
+                            <mat-label>C6</mat-label>
+                            <input matInput type='text' formControlName='C6' placeholder='C6'>
+                    </mat-form-field>
+                    <b class="item-row-5 item-column-1">C7:</b>
+                    <mat-form-field class="item-row-5 item-column-2">
+                            <mat-label>C7</mat-label>
+                            <input matInput type='text' formControlName='C7' placeholder='C7'>
+                    </mat-form-field>
+                    <b class="item-row-6 item-column-1">T1:</b>
+                    <mat-form-field class="item-row-6 item-column-2">
+                            <mat-label>T1</mat-label>
+                            <input matInput type='text' formControlName='T1' placeholder='T1'>
+                    </mat-form-field>
+                    <b class="item-row-7 item-column-1">T2:</b>
+                    <mat-form-field class="item-row-7 item-column-2">
+                            <mat-label>T2</mat-label>
+                            <input matInput type='text' formControlName='T2' placeholder='T2'>
+                    </mat-form-field>
+                    <b class="item-row-8 item-column-1">T3:</b>
+                    <mat-form-field class="item-row-8 item-column-2">
+                            <mat-label>T3</mat-label>
+                            <input matInput type='text' formControlName='T3' placeholder='T3'>
+                    </mat-form-field>
+                    <b class="item-row-1 item-column-3-c">T4:</b>
+                    <mat-form-field class="item-row-1 item-column-4">
+                            <mat-label>T4</mat-label>
+                            <input matInput type='text' formControlName='T4' placeholder='T4'>
+                    </mat-form-field>
+                    <b class="item-row-2 item-column-3-c">T5:</b>
+                    <mat-form-field class="item-row-2 item-column-4">
+                            <mat-label>T5</mat-label>
+                            <input matInput type='text' formControlName='T5' placeholder='T5'>
+                    </mat-form-field>
+                    <b class="item-row-3 item-column-3-c">T6:</b>
+                    <mat-form-field class="item-row-3 item-column-4">
+                            <mat-label>T6</mat-label>
+                            <input matInput type='text' formControlName='T6' placeholder='T6'>
+                    </mat-form-field>
+                    <b class="item-row-4 item-column-3-c">T7:</b>
+                    <mat-form-field class="item-row-4 item-column-4">
+                            <mat-label>T7</mat-label>
+                            <input matInput type='text' formControlName='T7' placeholder='T7'>
+                    </mat-form-field>
+                    <b class="item-row-5 item-column-3-c">T8:</b>
+                    <mat-form-field class="item-row-5 item-column-4">
+                            <mat-label>T8</mat-label>
+                            <input matInput type='text' formControlName='T8' placeholder='T8'>
+                    </mat-form-field>
+                    <b class="item-row-6 item-column-3-c">T9:</b>
+                    <mat-form-field class="item-row-6 item-column-4">
+                            <mat-label>T9</mat-label>
+                            <input matInput type='text' formControlName='T9' placeholder='T9'>
+                    </mat-form-field>
+                    <b class="item-row-7 item-column-3-c">T10:</b>
+                    <mat-form-field class="item-row-7 item-column-4">
+                            <mat-label>T10</mat-label>
+                            <input matInput type='text' formControlName='T10' placeholder='T10'>
+                    </mat-form-field>
+                    <b class="item-row-8 item-column-3-c">T11:</b>
+                    <mat-form-field class="item-row-8 item-column-4">
+                            <mat-label>T11</mat-label>
+                            <input matInput type='text' formControlName='T11' placeholder='T11'>
+                    </mat-form-field>
+                    <b class="item-row-1 item-column-5">T12:</b>
+                    <mat-form-field class="item-row-1 item-column-6">
+                            <mat-label>T12</mat-label>
+                            <input matInput type='text' formControlName='T12' placeholder='T12'>
+                    </mat-form-field>
+                    <b class="item-row-2 item-column-5">T13:</b>
+                    <mat-form-field class="item-row-2 item-column-6">
+                            <mat-label>T13</mat-label>
+                            <input matInput type='text' formControlName='T13' placeholder='T13'>
+                    </mat-form-field>
+                    <b class="item-row-3 item-column-5">L1:</b>
+                    <mat-form-field class="item-row-3 item-column-6">
+                            <mat-label>L1</mat-label>
+                            <input matInput type='text' formControlName='L1' placeholder='L1'>
+                    </mat-form-field>
+                    <b class="item-row-4 item-column-5">L2:</b>
+                    <mat-form-field class="item-row-4 item-column-6">
+                            <mat-label>L2</mat-label>
+                            <input matInput type='text' formControlName='L2' placeholder='L2'>
+                    </mat-form-field>
+                    <b class="item-row-5 item-column-5">L3:</b>
+                    <mat-form-field class="item-row-5 item-column-6">
+                            <mat-label>L3</mat-label>
+                            <input matInput type='text' formControlName='L3' placeholder='L3'>
+                    </mat-form-field>
+                    <b class="item-row-6 item-column-5">L4:</b>
+                    <mat-form-field class="item-row-6 item-column-6">
+                            <mat-label>L4</mat-label>
+                            <input matInput type='text' formControlName='L4' placeholder='L4'>
+                    </mat-form-field>
+                    <b class="item-row-7 item-column-5">L5:</b>
+                    <mat-form-field class="item-row-7 item-column-6">
+                            <mat-label>L5</mat-label>
+                            <input matInput type='text' formControlName='L5' placeholder='L5'>
+                    </mat-form-field>
+                    <b class="item-row-8 item-column-5">L6:</b>
+                    <mat-form-field class="item-row-8 item-column-6">
+                            <mat-label>L6</mat-label>
+                            <input matInput type='text' formControlName='L6' placeholder='L6'>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Hands and Feet</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class='card-container-grid-6-special'>
+                    <b class="item-row-1 item-column-1">Hand:</b>
+                    <mat-form-field class="item-row-1 item-column-2">
+                            <input matInput type='text' formControlName='Hand_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-1 item-column-3">
+                            <input matInput type='text' formControlName='Hand_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-2 item-column-1">Scaphoid:</b>
+                    <mat-form-field class="item-row-2 item-column-2">
+                            <input matInput type='text' formControlName='Scaphoid_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-2 item-column-3">
+                            <input matInput type='text' formControlName='Scaphoid_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-3 item-column-1">Lunate:</b>
+                    <mat-form-field class="item-row-3 item-column-2">
+                            <input matInput type='text' formControlName='Lunate_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-3 item-column-3">
+                            <input matInput type='text' formControlName='Lunate_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-4 item-column-1">Triquetral:</b>
+                    <mat-form-field class="item-row-4 item-column-2">
+                            <input matInput type='text' formControlName='Triquetral_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-4 item-column-3">
+                            <input matInput type='text' formControlName='Triquetral_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-5 item-column-1">Pisiform:</b>
+                    <mat-form-field class="item-row-5 item-column-2">
+                            <input matInput type='text' formControlName='Pisiform_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-5 item-column-3">
+                            <input matInput type='text' formControlName='Pisiform_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-6 item-column-1">GrMultangular:</b>
+                    <mat-form-field class="item-row-6 item-column-2">
+                            <input matInput type='text' formControlName='GrMultangular_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-6 item-column-3">
+                            <input matInput type='text' formControlName='GrMultangular_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-7 item-column-1">LessMultangular:</b>
+                    <mat-form-field class="item-row-7 item-column-2">
+                            <input matInput type='text' formControlName='LessMultangular_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-7 item-column-3">
+                            <input matInput type='text' formControlName='LessMultangular_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-8 item-column-1">Capitate:</b>
+                    <mat-form-field class="item-row-8 item-column-2">
+                            <input matInput type='text' formControlName='Capitate_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-8 item-column-3">
+                            <input matInput type='text' formControlName='Capitate_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-9 item-column-1">Hamate:</b>
+                    <mat-form-field class="item-row-9 item-column-2">
+                            <input matInput type='text' formControlName='Hamate_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-9 item-column-3">
+                            <input matInput type='text' formControlName='Hamate_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-10 item-column-1">Metacarpals:</b>
+                    <div class='item-column-2 item-row-10' style="display:inline-flex;">
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metacarpal1_l' placeholder='(1)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metacarpal2_l' placeholder='(2)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metacarpal3_l' placeholder='(3)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metacarpal4_l' placeholder='(4)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metacarpal5_l' placeholder='(5)'>
+                        </mat-form-field>
+                    </div>
+                    <div class='item-column-3 item-row-10' style="display:inline-flex;">
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metacarpal1_r' placeholder='(1)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metacarpal2_r' placeholder='(2)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metacarpal3_r' placeholder='(3)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metacarpal4_r' placeholder='(4)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metacarpal5_r' placeholder='(5)'>
+                        </mat-form-field>
+                    </div>
+                    <b class="item-row-11 item-column-1">Prox. Hand Count:</b>
+                    <mat-form-field class="item-row-11 item-column-2">
+                            <mat-label>Count</mat-label>
+                            <input matInput type='text' formControlName='Phalanges_Prox_Hand_Count' placeholder='Count'>
+                    </mat-form-field>
+                    <b class="item-row-12 item-column-1">Mid. Hand Count:</b>
+                    <mat-form-field class="item-row-12 item-column-2">
+                            <mat-label>Count</mat-label>
+                            <input matInput type='text' formControlName='Phalanges_Mid_Hand_Count' placeholder='Count'>
+                    </mat-form-field>
+                    <b class="item-row-13 item-column-1">Dist.Hand Count:</b>
+                    <mat-form-field class="item-row-13 item-column-2">
+                            <mat-label>Count</mat-label>
+                            <input matInput type='text' formControlName='Phalanges_Dist_Hand_Count' placeholder='Count'>
+                    </mat-form-field>
+                    <b class="item-row-1 item-column-5">Foot:</b>
+                    <mat-form-field class="item-row-1 item-column-6">
+                            <input matInput type='text' formControlName='Foot_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-1 item-column-7">
+                            <input matInput type='text' formControlName='Foot_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-2 item-column-5">Calcaneus:</b>
+                    <mat-form-field class="item-row-2 item-column-6">
+                            <input matInput type='text' formControlName='Calcaneus_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-2 item-column-7">
+                            <input matInput type='text' formControlName='Calcaneus_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-3 item-column-5">Talus:</b>
+                    <mat-form-field class="item-row-3 item-column-6">
+                            <input matInput type='text' formControlName='Talus_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-3 item-column-7">
+                            <input matInput type='text' formControlName='Talus_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-4 item-column-5">Cuboid:</b>
+                    <mat-form-field class="item-row-4 item-column-6">
+                            <input matInput type='text' formControlName='Cuboid_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-4 item-column-7">
+                            <input matInput type='text' formControlName='Cuboid_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-5 item-column-5">Navicular:</b>
+                    <mat-form-field class="item-row-5 item-column-6">
+                            <input matInput type='text' formControlName='Navicular_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-5 item-column-7">
+                            <input matInput type='text' formControlName='Navicular_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-6 item-column-5">Cuneiform 1:</b>
+                    <mat-form-field class="item-row-6 item-column-6">
+                            <input matInput type='text' formControlName='Cuneiform1_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-6 item-column-7">
+                            <input matInput type='text' formControlName='Cuneiform1_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-7 item-column-5">Cuneiform 2:</b>
+                    <mat-form-field class="item-row-7 item-column-6">
+                            <input matInput type='text' formControlName='Cuneiform2_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-7 item-column-7">
+                            <input matInput type='text' formControlName='Cuneiform2_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-8 item-column-5">Cuneiform 3:</b>
+                    <mat-form-field class="item-row-8 item-column-6">
+                            <input matInput type='text' formControlName='Cuneiform3_l' placeholder='Left'>
+                    </mat-form-field>
+                    <mat-form-field class="item-row-8 item-column-7">
+                            <input matInput type='text' formControlName='Cuneiform3_r' placeholder='Right'>
+                    </mat-form-field>
+                    <b class="item-row-9 item-column-5">Sesamoids:</b>
+                    <mat-form-field class="item-row-9 item-column-6">
+                            <input matInput type='text' formControlName='Sesamoids' placeholder='Sesamoids'>
+                    </mat-form-field>
+                    <b class="item-row-10 item-column-5">Metatarsals:</b>
+                    <div class='item-row-10 item-column-6' style="display:inline-flex;">
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metatarsals1_l' placeholder='(1)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metatarsals2_l' placeholder='(2)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metatarsals3_l' placeholder='(3)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metatarsals4_l' placeholder='(4)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metatarsals5_l' placeholder='(5)'>
+                        </mat-form-field>
+                    </div>
+                    <div class="item-row-10 item-column-7" style="display:inline-flex;">
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metatarsals1_r' placeholder='(1)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metatarsals2_r' placeholder='(2)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metatarsals3_r' placeholder='(3)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metatarsals4_r' placeholder='(4)'>
+                        </mat-form-field>
+                        <mat-form-field style="width:20%;">
+                                <input matInput type='text' formControlName='Metatarsals5_r' placeholder='(5)'>
+                        </mat-form-field>
+                    </div>
+                    <b class="item-row-11 item-column-5">Prox. Foot Count:</b>
+                    <mat-form-field class="item-row-11 item-column-6">
+                            <mat-label>Count</mat-label>
+                            <input matInput type='text' formControlName='Phalanges_Prox_Foot_Count' placeholder='Count'>
+                    </mat-form-field>
+                    <b class="item-row-12 item-column-5">Mid. Foot Count:</b>
+                    <mat-form-field class="item-row-12 item-column-6">
+                            <mat-label>Count</mat-label>
+                            <input matInput type='text' formControlName='Phalanges_Mid_Foot_Count' placeholder='Count'>
+                    </mat-form-field>
+                    <b class="item-row-13 item-column-5">Dist. Foot Count:</b>
+                    <mat-form-field class="item-row-13 item-column-6">
+                            <mat-label>Count</mat-label>
+                            <input matInput type='text' formControlName='Phalanges_Dist_Foot_Count' placeholder='Count'>
+                    </mat-form-field>   
+                    <b class="item-row-14 item-column-1">Thyroid:</b>
+                    <mat-form-field class="item-row-14 item-column-2">
+                            <mat-label>Thyroid</mat-label>
+                            <input matInput type='text' formControlName='Thyroid' placeholder='Thyroid'>
+                    </mat-form-field>
+                    <b class="item-row-14 item-column-5">Cricoid:</b>
+                    <mat-form-field class="item-row-14 item-column-6">
+                            <mat-label>Cricoid</mat-label>
+                            <input matInput type='text' formControlName='Cricoid' placeholder='Cricoid'>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Additional Information</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <b>Prosthetic_Devices:</b>
+                <br>
+                <mat-form-field class="matTextarea">
+                        <mat-label>Prosthetic_Devices</mat-label>
+                        <textarea matInput type='text' formControlName='Prosthetic_Devices' placeholder='Prosthetic_Devices'></textarea>
+                </mat-form-field>
+                <br>
+                <b>Comments:</b>
+                <br>
+                <mat-form-field class="matTextarea">
+                        <mat-label>Comments</mat-label>
+                        <textarea matInput type='text' formControlName='Comments' placeholder='Comments'></textarea>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+    </form>
+    <br>
+    <div class="actions">
+        <button mat-raised-button color="warn" [routerLink]="['/inventory-adult-table']">Cancel</button>
+        <button mat-raised-button id="saveButton" (click)="onSubmit()">Submit</button>
+    </div>
+    <br>
+    <br>
+</div>

@@ -23,7 +23,7 @@ router.post('', (req, res, next) => {
 });
 
 router.put('/:id', (req, res, next) => {
-    Item.updateOne({_id: req.params._id}, req)
+    Item.updateOne({_id: req.params.id}, req.body)
     .then(() => {
         res.status(200).json({message: "Updated subadult"});
     })
