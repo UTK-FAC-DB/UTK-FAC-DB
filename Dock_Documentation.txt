@@ -1,0 +1,32 @@
+This document is to note the process of how I, Chase Brunette-Pak, had
+set up the docker for hosting both the facdb database and backend
+for the site.
+
+1. Sign into the machine
+
+    - If signing in from a remote machine (Ensure you have a profile on the
+      server)
+
+        * From linux based machine:
+
+          "ssh username@com1642.eecs.utk.edu"
+
+    - Signing in locally
+
+      (Need documentation)
+
+2. Install Docker on Arch Linux
+
+    - Luckily docker is popular enough to have official set up for Arch
+      you can follow the steps on (https://linuxhint.com/docker_arch_linux/),
+      if not I'll list them below
+
+      A. Make sure the system is up to date
+
+        " sudo pacman -Syu "
+
+      B. Enable loop modue
+
+        " sudo tee /etc/modules-load.d/loop.conf <<< "loop" "
+
+        " modprobe loop "

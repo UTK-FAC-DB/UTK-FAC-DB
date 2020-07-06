@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const itemSchema = mongoose.Schema({
     UTID: {type:String},
+    InvSubadult_DBID: {type:String},
     Recorder: {type:String},
     DateInventoried: {type:Date},
     Condition: {type:String},

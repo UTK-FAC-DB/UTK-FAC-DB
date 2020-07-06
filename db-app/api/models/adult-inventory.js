@@ -5,7 +5,7 @@ const itemSchema = mongoose.Schema({
     UTID: {type:String},
     Curator: {type:String},
     Recorder: {type:String},
-    DateInventoried: {type:String},
+    DateInventoried: {type:Date},
     Type: {type:String},
     Condition: {type:String},
     Autopsy: {type:String},

@@ -53,6 +53,7 @@ export class InventorySubadultComponent implements OnInit {
 
   subadultForm: FormGroup = this.createForm({
     id: '',
+    InvSubadult_DBID: '',
     UTID: '',
     Recorder: '',
     DateInventoried: null,

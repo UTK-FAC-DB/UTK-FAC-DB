@@ -1,5 +1,6 @@
 export interface SubadultInventory {
     id: string;
+    InvSubadult_DBID: string;
     UTID: string;
     Recorder: string;
     DateInventoried: Date;

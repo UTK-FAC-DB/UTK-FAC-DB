@@ -36,6 +36,7 @@ export class SubadultService {
             return itemData.items.map(item => {
                 return {
                     id:item._id,
+                    InvSubadult_DBID: item.InvSubadult_DBID,
                     UTID:item.UTID,
                     Recorder:item.Recorder,
                     DateInventoried:item.DateInventoried,
